@@ -40,6 +40,8 @@
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
+    //setup dirs needs to be beofre setupHTTPServer
+    [self setupDirs];
     [self setupHTTPServer];
     [self setupReachability];
     return YES;
@@ -79,20 +81,53 @@
 }
 
 #pragma mark -
-#pragma mark Setup HTTP Server
-- (void) copyTemplateDir {
-    NSString* fromPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[Helper templatesFolderName]];
-    NSString* toPath = [[Helper instance] templatesFolder];
+#pragma mark Setup HTTP Server]
+- (void) copyResDir:(NSString*)resDirName toDir:(NSString*)toPath {
+    NSString* fromPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:resDirName];
     NSError* error = nil;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:toPath]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:toPath]) {
+        [[NSFileManager defaultManager] copyItemAtPath:fromPath toPath:toPath error:&error];
+        if (error) 
+            VLog(error);
+    }
+}
+
+- (void) removeDir:(NSString*)dir {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dir]) {
         NSError* error = nil;
-        [[NSFileManager defaultManager] removeItemAtPath:toPath error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:dir error:&error];
         if (error)
             VLog(error);
     }
-    [[NSFileManager defaultManager] copyItemAtPath:fromPath toPath:toPath error:&error];
-    if (error) 
-        VLog(error);
+
+}
+
+- (void) removePrevItemsForBase:(NSString*)base {
+    NSArray* versions = [[Helper instance] versions];
+#ifndef DEBUG
+    NSString* lastVersion = [versions lastObject];
+#endif
+    for (NSString* version in versions) {
+#ifndef DEBUG
+        if (version != lastVersion)
+#endif
+            [self removeDir:[base stringByAppendingString:version]];
+    }
+}
+
+- (void) copyTemplateDir {
+    [self removePrevItemsForBase:[[Helper instance] baseTemplatesFolder]];
+    [self copyResDir:[Helper templatesFolderName] toDir:[[Helper instance] templatesFolder]];
+}
+
+- (void) copyDocroot {
+    [self removePrevItemsForBase:[[Helper instance] baseDocrootFolder]];
+    [self copyResDir:[Helper docrootFolderName] toDir:[[Helper instance] docrootFolder]];
+}
+
+- (void) setupDirs {
+    [self copyTemplateDir];
+    [self copyDocroot];
 }
 
 - (void) setupHTTPServer {
@@ -100,8 +135,6 @@
     [self.httpServer setPort:[Helper port]];
     [self.httpServer setDocumentRoot:[[Helper instance] documentsRoot]];
     [self.httpServer setConnectionClass:[SharesHTTPConnection class]];
-
-    [self copyTemplateDir];
 }
 
 #pragma mark -
@@ -117,4 +150,7 @@
     [self.viewController refresh];
 }
 
+- (void) sharesRefreshed {
+    [self.viewController sharesRefreshed];
+}
 @end

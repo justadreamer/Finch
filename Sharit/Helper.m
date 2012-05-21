@@ -16,12 +16,14 @@
 @property (nonatomic,strong) NSString* documentsFolder;
 @property (nonatomic,strong) NSString* templatesFolder;
 @property (nonatomic,strong) NSString* documentsRoot;
+@property (nonatomic,strong) NSArray* versions;
 @end
 
 @implementation Helper
 @synthesize documentsFolder;
 @synthesize templatesFolder;
 @synthesize documentsRoot;
+@synthesize versions;
 
 NSString* addressFrom_ifa_addr(struct sockaddr* ifa_addr) {
     return [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)ifa_addr)->sin_addr)];
@@ -79,8 +81,24 @@ Helper* sharedHelper;
     return @"tpl";
 }
 
++ (NSString*) docrootFolderName {
+    return @"docroot";
+}
+
 + (NSString*) templateExt {
     return @"tpl";
+}
+
+- (NSString*) baseTemplatesFolder {
+    return [[self documentsFolder] stringByAppendingPathComponent:[Helper templatesFolderName]];
+}
+
+- (NSString*) baseDocrootFolder {
+    return [[self documentsFolder] stringByAppendingPathComponent:[Helper docrootFolderName]];    
+}
+
+- (NSString*) versionedPath:(NSString*)path {
+    return [path stringByAppendingString:[[self versions] lastObject]];
 }
 
 - (NSString*) documentsFolder {
@@ -92,15 +110,24 @@ Helper* sharedHelper;
 
 - (NSString*) templatesFolder {
     if (nil==templatesFolder) {
-        templatesFolder = [[self documentsFolder] stringByAppendingPathComponent:[Helper templatesFolderName]];
+        templatesFolder = [self versionedPath:[self baseTemplatesFolder]];
     }
     return templatesFolder;
 }
 
-- (NSString*) documentsRoot {
+
+- (NSString*) docrootFolder {
     if (nil==documentsRoot) {
-        documentsRoot = [[self documentsFolder] stringByAppendingPathComponent:@"docroot"];
+        documentsRoot = [self versionedPath:[self baseDocrootFolder]];
     }
     return documentsRoot;
 }
+
+- (NSArray*) versions {
+    if (nil==versions) {
+        versions = [NSArray arrayWithObjects:@"0", nil];
+    }
+    return versions;
+}
+
 @end

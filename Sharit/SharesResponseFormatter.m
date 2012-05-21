@@ -9,19 +9,37 @@
 #import "SharesResponseFormatter.h"
 #import "SharesProvider.h"
 #import "ClipboardShare.h"
+@interface SharesResponseFormatter ()
+@property (nonatomic,assign) BOOL isInsideComment;
+@end
 
 @implementation SharesResponseFormatter
+@synthesize isInsideComment;
 
 - (NSString*) connection:(HTTPConnection*)connection responseForPath:(NSString*)path {
     return [self processMacrosInTemplate:@"index"];
 }
 
 - (NSString*) replaceMacro:(NSString *)macro {
+    NSString* clipboard = @"clipboard";
+
     NSString* replacement = @"";
-    if ([macro isEqualToString:@"%clipboard%"]) {
-        ClipboardShare* clipboardShare = [[SharesProvider instance] clipboardShare];
-        replacement = [clipboardShare string];
+    ClipboardShare* clipboardShare = [[SharesProvider instance] clipboardShare];
+
+    if ([macro contains:@"%if"]) {
+        if ([macro contains:clipboard]) {
+            replacement = clipboardShare.isShared ? @"" : @"<!--";
+            self.isInsideComment = !clipboardShare.isShared;
+        }
+    } else if ([macro contains:@"%endif"]) {
+        replacement = self.isInsideComment ? @"-->" : @"";
+        self.isInsideComment = NO;
+    } else if (!self.isInsideComment) {
+        if ([macro contains:clipboard]) {
+            replacement = [clipboardShare string];
+        }
     }
     return replacement;
 }
+
 @end

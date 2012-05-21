@@ -51,6 +51,16 @@ const NSInteger SEC_SHARED = 1;
     [self.mainTableView reloadData];
 }
 
+- (void) sharesRefreshed {
+    if (self.navigationController.topViewController == self) {
+        [self.mainTableView reloadData];
+    } else {
+        if ([self.navigationController.topViewController respondsToSelector:@selector(sharesRefreshed)]) {
+            [(id)self.navigationController.topViewController sharesRefreshed];
+        }
+    }
+}
+
 - (NSString*) urlFromIPAddress:(NSString*)ipAddress {
     return [NSString stringWithFormat:@"http://%@:%d",ipAddress,self.port];
 }
@@ -119,7 +129,6 @@ const NSInteger SEC_SHARED = 1;
 
 - (void) setupCell:(UITableViewCell*)cell forIndexPath:(NSIndexPath*)indexPath {
     if (indexPath.section == SEC_IFACES) {
-        //        NSString* text = @"No Interfaces Available";
         Iface* iface = [self.ifaces objectAtIndex:indexPath.row];
         cell.textLabel.text = [self urlFromIPAddress:iface.ipAddress];
         cell.detailTextLabel.text = [self interfaceNameFromLinkName:iface.name];

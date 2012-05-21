@@ -9,12 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @interface Helper : NSObject
++ (Helper*) instance;
+
 + (NSArray*) interfaces;
 + (UInt16) port;
-+ (Helper*) instance;
+
 + (NSString*) templatesFolderName;
++ (NSString*) docrootFolderName;
+
 + (NSString*) templateExt;
-- (NSString*) documentsFolder;
+
+- (NSArray*) versions;
+- (NSString*) baseTemplatesFolder;
+- (NSString*) baseDocrootFolder;
+- (NSString*) docrootFolder;
 - (NSString*) templatesFolder;
 - (NSString*) documentsRoot;
+
+
 @end

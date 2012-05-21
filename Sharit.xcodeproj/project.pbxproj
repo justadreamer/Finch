@@ -27,6 +27,7 @@
 		442EAD76156587FB0032E1B2 /* SharesResponseFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD75156587FB0032E1B2 /* SharesResponseFormatter.m */; };
 		442EAD7815658B470032E1B2 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		442EADA31566D10C0032E1B2 /* SharesHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EADA21566D10C0032E1B2 /* SharesHTTPConnection.m */; };
+		442EADA51567C1DE0032E1B2 /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 442EADA41567C1DE0032E1B2 /* docroot */; };
 		444B42D2155C2FD200319EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		444B42D4155C2FD200319EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		444B42D6155C2FD200319EC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
@@ -99,6 +100,7 @@
 		442EAD7715658B470032E1B2 /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		442EADA11566D10C0032E1B2 /* SharesHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesHTTPConnection.h; sourceTree = "<group>"; };
 		442EADA21566D10C0032E1B2 /* SharesHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesHTTPConnection.m; sourceTree = "<group>"; };
+		442EADA41567C1DE0032E1B2 /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
 		444B42CD155C2FD200319EC7 /* Sharit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444B42D1155C2FD200319EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		444B42D3155C2FD200319EC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -184,6 +186,7 @@
 		442EAC9F155D96E00032E1B2 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				442EADA41567C1DE0032E1B2 /* docroot */,
 				442EAD7715658B470032E1B2 /* tpl */,
 				442EACD11561A33D0032E1B2 /* graphics */,
 			);
@@ -489,6 +492,7 @@
 				442EACEC156219DC0032E1B2 /* ClipboardShareController.xib in Resources */,
 				442EAD62156570BD0032E1B2 /* ShareController.xib in Resources */,
 				442EAD7815658B470032E1B2 /* tpl in Resources */,
+				442EADA51567C1DE0032E1B2 /* docroot in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

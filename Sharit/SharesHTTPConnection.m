@@ -32,18 +32,29 @@
 		if ([self.supportedPaths containsObject:path]) {
 			return YES;
 		}
-	}
+	} else if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/index.html"]) {
+        return requestContentLength < 65535;
+    }
 	return [super supportsMethod:method atPath:path];
 }
 
+- (void)processBodyData:(NSData *)postDataChunk {
+	[(id)request appendData:postDataChunk];
+}
+
+
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
-    NSData* response = nil;
     if ([method isEqualToString:@"GET"]) {
         if ([self.supportedPaths containsObject:path]) {
-           response = [[self.responseFormatter connection:self responseForPath:path] dataUsingEncoding:NSUTF8StringEncoding];
+            NSData* response = [[self.responseFormatter connection:self responseForPath:path] dataUsingEncoding:NSUTF8StringEncoding];
+            return [[HTTPDataResponse alloc] initWithData:response];
         }
+    } else if ([method isEqualToString:@"POST"]) {
+        NSData *postData = [(id)request body];
+        
+        HTTPDataResponse* response = [[HTTPDataResponse alloc] initWithData:nil];
     }
-    return [[HTTPDataResponse alloc] initWithData:response];
+    return [super httpResponseForMethod:method URI:path];
 }
 
 @end

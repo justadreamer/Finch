@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong) IBOutlet UITableView* mainTableView;
 @property (nonatomic,strong) SharesProvider* sharesProvider;
+
+- (void) sharesRefreshed;
 @end
