@@ -39,7 +39,7 @@
             replacement = [clipboardShare string];
         }
     }
-    return replacement;
+    return SAFE_STRING(replacement);
 }
 
 @end

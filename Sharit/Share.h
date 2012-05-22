@@ -11,5 +11,6 @@
 @interface Share : NSObject
 @property (nonatomic,assign) BOOL isShared;
 @property (nonatomic,strong) NSString* name;
+@property (nonatomic,assign) BOOL isUpdated;
 - (NSString*) detailsDescription;
 @end

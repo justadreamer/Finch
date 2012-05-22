@@ -30,24 +30,35 @@
 }
 
 - (NSString*) detailsDescription {
-    BOOL hasText = [self.string length]>0;
-    BOOL hasImages = [self.images count]>0;
+    NSInteger strLen = [self.string length];
+    NSInteger imageCount = [self.images count];
+    BOOL hasText = strLen > 0;
+    BOOL hasImages = imageCount > 0;
     BOOL hasImage = self.image != nil;
-    NSString* desc = @"Clipboard is empty";
+    NSString* desc = @"empty";
     if (hasText || hasImages || hasImage) {
-        desc = @"Clipboard has ";
+        desc = @"";
         if (hasText) {
-            desc = [desc stringByAppendingString:@"text"];
+            int maxLen = 40;
+            BOOL isShort = maxLen > strLen;
+            NSString* format = isShort ? @"text: %@" : @"text: %@...";
+            maxLen = isShort ? strLen : maxLen;
+            desc = [desc stringByAppendingFormat:format,[self.string substringToIndex:maxLen]];
             if (hasImages|| hasImage) {
                 desc = [desc stringByAppendingString:@" and"];
             }
         }
         if (hasImages) {
-            desc = [desc stringByAppendingString:@"images"];
+            desc = [desc stringByAppendingFormat:@"%d images",imageCount];
         } else if (hasImage) {
-            desc = [desc stringByAppendingString:@"image"];
+            desc = [desc stringByAppendingString:@"1 image"];
         }
     }
     return desc;
 }
+
+- (void) updateString:(NSString*)string {
+    [[UIPasteboard generalPasteboard] setString:string];
+}
+
 @end

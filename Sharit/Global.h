@@ -12,4 +12,7 @@
 #import "DLog.h"
 #import "NSStringAdditions.h"
 
+#define kClipboard @"clipboard"
+#define SAFE_STRING(s) s ? s : @""
+
 #endif

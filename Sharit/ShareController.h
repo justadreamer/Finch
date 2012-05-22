@@ -10,5 +10,9 @@
 @class Share;
 @interface ShareController : UIViewController
 @property (nonatomic,strong) Share* share;
+@property (nonatomic,strong) IBOutlet UISwitch* isSharedSwitch;
+
 + (ShareController*) controllerWithShare:(Share*)share;
+- (void) sharesRefreshed;
+- (IBAction)switchValueChanged:(id)sender;
 @end

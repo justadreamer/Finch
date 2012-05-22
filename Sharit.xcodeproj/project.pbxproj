@@ -61,6 +61,7 @@
 		444B4493155C344B00319EC7 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B4492155C344B00319EC7 /* Helper.m */; };
 		444B449E155C378700319EC7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449D155C378700319EC7 /* Security.framework */; };
 		444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449F155C378D00319EC7 /* CFNetwork.framework */; };
+		44F69807156C2B02003B44BB /* RedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F69806156C2B01003B44BB /* RedirectResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,8 @@
 		444B4498155C367E00319EC7 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		444B449D155C378700319EC7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		444B449F155C378D00319EC7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		44F69805156C2B01003B44BB /* RedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedirectResponse.h; sourceTree = "<group>"; };
+		44F69806156C2B01003B44BB /* RedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedirectResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 				442EAD75156587FB0032E1B2 /* SharesResponseFormatter.m */,
 				442EADA11566D10C0032E1B2 /* SharesHTTPConnection.h */,
 				442EADA21566D10C0032E1B2 /* SharesHTTPConnection.m */,
+				44F69805156C2B01003B44BB /* RedirectResponse.h */,
+				44F69806156C2B01003B44BB /* RedirectResponse.m */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -542,6 +547,7 @@
 				442EAD73156580610032E1B2 /* ResponseFormatter.m in Sources */,
 				442EAD76156587FB0032E1B2 /* SharesResponseFormatter.m in Sources */,
 				442EADA31566D10C0032E1B2 /* SharesHTTPConnection.m in Sources */,
+				44F69807156C2B02003B44BB /* RedirectResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

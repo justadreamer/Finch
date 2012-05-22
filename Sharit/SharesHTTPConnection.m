@@ -9,6 +9,11 @@
 #import "SharesHTTPConnection.h"
 #import "SharesResponseFormatter.h"
 #import "HTTPDataResponse.h"
+#import "SharesProvider.h"
+#import "ClipboardShare.h"
+#import "Global.h"
+#import "HTTPMessage.h"
+#import "AppDelegate.h"
 
 @interface SharesHTTPConnection () 
 @property (nonatomic,strong) NSArray* supportedPaths;
@@ -28,32 +33,50 @@
 }
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path {
-	if ([method isEqualToString:@"GET"]) {
-		if ([self.supportedPaths containsObject:path]) {
+    if ([self.supportedPaths containsObject:path]) {
+        if ([method isEqualToString:@"GET"]) {
 			return YES;
-		}
-	} else if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/index.html"]) {
-        return requestContentLength < 65535;
+		} else if ([method isEqualToString:@"POST"]) {
+            return requestContentLength < 65535;
+        }
     }
 	return [super supportsMethod:method atPath:path];
 }
 
 - (void)processBodyData:(NSData *)postDataChunk {
-	[(id)request appendData:postDataChunk];
+	[request appendData:postDataChunk];
 }
 
+- (HTTPDataResponse*) indexResponse:(NSString*)path {
+    NSData* response = [[self.responseFormatter connection:self responseForPath:path] dataUsingEncoding:NSUTF8StringEncoding];
+    return [[HTTPDataResponse alloc] initWithData:response];
+}
+
+- (void) processRequestData {
+    NSData* postData = [request body];
+    NSDictionary* dict = [self parseParams:[[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding]];
+    NSString* clipboard = [dict objectForKey:kClipboard];
+    if (clipboard) {
+        ClipboardShare* share = [[SharesProvider instance] clipboardShare];
+        [share updateString:clipboard];
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^() {
+        AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+        [appDelegate sharesRefreshed];
+    });
+}
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
-    if ([method isEqualToString:@"GET"]) {
-        if ([self.supportedPaths containsObject:path]) {
-            NSData* response = [[self.responseFormatter connection:self responseForPath:path] dataUsingEncoding:NSUTF8StringEncoding];
-            return [[HTTPDataResponse alloc] initWithData:response];
+    if ([self.supportedPaths containsObject:path]) {
+        if ([method isEqualToString:@"POST"]) {
+            [self processRequestData];
         }
-    } else if ([method isEqualToString:@"POST"]) {
-        NSData *postData = [(id)request body];
-        
-        HTTPDataResponse* response = [[HTTPDataResponse alloc] initWithData:nil];
+        if ([method isEqualToString:@"POST"] || [method isEqualToString:@"GET"]) {
+            return [self indexResponse:path];
+        }
     }
+
     return [super httpResponseForMethod:method URI:path];
 }
 

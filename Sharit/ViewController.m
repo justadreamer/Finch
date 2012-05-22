@@ -40,6 +40,10 @@ const NSInteger SEC_SHARED = 1;
     // Release any retained subviews of the main view.
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self.mainTableView reloadData];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -76,13 +80,7 @@ const NSInteger SEC_SHARED = 1;
 #pragma mark -
 #pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    if (SEC_SHARED == indexPath.section) {
-        Share* share = [[[SharesProvider instance] shares] objectAtIndex:indexPath.row];
-        ShareController* shareController = [ShareController controllerWithShare:share];
-        if (shareController) {
-            [self.navigationController pushViewController:shareController animated:YES];
-        }
-    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,10 +88,11 @@ const NSInteger SEC_SHARED = 1;
     [cell setSelected:NO];
 
     if (SEC_SHARED == indexPath.section) {
-        ShareCell* shareCell = (ShareCell*)cell;
         Share* share = [[[SharesProvider instance] shares] objectAtIndex:indexPath.row];
-        share.isShared = !share.isShared;
-        [shareCell refresh];
+        ShareController* shareController = [ShareController controllerWithShare:share];
+        if (shareController) {
+            [self.navigationController pushViewController:shareController animated:YES];
+        }
     }
 }
 

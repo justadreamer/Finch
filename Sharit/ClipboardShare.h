@@ -12,4 +12,6 @@
 @property (nonatomic,readonly) NSString* string;
 @property (nonatomic,readonly) UIImage* image;
 @property (nonatomic,readonly) NSArray* images;
+
+- (void) updateString:(NSString*)string;
 @end

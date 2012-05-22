@@ -16,8 +16,12 @@
 @implementation ClipboardShareController
 @synthesize textView;
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    self.textView.dataDetectorTypes = UIDataDetectorTypeAll;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -25,8 +29,16 @@
     return (ClipboardShare*) self.share;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void) refresh {
     self.textView.text = [[self clipboardShare] string];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self refresh];
+}
+
+- (void) sharesRefreshed {
+    [self refresh];
 }
 
 @end

@@ -19,27 +19,12 @@
 
 @implementation ShareController
 @synthesize share;
+@synthesize isSharedSwitch;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.navigationItem.title = self.share.name;
+    [self.isSharedSwitch setOn:self.share.isShared];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -54,6 +39,14 @@
     }
     shareController.share = share;
     return shareController;
+}
+
+- (void) sharesRefreshed {
+    
+}
+
+- (IBAction)switchValueChanged:(UISwitch*)sender {
+    self.share.isShared = sender.isOn;
 }
 
 @end

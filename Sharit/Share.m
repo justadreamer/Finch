@@ -10,6 +10,7 @@
 
 @implementation Share
 @synthesize isShared;
+@synthesize isUpdated;
 @synthesize name;
 
 - (NSString*) detailsDescription {
@@ -19,7 +20,9 @@
 - (id) init {
     if ((self = [super init])) {
         self.isShared = YES;
+        self.isUpdated = NO;
     }
     return self;
 }
+
 @end

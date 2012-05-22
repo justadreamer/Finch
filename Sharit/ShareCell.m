@@ -39,4 +39,5 @@
         self.titleLabel.center = CGPointMake(self.titleLabel.center.x, self.detailLabel.center.y-self.titleLabel.frame.size.height);
     }
 }
+
 @end
