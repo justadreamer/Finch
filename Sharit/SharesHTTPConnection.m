@@ -14,6 +14,7 @@
 #import "Global.h"
 #import "HTTPMessage.h"
 #import "AppDelegate.h"
+#import "RedirectResponse.h"
 
 @interface SharesHTTPConnection () 
 @property (nonatomic,strong) NSArray* supportedPaths;
@@ -67,12 +68,18 @@
     });
 }
 
+- (RedirectResponse*) redirectResponse:(NSString*)redirectURI {
+    RedirectResponse* response = [[RedirectResponse alloc] init];
+    response.redirectURI = redirectURI;
+    return response;
+}
+
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     if ([self.supportedPaths containsObject:path]) {
         if ([method isEqualToString:@"POST"]) {
             [self processRequestData];
-        }
-        if ([method isEqualToString:@"POST"] || [method isEqualToString:@"GET"]) {
+            return [self redirectResponse:@"/index.html"];
+        } else if ([method isEqualToString:@"GET"]) {
             return [self indexResponse:path];
         }
     }

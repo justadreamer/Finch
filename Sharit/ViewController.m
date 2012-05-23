@@ -158,7 +158,7 @@ const NSInteger SEC_SHARED = 1;
             title=@"There are no wireless links available. Please check your settings.";
         }
     } else if (SEC_SHARED==section) {
-        title=@"You share:";
+        title=@"You are sharing:";
     }
     return title;
 }

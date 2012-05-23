@@ -21,6 +21,7 @@
 
 - (void) setupHTTPServer;
 - (void) setupReachability;
+- (void) setupIdleTimer;
 @end
 
 @implementation AppDelegate
@@ -44,8 +45,11 @@
     [self setupDirs];
     [self setupHTTPServer];
     [self setupReachability];
+    [self setupIdleTimer];
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -152,5 +156,9 @@
 
 - (void) sharesRefreshed {
     [self.viewController sharesRefreshed];
+}
+
+- (void) setupIdleTimer {
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 @end
