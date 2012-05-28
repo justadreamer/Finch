@@ -89,6 +89,14 @@ Helper* sharedHelper;
     return @"tpl";
 }
 
++ (NSString*) clipboardImageSrc {
+    return @"/clipboard-image";
+}
+
++ (NSString*) clipboardThumbImageSrc {
+    return @"/clipboard-thumb-image";
+}
+   
 - (NSString*) baseTemplatesFolder {
     return [[self documentsFolder] stringByAppendingPathComponent:[Helper templatesFolderName]];
 }
@@ -129,5 +137,7 @@ Helper* sharedHelper;
     }
     return versions;
 }
+
+
 
 @end

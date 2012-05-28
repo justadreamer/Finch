@@ -61,6 +61,7 @@
 		444B4493155C344B00319EC7 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B4492155C344B00319EC7 /* Helper.m */; };
 		444B449E155C378700319EC7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449D155C378700319EC7 /* Security.framework */; };
 		444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449F155C378D00319EC7 /* CFNetwork.framework */; };
+		446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F86A9157402BC00CF00EB /* UIImage+Additions.m */; };
 		44F69807156C2B02003B44BB /* RedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F69806156C2B01003B44BB /* RedirectResponse.m */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +166,8 @@
 		444B4498155C367E00319EC7 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		444B449D155C378700319EC7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		444B449F155C378D00319EC7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		446F86A8157402BC00CF00EB /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "../UIImage+Additions.h"; sourceTree = "<group>"; };
+		446F86A9157402BC00CF00EB /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "../UIImage+Additions.m"; sourceTree = "<group>"; };
 		44F69805156C2B01003B44BB /* RedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedirectResponse.h; sourceTree = "<group>"; };
 		44F69806156C2B01003B44BB /* RedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedirectResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +202,8 @@
 		442EACB31560623F0032E1B2 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				446F86A8157402BC00CF00EB /* UIImage+Additions.h */,
+				446F86A9157402BC00CF00EB /* UIImage+Additions.m */,
 				442EACB41560623F0032E1B2 /* NSStringAdditions.h */,
 				442EACB51560623F0032E1B2 /* NSStringAdditions.m */,
 			);
@@ -213,7 +218,7 @@
 			path = graphics;
 			sourceTree = "<group>";
 		};
-		442EACDA15620F140032E1B2 /* Share */ = {
+		442EACDA15620F140032E1B2 /* Share models */ = {
 			isa = PBXGroup;
 			children = (
 				442EACC51561A1F90032E1B2 /* ShareCell.h */,
@@ -230,7 +235,7 @@
 				442EACE115620FE10032E1B2 /* PicturesShare.h */,
 				442EACE215620FE10032E1B2 /* PicturesShare.m */,
 			);
-			name = Share;
+			name = "Share models";
 			sourceTree = "<group>";
 		};
 		442EACE7156219280032E1B2 /* Share Controllers */ = {
@@ -246,7 +251,7 @@
 			name = "Share Controllers";
 			sourceTree = "<group>";
 		};
-		442EAD6F1565802F0032E1B2 /* HTTP */ = {
+		442EAD6F1565802F0032E1B2 /* Response forming */ = {
 			isa = PBXGroup;
 			children = (
 				442EAD70156580480032E1B2 /* ResponseFormatterDelegate.h */,
@@ -259,7 +264,7 @@
 				44F69805156C2B01003B44BB /* RedirectResponse.h */,
 				44F69806156C2B01003B44BB /* RedirectResponse.m */,
 			);
-			name = HTTP;
+			name = "Response forming";
 			sourceTree = "<group>";
 		};
 		444B42C2155C2FD200319EC7 = {
@@ -295,19 +300,11 @@
 		444B42D7155C2FD200319EC7 /* Sharit */ = {
 			isa = PBXGroup;
 			children = (
-				442EAD6F1565802F0032E1B2 /* HTTP */,
 				442EACB31560623F0032E1B2 /* Additions */,
 				444B42EE155C302F00319EC7 /* CocoaHTTPServer */,
-				444B42E0155C2FD200319EC7 /* AppDelegate.h */,
-				444B42E1155C2FD200319EC7 /* AppDelegate.m */,
-				444B42E3155C2FD200319EC7 /* ViewController.h */,
-				444B42E4155C2FD200319EC7 /* ViewController.m */,
-				444B42E6155C2FD200319EC7 /* ViewController.xib */,
-				444B4491155C344B00319EC7 /* Helper.h */,
-				444B4492155C344B00319EC7 /* Helper.m */,
-				442EACA3155D9B5E0032E1B2 /* Reachability.h */,
-				442EACA4155D9B5E0032E1B2 /* Reachability.m */,
-				442EACDA15620F140032E1B2 /* Share */,
+				44677F7815740E2A003C209E /* Main */,
+				442EAD6F1565802F0032E1B2 /* Response forming */,
+				442EACDA15620F140032E1B2 /* Share models */,
 				442EACE7156219280032E1B2 /* Share Controllers */,
 				442EAC9F155D96E00032E1B2 /* res */,
 				444B42D8155C2FD200319EC7 /* Supporting Files */,
@@ -438,6 +435,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		44677F7815740E2A003C209E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				444B42E0155C2FD200319EC7 /* AppDelegate.h */,
+				444B42E1155C2FD200319EC7 /* AppDelegate.m */,
+				444B4491155C344B00319EC7 /* Helper.h */,
+				444B4492155C344B00319EC7 /* Helper.m */,
+				442EACA3155D9B5E0032E1B2 /* Reachability.h */,
+				442EACA4155D9B5E0032E1B2 /* Reachability.m */,
+				444B42E3155C2FD200319EC7 /* ViewController.h */,
+				444B42E4155C2FD200319EC7 /* ViewController.m */,
+				444B42E6155C2FD200319EC7 /* ViewController.xib */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -548,6 +561,7 @@
 				442EAD76156587FB0032E1B2 /* SharesResponseFormatter.m in Sources */,
 				442EADA31566D10C0032E1B2 /* SharesHTTPConnection.m in Sources */,
 				44F69807156C2B02003B44BB /* RedirectResponse.m in Sources */,
+				446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

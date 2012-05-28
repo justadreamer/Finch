@@ -11,10 +11,12 @@
 
 @interface ClipboardShareController ()
 @property (nonatomic,strong) IBOutlet UITextView* textView;
+@property (nonatomic,strong) IBOutlet UIImageView* imageView;
 @end
 
 @implementation ClipboardShareController
 @synthesize textView;
+@synthesize imageView;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +33,7 @@
 
 - (void) refresh {
     self.textView.text = [[self clipboardShare] string];
+    self.imageView.image = [[self clipboardShare] thumb];
 }
 
 - (void) viewWillAppear:(BOOL)animated {

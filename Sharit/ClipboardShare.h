@@ -14,4 +14,8 @@
 @property (nonatomic,readonly) NSArray* images;
 
 - (void) updateString:(NSString*)string;
+- (CGSize) imageSize;
+
+- (UIImage*) thumb;
+- (CGSize) thumbSize;
 @end

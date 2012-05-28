@@ -15,26 +15,31 @@
 #import "HTTPMessage.h"
 #import "AppDelegate.h"
 #import "RedirectResponse.h"
+#import "Helper.h"
 
 @interface SharesHTTPConnection () 
-@property (nonatomic,strong) NSArray* supportedPaths;
 @property (nonatomic,strong) SharesResponseFormatter* responseFormatter;
+@property (nonatomic,strong) NSArray* imagePaths;
+@property (nonatomic,strong) NSArray* supportedPaths;
 @end
 
 @implementation SharesHTTPConnection
-@synthesize supportedPaths;
 @synthesize responseFormatter;
+@synthesize imagePaths;
+@synthesize supportedPaths;
 
 - (id) initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig {
     if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])) {
-        self.supportedPaths = [NSArray arrayWithObjects:@"/",@"/index.html",nil];
+        self.imagePaths = [NSArray arrayWithObjects:[Helper clipboardImageSrc],[Helper clipboardThumbImageSrc], nil];
+        NSArray* otherPaths = [NSArray arrayWithObjects:@"/",@"/index.html", nil];
+        self.supportedPaths =  [otherPaths arrayByAddingObjectsFromArray:imagePaths];
         self.responseFormatter = [[SharesResponseFormatter alloc] init];
     }
     return self;
 }
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path {
-    if ([self.supportedPaths containsObject:path]) {
+    if ([supportedPaths containsObject:path]) {
         if ([method isEqualToString:@"GET"]) {
 			return YES;
 		} else if ([method isEqualToString:@"POST"]) {
@@ -74,13 +79,33 @@
     return response;
 }
 
+- (BOOL) isIndexPath:(NSString*)path {
+    return [path isEqualToString:@"/"] || [path isEqualToString:@"/index.html"];
+}
+
+- (HTTPDataResponse*) imageResponse:(NSString*)path {
+    NSData* imageData = nil;
+    ClipboardShare* clipboardShare = [[SharesProvider instance] clipboardShare];
+    if ([path isEqualToString:[Helper clipboardImageSrc]]) {
+        imageData = UIImagePNGRepresentation([clipboardShare image]);
+    } else if ([path isEqualToString:[Helper clipboardThumbImageSrc]]) {
+        imageData = UIImagePNGRepresentation([clipboardShare thumb]);
+    }
+    HTTPDataResponse* response = [[HTTPDataResponse alloc] initWithData:imageData];
+    return response;
+}
+
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
-    if ([self.supportedPaths containsObject:path]) {
+    if ([supportedPaths containsObject:path]) {
         if ([method isEqualToString:@"POST"]) {
             [self processRequestData];
             return [self redirectResponse:@"/index.html"];
-        } else if ([method isEqualToString:@"GET"]) {
-            return [self indexResponse:path];
+        } else if ([method isEqualToString:@"GET"]) {            
+            if ([self isIndexPath:path]) {
+                return [self indexResponse:path];
+            } else if ([imagePaths containsObject:path]) {
+                return [self imageResponse:path];
+            }
         }
     }
 

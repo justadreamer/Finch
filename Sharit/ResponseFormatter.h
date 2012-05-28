@@ -12,4 +12,5 @@
 @interface ResponseFormatter : NSObject<ResponseFormatterDelegate>
 - (NSString*) processMacrosInTemplate:(NSString*)templateName;
 - (NSString*) replaceMacro:(NSString*)macro;
+- (NSString*) macroName:(NSString*)macro;
 @end

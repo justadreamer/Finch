@@ -55,4 +55,8 @@
     }
     return result;
 }
+
+- (NSString*) macroName:(NSString*)macro {
+    return [macro stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"%"]];
+}
 @end

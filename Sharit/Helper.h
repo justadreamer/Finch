@@ -18,6 +18,8 @@
 + (NSString*) docrootFolderName;
 
 + (NSString*) templateExt;
++ (NSString*) clipboardImageSrc;
++ (NSString*) clipboardThumbImageSrc;
 
 - (NSArray*) versions;
 - (NSString*) baseTemplatesFolder;
