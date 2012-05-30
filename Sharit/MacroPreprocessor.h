@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ResponseFormatterDelegate.h"
 
-@interface ResponseFormatter : NSObject<ResponseFormatterDelegate>
-- (NSString*) processMacrosInTemplate:(NSString*)templateName;
+@interface MacroPreprocessor : NSObject
+- (id) initWithTemplateName:(NSString*)templateName macroDictionary:(NSDictionary*)macroDictionary;
+- (NSString*) process;
+
+//for overriding, inheritance:
 - (NSString*) replaceMacro:(NSString*)macro;
 - (NSString*) macroName:(NSString*)macro;
+
+- (NSString*) f_to_int_s:(CGFloat)f;
 @end

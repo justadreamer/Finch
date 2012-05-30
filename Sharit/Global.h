@@ -14,5 +14,6 @@
 
 #define kClipboard @"clipboard"
 #define SAFE_STRING(s) s ? s : @""
-
+#define OBJ_OR_NSNULL(obj) obj ? obj : [NSNull null]
+#define NI(v) [NSNumber numberWithInt:v]
 #endif

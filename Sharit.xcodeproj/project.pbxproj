@@ -23,10 +23,10 @@
 		442EACEC156219DC0032E1B2 /* ClipboardShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 442EACEA156219DC0032E1B2 /* ClipboardShareController.xib */; };
 		442EAD61156570BD0032E1B2 /* ShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD5F156570BC0032E1B2 /* ShareController.m */; };
 		442EAD62156570BD0032E1B2 /* ShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD60156570BC0032E1B2 /* ShareController.xib */; };
-		442EAD73156580610032E1B2 /* ResponseFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD72156580610032E1B2 /* ResponseFormatter.m */; };
-		442EAD76156587FB0032E1B2 /* SharesResponseFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD75156587FB0032E1B2 /* SharesResponseFormatter.m */; };
+		442EAD73156580610032E1B2 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD72156580610032E1B2 /* MacroPreprocessor.m */; };
+		442EAD76156587FB0032E1B2 /* SharesMacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */; };
 		442EAD7815658B470032E1B2 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
-		442EADA31566D10C0032E1B2 /* SharesHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EADA21566D10C0032E1B2 /* SharesHTTPConnection.m */; };
+		442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */; };
 		442EADA51567C1DE0032E1B2 /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 442EADA41567C1DE0032E1B2 /* docroot */; };
 		444B42D2155C2FD200319EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		444B42D4155C2FD200319EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
@@ -61,8 +61,13 @@
 		444B4493155C344B00319EC7 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B4492155C344B00319EC7 /* Helper.m */; };
 		444B449E155C378700319EC7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449D155C378700319EC7 /* Security.framework */; };
 		444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449F155C378D00319EC7 /* CFNetwork.framework */; };
+		445F6CD7157559D600E563DF /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 445F6CD6157559D600E563DF /* ImageShare.m */; };
 		446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F86A9157402BC00CF00EB /* UIImage+Additions.m */; };
-		44F69807156C2B02003B44BB /* RedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F69806156C2B01003B44BB /* RedirectResponse.m */; };
+		44BEA3101576AFF600A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA30F1576AFF600A1A7A7 /* SenTestingKit.framework */; };
+		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
+		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
+		44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */; };
+		44BEA31B1576AFF600A1A7A7 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,14 +99,13 @@
 		442EAD5E156570BC0032E1B2 /* ShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareController.h; sourceTree = "<group>"; };
 		442EAD5F156570BC0032E1B2 /* ShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareController.m; sourceTree = "<group>"; };
 		442EAD60156570BC0032E1B2 /* ShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareController.xib; sourceTree = "<group>"; };
-		442EAD70156580480032E1B2 /* ResponseFormatterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResponseFormatterDelegate.h; sourceTree = "<group>"; };
-		442EAD71156580610032E1B2 /* ResponseFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseFormatter.h; sourceTree = "<group>"; };
-		442EAD72156580610032E1B2 /* ResponseFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseFormatter.m; sourceTree = "<group>"; };
-		442EAD74156587FB0032E1B2 /* SharesResponseFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesResponseFormatter.h; sourceTree = "<group>"; };
-		442EAD75156587FB0032E1B2 /* SharesResponseFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesResponseFormatter.m; sourceTree = "<group>"; };
+		442EAD71156580610032E1B2 /* MacroPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessor.h; sourceTree = "<group>"; };
+		442EAD72156580610032E1B2 /* MacroPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessor.m; sourceTree = "<group>"; };
+		442EAD74156587FB0032E1B2 /* SharesMacroPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesMacroPreprocessor.h; sourceTree = "<group>"; };
+		442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesMacroPreprocessor.m; sourceTree = "<group>"; };
 		442EAD7715658B470032E1B2 /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
-		442EADA11566D10C0032E1B2 /* SharesHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesHTTPConnection.h; sourceTree = "<group>"; };
-		442EADA21566D10C0032E1B2 /* SharesHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesHTTPConnection.m; sourceTree = "<group>"; };
+		442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHTTPConnection.h; sourceTree = "<group>"; };
+		442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHTTPConnection.m; sourceTree = "<group>"; };
 		442EADA41567C1DE0032E1B2 /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
 		444B42CD155C2FD200319EC7 /* Sharit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444B42D1155C2FD200319EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -166,10 +170,17 @@
 		444B4498155C367E00319EC7 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		444B449D155C378700319EC7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		444B449F155C378D00319EC7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		445F6CD5157559D600E563DF /* ImageShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageShare.h; sourceTree = "<group>"; };
+		445F6CD6157559D600E563DF /* ImageShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageShare.m; sourceTree = "<group>"; };
 		446F86A8157402BC00CF00EB /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "../UIImage+Additions.h"; sourceTree = "<group>"; };
 		446F86A9157402BC00CF00EB /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "../UIImage+Additions.m"; sourceTree = "<group>"; };
-		44F69805156C2B01003B44BB /* RedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedirectResponse.h; sourceTree = "<group>"; };
-		44F69806156C2B01003B44BB /* RedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedirectResponse.m; sourceTree = "<group>"; };
+		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BEA30F1576AFF600A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sharit_Tests-Info.plist"; sourceTree = "<group>"; };
+		44BEA3171576AFF600A1A7A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		44BEA3191576AFF600A1A7A7 /* Sharit_Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sharit_Tests.h; sourceTree = "<group>"; };
+		44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sharit_Tests.m; sourceTree = "<group>"; };
+		44BEA31C1576AFF600A1A7A7 /* Sharit_Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sharit_Tests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +194,16 @@
 				444B42D2155C2FD200319EC7 /* UIKit.framework in Frameworks */,
 				444B42D4155C2FD200319EC7 /* Foundation.framework in Frameworks */,
 				444B42D6155C2FD200319EC7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44BEA30A1576AFF600A1A7A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BEA3101576AFF600A1A7A7 /* SenTestingKit.framework in Frameworks */,
+				44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */,
+				44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +255,8 @@
 				442EACDF15620F9C0032E1B2 /* ClipboardShare.m */,
 				442EACE115620FE10032E1B2 /* PicturesShare.h */,
 				442EACE215620FE10032E1B2 /* PicturesShare.m */,
+				445F6CD5157559D600E563DF /* ImageShare.h */,
+				445F6CD6157559D600E563DF /* ImageShare.m */,
 			);
 			name = "Share models";
 			sourceTree = "<group>";
@@ -254,15 +277,12 @@
 		442EAD6F1565802F0032E1B2 /* Response forming */ = {
 			isa = PBXGroup;
 			children = (
-				442EAD70156580480032E1B2 /* ResponseFormatterDelegate.h */,
-				442EAD71156580610032E1B2 /* ResponseFormatter.h */,
-				442EAD72156580610032E1B2 /* ResponseFormatter.m */,
-				442EAD74156587FB0032E1B2 /* SharesResponseFormatter.h */,
-				442EAD75156587FB0032E1B2 /* SharesResponseFormatter.m */,
-				442EADA11566D10C0032E1B2 /* SharesHTTPConnection.h */,
-				442EADA21566D10C0032E1B2 /* SharesHTTPConnection.m */,
-				44F69805156C2B01003B44BB /* RedirectResponse.h */,
-				44F69806156C2B01003B44BB /* RedirectResponse.m */,
+				442EAD71156580610032E1B2 /* MacroPreprocessor.h */,
+				442EAD72156580610032E1B2 /* MacroPreprocessor.m */,
+				442EAD74156587FB0032E1B2 /* SharesMacroPreprocessor.h */,
+				442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */,
+				442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */,
+				442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */,
 			);
 			name = "Response forming";
 			sourceTree = "<group>";
@@ -270,8 +290,8 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
-				442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */,
 				444B42D7155C2FD200319EC7 /* Sharit */,
+				44BEA3131576AFF600A1A7A7 /* Sharit_Tests */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,
 				444B42CE155C2FD200319EC7 /* Products */,
 			);
@@ -281,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				444B42CD155C2FD200319EC7 /* Sharit.app */,
+				44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,11 +309,13 @@
 		444B42D0155C2FD200319EC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */,
 				444B449F155C378D00319EC7 /* CFNetwork.framework */,
 				444B449D155C378700319EC7 /* Security.framework */,
 				444B42D1155C2FD200319EC7 /* UIKit.framework */,
 				444B42D3155C2FD200319EC7 /* Foundation.framework */,
 				444B42D5155C2FD200319EC7 /* CoreGraphics.framework */,
+				44BEA30F1576AFF600A1A7A7 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -451,6 +474,26 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		44BEA3131576AFF600A1A7A7 /* Sharit_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				44BEA3191576AFF600A1A7A7 /* Sharit_Tests.h */,
+				44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */,
+				44BEA3141576AFF600A1A7A7 /* Supporting Files */,
+			);
+			path = Sharit_Tests;
+			sourceTree = "<group>";
+		};
+		44BEA3141576AFF600A1A7A7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */,
+				44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */,
+				44BEA31C1576AFF600A1A7A7 /* Sharit_Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -470,6 +513,24 @@
 			productName = Sharit;
 			productReference = 444B42CD155C2FD200319EC7 /* Sharit.app */;
 			productType = "com.apple.product-type.application";
+		};
+		44BEA30D1576AFF600A1A7A7 /* Sharit_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44BEA31D1576AFF600A1A7A7 /* Build configuration list for PBXNativeTarget "Sharit_Tests" */;
+			buildPhases = (
+				44BEA3091576AFF600A1A7A7 /* Sources */,
+				44BEA30A1576AFF600A1A7A7 /* Frameworks */,
+				44BEA30B1576AFF600A1A7A7 /* Resources */,
+				44BEA30C1576AFF600A1A7A7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sharit_Tests;
+			productName = Sharit_Tests;
+			productReference = 44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -493,6 +554,7 @@
 			projectRoot = "";
 			targets = (
 				444B42CC155C2FD200319EC7 /* Sharit */,
+				44BEA30D1576AFF600A1A7A7 /* Sharit_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -514,7 +576,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44BEA30B1576AFF600A1A7A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44BEA30C1576AFF600A1A7A7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		444B42C9155C2FD200319EC7 /* Sources */ = {
@@ -557,11 +643,19 @@
 				442EACE315620FE20032E1B2 /* PicturesShare.m in Sources */,
 				442EACEB156219DC0032E1B2 /* ClipboardShareController.m in Sources */,
 				442EAD61156570BD0032E1B2 /* ShareController.m in Sources */,
-				442EAD73156580610032E1B2 /* ResponseFormatter.m in Sources */,
-				442EAD76156587FB0032E1B2 /* SharesResponseFormatter.m in Sources */,
-				442EADA31566D10C0032E1B2 /* SharesHTTPConnection.m in Sources */,
-				44F69807156C2B02003B44BB /* RedirectResponse.m in Sources */,
+				442EAD73156580610032E1B2 /* MacroPreprocessor.m in Sources */,
+				442EAD76156587FB0032E1B2 /* SharesMacroPreprocessor.m in Sources */,
+				442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */,
 				446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */,
+				445F6CD7157559D600E563DF /* ImageShare.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44BEA3091576AFF600A1A7A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BEA31B1576AFF600A1A7A7 /* Sharit_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +676,14 @@
 				444B42E7155C2FD200319EC7 /* en */,
 			);
 			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+		44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44BEA3171576AFF600A1A7A7 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -654,6 +756,36 @@
 			};
 			name = Release;
 		};
+		44BEA31E1576AFF600A1A7A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sharit_Tests/Sharit_Tests-Prefix.pch";
+				INFOPLIST_FILE = "Sharit_Tests/Sharit_Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		44BEA31F1576AFF600A1A7A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sharit_Tests/Sharit_Tests-Prefix.pch";
+				INFOPLIST_FILE = "Sharit_Tests/Sharit_Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -674,6 +806,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		44BEA31D1576AFF600A1A7A7 /* Build configuration list for PBXNativeTarget "Sharit_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BEA31E1576AFF600A1A7A7 /* Debug */,
+				44BEA31F1576AFF600A1A7A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

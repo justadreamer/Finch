@@ -26,7 +26,7 @@
 }
 
 - (NSString*) string {
-    return SAFE_STRING([[UIPasteboard generalPasteboard] string]);
+    return [[UIPasteboard generalPasteboard] string];
 }
 
 - (UIImage*) image {

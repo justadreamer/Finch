@@ -6,25 +6,24 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SharesHTTPConnection.h"
-#import "SharesResponseFormatter.h"
+#import "MainHTTPConnection.h"
+#import "SharesMacroPreprocessor.h"
 #import "HTTPDataResponse.h"
+#import "HTTPRedirectResponse.h"
+
 #import "SharesProvider.h"
 #import "ClipboardShare.h"
 #import "Global.h"
 #import "HTTPMessage.h"
 #import "AppDelegate.h"
-#import "RedirectResponse.h"
 #import "Helper.h"
 
-@interface SharesHTTPConnection () 
-@property (nonatomic,strong) SharesResponseFormatter* responseFormatter;
+@interface MainHTTPConnection ()
 @property (nonatomic,strong) NSArray* imagePaths;
 @property (nonatomic,strong) NSArray* supportedPaths;
 @end
 
-@implementation SharesHTTPConnection
-@synthesize responseFormatter;
+@implementation MainHTTPConnection
 @synthesize imagePaths;
 @synthesize supportedPaths;
 
@@ -33,7 +32,6 @@
         self.imagePaths = [NSArray arrayWithObjects:[Helper clipboardImageSrc],[Helper clipboardThumbImageSrc], nil];
         NSArray* otherPaths = [NSArray arrayWithObjects:@"/",@"/index.html", nil];
         self.supportedPaths =  [otherPaths arrayByAddingObjectsFromArray:imagePaths];
-        self.responseFormatter = [[SharesResponseFormatter alloc] init];
     }
     return self;
 }
@@ -54,7 +52,8 @@
 }
 
 - (HTTPDataResponse*) indexResponse:(NSString*)path {
-    NSData* response = [[self.responseFormatter connection:self responseForPath:path] dataUsingEncoding:NSUTF8StringEncoding];
+    SharesMacroPreprocessor* preprocessor = [[SharesMacroPreprocessor alloc] init];
+    NSData* response = [[preprocessor process] dataUsingEncoding:NSUTF8StringEncoding];
     return [[HTTPDataResponse alloc] initWithData:response];
 }
 
@@ -73,9 +72,8 @@
     });
 }
 
-- (RedirectResponse*) redirectResponse:(NSString*)redirectURI {
-    RedirectResponse* response = [[RedirectResponse alloc] init];
-    response.redirectURI = redirectURI;
+- (HTTPRedirectResponse*) redirectResponse:(NSString*)redirectURI {
+    HTTPRedirectResponse* response = [[HTTPRedirectResponse alloc] initWithPath:redirectURI];
     return response;
 }
 

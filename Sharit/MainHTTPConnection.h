@@ -8,6 +8,6 @@
 
 #import "HTTPConnection.h"
 
-@interface SharesHTTPConnection : HTTPConnection
+@interface MainHTTPConnection : HTTPConnection
 
 @end

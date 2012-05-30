@@ -12,7 +12,7 @@
 #import "Helper.h"
 #import "Reachability.h"
 #import "SharesProvider.h"
-#import "SharesHTTPConnection.h"
+#import "MainHTTPConnection.h"
 
 @interface AppDelegate()
 @property (nonatomic,strong) HTTPServer* httpServer;
@@ -138,7 +138,7 @@
     self.httpServer = [[HTTPServer alloc] init];
     [self.httpServer setPort:[Helper port]];
     [self.httpServer setDocumentRoot:[[Helper instance] documentsRoot]];
-    [self.httpServer setConnectionClass:[SharesHTTPConnection class]];
+    [self.httpServer setConnectionClass:[MainHTTPConnection class]];
 }
 
 #pragma mark -

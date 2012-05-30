@@ -8,7 +8,7 @@
     <body>
         <h1>SharIt</h1>
         <p>Share your stuff</p>
-        %if clipboard%
+        %if clipboard_is_shared%
                 <h2>Pasteboard</h2>
                 <h3>Text:</h3>
                 <form action="/index.html" method="post">

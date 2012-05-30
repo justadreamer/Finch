@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ResponseFormatter.h"
+#import "MacroPreprocessor.h"
 
-@interface SharesResponseFormatter : ResponseFormatter
+@interface SharesMacroPreprocessor : MacroPreprocessor
 
 @end
