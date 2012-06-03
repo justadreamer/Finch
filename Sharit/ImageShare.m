@@ -10,6 +10,9 @@
 #import "ImageShare.h"
 #import "UIImage+Additions.h"
 #import "MacroPreprocessor.h"
+#import "BasicTemplateLoader.h"
+#import "Helper.h"
+#import "GlobalDefaults.h"
 
 static CGFloat constraints[] = {
         0,      // actual
@@ -47,8 +50,8 @@ static NSDictionary* sizeTypeDict;
     NSString* constraint_s = [NSString stringWithFormat:@"%.0f",constraints[ImageSize_Small]];
     [params setObject:constraint_s forKey:@"img_width_s"];
     [params setObject:constraint_s forKey:@"img_height_s"];
-    
-    MacroPreprocessor* mp = [[MacroPreprocessor alloc] initWithTemplateName:@"image" macroDictionary:params];
+    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:[GlobalDefaults templateExt]];
+    MacroPreprocessor* mp = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"image" macroDictionary:params];
     NSString* html = [mp process];
     return SAFE_STRING(html);
 }

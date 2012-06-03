@@ -13,6 +13,7 @@
 #import "ShareCell.h"
 #import "Share.h"
 #import "ShareController.h"
+#import "GlobalDefaults.h"
 
 const NSInteger SEC_IFACES = 0;
 const NSInteger SEC_SHARED = 1;
@@ -51,7 +52,7 @@ const NSInteger SEC_SHARED = 1;
 
 - (void) refresh {
     self.ifaces = [Helper interfaces];
-    self.port = [Helper port];
+    self.port = [GlobalDefaults port];
     [self.mainTableView reloadData];
 }
 

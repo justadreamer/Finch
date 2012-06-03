@@ -13,6 +13,7 @@
 #import "Reachability.h"
 #import "SharesProvider.h"
 #import "MainHTTPConnection.h"
+#import "GlobalDefaults.h"
 
 @interface AppDelegate()
 @property (nonatomic,strong) HTTPServer* httpServer;
@@ -121,12 +122,12 @@
 
 - (void) copyTemplateDir {
     [self removePrevItemsForBase:[[Helper instance] baseTemplatesFolder]];
-    [self copyResDir:[Helper templatesFolderName] toDir:[[Helper instance] templatesFolder]];
+    [self copyResDir:[GlobalDefaults templatesFolderName] toDir:[[Helper instance] templatesFolder]];
 }
 
 - (void) copyDocroot {
     [self removePrevItemsForBase:[[Helper instance] baseDocrootFolder]];
-    [self copyResDir:[Helper docrootFolderName] toDir:[[Helper instance] docrootFolder]];
+    [self copyResDir:[GlobalDefaults docrootFolderName] toDir:[[Helper instance] docrootFolder]];
 }
 
 - (void) setupDirs {
@@ -136,7 +137,7 @@
 
 - (void) setupHTTPServer {
     self.httpServer = [[HTTPServer alloc] init];
-    [self.httpServer setPort:[Helper port]];
+    [self.httpServer setPort:[GlobalDefaults port]];
     [self.httpServer setDocumentRoot:[[Helper instance] documentsRoot]];
     [self.httpServer setConnectionClass:[MainHTTPConnection class]];
 }

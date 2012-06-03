@@ -12,14 +12,6 @@
 + (Helper*) instance;
 
 + (NSArray*) interfaces;
-+ (UInt16) port;
-
-+ (NSString*) templatesFolderName;
-+ (NSString*) docrootFolderName;
-
-+ (NSString*) templateExt;
-+ (NSString*) clipboardImageSrc;
-+ (NSString*) clipboardThumbImageSrc;
 
 - (NSArray*) versions;
 - (NSString*) baseTemplatesFolder;

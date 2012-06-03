@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@protocol TemplateLoader;
 @interface MacroPreprocessor : NSObject
-- (id) initWithTemplateName:(NSString*)templateName macroDictionary:(NSDictionary*)macroDictionary;
+@property (nonatomic,strong) NSDictionary* macroDict;
+@property (nonatomic,strong) NSString* templateText;
+@property (nonatomic,strong) NSObject<TemplateLoader>* loader;
+@property (nonatomic,strong) NSString* templateName;
+
+- (id) initWithLoader:(NSObject<TemplateLoader>*)loader templateName:(NSString*)templateName macroDictionary:(NSDictionary*)macroDictionary;
+- (id) initWithTemplateText:(NSString*)templateText macroDictionary:(NSDictionary*)macroDictionary;
+
 - (NSString*) process;
 
 //for overriding, inheritance:

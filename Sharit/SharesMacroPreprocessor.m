@@ -10,6 +10,8 @@
 #import "SharesProvider.h"
 #import "ClipboardShare.h"
 #import "Helper.h"
+#import "BasicTemplateLoader.h"
+#import "GlobalDefaults.h"
 
 #define CLIPBOARD @"clipboard"
 #define CLIPBOARD_IMAGE @"clipboard_image"
@@ -21,7 +23,8 @@
 @implementation SharesMacroPreprocessor
 
 - (id) init {
-    self = [super initWithTemplateName:@"index" macroDictionary:[self clipboardMacroDict]];
+    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:[GlobalDefaults templateExt]];
+    self = [super initWithLoader:basicLoader templateName:@"index" macroDictionary:[self clipboardMacroDict]];
     return self;
 }
 
@@ -32,11 +35,11 @@
                           SAFE_STRING([clipboardShare string]), @"clipboard_text",
                           [NSNumber numberWithBool:nil!=[clipboardShare image]],@"clipboard_image",
     
-                          SAFE_STRING([Helper clipboardImageSrc]),@"clipboard_image_src",
+                          SAFE_STRING([GlobalDefaults clipboardImageSrc]),@"clipboard_image_src",
                           [self f_to_int_s:[clipboardShare imageSize].width],@"clipboard_image_width",
                           [self f_to_int_s:[clipboardShare imageSize].height],@"clipboard_image_height",
     
-                          SAFE_STRING([Helper clipboardThumbImageSrc]),@"clipboard_thumb_image_src",
+                          SAFE_STRING([GlobalDefaults clipboardThumbImageSrc]),@"clipboard_thumb_image_src",
                           [self f_to_int_s:[clipboardShare thumbSize].width],@"clipboard_thumb_image_width",
                           [self f_to_int_s:[clipboardShare thumbSize].height],@"clipboard_thumb_image_height",
                  nil];

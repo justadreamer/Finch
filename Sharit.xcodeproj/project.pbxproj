@@ -63,11 +63,15 @@
 		444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449F155C378D00319EC7 /* CFNetwork.framework */; };
 		445F6CD7157559D600E563DF /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 445F6CD6157559D600E563DF /* ImageShare.m */; };
 		446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F86A9157402BC00CF00EB /* UIImage+Additions.m */; };
-		44BEA3101576AFF600A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA30F1576AFF600A1A7A7 /* SenTestingKit.framework */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */; };
 		44BEA31B1576AFF600A1A7A7 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */; };
+		44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */; };
+		44BEA333157BEAD100A1A7A7 /* MacroPreprocessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */; };
+		44BEA335157BEFBF00A1A7A7 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD72156580610032E1B2 /* MacroPreprocessor.m */; };
+		44BEA339157BF24300A1A7A7 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */; };
+		44BEA33C157BF48800A1A7A7 /* GlobalDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,12 +179,19 @@
 		446F86A8157402BC00CF00EB /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "../UIImage+Additions.h"; sourceTree = "<group>"; };
 		446F86A9157402BC00CF00EB /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "../UIImage+Additions.m"; sourceTree = "<group>"; };
 		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44BEA30F1576AFF600A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sharit_Tests-Info.plist"; sourceTree = "<group>"; };
 		44BEA3171576AFF600A1A7A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		44BEA3191576AFF600A1A7A7 /* Sharit_Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sharit_Tests.h; sourceTree = "<group>"; };
 		44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sharit_Tests.m; sourceTree = "<group>"; };
 		44BEA31C1576AFF600A1A7A7 /* Sharit_Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sharit_Tests-Prefix.pch"; sourceTree = "<group>"; };
+		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		44BEA331157BEAD000A1A7A7 /* MacroPreprocessorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessorTest.h; sourceTree = "<group>"; };
+		44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessorTest.m; sourceTree = "<group>"; };
+		44BEA336157BF08F00A1A7A7 /* TemplateLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemplateLoader.h; sourceTree = "<group>"; };
+		44BEA337157BF24300A1A7A7 /* BasicTemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTemplateLoader.h; sourceTree = "<group>"; };
+		44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTemplateLoader.m; sourceTree = "<group>"; };
+		44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefaults.h; sourceTree = "<group>"; };
+		44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDefaults.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BEA3101576AFF600A1A7A7 /* SenTestingKit.framework in Frameworks */,
+				44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */,
 				44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */,
 				44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */,
 			);
@@ -283,6 +294,9 @@
 				442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */,
 				442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */,
 				442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */,
+				44BEA336157BF08F00A1A7A7 /* TemplateLoader.h */,
+				44BEA337157BF24300A1A7A7 /* BasicTemplateLoader.h */,
+				44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */,
 			);
 			name = "Response forming";
 			sourceTree = "<group>";
@@ -309,13 +323,13 @@
 		444B42D0155C2FD200319EC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */,
 				442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */,
 				444B449F155C378D00319EC7 /* CFNetwork.framework */,
 				444B449D155C378700319EC7 /* Security.framework */,
 				444B42D1155C2FD200319EC7 /* UIKit.framework */,
 				444B42D3155C2FD200319EC7 /* Foundation.framework */,
 				444B42D5155C2FD200319EC7 /* CoreGraphics.framework */,
-				44BEA30F1576AFF600A1A7A7 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -470,6 +484,8 @@
 				444B42E3155C2FD200319EC7 /* ViewController.h */,
 				444B42E4155C2FD200319EC7 /* ViewController.m */,
 				444B42E6155C2FD200319EC7 /* ViewController.xib */,
+				44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */,
+				44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -479,6 +495,8 @@
 			children = (
 				44BEA3191576AFF600A1A7A7 /* Sharit_Tests.h */,
 				44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */,
+				44BEA331157BEAD000A1A7A7 /* MacroPreprocessorTest.h */,
+				44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */,
 				44BEA3141576AFF600A1A7A7 /* Supporting Files */,
 			);
 			path = Sharit_Tests;
@@ -648,6 +666,8 @@
 				442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */,
 				446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */,
 				445F6CD7157559D600E563DF /* ImageShare.m in Sources */,
+				44BEA339157BF24300A1A7A7 /* BasicTemplateLoader.m in Sources */,
+				44BEA33C157BF48800A1A7A7 /* GlobalDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +676,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BEA31B1576AFF600A1A7A7 /* Sharit_Tests.m in Sources */,
+				44BEA333157BEAD100A1A7A7 /* MacroPreprocessorTest.m in Sources */,
+				44BEA335157BEFBF00A1A7A7 /* MacroPreprocessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +836,7 @@
 				44BEA31F1576AFF600A1A7A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

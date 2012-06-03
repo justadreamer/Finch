@@ -5,26 +5,36 @@
 //  Created by Eugene Dorfman on 5/17/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
+#import "Global.h"
 #import "MacroPreprocessor.h"
-#import "Helper.h"
+#import "TemplateLoader.h"
+
 @interface MacroPreprocessor() 
-@property (nonatomic,strong) NSString* templateName;
-@property (nonatomic,strong) NSDictionary* macroDict;
 @property (nonatomic,assign) BOOL isComment;
 @property (nonatomic,assign) BOOL ifCounter;
 @end
 
 @implementation MacroPreprocessor
-@synthesize templateName;
+@synthesize loader=_loader;
+@synthesize templateText = _templateText;
+@synthesize templateName = _templateName;
 @synthesize macroDict;
 @synthesize isComment;
 @synthesize ifCounter;
 
-- (id) initWithTemplateName:(NSString *)_templateName macroDictionary:(NSDictionary *)_dict {
+- (id) initWithLoader:(NSObject<TemplateLoader>*)loader templateName:(NSString*)templateName macroDictionary:(NSDictionary*)macroDictionary {
     self = [super init];
-    self.templateName = _templateName;
-    self.macroDict = _dict;
+    self.loader = loader;
+    self.templateName = templateName;
+    self.templateText = [loader templateTextForTemplateName:templateName];
+    self.macroDict = macroDictionary;
+    return self;
+}
+
+- (id) initWithTemplateText:(NSString*)templateText macroDictionary:(NSDictionary*)macroDictionary {
+    self = [super init];
+    self.templateText = templateText;
+    self.macroDict = macroDictionary;
     return self;
 }
 
@@ -63,43 +73,6 @@
     return SAFE_STRING(replacement);
 }
 
-- (NSString*) templateTextForTemplateName:(NSString*)_templateName {
-    NSString* templateText = @"";
-    if ([_templateName length]) {
-        NSString* templateFullName = [_templateName stringByAppendingFormat:@".%@",[Helper templateExt]];
-        NSString* path = [[[Helper instance] templatesFolder] stringByAppendingPathComponent:templateFullName];
-        NSError* error = nil;
-        templateText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-        if (error) {
-            VLog(error);
-        }
-    }
-    return templateText;
-}
-
-- (NSString*) processMacrosInTemplate:(NSString*)_templateName {
-    NSString* templateText = [self templateTextForTemplateName:_templateName];
-    NSMutableString* result = [templateText mutableCopy];
-    NSInteger length = [result length];
-    if (length) {
-        NSString* macroRegex = @"%[^%]*%";
-        NSRange range = NSMakeRange(0, length);
-        while (range.location != NSNotFound && range.length > 0) {
-            range = [result rangeOfString:macroRegex options:NSRegularExpressionSearch range:range];
-            if (range.location != NSNotFound) {
-                NSString* macro = [result substringWithRange:range];
-                NSString* replacement = [self replaceMacro:macro];
-                [result replaceCharactersInRange:range withString:replacement];
-                NSInteger replacementLength = [replacement length];
-                length += replacementLength - range.length;
-                range.location += replacementLength;
-                range.length = length - range.location;
-            }
-        }
-    }
-    return result;
-}
-
 - (NSString*) macroComponent:(NSString*)macro last:(BOOL)last {
     NSString* component = nil;
     NSString* macroContent = [self macroContent:macro];
@@ -125,7 +98,28 @@
 }
 
 - (NSString*) process {
-    return [self processMacrosInTemplate:self.templateName];
+    if (![self.templateText length] && [self.templateName length] && self.loader) {
+        self.templateText = [self.loader templateTextForTemplateName:self.templateName];
+    }
+    NSMutableString* result = [self.templateText mutableCopy];
+    NSInteger length = [result length];
+    if (length) {
+        NSString* macroRegex = @"%[^%]*%";
+        NSRange range = NSMakeRange(0, length);
+        while (range.location != NSNotFound && range.length > 0) {
+            range = [result rangeOfString:macroRegex options:NSRegularExpressionSearch range:range];
+            if (range.location != NSNotFound) {
+                NSString* macro = [result substringWithRange:range];
+                NSString* replacement = [self replaceMacro:macro];
+                [result replaceCharactersInRange:range withString:replacement];
+                NSInteger replacementLength = [replacement length];
+                length += replacementLength - range.length;
+                range.location += replacementLength;
+                range.length = length - range.location;
+            }
+        }
+    }
+    return result;
 }
 
 - (NSString*) f_to_int_s:(CGFloat)f {

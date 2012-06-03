@@ -17,6 +17,7 @@
 #import "HTTPMessage.h"
 #import "AppDelegate.h"
 #import "Helper.h"
+#import "GlobalDefaults.h"
 
 @interface MainHTTPConnection ()
 @property (nonatomic,strong) NSArray* imagePaths;
@@ -29,7 +30,7 @@
 
 - (id) initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig {
     if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])) {
-        self.imagePaths = [NSArray arrayWithObjects:[Helper clipboardImageSrc],[Helper clipboardThumbImageSrc], nil];
+        self.imagePaths = [NSArray arrayWithObjects:[GlobalDefaults clipboardImageSrc],[GlobalDefaults clipboardThumbImageSrc], nil];
         NSArray* otherPaths = [NSArray arrayWithObjects:@"/",@"/index.html", nil];
         self.supportedPaths =  [otherPaths arrayByAddingObjectsFromArray:imagePaths];
     }
@@ -84,9 +85,9 @@
 - (HTTPDataResponse*) imageResponse:(NSString*)path {
     NSData* imageData = nil;
     ClipboardShare* clipboardShare = [[SharesProvider instance] clipboardShare];
-    if ([path isEqualToString:[Helper clipboardImageSrc]]) {
+    if ([path isEqualToString:[GlobalDefaults clipboardImageSrc]]) {
         imageData = UIImagePNGRepresentation([clipboardShare image]);
-    } else if ([path isEqualToString:[Helper clipboardThumbImageSrc]]) {
+    } else if ([path isEqualToString:[GlobalDefaults clipboardThumbImageSrc]]) {
         imageData = UIImagePNGRepresentation([clipboardShare thumb]);
     }
     HTTPDataResponse* response = [[HTTPDataResponse alloc] initWithData:imageData];

@@ -10,6 +10,8 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>  
 #import "Iface.h"
+#import "GlobalDefaults.h"
+
 @interface Helper() {
     
 }
@@ -60,14 +62,6 @@ NSString* addressFrom_ifa_addr(struct sockaddr* ifa_addr) {
     return [NSArray arrayWithArray:[ifaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]]];
 }
 
-+ (UInt16) port {
-#if TARGET_IPHONE_SIMULATOR
-    return 5000;
-#else
-    return 88;
-#endif
-}
-
 Helper* sharedHelper;
 
 + (Helper*) instance {
@@ -77,32 +71,12 @@ Helper* sharedHelper;
     return sharedHelper;
 }
 
-+ (NSString*) templatesFolderName {
-    return @"tpl";
-}
-
-+ (NSString*) docrootFolderName {
-    return @"docroot";
-}
-
-+ (NSString*) templateExt {
-    return @"tpl";
-}
-
-+ (NSString*) clipboardImageSrc {
-    return @"/clipboard-image";
-}
-
-+ (NSString*) clipboardThumbImageSrc {
-    return @"/clipboard-thumb-image";
-}
-   
 - (NSString*) baseTemplatesFolder {
-    return [[self documentsFolder] stringByAppendingPathComponent:[Helper templatesFolderName]];
+    return [[self documentsFolder] stringByAppendingPathComponent:[GlobalDefaults templatesFolderName]];
 }
 
 - (NSString*) baseDocrootFolder {
-    return [[self documentsFolder] stringByAppendingPathComponent:[Helper docrootFolderName]];    
+    return [[self documentsFolder] stringByAppendingPathComponent:[GlobalDefaults docrootFolderName]];    
 }
 
 - (NSString*) versionedPath:(NSString*)path {
