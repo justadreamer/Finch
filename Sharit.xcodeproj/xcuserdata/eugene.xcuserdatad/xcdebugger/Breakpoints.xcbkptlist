@@ -14,5 +14,16 @@
          startingLineNumber = "1"
          endingLineNumber = "1">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Sharit_Tests/Sharit_Tests.m"
+         timestampString = "361897508.953682"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "43"
+         endingLineNumber = "43">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

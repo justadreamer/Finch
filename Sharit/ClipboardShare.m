@@ -8,15 +8,14 @@
 
 #import "ClipboardShare.h"
 #import "UIImage+Additions.h"
+#import "ImageShare.h"
+#import "GlobalDefaults.h"
 
 @interface ClipboardShare ()
-@property (nonatomic,strong) UIImage* imageForWhichThumbWasCreated;
-@property (nonatomic,strong) UIImage* thumb;
 @end
 
 @implementation ClipboardShare
-@synthesize imageForWhichThumbWasCreated;
-@synthesize thumb;
+@synthesize imageShare;
 
 - (id) init {
     if ((self = [super init])) {
@@ -35,6 +34,16 @@
 
 - (NSArray*) images {
     return [[UIPasteboard generalPasteboard] images];
+}
+
+- (ImageShare*) imageShare {
+    if (nil==imageShare) {
+        imageShare = [[ImageShare alloc] init];
+        imageShare.path = URLClipboardImage;
+        imageShare.templateLoader = self.templateLoader;
+    }
+    imageShare.image = [self image];
+    return imageShare;
 }
 
 - (NSString*) detailsDescription {
@@ -69,30 +78,4 @@
     [[UIPasteboard generalPasteboard] setString:string];
 }
 
-- (CGSize) imageSize {
-    return [[self image] size];
-}
-
-- (CGSize) thumbSize {
-    CGSize thumbSize = CGSizeZero;
-    CGSize imageSize = [self imageSize];
-    if (imageSize.width > 0 && imageSize.height > 0) {
-        CGFloat aspect = imageSize.height/imageSize.width;
-        CGFloat maxSide = 200;
-        if (imageSize.height > imageSize.width) {
-            thumbSize = CGSizeMake(maxSide/aspect, maxSide);
-        } else {
-            thumbSize = CGSizeMake(maxSide, maxSide*aspect);
-        }
-    }
-    return thumbSize;
-}
-
-- (UIImage*) thumb {
-    if (self.imageForWhichThumbWasCreated!=[self image]) {
-        thumb = [[[self image] scaleToSize:[self thumbSize]]fixOrientation];
-        self.imageForWhichThumbWasCreated = [self image];
-    }
-    return thumb;
-}
 @end

@@ -24,7 +24,6 @@ static CGFloat constraints[] = {
 
 @implementation ImageShare
 @synthesize image;
-@synthesize path;
 
 static NSDictionary* sizeTypeDict;
 
@@ -45,26 +44,19 @@ static NSDictionary* sizeTypeDict;
 - (NSString*) htmlBlock {
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     for (NSString* k in [sizeTypeDict allKeys]) {
-        [params setObject:[path stringByAppendingFormat:@"?size=%@",k] forKey:[NSString stringWithFormat:@"img_src_size_%@",k]];
+        [params setObject:[self.path stringByAppendingFormat:@"?size=%@",k] forKey:[@"img_src_" stringByAppendingString:k]];
+        int imgType = [[sizeTypeDict objectForKey:k] intValue];
+        NSString* constraint = fs(constraints[imgType]);
+        [params setObject:constraint forKey:[@"img_width_" stringByAppendingString:k]];
+        [params setObject:constraint forKey:[@"img_height_" stringByAppendingString:k]];
     }
-    NSString* constraint_s = [NSString stringWithFormat:@"%.0f",constraints[ImageSize_Small]];
-    [params setObject:constraint_s forKey:@"img_width_s"];
-    [params setObject:constraint_s forKey:@"img_height_s"];
-    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:[GlobalDefaults templateExt]];
-    MacroPreprocessor* mp = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"image" macroDictionary:params];
+    MacroPreprocessor* mp = [[MacroPreprocessor alloc] initWithLoader:self.templateLoader templateName:@"image" macroDictionary:params];
     NSString* html = [mp process];
     return SAFE_STRING(html);
 }
 
 - (NSData*) dataForSize:(ImageSizeType)sizeType {
-    CGFloat constraint = constraints[sizeType];
-    UIImage* img = nil;
-    if (constraint>0) {
-        CGSize constraintSize = CGSizeMake(constraint, constraint);
-        img = [[image proportionalScaleToSize:constraintSize] fixOrientation];
-    } else {
-        img = [image fixOrientation];
-    }
+    UIImage* img = [self imageForSize:sizeType];
     return UIImagePNGRepresentation(img);
 }
 
@@ -73,7 +65,19 @@ static NSDictionary* sizeTypeDict;
 }
 
 - (NSData*)dataForSizeParam:(NSString*)param {
-    return [self dataForSize:[self imageSizeTypeFromParam:param]];
+    ImageSizeType sizeType = [self imageSizeTypeFromParam:param];
+    return [self dataForSize:sizeType];
 }
 
+- (UIImage*)imageForSize:(ImageSizeType)sizeType {
+    CGFloat constraint = constraints[sizeType];
+    UIImage* img = nil;
+    if (constraint>0 && (constraint < image.size.width || constraint < image.size.height)) {
+        CGSize constraintSize = CGSizeMake(constraint, constraint);
+        img = [[image proportionalScaleToSize:constraintSize] fixOrientation];
+    } else {
+        img = [image fixOrientation];
+    }
+    return img;
+}
 @end

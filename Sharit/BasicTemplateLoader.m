@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "Global.h"
 #import "BasicTemplateLoader.h"
 
 @implementation BasicTemplateLoader

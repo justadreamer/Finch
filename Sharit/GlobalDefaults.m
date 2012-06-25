@@ -18,24 +18,4 @@
 #endif
 }
 
-+ (NSString*) templatesFolderName {
-    return @"tpl";
-}
-
-+ (NSString*) docrootFolderName {
-    return @"docroot";
-}
-
-+ (NSString*) templateExt {
-    return @"tpl";
-}
-
-+ (NSString*) clipboardImageSrc {
-    return @"/clipboard-image";
-}
-
-+ (NSString*) clipboardThumbImageSrc {
-    return @"/clipboard-thumb-image";
-}
-
 @end

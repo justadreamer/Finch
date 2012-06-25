@@ -8,6 +8,7 @@
 
 #import "ClipboardShareController.h"
 #import "ClipboardShare.h"
+#import "ImageShare.h"
 
 @interface ClipboardShareController ()
 @property (nonatomic,strong) IBOutlet UITextView* textView;
@@ -32,8 +33,10 @@
 }
 
 - (void) refresh {
-    self.textView.text = [[self clipboardShare] string];
-    self.imageView.image = [[self clipboardShare] thumb];
+    ClipboardShare* share = [self clipboardShare];
+    self.textView.text = [share string];
+    ImageShare* imageShare = [share imageShare]; 
+    self.imageView.image = [imageShare imageForSize:ImageSize_Medium];
 }
 
 - (void) viewWillAppear:(BOOL)animated {

@@ -63,6 +63,15 @@
 		444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449F155C378D00319EC7 /* CFNetwork.framework */; };
 		445F6CD7157559D600E563DF /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 445F6CD6157559D600E563DF /* ImageShare.m */; };
 		446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F86A9157402BC00CF00EB /* UIImage+Additions.m */; };
+		4477A40715910CDB00EC3280 /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 445F6CD6157559D600E563DF /* ImageShare.m */; };
+		4477A40915910CF300EC3280 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EACD51561A4490032E1B2 /* Share.m */; };
+		4477A40A15910CFB00EC3280 /* GlobalDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */; };
+		4477A40B15910D0E00EC3280 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B4492155C344B00319EC7 /* Helper.m */; };
+		4477A40C15910D1500EC3280 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */; };
+		4477A40D15910D5300EC3280 /* Iface.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EACB115605EF20032E1B2 /* Iface.m */; };
+		4477A40E15910E3700EC3280 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
+		4477A40F1591123600EC3280 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
+		4477A42215911AC000EC3280 /* img.html in Resources */ = {isa = PBXBuildFile; fileRef = 4477A42115911AC000EC3280 /* img.html */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */; };
@@ -178,6 +187,7 @@
 		445F6CD6157559D600E563DF /* ImageShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageShare.m; sourceTree = "<group>"; };
 		446F86A8157402BC00CF00EB /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "../UIImage+Additions.h"; sourceTree = "<group>"; };
 		446F86A9157402BC00CF00EB /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "../UIImage+Additions.m"; sourceTree = "<group>"; };
+		4477A42115911AC000EC3280 /* img.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = img.html; path = ../../../img.html; sourceTree = "<group>"; };
 		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sharit_Tests-Info.plist"; sourceTree = "<group>"; };
 		44BEA3171576AFF600A1A7A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -493,6 +503,7 @@
 		44BEA3131576AFF600A1A7A7 /* Sharit_Tests */ = {
 			isa = PBXGroup;
 			children = (
+				4477A42115911AC000EC3280 /* img.html */,
 				44BEA3191576AFF600A1A7A7 /* Sharit_Tests.h */,
 				44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */,
 				44BEA331157BEAD000A1A7A7 /* MacroPreprocessorTest.h */,
@@ -599,6 +610,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */,
+				4477A40E15910E3700EC3280 /* icon_check.png in Resources */,
+				4477A40F1591123600EC3280 /* tpl in Resources */,
+				4477A42215911AC000EC3280 /* img.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +692,12 @@
 				44BEA31B1576AFF600A1A7A7 /* Sharit_Tests.m in Sources */,
 				44BEA333157BEAD100A1A7A7 /* MacroPreprocessorTest.m in Sources */,
 				44BEA335157BEFBF00A1A7A7 /* MacroPreprocessor.m in Sources */,
+				4477A40715910CDB00EC3280 /* ImageShare.m in Sources */,
+				4477A40915910CF300EC3280 /* Share.m in Sources */,
+				4477A40A15910CFB00EC3280 /* GlobalDefaults.m in Sources */,
+				4477A40B15910D0E00EC3280 /* Helper.m in Sources */,
+				4477A40C15910D1500EC3280 /* BasicTemplateLoader.m in Sources */,
+				4477A40D15910D5300EC3280 /* Iface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

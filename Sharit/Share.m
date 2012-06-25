@@ -12,6 +12,8 @@
 @synthesize isShared;
 @synthesize isUpdated;
 @synthesize name;
+@synthesize path;
+@synthesize templateLoader;
 
 - (NSString*) detailsDescription {
     return nil;
@@ -21,6 +23,13 @@
     if ((self = [super init])) {
         self.isShared = YES;
         self.isUpdated = NO;
+    }
+    return self;
+}
+
+- (id) initWithTemplateLoader:(NSObject<TemplateLoader>*) _templateLoader {
+    if ((self = [self init])) {
+        self.templateLoader = _templateLoader;
     }
     return self;
 }

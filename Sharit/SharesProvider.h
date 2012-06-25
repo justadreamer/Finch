@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @class ClipboardShare;
+@class Share;
+
 @interface SharesProvider : NSObject
 @property (nonatomic,strong) NSMutableArray* shares;
 + (SharesProvider*) instance;
 - (ClipboardShare*) clipboardShare;
+- (Share*) shareForPath:(NSString*)path;
 @end

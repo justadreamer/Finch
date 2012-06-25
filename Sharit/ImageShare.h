@@ -17,8 +17,8 @@ typedef enum {
 
 @interface ImageShare : Share
 @property (nonatomic,strong) UIImage* image;
-@property (nonatomic,strong) NSString* path;
 
-- (NSString*)htmlBlock;
+- (NSString*) htmlBlock;
 - (NSData*)dataForSizeParam:(NSString*)param;
+- (UIImage*)imageForSize:(ImageSizeType)sizeType;
 @end

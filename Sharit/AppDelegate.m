@@ -122,12 +122,12 @@
 
 - (void) copyTemplateDir {
     [self removePrevItemsForBase:[[Helper instance] baseTemplatesFolder]];
-    [self copyResDir:[GlobalDefaults templatesFolderName] toDir:[[Helper instance] templatesFolder]];
+    [self copyResDir:templatesFolderName toDir:[[Helper instance] templatesFolder]];
 }
 
 - (void) copyDocroot {
     [self removePrevItemsForBase:[[Helper instance] baseDocrootFolder]];
-    [self copyResDir:[GlobalDefaults docrootFolderName] toDir:[[Helper instance] docrootFolder]];
+    [self copyResDir:docrootFolderName toDir:[[Helper instance] docrootFolder]];
 }
 
 - (void) setupDirs {

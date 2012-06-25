@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+@protocol TemplateLoader;
 
 @interface Share : NSObject
 @property (nonatomic,assign) BOOL isShared;
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,assign) BOOL isUpdated;
+@property (nonatomic,strong) NSString* path;
+@property (nonatomic,strong) NSObject<TemplateLoader>* templateLoader;
+
 - (NSString*) detailsDescription;
+- (id) initWithTemplateLoader:(NSObject<TemplateLoader>*) _templateLoader;
 @end

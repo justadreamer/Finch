@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TemplateLoader.h"
+
 @interface BasicTemplateLoader : NSObject<TemplateLoader>
 @property (nonatomic,strong) NSString* templateFolder;
 @property (nonatomic,strong) NSString* templateExt;

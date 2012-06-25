@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#define fs(x) [MacroPreprocessor f_to_int_s:x]
 @protocol TemplateLoader;
 @interface MacroPreprocessor : NSObject
 @property (nonatomic,strong) NSDictionary* macroDict;
@@ -23,5 +24,5 @@
 - (NSString*) replaceMacro:(NSString*)macro;
 - (NSString*) macroName:(NSString*)macro;
 
-- (NSString*) f_to_int_s:(CGFloat)f;
++ (NSString*) f_to_int_s:(CGFloat)f;
 @end

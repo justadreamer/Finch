@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString* const URLClipboardImage = @"/clipboard-img.png";
+static NSString* const URLimageBase = @"img";
+static NSString* const templateExt = @"tpl";
+static NSString* const templatesFolderName = @"tpl";
+static NSString* const docrootFolderName = @"docroot";
+
+
 @interface GlobalDefaults : NSObject
 + (UInt16) port;
-
-+ (NSString*) templatesFolderName;
-+ (NSString*) docrootFolderName;
-
-+ (NSString*) templateExt;
-+ (NSString*) clipboardImageSrc;
-+ (NSString*) clipboardThumbImageSrc;
 @end

@@ -11,7 +11,10 @@
 #import "ClipboardShare.h"
 #import "TextShare.h"
 #import "PicturesShare.h"
-#import "Share.h"
+#import "GlobalDefaults.h"
+#import "ImageShare.h"
+#import "BasicTemplateLoader.h"
+#import "Helper.h"
 
 @interface SharesProvider() {
     
@@ -39,8 +42,10 @@ SharesProvider* globalSharesProvider;
 
 - (NSMutableArray*) setupShares {
     NSMutableArray* _shares = [NSMutableArray array];
+    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
+    Share* clipboard = [[ClipboardShare alloc] initWithTemplateLoader:basicLoader];
 
-    Share* clipboard = [[ClipboardShare alloc] init];
+    clipboard.templateLoader = basicLoader;
     [_shares addObject:clipboard];
 
     Share* text = [[TextShare alloc] init];
@@ -61,4 +66,13 @@ SharesProvider* globalSharesProvider;
     }
     return clipboardShare;
 }
+
+- (Share*) shareForPath:(NSString*)path {
+    Share* share = nil;
+    if ([path isEqualToString:URLClipboardImage]) {
+        share = [[self clipboardShare] imageShare];
+    }
+    return share;
+}
+
 @end

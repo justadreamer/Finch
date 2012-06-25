@@ -18,9 +18,7 @@
                 </form>
                 %if clipboard_image%
                 <h3>Image:</h3>
-                <a href="%clipboard_image_src%">
-                <img src="%clipboard_thumb_image_src%" width="%clipboard_thumb_image_width%" height="%clipboard_thumb_image_height%" />
-                </a>
+                %clipboard_image_share%
                 %endif%
         %endif%
     </body>

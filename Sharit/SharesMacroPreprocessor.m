@@ -12,6 +12,7 @@
 #import "Helper.h"
 #import "BasicTemplateLoader.h"
 #import "GlobalDefaults.h"
+#import "ImageShare.h"
 
 #define CLIPBOARD @"clipboard"
 #define CLIPBOARD_IMAGE @"clipboard_image"
@@ -23,26 +24,20 @@
 @implementation SharesMacroPreprocessor
 
 - (id) init {
-    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:[GlobalDefaults templateExt]];
+    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
     self = [super initWithLoader:basicLoader templateName:@"index" macroDictionary:[self clipboardMacroDict]];
     return self;
 }
 
 - (NSDictionary*)clipboardMacroDict {
     ClipboardShare* clipboardShare = [[SharesProvider instance] clipboardShare];
+    ImageShare* imageShare = [clipboardShare imageShare];
     NSMutableDictionary* clipboardMacroDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                        [NSNumber numberWithBool:[clipboardShare isShared]],@"clipboard_is_shared",
-                          SAFE_STRING([clipboardShare string]), @"clipboard_text",
-                          [NSNumber numberWithBool:nil!=[clipboardShare image]],@"clipboard_image",
+[NSNumber numberWithBool:[clipboardShare isShared]],@"clipboard_is_shared",
+SAFE_STRING([clipboardShare string]), @"clipboard_text",
+[NSNumber numberWithBool:nil!=[clipboardShare image]],@"clipboard_image",
+ [imageShare htmlBlock],@"clipboard_image_share",nil];
     
-                          SAFE_STRING([GlobalDefaults clipboardImageSrc]),@"clipboard_image_src",
-                          [self f_to_int_s:[clipboardShare imageSize].width],@"clipboard_image_width",
-                          [self f_to_int_s:[clipboardShare imageSize].height],@"clipboard_image_height",
-    
-                          SAFE_STRING([GlobalDefaults clipboardThumbImageSrc]),@"clipboard_thumb_image_src",
-                          [self f_to_int_s:[clipboardShare thumbSize].width],@"clipboard_thumb_image_width",
-                          [self f_to_int_s:[clipboardShare thumbSize].height],@"clipboard_thumb_image_height",
-                 nil];
     return clipboardMacroDict;
 }
 

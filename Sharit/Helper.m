@@ -72,11 +72,11 @@ Helper* sharedHelper;
 }
 
 - (NSString*) baseTemplatesFolder {
-    return [[self documentsFolder] stringByAppendingPathComponent:[GlobalDefaults templatesFolderName]];
+    return [[self documentsFolder] stringByAppendingPathComponent:templatesFolderName];
 }
 
 - (NSString*) baseDocrootFolder {
-    return [[self documentsFolder] stringByAppendingPathComponent:[GlobalDefaults docrootFolderName]];    
+    return [[self documentsFolder] stringByAppendingPathComponent:docrootFolderName];    
 }
 
 - (NSString*) versionedPath:(NSString*)path {

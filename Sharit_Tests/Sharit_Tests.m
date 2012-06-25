@@ -7,26 +7,32 @@
 //
 
 #import "Sharit_Tests.h"
+#import "ImageShare.h"
+#import "Global.h"
+#import "BasicTemplateLoader.h"
 
 @implementation Sharit_Tests
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
-    
-    // Set-up code here.
 }
 
-- (void)tearDown
-{
-    // Tear-down code here.
-    
+- (void)tearDown {
     [super tearDown];
 }
 
-- (void)testExample
-{
-//    STFail(@"Unit tests are not implemented yet in Sharit_Tests");
+- (void)testImageShare {
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+    NSString* tplFolder = [[bundle resourcePath] stringByAppendingPathComponent:@"tpl"];
+    BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:tplFolder templateExt:@"tpl"];
+    NSString* imgPath = [bundle pathForResource:@"icon_check" ofType:@"png"];
+    ImageShare* imageShare = [[ImageShare alloc] initWithTemplateLoader:loader];
+    imageShare.path = @"imgPath";
+    imageShare.image = [UIImage imageWithContentsOfFile:imgPath];
+    NSError* error = nil;
+    NSString* imgHtml = [NSString stringWithContentsOfFile:[bundle pathForResource:@"img" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
+    NSString* html = [imageShare htmlBlock];
+    STAssertTrue([html isEqualToString:imgHtml],@"html=%@",html);
 }
 
 @end

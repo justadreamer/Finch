@@ -18,32 +18,28 @@
 #import "AppDelegate.h"
 #import "Helper.h"
 #import "GlobalDefaults.h"
+#import "ImageShare.h"
 
 @interface MainHTTPConnection ()
-@property (nonatomic,strong) NSArray* imagePaths;
 @property (nonatomic,strong) NSArray* supportedPaths;
 @end
 
 @implementation MainHTTPConnection
-@synthesize imagePaths;
 @synthesize supportedPaths;
 
 - (id) initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig {
     if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])) {
-        self.imagePaths = [NSArray arrayWithObjects:[GlobalDefaults clipboardImageSrc],[GlobalDefaults clipboardThumbImageSrc], nil];
         NSArray* otherPaths = [NSArray arrayWithObjects:@"/",@"/index.html", nil];
-        self.supportedPaths =  [otherPaths arrayByAddingObjectsFromArray:imagePaths];
+        self.supportedPaths =  otherPaths;
     }
     return self;
 }
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path {
-    if ([supportedPaths containsObject:path]) {
-        if ([method isEqualToString:@"GET"]) {
-			return YES;
-		} else if ([method isEqualToString:@"POST"]) {
-            return requestContentLength < 65535;
-        }
+    if ([method isEqualToString:@"GET"]) {
+        return YES;
+    } else if ([method isEqualToString:@"POST"]) {
+        return requestContentLength < 65535;
     }
 	return [super supportsMethod:method atPath:path];
 }
@@ -82,29 +78,42 @@
     return [path isEqualToString:@"/"] || [path isEqualToString:@"/index.html"];
 }
 
-- (HTTPDataResponse*) imageResponse:(NSString*)path {
-    NSData* imageData = nil;
-    ClipboardShare* clipboardShare = [[SharesProvider instance] clipboardShare];
-    if ([path isEqualToString:[GlobalDefaults clipboardImageSrc]]) {
-        imageData = UIImagePNGRepresentation([clipboardShare image]);
-    } else if ([path isEqualToString:[GlobalDefaults clipboardThumbImageSrc]]) {
-        imageData = UIImagePNGRepresentation([clipboardShare thumb]);
-    }
+- (HTTPDataResponse*) imageResponseForShare:(ImageShare*)share atPath:(NSString*)path {
+    NSDictionary* params = [self parseGetParams];
+    NSData* imageData = [share dataForSizeParam:[params objectForKey:@"size"]];
     HTTPDataResponse* response = [[HTTPDataResponse alloc] initWithData:imageData];
     return response;
 }
 
+- (NSString*) removeParams:(NSString*)path {
+    NSArray* components = [path componentsSeparatedByString:@"?"];
+    NSString* newPath = path;
+    if ([components count]>0) {
+        newPath = [components objectAtIndex:0];
+    }
+    return newPath;
+}
+
+- (HTTPDataResponse*) responseForShareAtPath:(NSString*)path {
+    SharesProvider* provider = [SharesProvider instance];
+    NSString* noParamsPath = [self removeParams:path];
+    Share* share = [provider shareForPath:noParamsPath];
+    HTTPDataResponse* response = nil;
+    if ([share isKindOfClass:[ImageShare class]]) {
+        response = [self imageResponseForShare:(ImageShare*)share atPath:path];
+    }
+    return response;
+}
+
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
-    if ([supportedPaths containsObject:path]) {
-        if ([method isEqualToString:@"POST"]) {
-            [self processRequestData];
-            return [self redirectResponse:@"/index.html"];
-        } else if ([method isEqualToString:@"GET"]) {            
-            if ([self isIndexPath:path]) {
-                return [self indexResponse:path];
-            } else if ([imagePaths containsObject:path]) {
-                return [self imageResponse:path];
-            }
+    if ([method isEqualToString:@"POST"]) {
+        [self processRequestData];
+        return [self redirectResponse:@"/index.html"];
+    } else if ([method isEqualToString:@"GET"]) {
+        if ([self isIndexPath:path]) {
+            return [self indexResponse:path];
+        } else {
+            return [self responseForShareAtPath:path];
         }
     }
 

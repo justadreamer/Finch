@@ -122,7 +122,7 @@
     return result;
 }
 
-- (NSString*) f_to_int_s:(CGFloat)f {
++ (NSString*) f_to_int_s:(CGFloat)f {
     return [NSString stringWithFormat:@"%.0f",f];
 }
 

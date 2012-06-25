@@ -33,5 +33,6 @@
     [self doTestTemplate:@"%if no_key%%basic_key%%endif%" expected:@"<!--_trivial_-->"];
     [self doTestTemplate:@"%if yes_key%%if no_key%%basic_key%%endif%%endif%" expected:@"<!--_trivial_-->"];
     [self doTestTemplate:@"%if non_existant_key%non_existant%endif%" expected:@"<!--non_existant-->"];
+    [self doTestTemplate:@"%if non_existant_key%%if yes_key%%basic_key%%endif%%endif%" expected:@"<!--_trivial_-->"];
 }
 @end
