@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 #import "NSStringAdditions.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "Helper.h"
 #import "Iface.h"
 #import "SharesProvider.h"
@@ -22,12 +22,12 @@ const NSInteger SEC_IFACES = 1;
 const NSInteger SEC_SHARED = 2;
 const NSInteger SEC_BONJOUR = 3;
 
-@interface ViewController ()
+@interface MainViewController ()
 @property (nonatomic,strong) TableModel* tableModel;
 @property (nonatomic,strong) NSArray* ifaces;
 @end
 
-@implementation ViewController
+@implementation MainViewController
 @synthesize mainTableView;
 @synthesize ifaces;
 @synthesize sharesProvider;

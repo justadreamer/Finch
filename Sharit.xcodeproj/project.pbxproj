@@ -34,8 +34,8 @@
 		444B42DC155C2FD200319EC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 444B42DA155C2FD200319EC7 /* InfoPlist.strings */; };
 		444B42DE155C2FD200319EC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42DD155C2FD200319EC7 /* main.m */; };
 		444B42E2155C2FD200319EC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42E1155C2FD200319EC7 /* AppDelegate.m */; };
-		444B42E5155C2FD200319EC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42E4155C2FD200319EC7 /* ViewController.m */; };
-		444B42E8155C2FD200319EC7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444B42E6155C2FD200319EC7 /* ViewController.xib */; };
+		444B42E5155C2FD200319EC7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42E4155C2FD200319EC7 /* MainViewController.m */; };
+		444B42E8155C2FD200319EC7 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444B42E6155C2FD200319EC7 /* MainViewController.xib */; };
 		444B4404155C302F00319EC7 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42F4155C302F00319EC7 /* DDData.m */; };
 		444B4405155C302F00319EC7 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42F6155C302F00319EC7 /* DDNumber.m */; };
 		444B4406155C302F00319EC7 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B42F8155C302F00319EC7 /* DDRange.m */; };
@@ -133,9 +133,9 @@
 		444B42DF155C2FD200319EC7 /* Sharit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sharit-Prefix.pch"; sourceTree = "<group>"; };
 		444B42E0155C2FD200319EC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		444B42E1155C2FD200319EC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		444B42E3155C2FD200319EC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		444B42E4155C2FD200319EC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		444B42E7155C2FD200319EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		444B42E3155C2FD200319EC7 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		444B42E4155C2FD200319EC7 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		444B42E7155C2FD200319EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
 		444B42F3155C302F00319EC7 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
 		444B42F4155C302F00319EC7 /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
 		444B42F5155C302F00319EC7 /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNumber.h; sourceTree = "<group>"; };
@@ -500,9 +500,9 @@
 				444B4492155C344B00319EC7 /* Helper.m */,
 				442EACA3155D9B5E0032E1B2 /* Reachability.h */,
 				442EACA4155D9B5E0032E1B2 /* Reachability.m */,
-				444B42E3155C2FD200319EC7 /* ViewController.h */,
-				444B42E4155C2FD200319EC7 /* ViewController.m */,
-				444B42E6155C2FD200319EC7 /* ViewController.xib */,
+				444B42E3155C2FD200319EC7 /* MainViewController.h */,
+				444B42E4155C2FD200319EC7 /* MainViewController.m */,
+				444B42E6155C2FD200319EC7 /* MainViewController.xib */,
 				44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */,
 				44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */,
 				44A35D9315D83F44005FA450 /* TableModel.h */,
@@ -609,7 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				444B42DC155C2FD200319EC7 /* InfoPlist.strings in Resources */,
-				444B42E8155C2FD200319EC7 /* ViewController.xib in Resources */,
+				444B42E8155C2FD200319EC7 /* MainViewController.xib in Resources */,
 				444B4471155C303000319EC7 /* README.txt in Resources */,
 				442EACCA1561A2440032E1B2 /* ShareCell.xib in Resources */,
 				442EACD31561A33D0032E1B2 /* icon_check.png in Resources */,
@@ -656,7 +656,7 @@
 			files = (
 				444B42DE155C2FD200319EC7 /* main.m in Sources */,
 				444B42E2155C2FD200319EC7 /* AppDelegate.m in Sources */,
-				444B42E5155C2FD200319EC7 /* ViewController.m in Sources */,
+				444B42E5155C2FD200319EC7 /* MainViewController.m in Sources */,
 				444B4404155C302F00319EC7 /* DDData.m in Sources */,
 				444B4405155C302F00319EC7 /* DDNumber.m in Sources */,
 				444B4406155C302F00319EC7 /* DDRange.m in Sources */,
@@ -730,12 +730,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		444B42E6155C2FD200319EC7 /* ViewController.xib */ = {
+		444B42E6155C2FD200319EC7 /* MainViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				444B42E7155C2FD200319EC7 /* en */,
 			);
-			name = ViewController.xib;
+			name = MainViewController.xib;
 			sourceTree = "<group>";
 		};
 		44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */ = {

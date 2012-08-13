@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HTTPServer.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "Helper.h"
 #import "Reachability.h"
 #import "SharesProvider.h"
@@ -40,7 +40,7 @@ void uncaughtExceptionHandler(NSException *exception);
     NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.viewController = [[MainViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.viewController.sharesProvider = [SharesProvider instance];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;

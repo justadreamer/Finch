@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class SharesProvider;
 
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface MainViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 - (void) refresh;
 
 @property (nonatomic,strong) IBOutlet UITableView* mainTableView;
