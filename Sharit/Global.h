@@ -11,6 +11,7 @@
 
 #import "DLog.h"
 #import "NSStringAdditions.h"
+#import "UIImage+Additions.h"
 
 #define kClipboard @"clipboard"
 #define SAFE_STRING(s) s ? s : @""

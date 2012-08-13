@@ -19,8 +19,7 @@
     return resizedImage;
 }
 
-- (UIImage*)proportionalScaleToSize:(CGSize)mSize 
-{
+- (CGSize)sizeProportionallyScaledToSize:(CGSize)mSize {
     CGFloat newWidth = 1;
     CGFloat newHeight = 1;
     if (self.size.width > self.size.height) {
@@ -31,8 +30,13 @@
         newWidth = newHeight * (self.size.width / self.size.height);
         
     }
-    
-    return [self scaleToSize:CGSizeMake(newWidth, newHeight)];
+    return CGSizeMake(newWidth, newHeight);
+}
+
+- (UIImage*)proportionalScaleToSize:(CGSize)mSize 
+{
+    CGSize newSize = [self sizeProportionallyScaledToSize:mSize];
+    return [self scaleToSize:newSize];
 }
 
 - (BOOL)isBiggerThanSize:(CGSize)mSize

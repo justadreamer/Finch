@@ -13,6 +13,7 @@
 @interface UIImage (Additions)
 
 - (UIImage*)scaleToSize:(CGSize)mSize;
+- (CGSize)sizeProportionallyScaledToSize:(CGSize)mSize;
 - (UIImage*)proportionalScaleToSize:(CGSize)size;
 - (BOOL)isBiggerThanSize:(CGSize)mSize;
 
