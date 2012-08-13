@@ -19,18 +19,21 @@
 #import "Helper.h"
 #import "GlobalDefaults.h"
 #import "ImageShare.h"
+#import "TextShare.h"
 
 @interface MainHTTPConnection ()
-@property (nonatomic,strong) NSArray* supportedPaths;
+@property (nonatomic,strong) NSArray* indexPaths;
+@property (nonatomic,strong) NSString* redirectPath;
 @end
 
 @implementation MainHTTPConnection
-@synthesize supportedPaths;
+@synthesize indexPaths;
+@synthesize redirectPath;
 
 - (id) initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig {
     if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])) {
-        NSArray* otherPaths = [NSArray arrayWithObjects:@"/",@"/index.html", nil];
-        self.supportedPaths =  otherPaths;
+        NSArray* paths = [NSArray arrayWithObjects:@"/",@"/index.html",@"/text.html",@"/pictures.html", nil];
+        self.indexPaths =  paths;
     }
     return self;
 }
@@ -49,7 +52,7 @@
 }
 
 - (HTTPDataResponse*) indexResponse:(NSString*)path {
-    SharesMacroPreprocessor* preprocessor = [[SharesMacroPreprocessor alloc] init];
+    SharesMacroPreprocessor* preprocessor = [[SharesMacroPreprocessor alloc] initWithPath:path];
     NSData* response = [[preprocessor process] dataUsingEncoding:NSUTF8StringEncoding];
     return [[HTTPDataResponse alloc] initWithData:response];
 }
@@ -58,11 +61,16 @@
     NSData* postData = [request body];
     NSDictionary* dict = [self parseParams:[[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding]];
     NSString* clipboard = [dict objectForKey:kClipboard];
+    NSString* text = [dict objectForKey:kText];
+
     if (clipboard) {
         ClipboardShare* share = [[SharesProvider instance] clipboardShare];
         [share updateString:clipboard];
+    } else if (text) {
+        TextShare* share = [[SharesProvider instance] textShare];
+        [share setText:text];
     }
-
+    self.redirectPath = [dict objectForKey:kRedirectPath];
     dispatch_async(dispatch_get_main_queue(), ^() {
         AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         [appDelegate sharesRefreshed];
@@ -75,7 +83,8 @@
 }
 
 - (BOOL) isIndexPath:(NSString*)path {
-    return [path isEqualToString:@"/"] || [path isEqualToString:@"/index.html"];
+    BOOL res = [self.indexPaths containsObject:path];
+    return res;
 }
 
 - (HTTPDataResponse*) imageResponseForShare:(ImageShare*)share atPath:(NSString*)path {
@@ -108,7 +117,9 @@
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     if ([method isEqualToString:@"POST"]) {
         [self processRequestData];
-        return [self redirectResponse:@"/index.html"];
+        NSString* redirect = [self.redirectPath length]? self.redirectPath : @"/index.html";
+        self.redirectPath = nil;
+        return [self redirectResponse:redirect];
     } else if ([method isEqualToString:@"GET"]) {
         if ([self isIndexPath:path]) {
             return [self indexResponse:path];

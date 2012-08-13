@@ -57,14 +57,25 @@ SharesProvider* globalSharesProvider;
     return _shares;
 }
 
-- (ClipboardShare*) clipboardShare {
-    ClipboardShare* clipboardShare = nil;
+- (Share*) shareForClass:(Class)shareClass {
     for (Share* share in self.shares) {
-        if ([share isKindOfClass:[ClipboardShare class]]) {
-            clipboardShare = (ClipboardShare*) share;
+        if ([share isKindOfClass:shareClass]) {
+            return share;
         }
     }
-    return clipboardShare;
+    return nil;
+}
+
+- (ClipboardShare*) clipboardShare {
+    return (ClipboardShare*)[self shareForClass:[ClipboardShare class]];
+}
+
+- (TextShare*) textShare {
+    return (TextShare*)[self shareForClass:[TextShare class]];
+}
+
+- (PicturesShare*) picturesShare {
+    return (PicturesShare*)[self shareForClass:[PicturesShare class]];
 }
 
 - (Share*) shareForPath:(NSString*)path {
@@ -74,5 +85,6 @@ SharesProvider* globalSharesProvider;
     }
     return share;
 }
+
 
 @end

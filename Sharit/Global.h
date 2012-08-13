@@ -14,7 +14,10 @@
 #import "UIImage+Additions.h"
 
 #define kClipboard @"clipboard"
+#define kRedirectPath @"redirectPath"
+#define kText @"text"
 #define SAFE_STRING(s) s ? s : @""
 #define OBJ_OR_NSNULL(obj) obj ? obj : [NSNull null]
 #define NI(v) [NSNumber numberWithInt:v]
+#define NB(v) [NSNumber numberWithBool:v]
 #endif

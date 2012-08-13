@@ -10,5 +10,5 @@
 #import "MacroPreprocessor.h"
 
 @interface SharesMacroPreprocessor : MacroPreprocessor
-
+- (id) initWithPath:(NSString*)path;
 @end
