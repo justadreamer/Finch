@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface Helper : NSObject
+@property (nonatomic,assign) BOOL isBonjourPublished;
+@property (nonatomic,strong) NSString* bonjourName;
+
 + (Helper*) instance;
 
-+ (NSArray*) interfaces;
+- (NSArray*) interfaces;
 
 - (NSArray*) versions;
 - (NSString*) baseTemplatesFolder;
@@ -20,5 +23,6 @@
 - (NSString*) templatesFolder;
 - (NSString*) documentsRoot;
 
+- (NSString*) bonjourName;
 
 @end

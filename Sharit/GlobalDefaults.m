@@ -14,7 +14,7 @@
 #if TARGET_IPHONE_SIMULATOR
     return 5000;
 #else
-    return 88;
+    return 80;
 #endif
 }
 

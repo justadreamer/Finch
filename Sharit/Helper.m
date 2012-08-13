@@ -26,12 +26,14 @@
 @synthesize templatesFolder;
 @synthesize documentsRoot;
 @synthesize versions;
+@synthesize isBonjourPublished;
+@synthesize bonjourName;
 
 NSString* addressFrom_ifa_addr(struct sockaddr* ifa_addr) {
     return [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)ifa_addr)->sin_addr)];
 }
 
-+ (NSArray*) interfaces {
+- (NSArray*) interfaces {
     NSMutableArray* ifaces = [NSMutableArray array];
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
@@ -48,7 +50,11 @@ NSString* addressFrom_ifa_addr(struct sockaddr* ifa_addr) {
                 NSString* address = addressFrom_ifa_addr(temp_addr->ifa_addr);
                 if(![address isEqualToString:@"127.0.0.1"]) {
                     Iface* iface = [[Iface alloc] init];
-                    iface.name = name;
+                    NSString* ifaceName = @"WWAN";
+                    if ([name contains:@"en"]) {
+                        ifaceName = @"Local WiFi";
+                    }
+                    iface.name = ifaceName;
                     iface.ipAddress = address;
                     [ifaces addObject:iface];
                 }
@@ -59,7 +65,8 @@ NSString* addressFrom_ifa_addr(struct sockaddr* ifa_addr) {
     // Free memory
     freeifaddrs(interfaces);
     NSSortDescriptor* desc = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [NSArray arrayWithArray:[ifaces sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]]];
+    [ifaces sortUsingDescriptors:[NSArray arrayWithObject:desc]];
+    return [NSArray arrayWithArray:ifaces];
 }
 
 Helper* sharedHelper;
@@ -111,7 +118,5 @@ Helper* sharedHelper;
     }
     return versions;
 }
-
-
 
 @end

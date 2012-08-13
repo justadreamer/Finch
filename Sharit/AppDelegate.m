@@ -15,10 +15,11 @@
 #import "MainHTTPConnection.h"
 #import "GlobalDefaults.h"
 
-@interface AppDelegate()
+@interface AppDelegate()<NSNetServiceDelegate>
 @property (nonatomic,strong) HTTPServer* httpServer;
 @property (nonatomic,strong) Reachability* reachabilityWiFi;
 @property (nonatomic,strong) Reachability* reachabilityForInternet;
+@property (nonatomic,strong) NSNetService* netService;
 
 - (void) setupHTTPServer;
 - (void) setupReachability;
@@ -26,15 +27,17 @@
 @end
 
 @implementation AppDelegate
-
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize httpServer;
 @synthesize reachabilityWiFi;
 @synthesize reachabilityForInternet;
+@synthesize netService;
 
+void uncaughtExceptionHandler(NSException *exception);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
@@ -45,6 +48,7 @@
     //setup dirs needs to be beofre setupHTTPServer
     [self setupDirs];
     [self setupHTTPServer];
+    [self setupBonjourNetService];
     [self setupReachability];
     [self setupIdleTimer];
     return YES;
@@ -161,5 +165,83 @@
 
 - (void) setupIdleTimer {
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+}
+
+#pragma mark - 
+#pragma mark Setup Bonjour Service Publishing
+
+- (void) setupBonjourNetService {
+    // Create and publish the bonjour service.
+    // Obviously you will be using your own custom service type.
+
+    self.netService = [[NSNetService alloc] initWithDomain:@""
+                                                 type:@"_http._tcp."
+                                                 name:@""
+                                                 port:[GlobalDefaults port]];
+
+    [netService setDelegate:self];
+    [netService publish];
+
+    // You can optionally add TXT record stuff
+
+/*    NSMutableDictionary *txtDict = [NSMutableDictionary dictionaryWithCapacity:2];
+
+    [txtDict setObject:@"moo" forKey:@"cow"];
+    [txtDict setObject:@"quack" forKey:@"duck"];
+
+    NSData *txtData = [NSNetService dataFromTXTRecordDictionary:txtDict];
+    [netService setTXTRecordData:txtData];/**/
+}
+
+- (void)netServiceDidPublish:(NSNetService *)ns {
+    [[Helper instance] setIsBonjourPublished:YES];
+    [[Helper instance] setBonjourName:ns.name];
+    [self.viewController refresh];
+}
+
+- (void)netService:(NSNetService *)ns didNotPublish:(NSDictionary *)errorDict {
+    [[Helper instance] setIsBonjourPublished:NO];
+	VLog(errorDict);
+    [self.viewController refresh];
+}
+
+- (void)netServiceDidStop:(NSNetService *)sender {
+    [[Helper instance] setIsBonjourPublished:NO];
+    [self.viewController refresh];
+}
+
+#pragma mark - 
+#pragma mark Uncaught exception handler
+
+NSString* cleanBacktrace(NSException *exception) {
+    NSArray *backtrace = [exception callStackSymbols];
+    NSString* result = @"";
+    for (NSString *str in backtrace){
+        NSRange methodBeginRange = [str rangeOfString:@"["];
+        NSRange methodEndRange = [str rangeOfString:@"]"];
+        if (NSNotFound!=methodBeginRange.location && NSNotFound!=methodEndRange.location) {
+            NSString *tmp = [str substringFromIndex:methodBeginRange.location];
+            tmp = [tmp substringToIndex:methodEndRange.location-methodBeginRange.location+1];
+            result = [result stringByAppendingString:tmp];
+        }
+    }
+    return result;
+}
+
+void uncaughtExceptionHandler(NSException *exception) {
+#if TARGET_IPHONE_SIMULATOR == 0
+    NSArray *paths =
+    NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];    NSString *logPath =
+    [documentsDirectory stringByAppendingPathComponent:@"consoleCrashLogs.log"];
+    freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+#endif
+    
+    NSString *model = [[UIDevice currentDevice] model];
+    NSString *version = [[UIDevice currentDevice] systemVersion];
+    NSString *error = [NSString stringWithFormat:@"(%@|%@)%@", model, version, cleanBacktrace(exception)];
+    NSLog(@"%@",error);
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
 }
 @end

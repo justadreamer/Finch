@@ -72,6 +72,9 @@
 		4477A40E15910E3700EC3280 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
 		4477A40F1591123600EC3280 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		4477A42215911AC000EC3280 /* img.html in Resources */ = {isa = PBXBuildFile; fileRef = 4477A42115911AC000EC3280 /* img.html */; };
+		44A35D9515D83F44005FA450 /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9415D83F44005FA450 /* TableModel.m */; };
+		44A35D9815D83F5E005FA450 /* SectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9715D83F5E005FA450 /* SectionModel.m */; };
+		44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9A15D83F6C005FA450 /* CellModel.m */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */; };
@@ -188,6 +191,12 @@
 		446F86A8157402BC00CF00EB /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "../UIImage+Additions.h"; sourceTree = "<group>"; };
 		446F86A9157402BC00CF00EB /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "../UIImage+Additions.m"; sourceTree = "<group>"; };
 		4477A42115911AC000EC3280 /* img.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = img.html; path = ../../../img.html; sourceTree = "<group>"; };
+		44A35D9315D83F44005FA450 /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
+		44A35D9415D83F44005FA450 /* TableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableModel.m; sourceTree = "<group>"; };
+		44A35D9615D83F5E005FA450 /* SectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionModel.h; sourceTree = "<group>"; };
+		44A35D9715D83F5E005FA450 /* SectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionModel.m; sourceTree = "<group>"; };
+		44A35D9915D83F6C005FA450 /* CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellModel.h; sourceTree = "<group>"; };
+		44A35D9A15D83F6C005FA450 /* CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellModel.m; sourceTree = "<group>"; };
 		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sharit_Tests-Info.plist"; sourceTree = "<group>"; };
 		44BEA3171576AFF600A1A7A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -496,6 +505,12 @@
 				444B42E6155C2FD200319EC7 /* ViewController.xib */,
 				44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */,
 				44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */,
+				44A35D9315D83F44005FA450 /* TableModel.h */,
+				44A35D9415D83F44005FA450 /* TableModel.m */,
+				44A35D9615D83F5E005FA450 /* SectionModel.h */,
+				44A35D9715D83F5E005FA450 /* SectionModel.m */,
+				44A35D9915D83F6C005FA450 /* CellModel.h */,
+				44A35D9A15D83F6C005FA450 /* CellModel.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -682,6 +697,9 @@
 				445F6CD7157559D600E563DF /* ImageShare.m in Sources */,
 				44BEA339157BF24300A1A7A7 /* BasicTemplateLoader.m in Sources */,
 				44BEA33C157BF48800A1A7A7 /* GlobalDefaults.m in Sources */,
+				44A35D9515D83F44005FA450 /* TableModel.m in Sources */,
+				44A35D9815D83F5E005FA450 /* SectionModel.m in Sources */,
+				44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,4 +25,5 @@
 - (NSUInteger)countOccurencesOfString:(NSString*)searchString;
 - (NSString*)stringByTruncatingToWidth:(CGFloat)width withFont:(UIFont *)font;
 - (BOOL) containsRange:(NSRange) range;
+- (NSString*)capitalized1WordString;
 @end

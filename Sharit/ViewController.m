@@ -14,22 +14,24 @@
 #import "Share.h"
 #import "ShareController.h"
 #import "GlobalDefaults.h"
+#import "TableModel.h"
+#import "SectionModel.h"
+#import "CellModel.h"
 
-const NSInteger SEC_IFACES = 0;
-const NSInteger SEC_SHARED = 1;
+const NSInteger SEC_IFACES = 1;
+const NSInteger SEC_SHARED = 2;
+const NSInteger SEC_BONJOUR = 3;
 
 @interface ViewController ()
+@property (nonatomic,strong) TableModel* tableModel;
 @property (nonatomic,strong) NSArray* ifaces;
-@property (nonatomic,assign) UInt16 port;
-
-- (NSString*) urlFromIPAddress:(NSString*)ipAddress;
 @end
 
 @implementation ViewController
 @synthesize mainTableView;
 @synthesize ifaces;
-@synthesize port;
 @synthesize sharesProvider;
+@synthesize tableModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,8 +53,53 @@ const NSInteger SEC_SHARED = 1;
 }
 
 - (void) refresh {
-    self.ifaces = [Helper interfaces];
-    self.port = [GlobalDefaults port];
+    self.tableModel = [[TableModel alloc] init];
+    if ([Helper instance].isBonjourPublished) {
+        SectionModel* secBonjour = [[SectionModel alloc] init];
+        secBonjour.titleForHeader = @"Either use a Bonjour enabled browser:";
+        secBonjour.tag = SEC_BONJOUR;
+        CellModel* cell = [[CellModel alloc] init];
+        cell.model = [Helper instance].bonjourName;
+        cell.cellIdentifier = @"Bonjour";
+        cell.tag = SEC_BONJOUR;
+        [secBonjour addCellModel:cell];
+        [self.tableModel.sections addObject:secBonjour];
+    }
+    self.ifaces = [[Helper instance] interfaces];
+
+    SectionModel* secInterfaces = [[SectionModel alloc] init];
+    if ([self.ifaces count]>0) {
+        SectionModel* prevSection = [self.tableModel.sections lastObject];
+        NSString* enterUrlString = @"enter an URL (WiFi preferable) in the browser address bar:";
+        if (prevSection.tag==SEC_BONJOUR)
+            secInterfaces.titleForHeader=[@"or " stringByAppendingString:enterUrlString];
+        else
+            secInterfaces.titleForHeader=[enterUrlString capitalized1WordString];
+        for (Iface* iface in self.ifaces) {
+            CellModel* cellModel = [[CellModel alloc] initWithCellClass:[UITableViewCell class] model:iface identifier:@"Interfaces"];
+            cellModel.cellStyle = UITableViewCellStyleSubtitle;
+            cellModel.tag = SEC_IFACES;
+            [secInterfaces addCellModel:cellModel];
+        }
+    } else {
+        secInterfaces.titleForHeader=@"There are no wireless links available. Please check your settings.";
+    }
+    [self.tableModel.sections addObject:secInterfaces];
+    
+    if ([[SharesProvider instance].shares count]) {
+        SectionModel* sharesSection = [[SectionModel alloc] init];
+        sharesSection.titleForHeader = @"You are sharing:";
+        
+        for (Share* share in [SharesProvider instance].shares) {
+            CellModel* cellModel = [[CellModel alloc] initWithCellClass:[ShareCell class] model:share identifier:@"ShareCell"];
+            cellModel.nibNameToLoad = @"ShareCell";
+            cellModel.tag = SEC_SHARED;
+            [sharesSection addCellModel:cellModel];
+        }
+
+        [self.tableModel.sections addObject:sharesSection];
+    }
+
     [self.mainTableView reloadData];
 }
 
@@ -64,18 +111,6 @@ const NSInteger SEC_SHARED = 1;
             [(id)self.navigationController.topViewController sharesRefreshed];
         }
     }
-}
-
-- (NSString*) urlFromIPAddress:(NSString*)ipAddress {
-    return [NSString stringWithFormat:@"http://%@:%d",ipAddress,self.port];
-}
-
-- (NSString*) interfaceNameFromLinkName:(NSString*)name {
-    NSString* ifaceName = @"WWAN";
-    if ([name contains:@"en"]) {
-        ifaceName = @"Local WiFi";
-    }
-    return ifaceName;
 }
 
 #pragma mark -
@@ -101,67 +136,37 @@ const NSInteger SEC_SHARED = 1;
 #pragma mark UITableViewDataSource
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return [self.tableModel numberOfSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = 0;
-    if (SEC_IFACES==section) {
-        count = [self.ifaces count];
-    } else if (SEC_SHARED==section) {
-        count = [self.sharesProvider.shares count];
-    }
-    return count;
-}
-
-- (UITableViewCell*) createCellForSection:(NSInteger)section reuseIdentifier:(NSString*)identifier{
-    UITableViewCell* cell = nil;
-    if (SEC_IFACES==section) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-    } else if (SEC_SHARED==section) {
-        NSArray* nibArray = [[NSBundle mainBundle] loadNibNamed:@"ShareCell" owner:nil options:nil];
-        if ([nibArray count]>0) {
-            cell = [nibArray objectAtIndex:0];
-        }
-    }
-    return cell;
-}
-
-- (void) setupCell:(UITableViewCell*)cell forIndexPath:(NSIndexPath*)indexPath {
-    if (indexPath.section == SEC_IFACES) {
-        Iface* iface = [self.ifaces objectAtIndex:indexPath.row];
-        cell.textLabel.text = [self urlFromIPAddress:iface.ipAddress];
-        cell.detailTextLabel.text = [self interfaceNameFromLinkName:iface.name];
-    } else if (indexPath.section == SEC_SHARED) {
-        ShareCell* shareCell = (ShareCell*)cell;
-        shareCell.share = [[SharesProvider instance].shares objectAtIndex:indexPath.row];
-        [shareCell refresh];
-    }
+    return [self.tableModel numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString* const identifier = [NSString stringWithFormat:@"Cell%d",indexPath.section];
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    CellModel* cellModel = [self.tableModel cellModelForIndexPath:indexPath];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
     if (nil==cell) {
-        cell = [self createCellForSection:indexPath.section reuseIdentifier:identifier];
+        cell = [cellModel createCell];
     }
-    [self setupCell:cell forIndexPath:indexPath];
 
+    if (cellModel.tag == SEC_IFACES) {
+        Iface* iface = (Iface*)cellModel.model;
+        cell.textLabel.text = [iface url];
+        cell.detailTextLabel.text = iface.name;
+    } else if (cellModel.tag == SEC_SHARED) {
+        ShareCell* shareCell = (ShareCell*)cell;
+        shareCell.share = (Share*) cellModel.model;
+        [shareCell refresh];
+    } else if (cellModel.tag == SEC_BONJOUR) {
+        cell.textLabel.text = (NSString*)cellModel.model;
+    }
     return cell;
 }
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString* title = nil;
-    if (SEC_IFACES==section) {
-        if ([self.ifaces count]>0) {
-            title=@"Enter an URL (WiFi preferable) in the browser address bar on another device:";
-        } else {
-            title=@"There are no wireless links available. Please check your settings.";
-        }
-    } else if (SEC_SHARED==section) {
-        title=@"You are sharing:";
-    }
-    return title;
+    SectionModel* sectionModel = [self.tableModel sectionModelForSection:section];
+    return sectionModel.titleForHeader;
 }
 
 @end

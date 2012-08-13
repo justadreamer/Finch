@@ -11,4 +11,6 @@
 @interface Iface : NSObject
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,strong) NSString* ipAddress;
+
+- (NSString*) url;
 @end

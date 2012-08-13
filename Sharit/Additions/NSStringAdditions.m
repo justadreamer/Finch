@@ -197,4 +197,9 @@
     return contains;
 }
 
+- (NSString*)capitalized1WordString {
+    if ([self length] == 0)
+        return nil;
+    return [self stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[self substringToIndex:1] uppercaseString]];
+}
 @end
