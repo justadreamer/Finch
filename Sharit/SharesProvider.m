@@ -82,6 +82,12 @@ SharesProvider* globalSharesProvider;
     Share* share = nil;
     if ([path isEqualToString:URLClipboardImage]) {
         share = [[self clipboardShare] imageShare];
+    } else if ([path contains:@"text"]) {
+        share = [self textShare];
+    } else if ([path contains:@"pictures"]) {
+        share = [self picturesShare];
+    } else {
+        share = [self clipboardShare];
     }
     return share;
 }

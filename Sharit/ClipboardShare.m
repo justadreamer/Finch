@@ -78,4 +78,26 @@
     [[UIPasteboard generalPasteboard] setString:string];
 }
 
+- (NSMutableDictionary*)macrosDict {
+    ImageShare* imgShare = [self imageShare];
+    NSMutableDictionary* clipboardMacroDict =
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     
+     [NSNumber numberWithBool:[self isShared]],@"clipboard_is_shared",
+     SAFE_STRING([self string]), @"clipboard_text",
+     [NSNumber numberWithBool:nil!=[self image]],@"clipboard_image",
+     [imgShare htmlBlock],@"clipboard_image_share",
+     NB(YES),@"show_link_text",
+     NB(YES),@"show_link_pictures",
+     nil];
+    
+    return clipboardMacroDict;
+}
+
+- (void) processRequestData:(NSDictionary *)dict {
+    NSString* clipboard = [dict objectForKey:kClipboard];
+    if (clipboard) {
+        [self updateString:clipboard];
+    }
+}
 @end

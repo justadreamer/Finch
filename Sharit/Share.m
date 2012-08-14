@@ -34,4 +34,11 @@
     return self;
 }
 
+- (NSMutableDictionary*)macrosDict {
+    return nil;
+}
+
+- (void) processRequestData:(NSDictionary *)dict {
+    
+}
 @end

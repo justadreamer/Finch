@@ -31,6 +31,14 @@
     return self;
 }
 
+- (id) initWithLoader:(NSObject<TemplateLoader>*)loader templateName:(NSString*)templateName {
+    self = [super init];
+    self.loader = loader;
+    self.templateName = templateName;
+    self.templateText = [loader templateTextForTemplateName:templateName];
+    return self;
+}
+
 - (id) initWithTemplateText:(NSString*)templateText macroDictionary:(NSDictionary*)macroDictionary {
     self = [super init];
     self.templateText = templateText;

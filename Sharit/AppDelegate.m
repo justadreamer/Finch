@@ -40,12 +40,12 @@ void uncaughtExceptionHandler(NSException *exception);
     NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[MainViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.viewController = [[MainViewController alloc] initWithNibName:nil bundle:nil];
     self.viewController.sharesProvider = [SharesProvider instance];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
-    //setup dirs needs to be beofre setupHTTPServer
+    //setup dirs needs to be before setupHTTPServer
     [self setupDirs];
     [self setupHTTPServer];
     [self setupBonjourNetService];

@@ -25,4 +25,21 @@
     }
     return desc;
 }
+
+- (NSMutableDictionary*)macrosDict {
+    return
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     SAFE_STRING([self text]),kText,
+     NB(YES),@"text_is_shared",
+     NB(YES),@"show_link_pasteboard",
+     NB(YES),@"show_link_pictures",
+     nil];
+}
+
+- (void) processRequestData:(NSDictionary *)dict {
+    NSString* newText = [dict objectForKey:kText];
+    if (newText) {
+        [self setText:newText];
+    }
+}
 @end

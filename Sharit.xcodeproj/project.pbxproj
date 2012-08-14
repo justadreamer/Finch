@@ -24,7 +24,6 @@
 		442EAD61156570BD0032E1B2 /* ShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD5F156570BC0032E1B2 /* ShareController.m */; };
 		442EAD62156570BD0032E1B2 /* ShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD60156570BC0032E1B2 /* ShareController.xib */; };
 		442EAD73156580610032E1B2 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD72156580610032E1B2 /* MacroPreprocessor.m */; };
-		442EAD76156587FB0032E1B2 /* SharesMacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */; };
 		442EAD7815658B470032E1B2 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */; };
 		442EADA51567C1DE0032E1B2 /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 442EADA41567C1DE0032E1B2 /* docroot */; };
@@ -117,8 +116,6 @@
 		442EAD60156570BC0032E1B2 /* ShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareController.xib; sourceTree = "<group>"; };
 		442EAD71156580610032E1B2 /* MacroPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessor.h; sourceTree = "<group>"; };
 		442EAD72156580610032E1B2 /* MacroPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessor.m; sourceTree = "<group>"; };
-		442EAD74156587FB0032E1B2 /* SharesMacroPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesMacroPreprocessor.h; sourceTree = "<group>"; };
-		442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesMacroPreprocessor.m; sourceTree = "<group>"; };
 		442EAD7715658B470032E1B2 /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHTTPConnection.h; sourceTree = "<group>"; };
 		442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHTTPConnection.m; sourceTree = "<group>"; };
@@ -309,8 +306,6 @@
 			children = (
 				442EAD71156580610032E1B2 /* MacroPreprocessor.h */,
 				442EAD72156580610032E1B2 /* MacroPreprocessor.m */,
-				442EAD74156587FB0032E1B2 /* SharesMacroPreprocessor.h */,
-				442EAD75156587FB0032E1B2 /* SharesMacroPreprocessor.m */,
 				442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */,
 				442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */,
 				44BEA336157BF08F00A1A7A7 /* TemplateLoader.h */,
@@ -691,7 +686,6 @@
 				442EACEB156219DC0032E1B2 /* ClipboardShareController.m in Sources */,
 				442EAD61156570BD0032E1B2 /* ShareController.m in Sources */,
 				442EAD73156580610032E1B2 /* MacroPreprocessor.m in Sources */,
-				442EAD76156587FB0032E1B2 /* SharesMacroPreprocessor.m in Sources */,
 				442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */,
 				446F86AA157402BC00CF00EB /* UIImage+Additions.m in Sources */,
 				445F6CD7157559D600E563DF /* ImageShare.m in Sources */,

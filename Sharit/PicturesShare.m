@@ -26,4 +26,13 @@
     }
     return desc;
 }
+
+- (NSMutableDictionary*)macrosDict {
+    return
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     NB(YES),@"pictures_is_shared",
+     NB(YES),@"show_link_pasteboard",
+     NB(YES),@"show_link_text",
+     nil];
+}
 @end

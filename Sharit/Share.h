@@ -18,4 +18,6 @@
 
 - (NSString*) detailsDescription;
 - (id) initWithTemplateLoader:(NSObject<TemplateLoader>*) _templateLoader;
+- (NSMutableDictionary*)macrosDict;
+- (void)processRequestData:(NSDictionary*)requestDict;
 @end

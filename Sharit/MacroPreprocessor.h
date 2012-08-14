@@ -16,6 +16,8 @@
 @property (nonatomic,strong) NSString* templateName;
 
 - (id) initWithLoader:(NSObject<TemplateLoader>*)loader templateName:(NSString*)templateName macroDictionary:(NSDictionary*)macroDictionary;
+- (id) initWithLoader:(NSObject<TemplateLoader>*)loader templateName:(NSString*)templateName;
+
 - (id) initWithTemplateText:(NSString*)templateText macroDictionary:(NSDictionary*)macroDictionary;
 
 - (NSString*) process;

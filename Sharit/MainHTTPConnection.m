@@ -7,7 +7,6 @@
 //
 
 #import "MainHTTPConnection.h"
-#import "SharesMacroPreprocessor.h"
 #import "HTTPDataResponse.h"
 #import "HTTPRedirectResponse.h"
 
@@ -20,22 +19,32 @@
 #import "GlobalDefaults.h"
 #import "ImageShare.h"
 #import "TextShare.h"
+#import "BasicTemplateLoader.h"
+#import "MacroPreprocessor.h"
 
 @interface MainHTTPConnection ()
 @property (nonatomic,strong) NSArray* indexPaths;
 @property (nonatomic,strong) NSString* redirectPath;
+@property (nonatomic,strong) MacroPreprocessor* indexPreprocessor;
 @end
 
 @implementation MainHTTPConnection
 @synthesize indexPaths;
 @synthesize redirectPath;
+@synthesize indexPreprocessor;
 
 - (id) initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig {
     if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])) {
         NSArray* paths = [NSArray arrayWithObjects:@"/",@"/index.html",@"/text.html",@"/pictures.html", nil];
         self.indexPaths =  paths;
+        [self initIndexPreprocessor];
     }
     return self;
+}
+
+- (void) initIndexPreprocessor {
+    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
+    self.indexPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"index"];
 }
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path {
@@ -52,24 +61,24 @@
 }
 
 - (HTTPDataResponse*) indexResponse:(NSString*)path {
-    SharesMacroPreprocessor* preprocessor = [[SharesMacroPreprocessor alloc] initWithPath:path];
-    NSData* response = [[preprocessor process] dataUsingEncoding:NSUTF8StringEncoding];
+    Share* share = [[SharesProvider instance] shareForPath:path];
+    NSMutableDictionary* macroDict = [share macrosDict];
+    [macroDict setObject:path forKey:kRedirectPath];
+
+    [self.indexPreprocessor setMacroDict:macroDict];
+    NSString* responseString = [self.indexPreprocessor process];
+
+    NSData* response = [responseString dataUsingEncoding:NSUTF8StringEncoding];
     return [[HTTPDataResponse alloc] initWithData:response];
 }
 
-- (void) processRequestData {
+- (void) processRequestData:(NSString*)path {
     NSData* postData = [request body];
     NSDictionary* dict = [self parseParams:[[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding]];
-    NSString* clipboard = [dict objectForKey:kClipboard];
-    NSString* text = [dict objectForKey:kText];
 
-    if (clipboard) {
-        ClipboardShare* share = [[SharesProvider instance] clipboardShare];
-        [share updateString:clipboard];
-    } else if (text) {
-        TextShare* share = [[SharesProvider instance] textShare];
-        [share setText:text];
-    }
+    Share* share = [[SharesProvider instance] shareForPath:path];
+    [share processRequestData:dict];
+
     self.redirectPath = [dict objectForKey:kRedirectPath];
     dispatch_async(dispatch_get_main_queue(), ^() {
         AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
@@ -116,7 +125,7 @@
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     if ([method isEqualToString:@"POST"]) {
-        [self processRequestData];
+        [self processRequestData:path];
         NSString* redirect = [self.redirectPath length]? self.redirectPath : @"/index.html";
         self.redirectPath = nil;
         return [self redirectResponse:redirect];

@@ -16,7 +16,7 @@
         %if clipboard_is_shared%
                 <h2>Pasteboard</h2>
                 <h3>Text:</h3>
-                <form action="/index.html" method="post">
+                <form action="%redirectPath%" method="post">
                     <textarea cols="40" rows="5" name="clipboard">%clipboard_text%</textarea>
                     <br/>
                     <input type="hidden" name="redirectPath" value="%redirectPath%" />
@@ -31,14 +31,14 @@
         %if text_is_shared%
             <h2>Text</h2>
             <h3>Text:</h3>
-            <form action="/index.html" method="post">
+            <form action="%redirectPath%" method="post">
                 <textarea cols="40" rows="5" name="text">%text%</textarea>
                 <br/>
                 <input type="hidden" name="redirectPath" value="%redirectPath%" />
                 <input type="submit" value="Update" />
             </form>
         %endif%
-        
+
         %if pictures_is_shared%
             %redirectPath%
         %endif%
