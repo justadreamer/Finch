@@ -12,6 +12,7 @@
 #import "TextShare.h"
 #import "PicturesShare.h"
 #import "ClipboardShareController.h"
+#import "TextShareController.h"
 
 @interface ShareController ()
 
@@ -36,6 +37,8 @@
     ShareController* shareController = nil;
     if ([share isKindOfClass:[ClipboardShare class]]) {
         shareController = [[ClipboardShareController alloc] init];
+    } else if ([share isKindOfClass:[TextShare class]]) {
+        shareController = [[TextShareController alloc] init];
     }
     shareController.share = share;
     return shareController;

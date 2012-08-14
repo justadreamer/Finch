@@ -123,8 +123,8 @@ const NSInteger SEC_BONJOUR = 3;
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:NO];
 
-    if (SEC_SHARED == indexPath.section) {
-        Share* share = [[[SharesProvider instance] shares] objectAtIndex:indexPath.row];
+    Share* share = (Share*)[self.tableModel cellModelForIndexPath:indexPath].model;
+    if ([share isKindOfClass:[Share class]]) {
         ShareController* shareController = [ShareController controllerWithShare:share];
         if (shareController) {
             [self.navigationController pushViewController:shareController animated:YES];
