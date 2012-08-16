@@ -11,6 +11,7 @@
 #import <arpa/inet.h>  
 #import "Iface.h"
 #import "GlobalDefaults.h"
+#import "NSStringAdditions.h"
 
 @interface Helper() {
     

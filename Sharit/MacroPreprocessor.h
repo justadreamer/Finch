@@ -22,9 +22,5 @@
 
 - (NSString*) process;
 
-//for overriding, inheritance:
-- (NSString*) replaceMacro:(NSString*)macro;
-- (NSString*) macroName:(NSString*)macro;
-
 + (NSString*) f_to_int_s:(CGFloat)f;
 @end

@@ -76,6 +76,8 @@
 		44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9A15D83F6C005FA450 /* CellModel.m */; };
 		44B92F7815DADEDA008DBC29 /* TextShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B92F7615DADEDA008DBC29 /* TextShareController.m */; };
 		44B92F7915DADEDA008DBC29 /* TextShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B92F7715DADEDA008DBC29 /* TextShareController.xib */; };
+		44B92FA115DD7B1D008DBC29 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F86A9157402BC00CF00EB /* UIImage+Additions.m */; };
+		44B92FA215DD7B33008DBC29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		44BEA3181576AFF600A1A7A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44BEA3161576AFF600A1A7A7 /* InfoPlist.strings */; };
@@ -233,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B92FA215DD7B33008DBC29 /* CoreGraphics.framework in Frameworks */,
 				44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */,
 				44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */,
 				44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */,
@@ -720,6 +723,7 @@
 				4477A40B15910D0E00EC3280 /* Helper.m in Sources */,
 				4477A40C15910D1500EC3280 /* BasicTemplateLoader.m in Sources */,
 				4477A40D15910D5300EC3280 /* Iface.m in Sources */,
+				44B92FA115DD7B1D008DBC29 /* UIImage+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,9 +30,9 @@
 
     [self doTestTemplate:@"basic%basic_key%basic" expected:@"basic_trivial_basic"];
     [self doTestTemplate:@"%if yes_key%%basic_key%%endif%" expected:@"_trivial_"];
-    [self doTestTemplate:@"%if no_key%%basic_key%%endif%" expected:@"<!--_trivial_-->"];
-    [self doTestTemplate:@"%if yes_key%%if no_key%%basic_key%%endif%%endif%" expected:@"<!--_trivial_-->"];
-    [self doTestTemplate:@"%if non_existant_key%non_existant%endif%" expected:@"<!--non_existant-->"];
-    [self doTestTemplate:@"%if non_existant_key%%if yes_key%%basic_key%%endif%%endif%" expected:@"<!--_trivial_-->"];
+    [self doTestTemplate:@"%if no_key%%basic_key%%endif%" expected:@""];
+    [self doTestTemplate:@"aa%if yes_key%%if no_key%%basic_key%%endif%%endif%bb" expected:@"aabb"];
+    [self doTestTemplate:@"start %if non_existant_key%non_existant%endif% finish" expected:@"start  finish"];
+    [self doTestTemplate:@"start %if non_existant_key%%if yes_key%%basic_key%%endif%%endif% finish" expected:@"start  finish"];
 }
 @end
