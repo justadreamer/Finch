@@ -11,6 +11,7 @@
 @interface Helper : NSObject
 @property (nonatomic,assign) BOOL isBonjourPublished;
 @property (nonatomic,strong) NSString* bonjourName;
+@property (nonatomic,strong,readonly) NSString* documentsFolder;
 
 + (Helper*) instance;
 
@@ -22,7 +23,6 @@
 - (NSString*) docrootFolder;
 - (NSString*) templatesFolder;
 - (NSString*) documentsRoot;
-
 - (NSString*) bonjourName;
 
 @end

@@ -7,14 +7,49 @@
 //
 
 #import "TextShare.h"
+#import "Helper.h"
 
 @implementation TextShare
-@synthesize text;
+@synthesize text=_text;
+
 - (id) init {
     if ((self = [super init])) {
         self.name = @"Text";
     }
     return self;
+}
+
+NSString* const textFilePath = @"TextShare.txt";
+- (NSString*)path {
+    return [[[Helper instance] documentsFolder] stringByAppendingPathComponent:textFilePath];
+}
+
+- (void) loadText {
+    NSError* error = nil;
+    _text = [NSString stringWithContentsOfFile:[self path] encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        VLog(error);
+    }
+}
+
+- (void) saveText {
+    NSError* error = nil;
+    [self.text writeToFile:[self path] atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        VLog(error);
+    }
+}
+
+- (NSString*) text {
+    if (!_text) {
+        [self loadText];
+    }
+    return _text;
+}
+
+- (void) setText:(NSString *)text {
+    _text = text;
+    [self saveText];
 }
 
 - (NSString*) detailsDescription {

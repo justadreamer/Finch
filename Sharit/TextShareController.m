@@ -9,8 +9,9 @@
 #import "TextShareController.h"
 #import "TextShare.h"
 
-@interface TextShareController ()
+@interface TextShareController ()<UITextViewDelegate>
 @property (nonatomic,strong) IBOutlet UITextView* textView;
+@property (nonatomic,strong) UIBarButtonItem* doneButton;
 @end
 
 @implementation TextShareController
@@ -27,6 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self refresh];
+    self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.textView resignFirstResponder];
 }
 
 - (void)viewDidUnload {
@@ -49,4 +56,27 @@
 - (void) sharesRefreshed {
     [self refresh];
 }
+
+- (void) showDoneButton:(BOOL)show {
+    self.navigationItem.rightBarButtonItem = show ? self.doneButton : nil;
+}
+
+- (void) doneButtonTapped:(id)sender {
+    [self.textView resignFirstResponder];
+}
+
+#pragma mark -
+#pragma mark UITextViewDelegate
+
+- (void) textViewDidBeginEditing:(UITextView *)textView {
+    [self showDoneButton:YES];
+}
+
+- (void) textViewDidEndEditing:(UITextView *)textView {
+    [self textShare].text = textView.text;
+    [self showDoneButton:NO];
+}
+
+#pragma mark -
+
 @end

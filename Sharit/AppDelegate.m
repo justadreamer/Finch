@@ -190,7 +190,7 @@ void uncaughtExceptionHandler(NSException *exception);
     [txtDict setObject:@"quack" forKey:@"duck"];
 
     NSData *txtData = [NSNetService dataFromTXTRecordDictionary:txtDict];
-    [netService setTXTRecordData:txtData];/**/
+    [netService setTXTRecordData:txtData];*/
 }
 
 - (void)netServiceDidPublish:(NSNetService *)ns {
