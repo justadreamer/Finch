@@ -13,7 +13,7 @@
 @synthesize isUpdated;
 @synthesize name;
 @synthesize path;
-@synthesize templateLoader;
+@synthesize macroPreprocessor = _macroPreprocessor;
 
 - (NSString*) detailsDescription {
     return nil;
@@ -27,9 +27,9 @@
     return self;
 }
 
-- (id) initWithTemplateLoader:(NSObject<TemplateLoader>*) _templateLoader {
+- (id) initWithMacroPreprocessor:(MacroPreprocessor *)macroPreprocessor {
     if ((self = [self init])) {
-        self.templateLoader = _templateLoader;
+        _macroPreprocessor = macroPreprocessor;
     }
     return self;
 }

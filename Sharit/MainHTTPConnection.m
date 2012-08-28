@@ -21,6 +21,7 @@
 #import "TextShare.h"
 #import "BasicTemplateLoader.h"
 #import "MacroPreprocessor.h"
+#import "ALAssetShare.h"
 
 @interface MainHTTPConnection ()
 @property (nonatomic,strong) NSArray* indexPaths;
@@ -61,7 +62,7 @@
 }
 
 - (HTTPDataResponse*) indexResponse:(NSString*)path {
-    Share* share = [[SharesProvider instance] shareForPath:path];
+    Share* share = [[SharesProvider instance] shareForPath:path andParams:nil];
     NSMutableDictionary* macroDict = [share macrosDict];
     [macroDict setObject:path forKey:kRedirectPath];
 
@@ -76,7 +77,7 @@
     NSData* postData = [request body];
     NSDictionary* dict = [self parseParams:[[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding]];
 
-    Share* share = [[SharesProvider instance] shareForPath:path];
+    Share* share = [[SharesProvider instance] shareForPath:path andParams:dict];
     [share processRequestData:dict];
 
     self.redirectPath = [dict objectForKey:kRedirectPath];
@@ -114,12 +115,17 @@
 
 - (HTTPDataResponse*) responseForShareAtPath:(NSString*)path {
     SharesProvider* provider = [SharesProvider instance];
+    NSDictionary* params = [self parseGetParams];
     NSString* noParamsPath = [self removeParams:path];
-    Share* share = [provider shareForPath:noParamsPath];
+    Share* share = [provider shareForPath:noParamsPath andParams:params];
     HTTPDataResponse* response = nil;
     if ([share isKindOfClass:[ImageShare class]]) {
         response = [self imageResponseForShare:(ImageShare*)share atPath:path];
+    } else if ([share isKindOfClass:[ALAssetShare class]]) {
+        NSData* data = [(ALAssetShare*)share dataForPath:path];
+        response = [[HTTPDataResponse alloc] initWithData:data];
     }
+        
     return response;
 }
 

@@ -14,6 +14,7 @@
 #import "SharesProvider.h"
 #import "MainHTTPConnection.h"
 #import "GlobalDefaults.h"
+#import "SharesProvider.h"
 
 @interface AppDelegate()<NSNetServiceDelegate>
 @property (nonatomic,strong) HTTPServer* httpServer;
@@ -81,6 +82,7 @@ void uncaughtExceptionHandler(NSException *exception);
     if (error) {
         VLog(error);
     }
+    [[SharesProvider instance] refreshShares];
     [self.viewController refresh];
 }
 

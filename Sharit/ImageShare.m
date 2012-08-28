@@ -51,8 +51,8 @@ static NSDictionary* sizeTypeDict;
         [params setObject:fs(size.width) forKey:[@"img_width_" stringByAppendingString:k]];
         [params setObject:fs(size.height) forKey:[@"img_height_" stringByAppendingString:k]];
     }
-    MacroPreprocessor* mp = [[MacroPreprocessor alloc] initWithLoader:self.templateLoader templateName:@"image" macroDictionary:params];
-    NSString* html = [mp process];
+    [self.macroPreprocessor setMacroDict:params];
+    NSString* html = [self.macroPreprocessor process];
     return SAFE_STRING(html);
 }
 

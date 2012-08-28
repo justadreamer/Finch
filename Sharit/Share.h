@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MacroPreprocessor;
 @protocol TemplateLoader;
 
 @interface Share : NSObject
@@ -14,10 +15,10 @@
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,assign) BOOL isUpdated;
 @property (nonatomic,strong) NSString* path;
-@property (nonatomic,strong) NSObject<TemplateLoader>* templateLoader;
+@property (nonatomic,strong) MacroPreprocessor* macroPreprocessor;
 
 - (NSString*) detailsDescription;
-- (id) initWithTemplateLoader:(NSObject<TemplateLoader>*) _templateLoader;
+- (id) initWithMacroPreprocessor:(MacroPreprocessor*)macroPreprocessor;
 - (NSMutableDictionary*)macrosDict;
 - (void)processRequestData:(NSDictionary*)requestDict;
 @end

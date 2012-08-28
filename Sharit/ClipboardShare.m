@@ -10,6 +10,7 @@
 #import "UIImage+Additions.h"
 #import "ImageShare.h"
 #import "GlobalDefaults.h"
+#import "MacroPreprocessor.h"
 
 @interface ClipboardShare ()
 @end
@@ -38,9 +39,9 @@
 
 - (ImageShare*) imageShare {
     if (nil==imageShare) {
-        imageShare = [[ImageShare alloc] init];
+        MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:self.macroPreprocessor.loader templateName:@"image"];
+        imageShare = [[ImageShare alloc] initWithMacroPreprocessor:macroPreprocessor];
         imageShare.path = URLClipboardImage;
-        imageShare.templateLoader = self.templateLoader;
     }
     imageShare.image = [self image];
     return imageShare;

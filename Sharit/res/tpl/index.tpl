@@ -40,7 +40,7 @@
         %endif%
 
         %if pictures_is_shared%
-            %redirectPath%
+            %pictures_html_block%
         %endif%
     </body>
 </html>

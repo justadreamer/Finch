@@ -15,6 +15,8 @@
 #import "ImageShare.h"
 #import "BasicTemplateLoader.h"
 #import "Helper.h"
+#import "ALAssetShare.h"
+#import "MacroPreprocessor.h"
 
 @interface SharesProvider() {
     
@@ -43,9 +45,9 @@ SharesProvider* globalSharesProvider;
 - (NSMutableArray*) setupShares {
     NSMutableArray* _shares = [NSMutableArray array];
     BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
-    Share* clipboard = [[ClipboardShare alloc] initWithTemplateLoader:basicLoader];
+    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"index"];
 
-    clipboard.templateLoader = basicLoader;
+    Share* clipboard = [[ClipboardShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     [_shares addObject:clipboard];
 
     Share* text = [[TextShare alloc] init];
@@ -78,7 +80,7 @@ SharesProvider* globalSharesProvider;
     return (PicturesShare*)[self shareForClass:[PicturesShare class]];
 }
 
-- (Share*) shareForPath:(NSString*)path {
+- (Share*) shareForPath:(NSString*)path andParams:(NSDictionary*)params {
     Share* share = nil;
     if ([path isEqualToString:URLClipboardImage]) {
         share = [[self clipboardShare] imageShare];
@@ -86,11 +88,19 @@ SharesProvider* globalSharesProvider;
         share = [self textShare];
     } else if ([path contains:@"pictures"]) {
         share = [self picturesShare];
+    } else if ([path contains:PATH_PREFIX_ASSET]){
+        NSNumber* n = [params objectForKey:PARAM_ASSET_N];
+        if (n) {
+            NSInteger index = [n intValue];
+            share = [[self picturesShare] shareForIndex:index];
+        }
     } else {
         share = [self clipboardShare];
     }
     return share;
 }
 
-
+- (void) refreshShares {
+    [[self picturesShare] refresh];
+}
 @end

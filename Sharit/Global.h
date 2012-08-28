@@ -12,11 +12,12 @@
 #import "DLog.h"
 #import "NSStringAdditions.h"
 #import "UIImage+Additions.h"
+#import "GlobalDefaults.h"
 
 #define kClipboard @"clipboard"
 #define kRedirectPath @"redirectPath"
 #define kText @"text"
-#define SAFE_STRING(s) s ? s : @""
+#define SAFE_STRING(s) s ? [s description]: @""
 #define OBJ_OR_NSNULL(obj) obj ? obj : [NSNull null]
 #define NI(v) [NSNumber numberWithInt:v]
 #define NB(v) [NSNumber numberWithBool:v]

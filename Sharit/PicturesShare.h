@@ -7,7 +7,9 @@
 //
 
 #import "Share.h"
+@class ALAssetShare;
 
 @interface PicturesShare : Share
-@property (nonatomic,strong) NSArray* images;
+- (ALAssetShare*) shareForIndex:(NSInteger)index;
+- (void) refresh;
 @end

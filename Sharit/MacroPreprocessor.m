@@ -91,7 +91,8 @@
     range.length = [result length]-range.location;
 }
 
-- (void) replaceWith:(NSString*)s {
+- (void) replaceWith:(NSObject*)replacement {
+    NSString* s = [replacement description];
     [result replaceCharactersInRange:range withString:s];
     range.location += [s length];
     [self adjustRangeLength];

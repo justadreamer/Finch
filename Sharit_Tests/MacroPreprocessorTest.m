@@ -35,4 +35,9 @@
     [self doTestTemplate:@"start %if non_existant_key%non_existant%endif% finish" expected:@"start  finish"];
     [self doTestTemplate:@"start %if non_existant_key%%if yes_key%%basic_key%%endif%%endif% finish" expected:@"start  finish"];
 }
+
+- (void) testReplacing {
+    macroDict = [NSDictionary dictionaryWithObjectsAndKeys:@(75),@"number_key", nil];
+    [self doTestTemplate:@"%number_key%" expected:@"75"];
+}
 @end

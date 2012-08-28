@@ -18,5 +18,6 @@
 - (ClipboardShare*) clipboardShare;
 - (TextShare*) textShare;
 - (PicturesShare*) picturesShare;
-- (Share*) shareForPath:(NSString*)path;
+- (Share*) shareForPath:(NSString*)path andParams:(NSDictionary*)params;
+- (void) refreshShares;
 @end

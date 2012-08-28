@@ -74,6 +74,8 @@
 		44A35D9515D83F44005FA450 /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9415D83F44005FA450 /* TableModel.m */; };
 		44A35D9815D83F5E005FA450 /* SectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9715D83F5E005FA450 /* SectionModel.m */; };
 		44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9A15D83F6C005FA450 /* CellModel.m */; };
+		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
+		44A79B1215E6B78D00498FBD /* ALAssetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A79B1115E6B78C00498FBD /* ALAssetShare.m */; };
 		44B92F7815DADEDA008DBC29 /* TextShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B92F7615DADEDA008DBC29 /* TextShareController.m */; };
 		44B92F7915DADEDA008DBC29 /* TextShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B92F7715DADEDA008DBC29 /* TextShareController.xib */; };
 		44B92FA115DD7B1D008DBC29 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F86A9157402BC00CF00EB /* UIImage+Additions.m */; };
@@ -198,6 +200,9 @@
 		44A35D9715D83F5E005FA450 /* SectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionModel.m; sourceTree = "<group>"; };
 		44A35D9915D83F6C005FA450 /* CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellModel.h; sourceTree = "<group>"; };
 		44A35D9A15D83F6C005FA450 /* CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellModel.m; sourceTree = "<group>"; };
+		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		44A79B1015E6B78C00498FBD /* ALAssetShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetShare.h; sourceTree = "<group>"; };
+		44A79B1115E6B78C00498FBD /* ALAssetShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetShare.m; sourceTree = "<group>"; };
 		44B92F7515DADEDA008DBC29 /* TextShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextShareController.h; sourceTree = "<group>"; };
 		44B92F7615DADEDA008DBC29 /* TextShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextShareController.m; sourceTree = "<group>"; };
 		44B92F7715DADEDA008DBC29 /* TextShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextShareController.xib; sourceTree = "<group>"; };
@@ -222,6 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */,
 				442EACAB155D9D780032E1B2 /* SystemConfiguration.framework in Frameworks */,
 				444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */,
 				444B449E155C378700319EC7 /* Security.framework in Frameworks */,
@@ -292,6 +298,8 @@
 				442EACE215620FE10032E1B2 /* PicturesShare.m */,
 				445F6CD5157559D600E563DF /* ImageShare.h */,
 				445F6CD6157559D600E563DF /* ImageShare.m */,
+				44A79B1015E6B78C00498FBD /* ALAssetShare.h */,
+				44A79B1115E6B78C00498FBD /* ALAssetShare.m */,
 			);
 			name = "Share models";
 			sourceTree = "<group>";
@@ -329,6 +337,7 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
+				44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */,
 				444B42D7155C2FD200319EC7 /* Sharit */,
 				44BEA3131576AFF600A1A7A7 /* Sharit_Tests */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,
@@ -707,6 +716,7 @@
 				44A35D9815D83F5E005FA450 /* SectionModel.m in Sources */,
 				44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */,
 				44B92F7815DADEDA008DBC29 /* TextShareController.m in Sources */,
+				44A79B1215E6B78D00498FBD /* ALAssetShare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
