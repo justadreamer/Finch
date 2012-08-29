@@ -15,7 +15,7 @@ static NSString* const templatesFolderName = @"tpl";
 static NSString* const docrootFolderName = @"docroot";
 static NSString* const PATH_PREFIX_ASSET = @"asset";
 static NSString* const PATH_PREFIX_ASSET_THUMB = @"assetThumb";
-static NSString* const PARAM_ASSET_N = @"n";
+static NSString* const PARAM_ASSET_ID = @"assetId";
 @interface GlobalDefaults : NSObject
 + (UInt16) port;
 @end

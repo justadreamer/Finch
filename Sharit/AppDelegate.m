@@ -36,6 +36,7 @@
 @synthesize netService;
 
 void uncaughtExceptionHandler(NSException *exception);
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
@@ -66,6 +67,7 @@ void uncaughtExceptionHandler(NSException *exception);
     [self.reachabilityWiFi stopNotifier];
     [self.reachabilityForInternet stopNotifier];
     [self.httpServer stop];
+    [self.netService stop];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -84,6 +86,7 @@ void uncaughtExceptionHandler(NSException *exception);
     }
     [[SharesProvider instance] refreshShares];
     [self.viewController refresh];
+    [self.netService publish];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -182,7 +185,6 @@ void uncaughtExceptionHandler(NSException *exception);
                                                  port:[GlobalDefaults port]];
 
     [netService setDelegate:self];
-    [netService publish];
 
     // You can optionally add TXT record stuff
 

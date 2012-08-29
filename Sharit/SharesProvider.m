@@ -89,10 +89,9 @@ SharesProvider* globalSharesProvider;
     } else if ([path contains:@"pictures"]) {
         share = [self picturesShare];
     } else if ([path contains:PATH_PREFIX_ASSET]){
-        NSNumber* n = [params objectForKey:PARAM_ASSET_N];
-        if (n) {
-            NSInteger index = [n intValue];
-            share = [[self picturesShare] shareForIndex:index];
+        NSString* assetId = [params objectForKey:PARAM_ASSET_ID];
+        if (assetId) {
+            share = [[self picturesShare] shareForId:assetId];
         }
     } else {
         share = [self clipboardShare];

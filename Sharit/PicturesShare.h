@@ -10,6 +10,6 @@
 @class ALAssetShare;
 
 @interface PicturesShare : Share
-- (ALAssetShare*) shareForIndex:(NSInteger)index;
+- (ALAssetShare*) shareForId:(NSString*)assetId;
 - (void) refresh;
 @end

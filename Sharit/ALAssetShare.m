@@ -21,6 +21,9 @@
     CGImageRef thumb = [self.asset thumbnail];
     UIImage* thumbImg = [UIImage imageWithCGImage:thumb];
     CGSize size = thumbImg.size;
+    if (CGSizeEqualToSize(CGSizeZero, size)) {
+        size = [self.asset defaultRepresentation].dimensions;
+    }
     [params setObject:@(size.width) forKey:@"img_width"];
     [params setObject:@(size.height) forKey:@"img_height"];
     [self.macroPreprocessor setMacroDict:params];
@@ -33,7 +36,8 @@
     if ([path contains:PATH_PREFIX_ASSET_THUMB]) {
         data = UIImageJPEGRepresentation([UIImage imageWithCGImage:asset.thumbnail],0.5);
     } else if ([path contains:PATH_PREFIX_ASSET]) {
-        data = UIImageJPEGRepresentation([UIImage imageWithCGImage:[asset.defaultRepresentation fullResolutionImage]], 0.5);
+        UIImage* img = [UIImage imageWithCGImage:[asset.defaultRepresentation fullResolutionImage] scale:1.0 orientation:(UIImageOrientation)asset.defaultRepresentation.orientation];
+        data = UIImageJPEGRepresentation([img fixOrientation], 0.5);
     }
     return data;
 }

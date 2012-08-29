@@ -17,11 +17,13 @@
 @interface PicturesShare()
 @property(nonatomic,strong) NSMutableArray* assetShares;
 @property(nonatomic,strong) ALAssetsLibrary* library;
+@property(nonatomic,strong) NSMutableDictionary* assetSharesMap;
 @end
 
 @implementation PicturesShare
 @synthesize assetShares;
 @synthesize library;
+@synthesize assetSharesMap;
 
 - (id) init {
     if ((self = [super init])) {
@@ -32,20 +34,25 @@
 }
 
 - (void) refresh {
+    srand(time(NULL));
     self.assetShares = [NSMutableArray array];
-    __block NSUInteger assetCounter = 0;
+    self.assetSharesMap = [NSMutableDictionary dictionary];
     BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
     MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"asset"];
     [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:
      ^(ALAssetsGroup* group, BOOL* stop) {
          [group enumerateAssetsUsingBlock:
           ^(ALAsset* asset,NSUInteger index, BOOL* stop) {
-              ALAssetShare* assetShare = [[ALAssetShare alloc] init];
-              assetShare.asset = asset;
-              assetShare.path = [NSString stringWithFormat:@"/%@?%@=%d",PATH_PREFIX_ASSET, PARAM_ASSET_N,assetCounter];
-              assetShare.thumbPath = [NSString stringWithFormat:@"/%@?%@=%d",PATH_PREFIX_ASSET_THUMB, PARAM_ASSET_N,assetCounter++];
-              assetShare.macroPreprocessor = macroPreprocessor;
-              [self.assetShares addObject:assetShare];
+              if (asset && [asset thumbnail]) {
+                  ALAssetShare* assetShare = [[ALAssetShare alloc] init];
+                  assetShare.asset = asset;
+                  NSString* assetId = [[[[asset defaultRepresentation] url] absoluteString] MD5Hash];
+                  [self.assetSharesMap setObject:assetShare forKey:assetId];
+                  assetShare.path = [NSString stringWithFormat:@"/%@?%@=%@",PATH_PREFIX_ASSET, PARAM_ASSET_ID,assetId];
+                  assetShare.thumbPath = [NSString stringWithFormat:@"/%@?%@=%@",PATH_PREFIX_ASSET_THUMB, PARAM_ASSET_ID,assetId];
+                  assetShare.macroPreprocessor = macroPreprocessor;
+                  [self.assetShares addObject:assetShare];
+              }
           }];
      }
                               failureBlock:
@@ -82,10 +89,7 @@
     return html;
 }
 
-- (ALAssetShare*) shareForIndex:(NSInteger)index {
-    if (index>=0 && index<[self.assetShares count]) {
-        return [self.assetShares objectAtIndex:index];
-    }
-    return nil;
+- (ALAssetShare*) shareForId:(NSString*)assetId {
+    return [self.assetSharesMap objectForKey:assetId];
 }
 @end
