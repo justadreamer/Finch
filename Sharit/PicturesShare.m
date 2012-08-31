@@ -48,8 +48,8 @@
                   assetShare.asset = asset;
                   NSString* assetId = [[[[asset defaultRepresentation] url] absoluteString] MD5Hash];
                   [self.assetSharesMap setObject:assetShare forKey:assetId];
-                  assetShare.path = [NSString stringWithFormat:@"/%@?%@=%@",PATH_PREFIX_ASSET, PARAM_ASSET_ID,assetId];
-                  assetShare.thumbPath = [NSString stringWithFormat:@"/%@?%@=%@",PATH_PREFIX_ASSET_THUMB, PARAM_ASSET_ID,assetId];
+                  assetShare.path = [NSString stringWithFormat:@"/%@%@%@",PATH_PREFIX_ASSET, assetId,ASSET_EXT];
+                  assetShare.thumbPath = [NSString stringWithFormat:@"/%@%@%@",PATH_PREFIX_ASSET_THUMB,assetId,ASSET_EXT];
                   assetShare.macroPreprocessor = macroPreprocessor;
                   [self.assetShares addObject:assetShare];
               }
@@ -89,7 +89,10 @@
     return html;
 }
 
-- (ALAssetShare*) shareForId:(NSString*)assetId {
+- (ALAssetShare*) shareForPath:(NSString*)path {
+    NSString* prefix = [path contains:PATH_PREFIX_ASSET_THUMB] ? PATH_PREFIX_ASSET_THUMB : PATH_PREFIX_ASSET;
+    NSString* assetId = [path substringBetweenFirst:prefix andSecond:ASSET_EXT];
     return [self.assetSharesMap objectForKey:assetId];
 }
+
 @end

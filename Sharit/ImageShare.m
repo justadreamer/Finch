@@ -45,14 +45,17 @@ static NSDictionary* sizeTypeDict;
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     for (NSString* k in [sizeTypeDict allKeys]) {
         [params setObject:[self.path stringByAppendingFormat:@"?size=%@",k] forKey:[@"img_src_" stringByAppendingString:k]];
-        int imgType = [[sizeTypeDict objectForKey:k] intValue];
-        CGFloat w = constraints[imgType];
-        CGSize size = [self.image sizeProportionallyScaledToSize:CGSizeMake(w, w)];
-        [params setObject:fs(size.width) forKey:[@"img_width_" stringByAppendingString:k]];
-        [params setObject:fs(size.height) forKey:[@"img_height_" stringByAppendingString:k]];
     }
+
+    CGFloat w = constraints[ImageSize_Small];
+    CGSize size = [self.image sizeProportionallyScaledToSize:CGSizeMake(w, w)];
+    [params setObject:fs(size.width) forKey:@"img_width_s"];
+    [params setObject:fs(size.height) forKey:@"img_height_s"];
+
     [self.macroPreprocessor setMacroDict:params];
+
     NSString* html = [self.macroPreprocessor process];
+
     return SAFE_STRING(html);
 }
 

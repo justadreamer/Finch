@@ -16,6 +16,8 @@ static NSString* const docrootFolderName = @"docroot";
 static NSString* const PATH_PREFIX_ASSET = @"asset";
 static NSString* const PATH_PREFIX_ASSET_THUMB = @"assetThumb";
 static NSString* const PARAM_ASSET_ID = @"assetId";
+static NSString* const ASSET_EXT = @".jpeg";
+
 @interface GlobalDefaults : NSObject
 + (UInt16) port;
 @end

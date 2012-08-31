@@ -12,7 +12,8 @@ typedef enum {
     ImageSize_Actual,
     ImageSize_Small,
     ImageSize_Medium,
-    ImageSize_Large
+    ImageSize_Large,
+    ImageSize_Thumb
 } ImageSizeType;
 
 @interface ImageShare : Share

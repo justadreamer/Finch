@@ -88,11 +88,8 @@ SharesProvider* globalSharesProvider;
         share = [self textShare];
     } else if ([path contains:@"pictures"]) {
         share = [self picturesShare];
-    } else if ([path contains:PATH_PREFIX_ASSET]){
-        NSString* assetId = [params objectForKey:PARAM_ASSET_ID];
-        if (assetId) {
-            share = [[self picturesShare] shareForId:assetId];
-        }
+    } else if ([path contains:PATH_PREFIX_ASSET] || [path contains:PATH_PREFIX_ASSET_THUMB]){
+        share = [[self picturesShare] shareForPath:path];
     } else {
         share = [self clipboardShare];
     }
