@@ -14,18 +14,8 @@
 #import "Helper.h"
 #import "GlobalDefaults.h"
 
-static CGFloat constraints[] = {
-        0,      // actual
-        200,    // small
-        400,    // medium
-        800     // large
-};
-
-
 @implementation ImageShare
 @synthesize image;
-
-static NSDictionary* sizeTypeDict;
 
 - (id) init {
     self = [super init];
@@ -36,6 +26,7 @@ static NSDictionary* sizeTypeDict;
                 NI(ImageSize_Small),    @"s",
                 NI(ImageSize_Medium),   @"m",
                 NI(ImageSize_Large),    @"l",
+                NI(ImageSize_Thumb),    @"t",
                 nil];
     });
     return self;
@@ -47,8 +38,7 @@ static NSDictionary* sizeTypeDict;
         [params setObject:[self.path stringByAppendingFormat:@"?size=%@",k] forKey:[@"img_src_" stringByAppendingString:k]];
     }
 
-    CGFloat w = constraints[ImageSize_Small];
-    CGSize size = [self.image sizeProportionallyScaledToSize:CGSizeMake(w, w)];
+    CGSize size = [self sizeForImageSizeType:ImageSize_Small];
     [params setObject:fs(size.width) forKey:@"img_width_s"];
     [params setObject:fs(size.height) forKey:@"img_height_s"];
 
@@ -59,9 +49,15 @@ static NSDictionary* sizeTypeDict;
     return SAFE_STRING(html);
 }
 
-- (NSData*) dataForSize:(ImageSizeType)sizeType {
-    UIImage* img = [self imageForSize:sizeType];
-    return UIImagePNGRepresentation(img);
+- (CGSize)sizeForImageSizeType:(ImageSizeType)sizeType {
+    CGFloat w = constraints[ImageSize_Small];
+    CGSize size = [self.image sizeProportionallyScaledToSize:CGSizeMake(w, w)];
+    return size;
+}
+
+- (NSData*) dataForSizeType:(ImageSizeType)sizeType {
+    UIImage* img = [self imageForSizeType:sizeType];
+    return UIImageJPEGRepresentation(img,0.5);
 }
 
 - (ImageSizeType) imageSizeTypeFromParam:(NSString*)param {
@@ -70,10 +66,10 @@ static NSDictionary* sizeTypeDict;
 
 - (NSData*)dataForSizeParam:(NSString*)param {
     ImageSizeType sizeType = [self imageSizeTypeFromParam:param];
-    return [self dataForSize:sizeType];
+    return [self dataForSizeType:sizeType];
 }
 
-- (UIImage*)imageForSize:(ImageSizeType)sizeType {
+- (UIImage*)imageForSizeType:(ImageSizeType)sizeType {
     CGFloat constraint = constraints[sizeType];
     UIImage* img = nil;
     if (constraint>0 && (constraint < image.size.width || constraint < image.size.height)) {

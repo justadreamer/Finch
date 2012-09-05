@@ -36,7 +36,7 @@
     ClipboardShare* share = [self clipboardShare];
     self.textView.text = [share string];
     ImageShare* imageShare = [share imageShare]; 
-    self.imageView.image = [imageShare imageForSize:ImageSize_Medium];
+    self.imageView.image = [imageShare imageForSizeType:ImageSize_Medium];
 }
 
 - (void) viewWillAppear:(BOOL)animated {

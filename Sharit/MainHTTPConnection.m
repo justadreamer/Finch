@@ -121,11 +121,7 @@
     HTTPDataResponse* response = nil;
     if ([share isKindOfClass:[ImageShare class]]) {
         response = [self imageResponseForShare:(ImageShare*)share atPath:path];
-    } else if ([share isKindOfClass:[ALAssetShare class]]) {
-        NSData* data = [(ALAssetShare*)share dataForPath:path];
-        response = [[HTTPDataResponse alloc] initWithData:data];
     }
-        
     return response;
 }
 

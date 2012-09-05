@@ -9,36 +9,57 @@
 #import "GlobalDefaults.h"
 #import "ALAssetShare.h"
 #import "MacroPreprocessor.h"
+@interface ALAssetShare()
+@property (nonatomic,strong) UIImage* thumbnail;
+@end
 
 @implementation ALAssetShare
-@synthesize asset;
-@synthesize thumbPath;
+@synthesize asset=_asset;
+@synthesize thumbnail=_thumbnail;
 
-- (NSString*) htmlBlock {
-    NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    [params setObject:self.path forKey:@"path"];
-    [params setObject:self.thumbPath forKey:@"img_src"];
-    CGImageRef thumb = [self.asset thumbnail];
-    UIImage* thumbImg = [UIImage imageWithCGImage:thumb];
-    CGSize size = thumbImg.size;
-    if (CGSizeEqualToSize(CGSizeZero, size)) {
-        size = [self.asset defaultRepresentation].dimensions;
-    }
-    [params setObject:@(size.width) forKey:@"img_width"];
-    [params setObject:@(size.height) forKey:@"img_height"];
-    [self.macroPreprocessor setMacroDict:params];
-    NSString* html = [self.macroPreprocessor process];
-    return SAFE_STRING(html);
+- (void) setAsset:(ALAsset *)asset {
+    _asset = asset;
+    _thumbnail = [UIImage imageWithCGImage:[_asset thumbnail]];
 }
 
-- (NSData*) dataForPath:(NSString *)path {
-    NSData* data = nil;
-    if ([path contains:PATH_PREFIX_ASSET_THUMB]) {
-        data = UIImageJPEGRepresentation([UIImage imageWithCGImage:asset.thumbnail],0.5);
-    } else if ([path contains:PATH_PREFIX_ASSET]) {
-        UIImage* img = [UIImage imageWithCGImage:[asset.defaultRepresentation fullResolutionImage] scale:1.0 orientation:(UIImageOrientation)asset.defaultRepresentation.orientation];
-        data = UIImageJPEGRepresentation([img fixOrientation], 0.5);
+- (UIImage*)imageForSizeType:(ImageSizeType)sizeType {
+    if (ImageSize_Thumb==sizeType) {
+        return _thumbnail;
+    } else if (ImageSize_Small==sizeType) {
+        return [UIImage imageWithCGImage:[_asset aspectRatioThumbnail]];
     }
-    return data;
+    ALAssetRepresentation* defaultRep = [_asset defaultRepresentation];
+    CGImageRef fullResImg = [defaultRep fullResolutionImage];
+    CGFloat scale = [self scaleForImageSizeType:sizeType];
+    UIImage* img = [UIImage imageWithCGImage:fullResImg scale:1.0 orientation:defaultRep.orientation];
+    img = [img fixOrientationAndScale:scale];
+    return img;
 }
+
+- (CGSize)sizeForImageSizeType:(ImageSizeType)sizeType {
+    if (ImageSize_Thumb==sizeType) {
+        return _thumbnail.size;
+    }
+    CGFloat scale = [self scaleForImageSizeType:sizeType];
+    CGSize size = [self imgSize];
+    size = CGSizeMake(size.width*scale, size.height*scale);
+    return size;
+}
+
+- (CGSize) imgSize {
+    ALAssetRepresentation* defaultRep = [_asset defaultRepresentation];
+    CGSize imgSize = defaultRep.dimensions;
+    return imgSize;
+}
+
+- (CGFloat) scaleForImageSizeType:(ImageSizeType)sizeType {
+    CGSize imgSize = [self imgSize];
+    CGFloat min = MIN(imgSize.width, imgSize.height);
+
+    CGFloat constraint = constraints[sizeType];
+    CGFloat scale = min>0 ? constraint/min : 1.0;
+
+    return scale>0 ? scale : 1.0;
+}
+
 @end

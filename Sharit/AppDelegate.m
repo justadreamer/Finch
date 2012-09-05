@@ -62,12 +62,49 @@ void uncaughtExceptionHandler(NSException *exception);
 {
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void) stopServices {
     [self.reachabilityWiFi stopNotifier];
     [self.reachabilityForInternet stopNotifier];
     [self.httpServer stop];
     [self.netService stop];
+    
+}
+
+- (void) startServices {
+    [self.reachabilityWiFi startNotifier];
+    [self.reachabilityForInternet startNotifier];
+    NSError* error = nil;
+    [self.httpServer start:&error];
+    if (error) {
+        VLog(error);
+    }
+    [self.netService publish];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    NSLog(@"VC: %@", NSStringFromSelector(_cmd));
+    UIApplication *app = [UIApplication sharedApplication];
+    __block UIBackgroundTaskIdentifier taskId;
+    taskId = [app beginBackgroundTaskWithExpirationHandler:^{
+        NSLog(@"Background task ran out of time and was terminated.");
+        [self stopServices];
+
+        [app endBackgroundTask:taskId];
+    }];
+    if (taskId == UIBackgroundTaskInvalid) {
+        NSLog(@"Failed to start background task!");
+        return;
+    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"Starting background task with %f seconds remaining",
+              app.backgroundTimeRemaining);
+        [NSThread sleepForTimeInterval:app.backgroundTimeRemaining];
+        NSLog(@"Finishing background task with %f seconds remaining",
+              app.backgroundTimeRemaining);
+        [self stopServices];
+        [app endBackgroundTask:taskId];
+    });
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -77,16 +114,9 @@ void uncaughtExceptionHandler(NSException *exception);
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    NSError* error = nil;
-    [self.reachabilityWiFi startNotifier];
-    [self.reachabilityForInternet startNotifier];
-    [self.httpServer start:&error];
-    if (error) {
-        VLog(error);
-    }
+    [self startServices];
     [[SharesProvider instance] refreshShares];
     [self.viewController refresh];
-    [self.netService publish];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

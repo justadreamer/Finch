@@ -16,10 +16,21 @@ typedef enum {
     ImageSize_Thumb
 } ImageSizeType;
 
+#pragma
+static CGFloat constraints[] = {
+    0,      // actual
+    200,    // small
+    400,    // medium
+    800     // large
+};
+
+static NSDictionary* sizeTypeDict;
+
 @interface ImageShare : Share
 @property (nonatomic,strong) UIImage* image;
 
 - (NSString*) htmlBlock;
 - (NSData*)dataForSizeParam:(NSString*)param;
-- (UIImage*)imageForSize:(ImageSizeType)sizeType;
+- (UIImage*)imageForSizeType:(ImageSizeType)sizeType;
+- (CGSize)sizeForImageSizeType:(ImageSizeType)sizeType;
 @end

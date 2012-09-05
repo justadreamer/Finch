@@ -49,7 +49,6 @@
                   NSString* assetId = [[[[asset defaultRepresentation] url] absoluteString] MD5Hash];
                   [self.assetSharesMap setObject:assetShare forKey:assetId];
                   assetShare.path = [NSString stringWithFormat:@"/%@%@%@",PATH_PREFIX_ASSET, assetId,ASSET_EXT];
-                  assetShare.thumbPath = [NSString stringWithFormat:@"/%@%@%@",PATH_PREFIX_ASSET_THUMB,assetId,ASSET_EXT];
                   assetShare.macroPreprocessor = macroPreprocessor;
                   [self.assetShares addObject:assetShare];
               }

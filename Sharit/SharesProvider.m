@@ -88,7 +88,7 @@ SharesProvider* globalSharesProvider;
         share = [self textShare];
     } else if ([path contains:@"pictures"]) {
         share = [self picturesShare];
-    } else if ([path contains:PATH_PREFIX_ASSET] || [path contains:PATH_PREFIX_ASSET_THUMB]){
+    } else if ([path contains:PATH_PREFIX_ASSET]){
         share = [[self picturesShare] shareForPath:path];
     } else {
         share = [self clipboardShare];

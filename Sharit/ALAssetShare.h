@@ -6,13 +6,10 @@
 //
 //
 
-#import "Share.h"
+#import "ImageShare.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface ALAssetShare : Share
+@interface ALAssetShare : ImageShare
 @property (nonatomic,strong) ALAsset* asset;
-@property (nonatomic,strong) NSString* thumbPath;
 
-- (NSString*) htmlBlock;
-- (NSData*) dataForPath:(NSString*)path;
 @end

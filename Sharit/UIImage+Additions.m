@@ -49,55 +49,60 @@
 }
 
 - (UIImage *)fixOrientation {
-    
+    return [self fixOrientationAndScale:1.0];
+}
+
+- (UIImage *)fixOrientationAndScale:(CGFloat)scale {
     // No-op if the orientation is already correct
-    if (self.imageOrientation == UIImageOrientationUp) return self;
+    if (self.imageOrientation == UIImageOrientationUp && scale==1.0) return self;
     
     // We need to calculate the proper transformation to make the image upright.
     // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
     CGAffineTransform transform = CGAffineTransformIdentity;
-    
+    CGSize newSize = CGSizeMake(self.size.width*scale, self.size.height*scale);
     switch (self.imageOrientation) {
         case UIImageOrientationDown:
         case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height);
+            transform = CGAffineTransformTranslate(transform, newSize.width, newSize.height);
             transform = CGAffineTransformRotate(transform, M_PI);
             break;
             
         case UIImageOrientationLeft:
         case UIImageOrientationLeftMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.width, 0);
+            transform = CGAffineTransformTranslate(transform, newSize.width, 0);
             transform = CGAffineTransformRotate(transform, M_PI_2);
             break;
             
         case UIImageOrientationRight:
         case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, 0, self.size.height);
+            transform = CGAffineTransformTranslate(transform, 0, newSize.height);
             transform = CGAffineTransformRotate(transform, -M_PI_2);
             break;
         default:
             break;
     }
-    
+
     switch (self.imageOrientation) {
         case UIImageOrientationUpMirrored:
         case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.width, 0);
+            transform = CGAffineTransformTranslate(transform, newSize.width, 0);
             transform = CGAffineTransformScale(transform, -1, 1);
             break;
             
         case UIImageOrientationLeftMirrored:
         case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.height, 0);
+            transform = CGAffineTransformTranslate(transform, newSize.height, 0);
             transform = CGAffineTransformScale(transform, -1, 1);
             break;
         default:
             break;
     }
     
+    
+    
     // Now we draw the underlying CGImage into a new context, applying the transform
     // calculated above.
-    CGContextRef ctx = CGBitmapContextCreate(NULL, self.size.width, self.size.height,
+    CGContextRef ctx = CGBitmapContextCreate(NULL, newSize.width, newSize.height,
                                              CGImageGetBitsPerComponent(self.CGImage), 0,
                                              CGImageGetColorSpace(self.CGImage),
                                              CGImageGetBitmapInfo(self.CGImage));
@@ -108,11 +113,11 @@
         case UIImageOrientationRight:
         case UIImageOrientationRightMirrored:
             // Grr...
-            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.height,self.size.width), self.CGImage);
+            CGContextDrawImage(ctx, CGRectMake(0,0,newSize.height,newSize.width), self.CGImage);
             break;
             
         default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.width,self.size.height), self.CGImage);
+            CGContextDrawImage(ctx, CGRectMake(0,0,newSize.width,newSize.height), self.CGImage);
             break;
     }
     

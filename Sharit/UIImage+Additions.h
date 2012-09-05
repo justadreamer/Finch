@@ -18,6 +18,7 @@
 - (BOOL)isBiggerThanSize:(CGSize)mSize;
 
 - (UIImage *)fixOrientation;
+- (UIImage *)fixOrientationAndScale:(CGFloat)scale;
 
 - (UIImage*)crop:(CGRect)cropRect;
 
