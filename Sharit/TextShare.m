@@ -64,8 +64,8 @@ NSString* const textFilePath = @"TextShare.txt";
 - (NSMutableDictionary*)macrosDict {
     return
     [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     SAFE_STRING([self text]),kText,
-     NB(YES),@"text_is_shared",
+     self.isShared ? SAFE_STRING([self text]) : @"",kText,
+     NB(self.isShared),@"text_is_shared",
      NB(YES),@"show_link_pasteboard",
      NB(YES),@"show_link_pictures",
      nil];

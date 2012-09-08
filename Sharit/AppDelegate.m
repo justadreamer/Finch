@@ -56,8 +56,6 @@ void uncaughtExceptionHandler(NSException *exception);
     return YES;
 }
 
-
-
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 }

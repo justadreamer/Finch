@@ -63,6 +63,7 @@
 
 - (HTTPDataResponse*) indexResponse:(NSString*)path {
     Share* share = [[SharesProvider instance] shareForPath:path andParams:nil];
+
     NSMutableDictionary* macroDict = [share macrosDict];
     [macroDict setObject:path forKey:kRedirectPath];
 
@@ -78,7 +79,9 @@
     NSDictionary* dict = [self parseParams:[[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding]];
 
     Share* share = [[SharesProvider instance] shareForPath:path andParams:dict];
-    [share processRequestData:dict];
+    if (share.isShared) {
+        [share processRequestData:dict];
+    }
 
     self.redirectPath = [dict objectForKey:kRedirectPath];
     dispatch_async(dispatch_get_main_queue(), ^() {

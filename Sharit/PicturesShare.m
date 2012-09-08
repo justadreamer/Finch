@@ -73,10 +73,10 @@
 - (NSMutableDictionary*)macrosDict {
     return
     [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     NB(YES),@"pictures_is_shared",
+     NB(self.isShared),@"pictures_is_shared",
      NB(YES),@"show_link_pasteboard",
      NB(YES),@"show_link_text",
-     [self htmlBlock],@"pictures_html_block",
+     self.isShared ? [self htmlBlock] : @"",@"pictures_html_block",
      nil];
 }
 
