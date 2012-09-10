@@ -14,6 +14,7 @@
 @property (nonatomic,assign) NSUInteger falseConditionalStart;
 @property (nonatomic,strong) NSMutableString* result;
 @property (nonatomic,assign) NSRange range;
+@property (nonatomic,assign) NSUInteger falseConditionalIfStartCounter;
 @end
 
 @implementation MacroPreprocessor
@@ -91,11 +92,18 @@
     range.length = [result length]-range.location;
 }
 
-- (void) replaceWith:(NSObject*)replacement {
+- (void) replaceCurrentRangeWith:(NSObject*)replacement {
     NSString* s = [replacement description];
     [result replaceCharactersInRange:range withString:s];
     range.location += [s length];
     [self adjustRangeLength];
+}
+
+- (void) startFalseCondition {
+    self.falseConditionalStart = range.location;
+    self.falseConditionalIfStartCounter = self.ifCounter;
+    self.ifCounter++;
+    [self shiftRange];
 }
 
 - (NSString*) process {
@@ -116,15 +124,29 @@
             NSString* macro = [result substringWithRange:range];
             NSString* macroName = [self macroName:macro];
             
+            enum MacroType {
+                MacroTypeIf,
+                MacroTypeElse,
+                MacroTypeEndif,
+                MacroTypeOther
+            } macroType = MacroTypeOther;
+            if ([macroName isEqualToString:@"if"]) {
+                macroType = MacroTypeIf;
+            } else if ([macroName isEqualToString:@"endif"]) {
+                macroType = MacroTypeEndif;
+            } else if ([macroName isEqualToString:@"else"]) {
+                macroType = MacroTypeElse;
+            }
+
             if (self.falseConditionalStart!=NSNotFound) {
                 BOOL needShift = YES;
-                if ([macroName isEqualToString:@"if"]) {
+                if (macroType==MacroTypeIf) {
                     self.ifCounter++;
-                } else if ([macroName isEqualToString:@"endif"]) {
+                } else if (macroType==MacroTypeEndif || macroType==MacroTypeElse) {
                     self.ifCounter--;
-                    if (self.ifCounter==0) {
+                    if (self.ifCounter==self.falseConditionalIfStartCounter) {
                         range = NSMakeRange(self.falseConditionalStart, range.location+range.length-self.falseConditionalStart);
-                        [self replaceWith:@""];
+                        [self replaceCurrentRangeWith:@""];
                         self.falseConditionalStart = NSNotFound;
                         needShift = NO;
                     }
@@ -133,7 +155,7 @@
                     [self shiftRange];
                 }
             } else {
-                if ([macroName isEqualToString:@"if"]) {
+                if (macroType==MacroTypeIf) {
                     NSObject* macroObj = [self.macroDict objectForKey:[self macroValue:macro]];
                     
                     BOOL isCondFalse = !macroObj ||
@@ -141,17 +163,18 @@
                     ([macroObj isKindOfClass:[NSNumber class]] && ![(NSNumber*)macroObj boolValue]);
                     
                     if (isCondFalse) {
-                        self.falseConditionalStart = range.location;
-                        self.ifCounter++;
-                        [self shiftRange];
+                        [self startFalseCondition];
                     } else {
-                        [self replaceWith:@""];
+                        [self replaceCurrentRangeWith:@""];
                     }
-                } else if ([macroName isEqualToString:@"endif"]) {
-                    [self replaceWith:@""];
+                } else if (macroType==MacroTypeEndif) {
+                    self.ifCounter--;
+                    [self replaceCurrentRangeWith:@""];
+                } else if (macroType==MacroTypeElse) {
+                    [self startFalseCondition];
                 } else {
                     NSString* replacement = [self macroReplacement:macro];
-                    [self replaceWith:replacement];
+                    [self replaceCurrentRangeWith:replacement];
                 }
             }
         }

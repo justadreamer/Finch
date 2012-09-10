@@ -10,6 +10,7 @@
 #import "ImageShare.h"
 #import "Global.h"
 #import "BasicTemplateLoader.h"
+#import "MacroPreprocessor.h"
 
 @implementation Sharit_Tests
 
@@ -25,9 +26,10 @@
     NSBundle* bundle = [NSBundle bundleForClass:[self class]];
     NSString* tplFolder = [[bundle resourcePath] stringByAppendingPathComponent:@"tpl"];
     BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:tplFolder templateExt:@"tpl"];
-    NSString* imgPath = [bundle pathForResource:@"icon_check" ofType:@"png"];
-    ImageShare* imageShare = [[ImageShare alloc] initWithTemplateLoader:loader];
+    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"image"];
+    ImageShare* imageShare = [[ImageShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     imageShare.path = @"imgPath";
+    NSString* imgPath = [bundle pathForResource:@"icon_check" ofType:@"png"];
     imageShare.image = [UIImage imageWithContentsOfFile:imgPath];
     NSError* error = nil;
     NSString* imgHtml = [NSString stringWithContentsOfFile:[bundle pathForResource:@"img" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
