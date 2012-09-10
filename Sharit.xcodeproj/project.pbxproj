@@ -89,6 +89,8 @@
 		44BEA335157BEFBF00A1A7A7 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD72156580610032E1B2 /* MacroPreprocessor.m */; };
 		44BEA339157BF24300A1A7A7 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */; };
 		44BEA33C157BF48800A1A7A7 /* GlobalDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */; };
+		44D63D1015FE74C500864B76 /* PicturesShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D63D0E15FE74C500864B76 /* PicturesShareController.m */; };
+		44D63D1115FE74C500864B76 /* PicturesShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D63D0F15FE74C500864B76 /* PicturesShareController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +222,9 @@
 		44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTemplateLoader.m; sourceTree = "<group>"; };
 		44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefaults.h; sourceTree = "<group>"; };
 		44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDefaults.m; sourceTree = "<group>"; };
+		44D63D0D15FE74C500864B76 /* PicturesShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesShareController.h; sourceTree = "<group>"; };
+		44D63D0E15FE74C500864B76 /* PicturesShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesShareController.m; sourceTree = "<group>"; };
+		44D63D0F15FE74C500864B76 /* PicturesShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturesShareController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +321,9 @@
 				44B92F7515DADEDA008DBC29 /* TextShareController.h */,
 				44B92F7615DADEDA008DBC29 /* TextShareController.m */,
 				44B92F7715DADEDA008DBC29 /* TextShareController.xib */,
+				44D63D0D15FE74C500864B76 /* PicturesShareController.h */,
+				44D63D0E15FE74C500864B76 /* PicturesShareController.m */,
+				44D63D0F15FE74C500864B76 /* PicturesShareController.xib */,
 			);
 			name = "Share Controllers";
 			sourceTree = "<group>";
@@ -633,6 +641,7 @@
 				442EAD7815658B470032E1B2 /* tpl in Resources */,
 				442EADA51567C1DE0032E1B2 /* docroot in Resources */,
 				44B92F7915DADEDA008DBC29 /* TextShareController.xib in Resources */,
+				44D63D1115FE74C500864B76 /* PicturesShareController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +726,7 @@
 				44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */,
 				44B92F7815DADEDA008DBC29 /* TextShareController.m in Sources */,
 				44A79B1215E6B78D00498FBD /* ALAssetShare.m in Sources */,
+				44D63D1015FE74C500864B76 /* PicturesShareController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
