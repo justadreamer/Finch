@@ -79,12 +79,10 @@
     [[UIPasteboard generalPasteboard] setString:string];
 }
 
-- (NSMutableDictionary*)macrosDict {
+- (NSDictionary*)specificMacrosDict {
     ImageShare* imgShare = [self imageShare];
-    NSMutableDictionary* clipboardMacroDict =
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     
-     [NSNumber numberWithBool:[self isShared]],@"clipboard_is_shared",
+    NSDictionary* clipboardMacroDict =
+    [NSDictionary dictionaryWithObjectsAndKeys:
      SAFE_STRING([self string]), @"clipboard_text",
      [NSNumber numberWithBool:nil!=[self image]],@"clipboard_image",
      [imgShare htmlBlock],@"clipboard_image_share",

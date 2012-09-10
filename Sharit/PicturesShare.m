@@ -70,9 +70,9 @@
     return desc;
 }
 
-- (NSMutableDictionary*)macrosDict {
+- (NSDictionary*)specificMacrosDict {
     return
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    [NSDictionary dictionaryWithObjectsAndKeys:
      NB(self.isShared),@"pictures_is_shared",
      NB(YES),@"show_link_pasteboard",
      NB(YES),@"show_link_text",

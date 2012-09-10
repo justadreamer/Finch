@@ -35,10 +35,19 @@
 }
 
 - (NSMutableDictionary*)macrosDict {
-    return nil;
+    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            NB(self.isShared),@"is_shared",
+            NB(YES),NSStringFromClass([self class]),
+            nil];
+    [dict addEntriesFromDictionary:[self specificMacrosDict]];
+    return dict;
 }
 
 - (void) processRequestData:(NSDictionary *)dict {
     
+}
+
+- (NSDictionary*)specificMacrosDict {
+    return nil;
 }
 @end

@@ -13,7 +13,8 @@
             <li>%if show_link_text%<a href="text.html">%endif%Text%if show_link_text%</a>%endif%</li>
             <li>%if show_link_pictures%<a href="pictures.html">%endif%Pictures%if show_link_pictures%</a>%endif%</li>
         </ul>
-        %if clipboard_is_shared%
+        %if ClipboardShare%
+            %if is_shared%
                 <h2>Pasteboard</h2>
                 <h3>Text:</h3>
                 <form action="%redirectPath%" method="post">
@@ -26,21 +27,32 @@
                 <h3>Image:</h3>
                 %clipboard_image_share%
                 %endif%
+            %else%
+                Clipboard sharing is disabled
+            %endif%
         %endif%
         
-        %if text_is_shared%
-            <h2>Text</h2>
-            <h3>Text:</h3>
-            <form action="%redirectPath%" method="post">
-                <textarea cols="40" rows="5" name="text">%text%</textarea>
-                <br/>
-                <input type="hidden" name="redirectPath" value="%redirectPath%" />
-                <input type="submit" value="Update" />
-            </form>
+        %if TextShare%
+            %if is_shared%
+                <h2>Text</h2>
+                <h3>Text:</h3>
+                <form action="%redirectPath%" method="post">
+                    <textarea cols="40" rows="5" name="text">%text%</textarea>
+                    <br/>
+                    <input type="hidden" name="redirectPath" value="%redirectPath%" />
+                    <input type="submit" value="Update" />
+                </form>
+            %else%
+                Text sharing is disabled
+            %endif%
         %endif%
-
-        %if pictures_is_shared%
-            %pictures_html_block%
+        
+        %if PicturesShare%
+            %if is_shared%
+                %pictures_html_block%
+            %else%
+                Pictures sharing is disabled
+            %endif%
         %endif%
     </body>
 </html>
