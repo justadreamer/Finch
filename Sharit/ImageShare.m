@@ -14,6 +14,14 @@
 #import "Helper.h"
 #import "GlobalDefaults.h"
 
+NSDictionary* sizeTypeDict;
+const CGFloat constraints[] = {
+    0,      // actual
+    200,    // small
+    400,    // medium
+    800     // large
+};
+
 @implementation ImageShare
 @synthesize image;
 

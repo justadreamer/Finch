@@ -34,6 +34,10 @@
     return self;
 }
 
+- (BOOL)isDetailsDescriptionAWarning {
+    return NO;
+}
+
 - (NSMutableDictionary*)macrosDict {
     NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
             NB(self.isShared),@"is_shared",

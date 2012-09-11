@@ -91,6 +91,7 @@
 		44BEA33C157BF48800A1A7A7 /* GlobalDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */; };
 		44D63D1015FE74C500864B76 /* PicturesShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D63D0E15FE74C500864B76 /* PicturesShareController.m */; };
 		44D63D1115FE74C500864B76 /* PicturesShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D63D0F15FE74C500864B76 /* PicturesShareController.xib */; };
+		44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE822415FFD4EB008C12D6 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +226,7 @@
 		44D63D0D15FE74C500864B76 /* PicturesShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesShareController.h; sourceTree = "<group>"; };
 		44D63D0E15FE74C500864B76 /* PicturesShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesShareController.m; sourceTree = "<group>"; };
 		44D63D0F15FE74C500864B76 /* PicturesShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturesShareController.xib; sourceTree = "<group>"; };
+		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */,
 				44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */,
 				442EACAB155D9D780032E1B2 /* SystemConfiguration.framework in Frameworks */,
 				444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */,
@@ -288,9 +291,6 @@
 		442EACDA15620F140032E1B2 /* Share models */ = {
 			isa = PBXGroup;
 			children = (
-				442EACC51561A1F90032E1B2 /* ShareCell.h */,
-				442EACC61561A1F90032E1B2 /* ShareCell.m */,
-				442EACC91561A2440032E1B2 /* ShareCell.xib */,
 				442EACD41561A4490032E1B2 /* Share.h */,
 				442EACD51561A4490032E1B2 /* Share.m */,
 				442EACD71561A7A00032E1B2 /* SharesProvider.h */,
@@ -345,7 +345,6 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
-				44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */,
 				444B42D7155C2FD200319EC7 /* Sharit */,
 				44BEA3131576AFF600A1A7A7 /* Sharit_Tests */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,
@@ -365,6 +364,8 @@
 		444B42D0155C2FD200319EC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44EE822415FFD4EB008C12D6 /* CoreLocation.framework */,
+				44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */,
 				44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */,
 				442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */,
 				444B449F155C378D00319EC7 /* CFNetwork.framework */,
@@ -383,6 +384,7 @@
 				444B42EE155C302F00319EC7 /* CocoaHTTPServer */,
 				44677F7815740E2A003C209E /* Main */,
 				442EAD6F1565802F0032E1B2 /* Response forming */,
+				44EE822615FFD847008C12D6 /* Views */,
 				442EACDA15620F140032E1B2 /* Share models */,
 				442EACE7156219280032E1B2 /* Share Controllers */,
 				442EAC9F155D96E00032E1B2 /* res */,
@@ -528,12 +530,6 @@
 				444B42E6155C2FD200319EC7 /* MainViewController.xib */,
 				44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */,
 				44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */,
-				44A35D9315D83F44005FA450 /* TableModel.h */,
-				44A35D9415D83F44005FA450 /* TableModel.m */,
-				44A35D9615D83F5E005FA450 /* SectionModel.h */,
-				44A35D9715D83F5E005FA450 /* SectionModel.m */,
-				44A35D9915D83F6C005FA450 /* CellModel.h */,
-				44A35D9A15D83F6C005FA450 /* CellModel.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -559,6 +555,30 @@
 				44BEA31C1576AFF600A1A7A7 /* Sharit_Tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44EE822615FFD847008C12D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				44EE822715FFD88C008C12D6 /* TableView models */,
+				442EACC51561A1F90032E1B2 /* ShareCell.h */,
+				442EACC61561A1F90032E1B2 /* ShareCell.m */,
+				442EACC91561A2440032E1B2 /* ShareCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		44EE822715FFD88C008C12D6 /* TableView models */ = {
+			isa = PBXGroup;
+			children = (
+				44A35D9315D83F44005FA450 /* TableModel.h */,
+				44A35D9415D83F44005FA450 /* TableModel.m */,
+				44A35D9615D83F5E005FA450 /* SectionModel.h */,
+				44A35D9715D83F5E005FA450 /* SectionModel.m */,
+				44A35D9915D83F6C005FA450 /* CellModel.h */,
+				44A35D9A15D83F6C005FA450 /* CellModel.m */,
+			);
+			name = "TableView models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

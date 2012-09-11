@@ -9,6 +9,8 @@
 #import "GlobalDefaults.h"
 #import "PicturesShare.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "ALAssetShare.h"
 #import "BasicTemplateLoader.h"
 #import "Helper.h"
@@ -60,14 +62,26 @@
     }];
 }
 
+- (BOOL) isLocationServicesEnabled {
+    return [CLLocationManager locationServicesEnabled];
+}
+
 - (NSString*) detailsDescription {
     NSString* desc = @"No images";
-    NSInteger count = [self.assetShares count];
-    if (count) {
-        NSString* format = (count > 1) ? @"%d images" : @"%d image";
-        desc = [NSString stringWithFormat:format,count];
+    if ([self isLocationServicesEnabled]) {
+        NSInteger count = [self.assetShares count];
+        if (count) {
+            NSString* format = (count > 1) ? @"%d images" : @"%d image";
+            desc = [NSString stringWithFormat:format,count];
+        }
+    } else {
+        desc = @"Location Services should be ON to share pictures";
     }
     return desc;
+}
+
+- (BOOL)isDetailsDescriptionAWarning {
+    return ![self isLocationServicesEnabled];
 }
 
 - (NSDictionary*)specificMacrosDict {
@@ -77,6 +91,7 @@
      NB(YES),@"show_link_pasteboard",
      NB(YES),@"show_link_text",
      self.isShared ? [self htmlBlock] : @"",@"pictures_html_block",
+     NB(self.isShared && ![self isLocationServicesEnabled]),@"is_warning_shown",
      nil];
 }
 

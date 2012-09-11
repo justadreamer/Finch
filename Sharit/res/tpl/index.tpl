@@ -53,6 +53,11 @@
             %else%
                 Pictures sharing is disabled
             %endif%
+            %if is_warning_shown%
+            <em style="color:red;">
+                Please enable Location Services in the device settings in order to display pictures.
+            </em>
+            %endif%
         %endif%
     </body>
 </html>

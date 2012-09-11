@@ -7,9 +7,9 @@
 //
 
 #import "PicturesShareController.h"
-
+#import "Share.h"
 @interface PicturesShareController ()
-
+@property (nonatomic,strong) IBOutlet UILabel* warningLabel;
 @end
 
 @implementation PicturesShareController
@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.warningLabel.text = @"Please enable Location Services in order to share pictures";
+    self.warningLabel.hidden = ![self.share isDetailsDescriptionAWarning];
 }
 
 - (void)viewDidUnload

@@ -16,17 +16,8 @@ typedef enum {
     ImageSize_Thumb
 } ImageSizeType;
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wall"
-static CGFloat constraints[] = {
-    0,      // actual
-    200,    // small
-    400,    // medium
-    800     // large
-};
-
-static NSDictionary* sizeTypeDict;
-#pragma clang diagnostic pop
+extern const CGFloat constraints[];
+extern NSDictionary* sizeTypeDict;
 
 @interface ImageShare : Share
 @property (nonatomic,strong) UIImage* image;

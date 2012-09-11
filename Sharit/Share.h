@@ -18,8 +18,11 @@
 @property (nonatomic,strong) MacroPreprocessor* macroPreprocessor;
 
 - (NSString*) detailsDescription;
+- (BOOL)isDetailsDescriptionAWarning;
+
 - (id) initWithMacroPreprocessor:(MacroPreprocessor*)macroPreprocessor;
 - (NSMutableDictionary*)macrosDict;
 - (void)processRequestData:(NSDictionary*)requestDict;
 - (NSDictionary*)specificMacrosDict;
+
 @end
