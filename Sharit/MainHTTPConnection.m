@@ -138,7 +138,10 @@
         if ([self isIndexPath:path]) {
             return [self indexResponse:path];
         } else {
-            return [self responseForShareAtPath:path];
+            HTTPDataResponse* response = [self responseForShareAtPath:path];
+            if (nil!=response) {
+                return response;
+            }
         }
     }
 

@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="icon" type="image/png" href="/favicon.png">
-        <link rel="apple-touch-icon" type="image/png" href="/apple-touch-favicon.png">
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" type="image/png" href="/apple-touch-favicon.png" />
         <title>SharIt</title>
+        <link rel="stylesheet" type="text/css" href="/default.css" />
     </head>
     <body>
         <h1>SharIt</h1>

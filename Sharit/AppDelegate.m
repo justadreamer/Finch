@@ -21,7 +21,7 @@
 @property (nonatomic,strong) Reachability* reachabilityWiFi;
 @property (nonatomic,strong) Reachability* reachabilityForInternet;
 @property (nonatomic,strong) NSNetService* netService;
-
+@property (nonatomic,assign) BOOL servicesStarted;
 - (void) setupHTTPServer;
 - (void) setupReachability;
 - (void) setupIdleTimer;
@@ -61,22 +61,28 @@ void uncaughtExceptionHandler(NSException *exception);
 }
 
 - (void) stopServices {
-    [self.reachabilityWiFi stopNotifier];
-    [self.reachabilityForInternet stopNotifier];
-    [self.httpServer stop];
-    [self.netService stop];
-    
+    if (_servicesStarted) {
+        [self.httpServer stop];
+        [self.netService stop];
+        [self.reachabilityWiFi stopNotifier];
+        [self.reachabilityForInternet stopNotifier];
+        _servicesStarted = NO;
+    }
 }
 
 - (void) startServices {
-    [self.reachabilityWiFi startNotifier];
-    [self.reachabilityForInternet startNotifier];
-    NSError* error = nil;
-    [self.httpServer start:&error];
-    if (error) {
-        VLog(error);
+    if (!_servicesStarted) {
+        NSError* error = nil;
+        [self.httpServer start:&error];
+        if (error) {
+            VLog(error);
+            return;
+        }
+        [self.netService publish];
+        [self.reachabilityWiFi startNotifier];
+        [self.reachabilityForInternet startNotifier];
+        _servicesStarted = YES;
     }
-    [self.netService publish];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

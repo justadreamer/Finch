@@ -27,6 +27,7 @@
 		442EAD7815658B470032E1B2 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */; };
 		442EADA51567C1DE0032E1B2 /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 442EADA41567C1DE0032E1B2 /* docroot */; };
+		443362B1161A1EC4009FE95D /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 443362B0161A1EC4009FE95D /* default.css */; };
 		444B42D2155C2FD200319EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		444B42D4155C2FD200319EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		444B42D6155C2FD200319EC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
@@ -71,6 +72,7 @@
 		4477A40E15910E3700EC3280 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
 		4477A40F1591123600EC3280 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		4477A42215911AC000EC3280 /* img.html in Resources */ = {isa = PBXBuildFile; fileRef = 4477A42115911AC000EC3280 /* img.html */; };
+		448234B1161107BD003882DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 448234B0161107BD003882DB /* Default-568h@2x.png */; };
 		44A35D9515D83F44005FA450 /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9415D83F44005FA450 /* TableModel.m */; };
 		44A35D9815D83F5E005FA450 /* SectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9715D83F5E005FA450 /* SectionModel.m */; };
 		44A35D9B15D83F6C005FA450 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A35D9A15D83F6C005FA450 /* CellModel.m */; };
@@ -129,6 +131,7 @@
 		442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHTTPConnection.h; sourceTree = "<group>"; };
 		442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHTTPConnection.m; sourceTree = "<group>"; };
 		442EADA41567C1DE0032E1B2 /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
+		443362B0161A1EC4009FE95D /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = default.css; path = Sharit/res/docroot/default.css; sourceTree = "<group>"; };
 		444B42CD155C2FD200319EC7 /* Sharit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444B42D1155C2FD200319EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		444B42D3155C2FD200319EC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,6 +200,7 @@
 		446F86A8157402BC00CF00EB /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "../UIImage+Additions.h"; sourceTree = "<group>"; };
 		446F86A9157402BC00CF00EB /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "../UIImage+Additions.m"; sourceTree = "<group>"; };
 		4477A42115911AC000EC3280 /* img.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = img.html; path = ../../../img.html; sourceTree = "<group>"; };
+		448234B0161107BD003882DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		44A35D9315D83F44005FA450 /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
 		44A35D9415D83F44005FA450 /* TableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableModel.m; sourceTree = "<group>"; };
 		44A35D9615D83F5E005FA450 /* SectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionModel.h; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
+				443362B0161A1EC4009FE95D /* default.css */,
+				448234B0161107BD003882DB /* Default-568h@2x.png */,
 				444B42D7155C2FD200319EC7 /* Sharit */,
 				44BEA3131576AFF600A1A7A7 /* Sharit_Tests */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,
@@ -662,6 +668,8 @@
 				442EADA51567C1DE0032E1B2 /* docroot in Resources */,
 				44B92F7915DADEDA008DBC29 /* TextShareController.xib in Resources */,
 				44D63D1115FE74C500864B76 /* PicturesShareController.xib in Resources */,
+				448234B1161107BD003882DB /* Default-568h@2x.png in Resources */,
+				443362B1161A1EC4009FE95D /* default.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

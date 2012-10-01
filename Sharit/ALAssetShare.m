@@ -53,12 +53,7 @@
 }
 
 - (CGFloat) scaleForImageSizeType:(ImageSizeType)sizeType {
-    CGSize imgSize = [self imgSize];
-    CGFloat min = MIN(imgSize.width, imgSize.height);
-
-    CGFloat constraint = constraints[sizeType];
-    CGFloat scale = min>0 ? constraint/min : 1.0;
-
+    CGFloat scale = scales[sizeType];
     return scale>0 ? scale : 1.0;
 }
 

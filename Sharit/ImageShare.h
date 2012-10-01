@@ -16,7 +16,7 @@ typedef enum {
     ImageSize_Thumb
 } ImageSizeType;
 
-extern const CGFloat constraints[];
+extern const CGFloat scales[];
 extern NSDictionary* sizeTypeDict;
 
 @interface ImageShare : Share

@@ -15,11 +15,11 @@
 #import "GlobalDefaults.h"
 
 NSDictionary* sizeTypeDict;
-const CGFloat constraints[] = {
+const CGFloat scales[] = {
     0,      // actual
-    200,    // small
-    400,    // medium
-    800     // large
+    0.25,    // small
+    0.5,    // medium
+    0.75     // large
 };
 
 @implementation ImageShare
@@ -44,12 +44,14 @@ const CGFloat constraints[] = {
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     for (NSString* k in [sizeTypeDict allKeys]) {
         [params setObject:[self.path stringByAppendingFormat:@"?size=%@",k] forKey:[@"img_src_" stringByAppendingString:k]];
+        CGSize size = [self sizeForImageSizeType:[[sizeTypeDict objectForKey:k] intValue]];
+        NSString* s = [NSString stringWithFormat:@"%.0fx%.0f",size.width,size.height];
+        [params setObject:s forKey:[NSString stringWithFormat:@"img_size_%@",k]];
     }
 
     CGSize size = [self sizeForImageSizeType:ImageSize_Small];
     [params setObject:fs(size.width) forKey:@"img_width_s"];
     [params setObject:fs(size.height) forKey:@"img_height_s"];
-
     [self.macroPreprocessor setMacroDict:params];
 
     NSString* html = [self.macroPreprocessor process];
@@ -58,8 +60,9 @@ const CGFloat constraints[] = {
 }
 
 - (CGSize)sizeForImageSizeType:(ImageSizeType)sizeType {
-    CGFloat w = constraints[ImageSize_Small];
-    CGSize size = [self.image sizeProportionallyScaledToSize:CGSizeMake(w, w)];
+    CGSize size = self.image.size;
+    CGFloat scale = scales[sizeType];
+    size = CGSizeMake(size.width*scale, size.height*scale);
     return size;
 }
 
@@ -78,11 +81,11 @@ const CGFloat constraints[] = {
 }
 
 - (UIImage*)imageForSizeType:(ImageSizeType)sizeType {
-    CGFloat constraint = constraints[sizeType];
+    CGFloat scale = scales[sizeType];
     UIImage* img = nil;
-    if (constraint>0 && (constraint < image.size.width || constraint < image.size.height)) {
-        CGSize constraintSize = CGSizeMake(constraint, constraint);
-        img = [[image proportionalScaleToSize:constraintSize] fixOrientation];
+    if (scale>0) {
+        CGSize size = [self sizeForImageSizeType:sizeType];
+        img = [[image scaleToSize:size] fixOrientation];
     } else {
         img = [image fixOrientation];
     }
