@@ -1,4 +1,4 @@
-<div style="float:left; margin:5px;">
+<div class="asset">
     <a href="%img_src_a%">
         <img src="%img_src_t%" width="%img_width_t%" height="%img_height_t%" />
     </a>

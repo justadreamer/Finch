@@ -17,9 +17,10 @@
 NSDictionary* sizeTypeDict;
 const CGFloat scales[] = {
     0,      // actual
-    0.25,    // small
+    0.25,   // small
     0.5,    // medium
-    0.75     // large
+    0.75,   // large
+    0.25,   // thumbnail
 };
 
 @implementation ImageShare
@@ -41,6 +42,15 @@ const CGFloat scales[] = {
 }
 
 - (NSString*) htmlBlock {
+    NSMutableDictionary* params = [self macroDictParams];
+    [self.macroPreprocessor setMacroDict:params];
+
+    NSString* html = [self.macroPreprocessor process];
+
+    return SAFE_STRING(html);
+}
+
+- (NSMutableDictionary*)macroDictParams {
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     for (NSString* k in [sizeTypeDict allKeys]) {
         [params setObject:[self.path stringByAppendingFormat:@"?size=%@",k] forKey:[@"img_src_" stringByAppendingString:k]];
@@ -48,15 +58,11 @@ const CGFloat scales[] = {
         NSString* s = [NSString stringWithFormat:@"%.0fx%.0f",size.width,size.height];
         [params setObject:s forKey:[NSString stringWithFormat:@"img_size_%@",k]];
     }
-
-    CGSize size = [self sizeForImageSizeType:ImageSize_Small];
-    [params setObject:fs(size.width) forKey:@"img_width_s"];
-    [params setObject:fs(size.height) forKey:@"img_height_s"];
-    [self.macroPreprocessor setMacroDict:params];
-
-    NSString* html = [self.macroPreprocessor process];
-
-    return SAFE_STRING(html);
+    
+    CGSize size = [self sizeForImageSizeType:ImageSize_Thumb];
+    [params setObject:fs(size.width) forKey:@"img_width_t"];
+    [params setObject:fs(size.height) forKey:@"img_height_t"];
+    return params;
 }
 
 - (CGSize)sizeForImageSizeType:(ImageSizeType)sizeType {

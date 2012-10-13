@@ -11,5 +11,8 @@
 
 @interface ALAssetShare : ImageShare
 @property (nonatomic,strong) ALAsset* asset;
+@property (nonatomic,assign) BOOL isVideo;
+@property (nonatomic,readonly) ALAssetRepresentation* defaultRepresentation;
 
++ (BOOL)isAssetVideo:(ALAsset*)asset;
 @end

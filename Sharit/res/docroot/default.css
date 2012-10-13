@@ -1,7 +1,17 @@
+div table {
+    text-align:center;
+}
+
 tr.links {
-    
+    text-align:center;
 }
 
 tr.sizes td {
-    font-size: 50%;
+    text-align:center;
+    font-size: 75%;
+}
+
+div.asset {
+    float:left; 
+    margin:5px;
 }

@@ -24,6 +24,8 @@ extern NSDictionary* sizeTypeDict;
 
 - (NSString*) htmlBlock;
 - (NSData*)dataForSizeParam:(NSString*)param;
+- (NSData*) dataForSizeType:(ImageSizeType)sizeType;
 - (UIImage*)imageForSizeType:(ImageSizeType)sizeType;
 - (CGSize)sizeForImageSizeType:(ImageSizeType)sizeType;
+- (NSMutableDictionary*)macroDictParams;
 @end

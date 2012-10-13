@@ -22,6 +22,7 @@
 #import "BasicTemplateLoader.h"
 #import "MacroPreprocessor.h"
 #import "ALAssetShare.h"
+#import "HTTPAsyncAssetResponse.h"
 
 @interface MainHTTPConnection ()
 @property (nonatomic,strong) NSArray* indexPaths;
@@ -100,10 +101,16 @@
     return res;
 }
 
-- (HTTPDataResponse*) imageResponseForShare:(ImageShare*)share atPath:(NSString*)path {
+- (NSObject<HTTPResponse>*) imageResponseForShare:(ImageShare*)share atPath:(NSString*)path {
     NSDictionary* params = [self parseGetParams];
+    ALAssetShare* assetShare = [share isKindOfClass:[ALAssetShare class]] ? (ALAssetShare*) share : nil;
     NSData* imageData = [share dataForSizeParam:[params objectForKey:@"size"]];
-    HTTPDataResponse* response = [[HTTPDataResponse alloc] initWithData:imageData];
+    NSObject<HTTPResponse>* response = nil;
+    if (assetShare && assetShare.isVideo && nil==imageData) {
+        response = [[HTTPAsyncAssetResponse alloc] initWithAssetRepresentation:assetShare.defaultRepresentation forConnection:self andContentType:@"video/mp4"];
+    } else {
+        response = [[HTTPDataResponse alloc] initWithData:imageData];
+    }
     return response;
 }
 
@@ -116,12 +123,12 @@
     return newPath;
 }
 
-- (HTTPDataResponse*) responseForShareAtPath:(NSString*)path {
+- (NSObject<HTTPResponse>*) responseForShareAtPath:(NSString*)path {
     SharesProvider* provider = [SharesProvider instance];
     NSDictionary* params = [self parseGetParams];
     NSString* noParamsPath = [self removeParams:path];
     Share* share = [provider shareForPath:noParamsPath andParams:params];
-    HTTPDataResponse* response = nil;
+    NSObject<HTTPResponse> * response = nil;
     if ([share isKindOfClass:[ImageShare class]]) {
         response = [self imageResponseForShare:(ImageShare*)share atPath:path];
     }
@@ -138,7 +145,7 @@
         if ([self isIndexPath:path]) {
             return [self indexResponse:path];
         } else {
-            HTTPDataResponse* response = [self responseForShareAtPath:path];
+            NSObject<HTTPResponse>* response = [self responseForShareAtPath:path];
             if (nil!=response) {
                 return response;
             }

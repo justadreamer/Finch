@@ -57,4 +57,27 @@
     return scale>0 ? scale : 1.0;
 }
 
++ (BOOL)isAssetVideo:(ALAsset*)asset {
+    NSString* prop = [asset valueForProperty:ALAssetPropertyType];
+    return [prop isEqualToString:ALAssetTypeVideo];
+}
+
+- (NSMutableDictionary*)macroDictParams {
+    NSMutableDictionary* params = [super macroDictParams];
+    if (_isVideo) {
+        [params setObject:self.path forKey:@"src_video"];
+    }
+    return params;
+}
+
+- (ALAssetRepresentation*)defaultRepresentation {
+    return _asset.defaultRepresentation;
+}
+
+- (NSData*) dataForSizeType:(ImageSizeType)sizeType {
+    if (_isVideo && sizeType!=ImageSize_Thumb) {
+        return nil;
+    }
+    return [super dataForSizeType:sizeType];
+}
 @end
