@@ -12,6 +12,8 @@
 #import "GlobalDefaults.h"
 #import "MacroPreprocessor.h"
 
+NSString* const kClipboardFieldName = @"clipboard";
+
 @interface ClipboardShare ()
 @end
 
@@ -75,7 +77,7 @@
     return desc;
 }
 
-- (void) updateString:(NSString*)string {
+- (void) updateString:(NSString *)string {
     [[UIPasteboard generalPasteboard] setString:string];
 }
 
@@ -88,15 +90,17 @@
      [imgShare htmlBlock],@"clipboard_image_share",
      NB(YES),@"show_link_text",
      NB(YES),@"show_link_pictures",
+     kClipboardFieldName, @"clipboard_field_name",
      nil];
     
     return clipboardMacroDict;
 }
 
-- (void) processRequestData:(NSDictionary *)dict {
-    NSString* clipboard = [dict objectForKey:kClipboard];
-    if (clipboard) {
-        [self updateString:clipboard];
+- (void) processRequestData:(NSDictionary *)params {
+    NSString* string = [params objectForKey:kClipboardFieldName];
+    [self updateString:string];
+    if ([params objectForKey:@"submit_open"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
     }
 }
 @end

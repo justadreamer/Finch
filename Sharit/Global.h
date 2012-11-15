@@ -14,7 +14,6 @@
 #import "UIImage+Additions.h"
 #import "GlobalDefaults.h"
 
-#define kClipboard @"clipboard"
 #define kRedirectPath @"redirectPath"
 #define kText @"text"
 #define SAFE_STRING(s) s ? [s description]: @""

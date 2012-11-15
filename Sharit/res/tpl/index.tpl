@@ -19,10 +19,11 @@
                 <h2>Pasteboard</h2>
                 <h3>Text:</h3>
                 <form action="%redirectPath%" method="post">
-                    <textarea cols="40" rows="5" name="clipboard">%clipboard_text%</textarea>
+                    <textarea cols="40" rows="5" name="%clipboard_field_name%">%clipboard_text%</textarea>
                     <br/>
                     <input type="hidden" name="redirectPath" value="%redirectPath%" />
-                    <input type="submit" value="Update" />
+                    <input name="submit_update" type="submit" value="Update" />
+                    <input name="submit_open" type="submit" value="Open Link" />
                 </form>
                 %if clipboard_image%
                 <h3>Image:</h3>
