@@ -4,7 +4,7 @@
     </a>
     <table>
         <tr class="links">
-            <td><a href="%src_video%">video</a></td>
+            <td><a href="%src_video%">video</a> %duration%</td>
         </tr>
         <tr class="sizes">
             <td>&nbsp;</td>

@@ -65,6 +65,7 @@
 - (NSMutableDictionary*)macroDictParams {
     NSMutableDictionary* params = [super macroDictParams];
     if (_isVideo) {
+        [params setObject:[self videoDuration] forKey:@"duration"];
         [params setObject:self.path forKey:@"src_video"];
     }
     return params;
@@ -74,10 +75,44 @@
     return _asset.defaultRepresentation;
 }
 
+- (NSString*) videoDuration {
+    NSString* result = nil;
+    if (_isVideo) {
+        NSNumber* duration = [_asset valueForProperty:ALAssetPropertyDuration];
+        if ([duration isKindOfClass:[NSNumber class]]) {
+            double d = [duration doubleValue];
+            result = [ALAssetShare durationStringFromDouble:d];
+        }
+    }
+    return SAFE_STRING(result);
+}
+
 - (NSData*) dataForSizeType:(ImageSizeType)sizeType {
     if (_isVideo && sizeType!=ImageSize_Thumb) {
         return nil;
     }
     return [super dataForSizeType:sizeType];
+}
+
++ (NSString*) durationStringFromDouble:(double)d {
+    NSString* result = @"";
+    const int sH = 3600;
+    const int sM = 60;
+    NSString* const PADDED_FORMAT=@"%02d";
+    NSString* const SIMPLE_FORMAT=@"%d";
+    int seconds = (int)d;
+    if (seconds>=sH) {
+        result = [result stringByAppendingFormat:@"%d:",seconds/sH];
+        seconds = seconds % sH;
+    }
+
+    NSString* format = [result length] || seconds<sM ? PADDED_FORMAT : SIMPLE_FORMAT;
+    result = [result stringByAppendingFormat:format,seconds/sM];
+    result = [result stringByAppendingString:@":"];
+    seconds = seconds % sM;
+
+    format = [result length] ? PADDED_FORMAT : SIMPLE_FORMAT;
+    result = [result stringByAppendingFormat:format,seconds];
+    return result;
 }
 @end

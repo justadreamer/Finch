@@ -35,7 +35,7 @@ const NSInteger SEC_BONJOUR = 3;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"SharIt";
+    self.navigationItem.title = @"Finch";
 }
 
 - (void)viewDidUnload {

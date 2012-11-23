@@ -15,4 +15,7 @@
 @property (nonatomic,readonly) ALAssetRepresentation* defaultRepresentation;
 
 + (BOOL)isAssetVideo:(ALAsset*)asset;
+#ifdef UNIT_TESTS
++ (NSString*) durationStringFromDouble:(double)d;
+#endif
 @end
