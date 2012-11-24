@@ -3,11 +3,11 @@
     <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" type="image/png" href="/apple-touch-favicon.png" />
-        <title>SharIt</title>
+        <title>Finch</title>
         <link rel="stylesheet" type="text/css" href="/default.css" />
     </head>
     <body>
-        <h1>SharIt</h1>
+        <h1>Finch</h1>
         <p>Shares:</p>
         <ul>
             <li>%if show_link_pasteboard%<a href="index.html">%endif%Pasteboard%if show_link_pasteboard%</a>%endif%</li>
