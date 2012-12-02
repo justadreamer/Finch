@@ -7,20 +7,15 @@
 //
 
 #import "CellModel.h"
+#import "TableModelConstants.h"
 
 @implementation CellModel
-@synthesize cellClass;
-@synthesize model;
-@synthesize nibNameToLoad;
-@synthesize cellStyle;
-@synthesize cellIdentifier;
-@synthesize tag;
 
-- (id) initWithCellClass:(Class)_cellClass model:(NSObject*)_model identifier:(NSString *)_cellIdentifier{
+- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model identifier:(NSString *)cellIdentifier{
     self = [self init];
-    self.cellClass = _cellClass;
-    self.model = _model;
-    self.cellIdentifier = _cellIdentifier;
+    self.cellClassName = cellClass;
+    self.model = model;
+    self.cellIdentifier = cellIdentifier;
     return self;
 }
 
@@ -38,4 +33,22 @@
     return cell;
 }
 
+- (NSString *)
+getPropertyNameForJsonKey:(NSString *)jsonKey
+{
+    static NSDictionary* vars;
+	if (!vars) {
+		vars = @{
+        kModel: @"model",
+        kTag: @"tag",
+        kCellId: @"cellIdentifier",
+        kCellStyle : @"cellStyle",
+        kNibNameToLoad : @"nibNameToLoad",
+        kCellClassName : @"cellClassName"
+		};
+	}
+	NSString* key = [vars objectForKey:jsonKey];
+	
+	return key;
+}
 @end

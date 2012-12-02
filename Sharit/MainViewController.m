@@ -17,6 +17,7 @@
 #import "TableModel.h"
 #import "SectionModel.h"
 #import "CellModel.h"
+#import "TableModelConstants.h"
 
 const NSInteger SEC_IFACES = 1;
 const NSInteger SEC_SHARED = 2;
@@ -53,52 +54,34 @@ const NSInteger SEC_BONJOUR = 3;
 }
 
 - (void) refresh {
-    self.tableModel = [[TableModel alloc] init];
-    if ([Helper instance].isBonjourPublished) {
-        SectionModel* secBonjour = [[SectionModel alloc] init];
-        secBonjour.titleForHeader = @"Either use a Bonjour enabled browser:";
-        secBonjour.tag = SEC_BONJOUR;
-        CellModel* cell = [[CellModel alloc] init];
-        cell.model = [Helper instance].bonjourName;
-        cell.cellIdentifier = @"Bonjour";
-        cell.tag = SEC_BONJOUR;
-        [secBonjour addCellModel:cell];
-        [self.tableModel.sections addObject:secBonjour];
-    }
     self.ifaces = [[Helper instance] interfaces];
+    BOOL isBonjour = [Helper instance].isBonjourPublished;
 
-    SectionModel* secInterfaces = [[SectionModel alloc] init];
-    if ([self.ifaces count]>0) {
-        SectionModel* prevSection = [self.tableModel.sections lastObject];
-        NSString* enterUrlString = @"enter an URL (WiFi preferable) in the browser address bar:";
-        if (prevSection.tag==SEC_BONJOUR)
-            secInterfaces.titleForHeader=[@"or " stringByAppendingString:enterUrlString];
-        else
-            secInterfaces.titleForHeader=[enterUrlString capitalized1WordString];
-        for (Iface* iface in self.ifaces) {
-            CellModel* cellModel = [[CellModel alloc] initWithCellClass:[UITableViewCell class] model:iface identifier:@"Interfaces"];
-            cellModel.cellStyle = UITableViewCellStyleSubtitle;
-            cellModel.tag = SEC_IFACES;
-            [secInterfaces addCellModel:cellModel];
-        }
-    } else {
-        secInterfaces.titleForHeader=@"There are no wireless links available. Please check your settings.";
+    NSArray* cellsBonjour = isBonjour ? @[
+        @{kModel : [Helper instance].bonjourName, kCellId:@"Bonjour", kTag:@(SEC_BONJOUR)}
+    ] : @[];
+
+    NSMutableArray* cellsIfaces = [NSMutableArray array];
+    for (Iface* iface in self.ifaces) {
+        [cellsIfaces addObject:@{kCellId : @"Interfaces",kTag : @(SEC_IFACES),kCellStyle : @(UITableViewCellStyleSubtitle),kModel:iface}];
     }
-    [self.tableModel.sections addObject:secInterfaces];
+
+    NSMutableArray* cellsShares = [NSMutableArray array];
+    for (Share* share in [SharesProvider instance].shares) {
+        [cellsShares addObject:@{kCellId : @"ShareCell",kNibNameToLoad : @"ShareCell", kTag : @(SEC_SHARED),
+                kCellClassName: @"ShareCell",kModel:share}];
+    }
+
+    NSString* enterUrlString = @"enter an URL (WiFi preferable) in the browser address bar:";
     
-    if ([[SharesProvider instance].shares count]) {
-        SectionModel* sharesSection = [[SectionModel alloc] init];
-        sharesSection.titleForHeader = @"You are sharing:";
-        
-        for (Share* share in [SharesProvider instance].shares) {
-            CellModel* cellModel = [[CellModel alloc] initWithCellClass:[ShareCell class] model:share identifier:@"ShareCell"];
-            cellModel.nibNameToLoad = @"ShareCell";
-            cellModel.tag = SEC_SHARED;
-            [sharesSection addCellModel:cellModel];
-        }
-
-        [self.tableModel.sections addObject:sharesSection];
-    }
+    NSArray* sections = @[
+        isBonjour ?
+        @{kTitle : @"Either use a Bonjour enabled browser:",kTag : @(SEC_IFACES), kCells: cellsBonjour} : [NSNull null],
+        @{kTitle : !isBonjour ? [enterUrlString capitalized1WordString] : [@"or " stringByAppendingString:enterUrlString],kTag:@(SEC_IFACES),kCells:cellsIfaces},
+        @{kTitle : @"You are sharing:", kTag : @(SEC_IFACES), kCells:cellsShares}
+    ];
+    self.tableModel = [TableModel new];
+    [self.tableModel setSectionsFromArray:sections];
 
     [self.mainTableView reloadData];
 }
@@ -145,6 +128,7 @@ const NSInteger SEC_BONJOUR = 3;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CellModel* cellModel = [self.tableModel cellModelForIndexPath:indexPath];
+
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
     if (nil==cell) {
         cell = [cellModel createCell];

@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KVCBaseObject.h"
 
-@interface CellModel : NSObject
-@property (nonatomic,strong) Class cellClass;
+@interface CellModel : KVCBaseObject
+@property (nonatomic,strong) NSString* cellClassName;
 @property (nonatomic,strong) NSObject* model;
 
 //should be set from the outside
@@ -23,7 +24,7 @@
 
 @property (nonatomic,assign) NSInteger tag;
 
-- (id) initWithCellClass:(Class)_cellClass model:(NSObject*)_model identifier:(NSString*)_cellIdentifier;
+- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model identifier:(NSString *)cellIdentifier;
 
 - (UITableViewCell*) createCell;
 @end

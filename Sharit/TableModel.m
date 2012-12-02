@@ -11,11 +11,10 @@
 #import "CellModel.h"
 
 @implementation TableModel
-@synthesize sections;
 
 - (id) init {
     self = [super init];
-    sections = [[NSMutableArray alloc] init];
+    _sections = [[NSMutableArray alloc] init];
     return self;
 }
 
@@ -36,5 +35,17 @@
 - (NSInteger) numberOfRowsInSection:(NSInteger)section {
     SectionModel* sectionModel = [self sectionModelForSection:section];
     return [sectionModel.cellModels count];
+}
+
+- (void)setSectionsFromArray:(NSArray*)sections {
+    [self.sections removeAllObjects];
+    for (id section in sections) {
+        if ([section isKindOfClass:[SectionModel class]]) {
+            [self.sections addObject:section];
+        } else if ([section isKindOfClass:[NSDictionary class]]) {
+            SectionModel* sectionModel = (SectionModel*)[SectionModel objectForDictionary:section];
+            [self.sections addObject:sectionModel];
+        }
+    }
 }
 @end

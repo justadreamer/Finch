@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KVCBaseObject.h"
 @class CellModel;
-@interface SectionModel : NSObject
+@interface SectionModel : KVCBaseObject
 @property (nonatomic,strong) NSString* titleForHeader;
 @property (nonatomic,strong) NSString* titleForFooter;
 @property (nonatomic,strong) NSMutableArray* cellModels;
 @property (nonatomic,assign) NSInteger tag;
 
 - (void) addCellModel:(CellModel*)cellModel;
+
 @end
