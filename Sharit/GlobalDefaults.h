@@ -13,12 +13,7 @@ static NSString* const URLimageBase = @"img";
 static NSString* const templateExt = @"tpl";
 static NSString* const templatesFolderName = @"tpl";
 static NSString* const docrootFolderName = @"docroot";
-static NSString* const PATH_PREFIX_ASSET = @"asset";
-static NSString* const PATH_PREFIX_ASSET_THUMB = @"assetThumb";
-static NSString* const PARAM_ASSET_ID = @"assetId";
-static NSString* const ASSET_EXT_IMG = @".jpeg";
-static NSString* const ASSET_EXT_VIDEO = @".mp4";
-
+static NSString* const PATH_PREFIX_ASSET = @"asset/";
 
 @interface GlobalDefaults : NSObject
 + (UInt16) port;

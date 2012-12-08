@@ -51,9 +51,9 @@
                   BOOL isVideo = [ALAssetShare isAssetVideo:asset];
                   ALAssetShare* assetShare = [[ALAssetShare alloc] init];
                   assetShare.asset = asset;
-                  NSString* assetId = [[[[asset defaultRepresentation] url] absoluteString] MD5Hash];
-                  [self.assetSharesMap setObject:assetShare forKey:assetId];
-                  assetShare.path = [NSString stringWithFormat:@"/%@%@%@",PATH_PREFIX_ASSET, assetId,isVideo ? ASSET_EXT_VIDEO : ASSET_EXT_IMG];
+                  NSString* filename = [[asset defaultRepresentation] filename];
+                  [self.assetSharesMap setObject:assetShare forKey:filename];
+                  assetShare.path = [NSString stringWithFormat:@"%@%@",PATH_PREFIX_ASSET,filename];
                   assetShare.isVideo = isVideo;
                   assetShare.macroPreprocessor = isVideo ? videoPreprocessor : picturePreprocessor;
                   [self.assetShares addObject:assetShare];
@@ -114,9 +114,8 @@
 }
 
 - (ALAssetShare*) shareForPath:(NSString*)path {
-    NSString* prefix = [path contains:PATH_PREFIX_ASSET_THUMB] ? PATH_PREFIX_ASSET_THUMB : PATH_PREFIX_ASSET;
-    NSString* assetId = [path substringBetweenFirst:prefix andSecond:@"."];
-    return [self.assetSharesMap objectForKey:assetId];
+    path = [path substringAfter:PATH_PREFIX_ASSET];
+    return [self.assetSharesMap objectForKey:path];
 }
 
 @end
