@@ -38,3 +38,5 @@
 #define CGRectALog(v) ALog(@#v @"=(%f,%f,%f,%f)",v.origin.x,v.origin.y,v.size.width,v.size.height)
 #define CGSizeALog(v) ALog(@#v @"=(%f,%f)",v.width,v.height)
 #define CGPointALog(v) ALog(@#v @"=(%f,%f)",v.x,v.y)
+
+#define INVOKED DLog (@"")

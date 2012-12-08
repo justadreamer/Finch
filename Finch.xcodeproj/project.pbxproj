@@ -447,7 +447,7 @@
 				444B42EE155C302F00319EC7 /* CocoaHTTPServer */,
 				44677F7815740E2A003C209E /* Main */,
 				442EAD6F1565802F0032E1B2 /* Response forming */,
-				44EE822615FFD847008C12D6 /* Views */,
+				44EE822615FFD847008C12D6 /* TableViews */,
 				442EACDA15620F140032E1B2 /* Share models */,
 				442EACE7156219280032E1B2 /* Share Controllers */,
 				442EAC9F155D96E00032E1B2 /* res */,
@@ -666,7 +666,7 @@
 			path = ../JSON;
 			sourceTree = "<group>";
 		};
-		44EE822615FFD847008C12D6 /* Views */ = {
+		44EE822615FFD847008C12D6 /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
 				44EE822715FFD88C008C12D6 /* TableView models */,
@@ -674,7 +674,7 @@
 				442EACC61561A1F90032E1B2 /* ShareCell.m */,
 				442EACC91561A2440032E1B2 /* ShareCell.xib */,
 			);
-			name = Views;
+			name = TableViews;
 			sourceTree = "<group>";
 		};
 		44EE822715FFD88C008C12D6 /* TableView models */ = {

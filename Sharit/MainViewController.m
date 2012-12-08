@@ -133,6 +133,7 @@ const NSInteger SEC_BONJOUR = 3;
     if (nil==cell) {
         cell = [cellModel createCell];
     }
+//    [cellModel updateCell:cell];
 
     if (cellModel.tag == SEC_IFACES) {
         Iface* iface = (Iface*)cellModel.model;

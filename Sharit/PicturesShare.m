@@ -59,6 +59,12 @@
                   [self.assetShares addObject:assetShare];
               }
           }];
+
+         //we have enumerated all groups
+         if (!group) {
+             NSSortDescriptor* desc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
+             [self.assetShares sortUsingDescriptors:[NSArray arrayWithObject:desc]];
+         }
      }
                               failureBlock:
      ^(NSError* err) {

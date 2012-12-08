@@ -115,4 +115,8 @@
     result = [result stringByAppendingFormat:format,seconds];
     return result;
 }
+
+- (NSDate*) createdDate {
+    return [_asset valueForProperty:ALAssetPropertyDate];
+}
 @end
