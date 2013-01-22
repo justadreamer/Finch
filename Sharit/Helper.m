@@ -12,6 +12,7 @@
 #import "Iface.h"
 #import "GlobalDefaults.h"
 #import "NSStringAdditions.h"
+#import "BonjourIface.h"
 
 @interface Helper() {
     
@@ -67,6 +68,12 @@ NSString* addressFrom_ifa_addr(struct sockaddr* ifa_addr) {
     freeifaddrs(interfaces);
     NSSortDescriptor* desc = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     [ifaces sortUsingDescriptors:[NSArray arrayWithObject:desc]];
+    if ([self isBonjourPublished]) {
+        BonjourIface* bonjourIface = [BonjourIface new];
+        bonjourIface.name = @"Bonjour";
+        bonjourIface.bonjourName = [self bonjourName];
+        [ifaces addObject:bonjourIface];
+    }
     return [NSArray arrayWithArray:ifaces];
 }
 

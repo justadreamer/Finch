@@ -56,11 +56,6 @@ const NSInteger SEC_BONJOUR = 3;
 
 - (void) refresh {
     self.ifaces = [[Helper instance] interfaces];
-    BOOL isBonjour = [Helper instance].isBonjourPublished;
-
-    NSArray* cellsBonjour = isBonjour ? @[
-        @{kModel : [Helper instance].bonjourName, kCellId:@"Bonjour", kTag:@(SEC_BONJOUR)}
-    ] : @[];
 
     NSMutableArray* cellsIfaces = [NSMutableArray array];
     IfaceCellModelAdapter* ifaceCellModelAdapter = [IfaceCellModelAdapter new];
@@ -72,7 +67,7 @@ const NSInteger SEC_BONJOUR = 3;
                      kAdapter : ifaceCellModelAdapter
          }];
     }
-    
+
     ShareCellModelAdapter* shareCellModelAdapter = [ShareCellModelAdapter new];
     NSMutableArray* cellsShares = [NSMutableArray array];
     for (Share* share in [SharesProvider instance].shares) {
@@ -84,14 +79,11 @@ const NSInteger SEC_BONJOUR = 3;
                     kAdapter  : shareCellModelAdapter}];
     }
 
-    NSString* enterUrlString = @"enter an URL (WiFi preferable) in the browser address bar:";
-    
     NSArray* sections = @[
-        isBonjour ?
-        @{kTitle : @"Either use a Bonjour enabled browser:", kCells: cellsBonjour} : [NSNull null],
-        @{kTitle : !isBonjour ? [enterUrlString capitalized1WordString] : [@"or " stringByAppendingString:enterUrlString],kCells:cellsIfaces},
+        @{kTitle : @"Enter an URL (WiFi preferable) in the browser address bar:", kCells:cellsIfaces},
         @{kTitle : @"You are sharing:", kCells:cellsShares}
     ];
+
     self.tableModel = [TableModel new];
     [self.tableModel setSectionsFromArray:sections];
 
