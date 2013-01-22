@@ -36,7 +36,7 @@ getPropertyNameForJsonKey:(NSString *)jsonKey
             kCells: @"cellModels"
         };
     }
-    VLog(vars);
+
 	NSString* key = vars[jsonKey];
 	
 	return key;

@@ -74,7 +74,7 @@ const CGFloat scales[] = {
 
 - (NSData*) dataForSizeType:(ImageSizeType)sizeType {
     UIImage* img = [self imageForSizeType:sizeType];
-    return UIImagePNGRepresentation(img);
+    return [self isPNG] ? UIImagePNGRepresentation(img) : UIImageJPEGRepresentation(img, 1.0);
 }
 
 - (ImageSizeType) imageSizeTypeFromParam:(NSString*)param {
@@ -96,5 +96,9 @@ const CGFloat scales[] = {
         img = [image fixOrientation];
     }
     return img;
+}
+
+- (BOOL) isPNG {
+    return [[self.path uppercaseString] contains:@".PNG"];
 }
 @end
