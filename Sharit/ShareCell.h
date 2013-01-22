@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCell.h"
+
 @class Share;
-@interface ShareCell : UITableViewCell
-@property (nonatomic,strong) Share* share;
+@interface ShareCell : BaseCell
 @property (nonatomic,strong) IBOutlet UIImageView* check;
 @property (nonatomic,strong) IBOutlet UILabel* titleLabel;
 @property (nonatomic,strong) IBOutlet UILabel* detailLabel;
 
-- (void) refresh;
 @end

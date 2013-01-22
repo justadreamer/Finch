@@ -39,13 +39,21 @@
 
 - (void)setSectionsFromArray:(NSArray*)sections {
     [self.sections removeAllObjects];
+    [self addSections:sections];
+}
+
+- (void)addSections:(NSArray*)sections {
     for (id section in sections) {
-        if ([section isKindOfClass:[SectionModel class]]) {
-            [self.sections addObject:section];
-        } else if ([section isKindOfClass:[NSDictionary class]]) {
-            SectionModel* sectionModel = (SectionModel*)[SectionModel objectForDictionary:section];
-            [self.sections addObject:sectionModel];
-        }
+        [self addSection:section];
+    }
+}
+
+- (void)addSection:(id)section {
+    if ([section isKindOfClass:[SectionModel class]]) {
+        [self.sections addObject:section];
+    } else if ([section isKindOfClass:[NSDictionary class]]) {
+        SectionModel* sectionModel = (SectionModel*)[SectionModel objectForDictionary:section];
+        [self.sections addObject:sectionModel];
     }
 }
 @end

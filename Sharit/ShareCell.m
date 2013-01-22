@@ -7,30 +7,18 @@
 //
 
 #import "ShareCell.h"
-#import "Share.h"
+#import "BaseCellModelAdapter.h"
 
 @implementation ShareCell
-@synthesize share;
-@synthesize check;
-@synthesize titleLabel;
-@synthesize detailLabel;
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
 
-- (void) refresh {
-    self.check.hidden = !self.share.isShared;
-    self.titleLabel.text = self.share.name;
-    self.detailLabel.text = [self.share detailsDescription];
+- (void) updateWithAdapter:(BaseCellModelAdapter *)adapter {
+    self.check.hidden = ![adapter showCheckMark];
+    self.titleLabel.text = [adapter mainText];
+    self.detailLabel.text = [adapter detailText];
     if (0==[self.detailLabel.text length]) {
         CGSize size = self.titleLabel.superview.bounds.size;
         CGPoint center = CGPointMake(size.width/2, size.height/2);
@@ -38,7 +26,7 @@
     } else {
         self.titleLabel.center = CGPointMake(self.titleLabel.center.x, self.detailLabel.center.y-self.titleLabel.frame.size.height);
     }
-    self.detailLabel.textColor = [self.share isDetailsDescriptionAWarning] ? [UIColor redColor] : [UIColor blueColor];
+    self.detailLabel.textColor = [adapter detailTextColor];
 }
 
 @end

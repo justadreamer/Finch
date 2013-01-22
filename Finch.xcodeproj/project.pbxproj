@@ -28,6 +28,8 @@
 		442EAD7815658B470032E1B2 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		442EADA31566D10C0032E1B2 /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */; };
 		442EADA51567C1DE0032E1B2 /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 442EADA41567C1DE0032E1B2 /* docroot */; };
+		44356AD0169F7C360048592C /* IfaceCellModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44356ACF169F7C360048592C /* IfaceCellModelAdapter.m */; };
+		44356AD3169F7FB20048592C /* BaseCellModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44356AD2169F7FB20048592C /* BaseCellModelAdapter.m */; };
 		44395B6916600E9600507643 /* IMG_0010.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 44395B6716600E9600507643 /* IMG_0010.PNG */; };
 		44395B6B1660155E00507643 /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 445F6CD6157559D600E563DF /* ImageShare.m */; };
 		444B42D2155C2FD200319EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
@@ -94,6 +96,8 @@
 		44BEA335157BEFBF00A1A7A7 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EAD72156580610032E1B2 /* MacroPreprocessor.m */; };
 		44BEA339157BF24300A1A7A7 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */; };
 		44BEA33C157BF48800A1A7A7 /* GlobalDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */; };
+		44BFC83D16AF3A3300D485F2 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC83C16AF3A3300D485F2 /* BaseCell.m */; };
+		44BFC84016AF3C9700D485F2 /* ShareCellModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC83F16AF3C9700D485F2 /* ShareCellModelAdapter.m */; };
 		44C05E3F166A3B6100EAF733 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 44C05E3D166A3B6100EAF733 /* Icon.png */; };
 		44C05E40166A3B6100EAF733 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44C05E3E166A3B6100EAF733 /* Icon@2x.png */; };
 		44C05E50166AA02300EAF733 /* TableModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C05E4F166AA02300EAF733 /* TableModelConstants.m */; };
@@ -116,6 +120,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		441C138B169F974E009185A6 /* CellModelAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellModelAdapter.h; sourceTree = "<group>"; };
 		4422BF27162A16C7006C9AAE /* HTTPAsyncAssetResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAsyncAssetResponse.h; sourceTree = "<group>"; };
 		4422BF28162A16C7006C9AAE /* HTTPAsyncAssetResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAsyncAssetResponse.m; sourceTree = "<group>"; };
 		442EACA3155D9B5E0032E1B2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -152,6 +157,10 @@
 		442EADA11566D10C0032E1B2 /* MainHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHTTPConnection.h; sourceTree = "<group>"; };
 		442EADA21566D10C0032E1B2 /* MainHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHTTPConnection.m; sourceTree = "<group>"; };
 		442EADA41567C1DE0032E1B2 /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
+		44356ACE169F7C360048592C /* IfaceCellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IfaceCellModelAdapter.h; sourceTree = "<group>"; };
+		44356ACF169F7C360048592C /* IfaceCellModelAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IfaceCellModelAdapter.m; sourceTree = "<group>"; };
+		44356AD1169F7FB20048592C /* BaseCellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCellModelAdapter.h; sourceTree = "<group>"; };
+		44356AD2169F7FB20048592C /* BaseCellModelAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCellModelAdapter.m; sourceTree = "<group>"; };
 		44395B6816600E9600507643 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/IMG_0010.PNG; sourceTree = "<group>"; };
 		444B42CD155C2FD200319EC7 /* Finch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444B42D1155C2FD200319EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -248,6 +257,10 @@
 		44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTemplateLoader.m; sourceTree = "<group>"; };
 		44BEA33A157BF48800A1A7A7 /* GlobalDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefaults.h; sourceTree = "<group>"; };
 		44BEA33B157BF48800A1A7A7 /* GlobalDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDefaults.m; sourceTree = "<group>"; };
+		44BFC83B16AF3A3300D485F2 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		44BFC83C16AF3A3300D485F2 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		44BFC83E16AF3C9700D485F2 /* ShareCellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCellModelAdapter.h; sourceTree = "<group>"; };
+		44BFC83F16AF3C9700D485F2 /* ShareCellModelAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareCellModelAdapter.m; sourceTree = "<group>"; };
 		44C05E3D166A3B6100EAF733 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		44C05E3E166A3B6100EAF733 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		44C05E4E166AA02300EAF733 /* TableModelConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModelConstants.h; sourceTree = "<group>"; };
@@ -401,6 +414,20 @@
 				44BEA338157BF24300A1A7A7 /* BasicTemplateLoader.m */,
 			);
 			name = "Response forming";
+			sourceTree = "<group>";
+		};
+		44356ACD169F7C170048592C /* CellModelAdapters */ = {
+			isa = PBXGroup;
+			children = (
+				44356ACE169F7C360048592C /* IfaceCellModelAdapter.h */,
+				44356ACF169F7C360048592C /* IfaceCellModelAdapter.m */,
+				44356AD1169F7FB20048592C /* BaseCellModelAdapter.h */,
+				44356AD2169F7FB20048592C /* BaseCellModelAdapter.m */,
+				441C138B169F974E009185A6 /* CellModelAdapter.h */,
+				44BFC83E16AF3C9700D485F2 /* ShareCellModelAdapter.h */,
+				44BFC83F16AF3C9700D485F2 /* ShareCellModelAdapter.m */,
+			);
+			name = CellModelAdapters;
 			sourceTree = "<group>";
 		};
 		444B42C2155C2FD200319EC7 = {
@@ -673,6 +700,8 @@
 				442EACC51561A1F90032E1B2 /* ShareCell.h */,
 				442EACC61561A1F90032E1B2 /* ShareCell.m */,
 				442EACC91561A2440032E1B2 /* ShareCell.xib */,
+				44BFC83B16AF3A3300D485F2 /* BaseCell.h */,
+				44BFC83C16AF3A3300D485F2 /* BaseCell.m */,
 			);
 			name = TableViews;
 			sourceTree = "<group>";
@@ -680,6 +709,7 @@
 		44EE822715FFD88C008C12D6 /* TableView models */ = {
 			isa = PBXGroup;
 			children = (
+				44356ACD169F7C170048592C /* CellModelAdapters */,
 				44C05E4E166AA02300EAF733 /* TableModelConstants.h */,
 				44C05E4F166AA02300EAF733 /* TableModelConstants.m */,
 				44A35D9315D83F44005FA450 /* TableModel.h */,
@@ -877,6 +907,10 @@
 				44C05ECE166B6FAF00EAF733 /* SBJsonTokeniser.m in Sources */,
 				44C05ECF166B6FAF00EAF733 /* SBJsonUTF8Stream.m in Sources */,
 				44C05ED0166B6FAF00EAF733 /* SBJsonWriter.m in Sources */,
+				44356AD0169F7C360048592C /* IfaceCellModelAdapter.m in Sources */,
+				44356AD3169F7FB20048592C /* BaseCellModelAdapter.m in Sources */,
+				44BFC83D16AF3A3300D485F2 /* BaseCell.m in Sources */,
+				44BFC84016AF3C9700D485F2 /* ShareCellModelAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

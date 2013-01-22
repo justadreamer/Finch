@@ -17,5 +17,8 @@
 
 - (NSInteger) numberOfSections;
 - (NSInteger) numberOfRowsInSection:(NSInteger)section;
+
 - (void)setSectionsFromArray:(NSArray*)sections;
+- (void)addSections:(NSArray*)sections;
+- (void)addSection:(id)section;
 @end

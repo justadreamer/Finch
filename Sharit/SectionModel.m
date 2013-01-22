@@ -28,15 +28,16 @@
 - (NSString *)
 getPropertyNameForJsonKey:(NSString *)jsonKey
 {
-    static NSDictionary* vars;
-	if (!vars) {
-		vars = @{
-        kTitle: @"titleForHeader",
-        kTag: @"tag",
-        kCells: @"cellModels"
-		};
-	}
-	NSString* key = [vars objectForKey:jsonKey];
+    static NSDictionary* vars = nil;
+    if (nil==vars) {
+        vars = @{
+            kTitle: @"titleForHeader",
+            kTag: @"tag",
+            kCells: @"cellModels"
+        };
+    }
+    VLog(vars);
+	NSString* key = vars[jsonKey];
 	
 	return key;
 }

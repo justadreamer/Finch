@@ -17,4 +17,5 @@ extern NSString* const kCellId;
 extern NSString* const kCellStyle;
 extern NSString* const kNibNameToLoad;
 extern NSString* const kCellClassName;
+extern NSString* const kAdapter;
 #endif

@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "KVCBaseObject.h"
+#import "BaseCellModelAdapter.h"
+#import "CellModelAdapter.h"
+
+@class BaseCell;
 
 @interface CellModel : KVCBaseObject
 @property (nonatomic,strong) NSString* cellClassName;
@@ -24,7 +28,12 @@
 
 @property (nonatomic,assign) NSInteger tag;
 
-- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model identifier:(NSString *)cellIdentifier;
+@property (nonatomic,strong) NSObject* cellModelAdapter;
 
-- (UITableViewCell*) createCell;
+- (BaseCellModelAdapter*)adapter;
+
+- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model adapter:(BaseCellModelAdapter*)adapter identifier:(NSString *)cellIdentifier;
+
+- (BaseCell*) createCell;
+
 @end

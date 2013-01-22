@@ -14,3 +14,4 @@ NSString* const kCellId = @"cellId";
 NSString* const kCellStyle = @"cellStyle";
 NSString* const kNibNameToLoad = @"nibNameToLoad";
 NSString* const kCellClassName = @"cellClassName";
+NSString* const kAdapter = @"adapter";

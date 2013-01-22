@@ -18,9 +18,10 @@
 #import "SectionModel.h"
 #import "CellModel.h"
 #import "TableModelConstants.h"
+#import "IfaceCellModelAdapter.h"
+#import "BaseCell.h"
+#import "ShareCellModelAdapter.h"
 
-const NSInteger SEC_IFACES = 1;
-const NSInteger SEC_SHARED = 2;
 const NSInteger SEC_BONJOUR = 3;
 
 @interface MainViewController ()
@@ -62,23 +63,34 @@ const NSInteger SEC_BONJOUR = 3;
     ] : @[];
 
     NSMutableArray* cellsIfaces = [NSMutableArray array];
+    IfaceCellModelAdapter* ifaceCellModelAdapter = [IfaceCellModelAdapter new];
     for (Iface* iface in self.ifaces) {
-        [cellsIfaces addObject:@{kCellId : @"Interfaces",kTag : @(SEC_IFACES),kCellStyle : @(UITableViewCellStyleSubtitle),kModel:iface}];
+        [cellsIfaces addObject:@{
+                      kCellId : @"Interfaces",
+                   kCellStyle : @(UITableViewCellStyleSubtitle),
+                       kModel : iface,
+                     kAdapter : ifaceCellModelAdapter
+         }];
     }
-
+    
+    ShareCellModelAdapter* shareCellModelAdapter = [ShareCellModelAdapter new];
     NSMutableArray* cellsShares = [NSMutableArray array];
     for (Share* share in [SharesProvider instance].shares) {
-        [cellsShares addObject:@{kCellId : @"ShareCell",kNibNameToLoad : @"ShareCell", kTag : @(SEC_SHARED),
-                kCellClassName: @"ShareCell",kModel:share}];
+        [cellsShares addObject:@{
+                      kCellId : @"ShareCell",
+               kNibNameToLoad : @"ShareCell",
+               kCellClassName : @"ShareCell",
+                       kModel : share,
+                    kAdapter  : shareCellModelAdapter}];
     }
 
     NSString* enterUrlString = @"enter an URL (WiFi preferable) in the browser address bar:";
     
     NSArray* sections = @[
         isBonjour ?
-        @{kTitle : @"Either use a Bonjour enabled browser:",kTag : @(SEC_IFACES), kCells: cellsBonjour} : [NSNull null],
-        @{kTitle : !isBonjour ? [enterUrlString capitalized1WordString] : [@"or " stringByAppendingString:enterUrlString],kTag:@(SEC_IFACES),kCells:cellsIfaces},
-        @{kTitle : @"You are sharing:", kTag : @(SEC_IFACES), kCells:cellsShares}
+        @{kTitle : @"Either use a Bonjour enabled browser:", kCells: cellsBonjour} : [NSNull null],
+        @{kTitle : !isBonjour ? [enterUrlString capitalized1WordString] : [@"or " stringByAppendingString:enterUrlString],kCells:cellsIfaces},
+        @{kTitle : @"You are sharing:", kCells:cellsShares}
     ];
     self.tableModel = [TableModel new];
     [self.tableModel setSectionsFromArray:sections];
@@ -129,21 +141,12 @@ const NSInteger SEC_BONJOUR = 3;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CellModel* cellModel = [self.tableModel cellModelForIndexPath:indexPath];
 
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
+    BaseCell* cell = (BaseCell*) [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
     if (nil==cell) {
         cell = [cellModel createCell];
     }
-//    [cellModel updateCell:cell];
-
-    if (cellModel.tag == SEC_IFACES) {
-        Iface* iface = (Iface*)cellModel.model;
-        cell.textLabel.text = [iface url];
-        cell.detailTextLabel.text = iface.name;
-    } else if (cellModel.tag == SEC_SHARED) {
-        ShareCell* shareCell = (ShareCell*)cell;
-        shareCell.share = (Share*) cellModel.model;
-        [shareCell refresh];
-    } else if (cellModel.tag == SEC_BONJOUR) {
+    [cell updateWithAdapter:[cellModel adapter]];
+    if (cellModel.tag == SEC_BONJOUR) {
         cell.textLabel.text = (NSString*)cellModel.model;
     }
     return cell;

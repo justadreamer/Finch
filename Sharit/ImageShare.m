@@ -74,7 +74,7 @@ const CGFloat scales[] = {
 
 - (NSData*) dataForSizeType:(ImageSizeType)sizeType {
     UIImage* img = [self imageForSizeType:sizeType];
-    return UIImageJPEGRepresentation(img,1.0);
+    return UIImagePNGRepresentation(img);
 }
 
 - (ImageSizeType) imageSizeTypeFromParam:(NSString*)param {
