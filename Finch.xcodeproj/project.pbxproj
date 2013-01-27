@@ -655,6 +655,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		44BFC84416AF459400D485F2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				442EACC51561A1F90032E1B2 /* ShareCell.h */,
+				442EACC61561A1F90032E1B2 /* ShareCell.m */,
+				442EACC91561A2440032E1B2 /* ShareCell.xib */,
+				44BFC83B16AF3A3300D485F2 /* BaseCell.h */,
+				44BFC83C16AF3A3300D485F2 /* BaseCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		44C05E59166AA6D000EAF733 /* KVCSerializer */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,20 +713,16 @@
 		44EE822615FFD847008C12D6 /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
-				44EE822715FFD88C008C12D6 /* TableView models */,
-				442EACC51561A1F90032E1B2 /* ShareCell.h */,
-				442EACC61561A1F90032E1B2 /* ShareCell.m */,
-				442EACC91561A2440032E1B2 /* ShareCell.xib */,
-				44BFC83B16AF3A3300D485F2 /* BaseCell.h */,
-				44BFC83C16AF3A3300D485F2 /* BaseCell.m */,
+				44BFC84416AF459400D485F2 /* Cells */,
+				44356ACD169F7C170048592C /* CellModelAdapters */,
+				44EE822715FFD88C008C12D6 /* Models */,
 			);
 			name = TableViews;
 			sourceTree = "<group>";
 		};
-		44EE822715FFD88C008C12D6 /* TableView models */ = {
+		44EE822715FFD88C008C12D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				44356ACD169F7C170048592C /* CellModelAdapters */,
 				44C05E4E166AA02300EAF733 /* TableModelConstants.h */,
 				44C05E4F166AA02300EAF733 /* TableModelConstants.m */,
 				44A35D9315D83F44005FA450 /* TableModel.h */,
@@ -724,7 +732,7 @@
 				44A35D9915D83F6C005FA450 /* CellModel.h */,
 				44A35D9A15D83F6C005FA450 /* CellModel.m */,
 			);
-			name = "TableView models";
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
