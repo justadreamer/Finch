@@ -7,13 +7,13 @@
 //
 
 #import "BaseCell.h"
-#import "BaseCellModelAdapter.h"
+#import "BaseCellAdapter.h"
 
 @implementation BaseCell
 
-- (void) updateWithAdapter:(BaseCellModelAdapter*)adapter {
-    self.textLabel.text = [adapter mainText];
-    self.detailTextLabel.text = [adapter detailText];
+- (void) updateWithAdapter:(BaseCellAdapter*)adapter {
+    self.textLabel.text = [(BaseCellAdapter*)adapter mainText];
+    self.detailTextLabel.text = [(BaseCellAdapter*)adapter detailText];
 }
 
 @end

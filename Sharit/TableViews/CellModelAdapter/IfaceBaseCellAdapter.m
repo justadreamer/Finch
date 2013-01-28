@@ -6,10 +6,10 @@
 //
 //
 
-#import "IfaceCellModelAdapter.h"
+#import "IfaceBaseCellAdapter.h"
 #import "Iface.h"
 
-@implementation IfaceCellModelAdapter
+@implementation IfaceBaseCellAdapter
 
 - (NSString*)mainText {
     return [self iface].url;

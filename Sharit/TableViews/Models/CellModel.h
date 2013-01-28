@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KVCBaseObject.h"
-#import "BaseCellModelAdapter.h"
-#import "CellModelAdapter.h"
+#import "BaseCellAdapter.h"
 
 @class BaseCell;
 
@@ -30,9 +29,9 @@
 
 @property (nonatomic,strong) NSObject* cellModelAdapter;
 
-- (BaseCellModelAdapter*)adapter;
+- (BaseCellAdapter*)adapter;
 
-- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model adapter:(BaseCellModelAdapter*)adapter identifier:(NSString *)cellIdentifier;
+- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model adapter:(BaseCellAdapter*)adapter identifier:(NSString *)cellIdentifier;
 
 - (BaseCell*) createCell;
 

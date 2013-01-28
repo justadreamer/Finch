@@ -8,16 +8,15 @@
 
 #import "CellModel.h"
 #import "TableModelConstants.h"
-#import "BaseCellModelAdapter.h"
+#import "BaseCellAdapter.h"
 #import "BaseCell.h"
 
 @implementation CellModel
 
-- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model adapter:(BaseCellModelAdapter*)adapter identifier:(NSString *)cellIdentifier {
+- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model adapter:(BaseCellAdapter*)adapter identifier:(NSString *)cellIdentifier {
     self = [self init];
     self.cellClassName = cellClass;
     self.model = model;
-//    self.cellModelAdapter = adapter;
     self.cellIdentifier = cellIdentifier;
     return self;
 }
@@ -60,12 +59,12 @@ getPropertyNameForJsonKey:(NSString *)jsonKey
     _model = model;
 }
 
-- (void) setCellModelAdapter:(BaseCellModelAdapter *)cellModelAdapter {
+- (void) setCellModelAdapter:(BaseCellAdapter *)cellModelAdapter {
     _cellModelAdapter = cellModelAdapter;
 }
 
-- (BaseCellModelAdapter*)adapter {
-    BaseCellModelAdapter* adapter = (BaseCellModelAdapter*) _cellModelAdapter;
+- (BaseCellAdapter*)adapter {
+    BaseCellAdapter* adapter = (BaseCellAdapter*) _cellModelAdapter;
     adapter.model = _model;
     return adapter;
 }

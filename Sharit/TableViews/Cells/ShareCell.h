@@ -11,8 +11,5 @@
 
 @class Share;
 @interface ShareCell : BaseCell
-@property (nonatomic,strong) IBOutlet UIImageView* check;
-@property (nonatomic,strong) IBOutlet UILabel* titleLabel;
-@property (nonatomic,strong) IBOutlet UILabel* detailLabel;
 
 @end

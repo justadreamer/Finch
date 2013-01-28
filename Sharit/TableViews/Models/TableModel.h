@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TableModelConstants.h"
+
 @class CellModel;
 @class SectionModel;
 @interface TableModel : NSObject
@@ -21,4 +23,8 @@
 - (void)setSectionsFromArray:(NSArray*)sections;
 - (void)addSections:(NSArray*)sections;
 - (void)addSection:(id)section;
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section;
+
 @end

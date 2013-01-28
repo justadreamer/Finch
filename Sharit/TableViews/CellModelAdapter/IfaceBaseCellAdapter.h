@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseCellModelAdapter.h"
+#import "BaseCellAdapter.h"
 
-@interface IfaceCellModelAdapter : BaseCellModelAdapter
+@interface IfaceBaseCellAdapter : BaseCellAdapter
 
 @end

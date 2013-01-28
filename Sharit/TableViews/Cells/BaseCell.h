@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@class BaseCellModelAdapter;
+@class BaseCellAdapter;
 
 @interface BaseCell : UITableViewCell
-- (void) updateWithAdapter:(BaseCellModelAdapter*)adapter;
+- (void) updateWithAdapter:(BaseCellAdapter*)adapter;
 @end

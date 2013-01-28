@@ -9,7 +9,7 @@
 #import "PicturesShareController.h"
 #import "Share.h"
 @interface PicturesShareController ()
-@property (nonatomic,strong) IBOutlet UILabel* warningLabel;
+@property (nonatomic,strong) UILabel* warningLabel;
 @end
 
 @implementation PicturesShareController

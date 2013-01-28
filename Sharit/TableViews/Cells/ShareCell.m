@@ -7,7 +7,13 @@
 //
 
 #import "ShareCell.h"
-#import "BaseCellModelAdapter.h"
+#import "ShareCellAdapter.h"
+@interface ShareCell()
+@property (nonatomic,strong) IBOutlet UIImageView* check;
+@property (nonatomic,strong) IBOutlet UILabel* titleLabel;
+@property (nonatomic,strong) IBOutlet UILabel* detailLabel;
+
+@end
 
 @implementation ShareCell
 
@@ -15,7 +21,7 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void) updateWithAdapter:(BaseCellModelAdapter *)adapter {
+- (void) updateWithAdapter:(ShareCellAdapter *)adapter {
     self.check.hidden = ![adapter showCheckMark];
     self.titleLabel.text = [adapter mainText];
     self.detailLabel.text = [adapter detailText];

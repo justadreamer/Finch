@@ -11,8 +11,8 @@
 #import "ImageShare.h"
 
 @interface ClipboardShareController ()
-@property (nonatomic,strong) IBOutlet UITextView* textView;
-@property (nonatomic,strong) IBOutlet UIImageView* imageView;
+@property (nonatomic,strong) UITextView* textView;
+@property (nonatomic,strong) UIImageView* imageView;
 @end
 
 @implementation ClipboardShareController

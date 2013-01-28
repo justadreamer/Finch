@@ -18,9 +18,9 @@
 #import "SectionModel.h"
 #import "CellModel.h"
 #import "TableModelConstants.h"
-#import "IfaceCellModelAdapter.h"
+#import "IfaceBaseCellAdapter.h"
 #import "BaseCell.h"
-#import "ShareCellModelAdapter.h"
+#import "ShareCellAdapter.h"
 
 const NSInteger SEC_BONJOUR = 3;
 
@@ -58,7 +58,7 @@ const NSInteger SEC_BONJOUR = 3;
     self.ifaces = [[Helper instance] interfaces];
 
     NSMutableArray* cellsIfaces = [NSMutableArray array];
-    IfaceCellModelAdapter* ifaceCellModelAdapter = [IfaceCellModelAdapter new];
+    IfaceBaseCellAdapter* ifaceCellModelAdapter = [IfaceBaseCellAdapter new];
     for (Iface* iface in self.ifaces) {
         [cellsIfaces addObject:@{
                       kCellId : @"Interfaces",
@@ -68,7 +68,7 @@ const NSInteger SEC_BONJOUR = 3;
          }];
     }
 
-    ShareCellModelAdapter* shareCellModelAdapter = [ShareCellModelAdapter new];
+    ShareCellAdapter* shareCellModelAdapter = [ShareCellAdapter new];
     NSMutableArray* cellsShares = [NSMutableArray array];
     for (Share* share in [SharesProvider instance].shares) {
         [cellsShares addObject:@{
@@ -76,7 +76,7 @@ const NSInteger SEC_BONJOUR = 3;
                kNibNameToLoad : @"ShareCell",
                kCellClassName : @"ShareCell",
                        kModel : share,
-                    kAdapter  : shareCellModelAdapter}];
+                     kAdapter : shareCellModelAdapter}];
     }
 
     NSArray* sections = @[
@@ -119,8 +119,7 @@ const NSInteger SEC_BONJOUR = 3;
     }
 }
 
-#pragma mark - 
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.tableModel numberOfSections];
@@ -131,22 +130,11 @@ const NSInteger SEC_BONJOUR = 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CellModel* cellModel = [self.tableModel cellModelForIndexPath:indexPath];
-
-    BaseCell* cell = (BaseCell*) [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
-    if (nil==cell) {
-        cell = [cellModel createCell];
-    }
-    [cell updateWithAdapter:[cellModel adapter]];
-    if (cellModel.tag == SEC_BONJOUR) {
-        cell.textLabel.text = (NSString*)cellModel.model;
-    }
-    return cell;
+    return [self.tableModel tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    SectionModel* sectionModel = [self.tableModel sectionModelForSection:section];
-    return sectionModel.titleForHeader;
+    return [self.tableModel tableView:tableView titleForHeaderInSection:section];
 }
 
 @end

@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Share;
-@interface ShareController : UIViewController
-@property (nonatomic,strong) Share* share;
-@property (nonatomic,strong) IBOutlet UISwitch* isSharedSwitch;
+#import "TableModel.h"
 
+@class Share;
+
+@interface ShareController : UITableViewController
+@property (nonatomic,strong) Share* share;
+@property (nonatomic,strong) TableModel* tableModel;
 + (ShareController*) controllerWithShare:(Share*)share;
 - (void) sharesRefreshed;
-- (IBAction)switchValueChanged:(id)sender;
+- (void)switchValueChanged:(id)sender;
+
+//this method needs to be overriden in sub-classes:
+//and don't forget to call super (to add a top section for switching)
+- (void) initTableModel;
 @end

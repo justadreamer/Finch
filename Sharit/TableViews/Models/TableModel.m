@@ -9,6 +9,7 @@
 #import "TableModel.h"
 #import "SectionModel.h"
 #import "CellModel.h"
+#import "BaseCell.h"
 
 @implementation TableModel
 
@@ -56,4 +57,21 @@
         [self.sections addObject:sectionModel];
     }
 }
+
+- (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CellModel* cellModel = [self cellModelForIndexPath:indexPath];
+
+    BaseCell* cell = (BaseCell*) [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
+    if (nil==cell) {
+        cell = [cellModel createCell];
+    }
+    [cell updateWithAdapter:[cellModel adapter]];
+    return cell;
+}
+
+- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section {
+    SectionModel* sectionModel = [self sectionModelForSection:section];
+    return sectionModel.titleForHeader;
+}
+
 @end

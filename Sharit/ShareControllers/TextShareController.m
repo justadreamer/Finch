@@ -10,7 +10,7 @@
 #import "TextShare.h"
 
 @interface TextShareController ()<UITextViewDelegate>
-@property (nonatomic,strong) IBOutlet UITextView* textView;
+@property (nonatomic,strong) UITextView* textView;
 @property (nonatomic,strong) UIBarButtonItem* doneButton;
 @end
 

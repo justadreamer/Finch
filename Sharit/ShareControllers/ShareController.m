@@ -14,19 +14,17 @@
 #import "ClipboardShareController.h"
 #import "TextShareController.h"
 #import "PicturesShareController.h"
+#import "ShareSwitchCellAdapter.h"
 
 @interface ShareController ()
 
 @end
 
 @implementation ShareController
-@synthesize share;
-@synthesize isSharedSwitch;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.share.name;
-    [self.isSharedSwitch setOn:self.share.isShared];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -35,16 +33,16 @@
 }
 
 + (ShareController*) controllerWithShare:(Share*)share {
-    NSDictionary* controllerToShare = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       [ClipboardShareController class], [ClipboardShare class],
-                                       [TextShareController class],[TextShare class],
-                                       [PicturesShareController class],[PicturesShare class],
-                                       nil];
+    NSDictionary* controllerToShare = @{
+        (id<NSCopying>)[ClipboardShare class] : [ClipboardShareController class],
+        (id<NSCopying>)[TextShare class] : [TextShareController class],
+        (id<NSCopying>)[PicturesShare class] : [PicturesShareController class]
+    };
 
     ShareController* shareController = nil;
     Class controllerClass = [controllerToShare objectForKey:[share class]];
     if (Nil!=controllerClass) {
-        shareController = [[controllerClass alloc] init];
+        shareController = [[controllerClass alloc] initWithStyle:UITableViewStyleGrouped];
         shareController.share = share;
     }
 
@@ -55,8 +53,45 @@
     
 }
 
-- (IBAction)switchValueChanged:(UISwitch*)sender {
+- (void)switchValueChanged:(UISwitch*)sender {
     self.share.isShared = sender.isOn;
+}
+
+- (void)setShare:(Share *)share {
+    _share = share;
+    self.tableModel = [TableModel new];
+    [self initTableModel];
+}
+
+- (void) initTableModel {
+    [self.tableModel addSection:@{
+                         kCells: @[
+     @{
+                kCellClassName : @"SwitchCell",
+                kNibNameToLoad : @"SwitchCell",
+                      kAdapter : [ShareSwitchCellAdapter new],
+                        kModel : self.share
+     }
+     ]
+     }];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.tableModel numberOfSections];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.tableModel numberOfRowsInSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.tableModel tableView:tableView cellForRowAtIndexPath:indexPath];
+}
+
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.tableModel tableView:tableView titleForHeaderInSection:section];
 }
 
 @end

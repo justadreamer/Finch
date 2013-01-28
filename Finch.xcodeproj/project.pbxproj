@@ -24,6 +24,10 @@
 		4477A40E15910E3700EC3280 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
 		4477A40F1591123600EC3280 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		4477A42215911AC000EC3280 /* img.html in Resources */ = {isa = PBXBuildFile; fileRef = 4477A42115911AC000EC3280 /* img.html */; };
+		4480282C16B58CE00049FB95 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4480282B16B58CE00049FB95 /* SwitchCell.m */; };
+		4480282E16B58D970049FB95 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4480282D16B58D970049FB95 /* SwitchCell.xib */; };
+		4480283216B58EDE0049FB95 /* ShareSwitchCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4480283116B58EDD0049FB95 /* ShareSwitchCellAdapter.m */; };
+		44941EB316B71C7300DC85D7 /* SwitchCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44941EB216B71C7200DC85D7 /* SwitchCellAdapter.m */; };
 		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
 		44B92FA215DD7B33008DBC29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
@@ -33,13 +37,9 @@
 		44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */; };
 		44BEA333157BEAD100A1A7A7 /* MacroPreprocessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */; };
 		44BEDECE16B5729900FBE30C /* ClipboardShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC316B5729900FBE30C /* ClipboardShareController.m */; };
-		44BEDECF16B5729900FBE30C /* ClipboardShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BEDEC416B5729900FBE30C /* ClipboardShareController.xib */; };
 		44BEDED016B5729900FBE30C /* PicturesShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC616B5729900FBE30C /* PicturesShareController.m */; };
-		44BEDED116B5729900FBE30C /* PicturesShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BEDEC716B5729900FBE30C /* PicturesShareController.xib */; };
 		44BEDED216B5729900FBE30C /* ShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC916B5729900FBE30C /* ShareController.m */; };
-		44BEDED316B5729900FBE30C /* ShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BEDECA16B5729900FBE30C /* ShareController.xib */; };
 		44BEDED416B5729900FBE30C /* TextShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDECC16B5729900FBE30C /* TextShareController.m */; };
-		44BEDED516B5729900FBE30C /* TextShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BEDECD16B5729900FBE30C /* TextShareController.xib */; };
 		44BEDEEA16B5732000FBE30C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDED816B5732000FBE30C /* AppDelegate.m */; };
 		44BEDEEB16B5732000FBE30C /* BonjourIface.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEDA16B5732000FBE30C /* BonjourIface.m */; };
 		44BEDEEC16B5732000FBE30C /* GlobalDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEDC16B5732000FBE30C /* GlobalDefaults.m */; };
@@ -48,9 +48,9 @@
 		44BEDEF116B5732000FBE30C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEE616B5732000FBE30C /* MainViewController.m */; };
 		44BEDEF216B5732000FBE30C /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BEDEE716B5732000FBE30C /* MainViewController.xib */; };
 		44BEDEF316B5732000FBE30C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEE916B5732000FBE30C /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		44BEDF0C16B573BC00FBE30C /* BaseCellModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEF716B573BC00FBE30C /* BaseCellModelAdapter.m */; };
-		44BEDF0D16B573BC00FBE30C /* IfaceCellModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEFA16B573BC00FBE30C /* IfaceCellModelAdapter.m */; };
-		44BEDF0E16B573BC00FBE30C /* ShareCellModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEFC16B573BC00FBE30C /* ShareCellModelAdapter.m */; };
+		44BEDF0C16B573BC00FBE30C /* BaseCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEF716B573BC00FBE30C /* BaseCellAdapter.m */; };
+		44BEDF0D16B573BC00FBE30C /* IfaceBaseCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEFA16B573BC00FBE30C /* IfaceBaseCellAdapter.m */; };
+		44BEDF0E16B573BC00FBE30C /* ShareCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEFC16B573BC00FBE30C /* ShareCellAdapter.m */; };
 		44BEDF0F16B573BC00FBE30C /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEFF16B573BC00FBE30C /* BaseCell.m */; };
 		44BEDF1016B573BC00FBE30C /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF0116B573BC00FBE30C /* ShareCell.m */; };
 		44BEDF1116B573BC00FBE30C /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BEDF0216B573BC00FBE30C /* ShareCell.xib */; };
@@ -99,6 +99,14 @@
 		444B449D155C378700319EC7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		444B449F155C378D00319EC7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4477A42115911AC000EC3280 /* img.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = img.html; path = ../../../img.html; sourceTree = "<group>"; };
+		4480282A16B58CE00049FB95 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		4480282B16B58CE00049FB95 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		4480282D16B58D970049FB95 /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		4480283116B58EDD0049FB95 /* ShareSwitchCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSwitchCellAdapter.m; sourceTree = "<group>"; };
+		44941EAF16B719A000DC85D7 /* ShareCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCellAdapter.h; sourceTree = "<group>"; };
+		44941EB016B71A4A00DC85D7 /* ShareSwitchCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSwitchCellAdapter.h; sourceTree = "<group>"; };
+		44941EB116B71C7200DC85D7 /* SwitchCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCellAdapter.h; sourceTree = "<group>"; };
+		44941EB216B71C7200DC85D7 /* SwitchCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCellAdapter.m; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sharit_Tests-Info.plist"; sourceTree = "<group>"; };
@@ -111,16 +119,12 @@
 		44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessorTest.m; sourceTree = "<group>"; };
 		44BEDEC216B5729900FBE30C /* ClipboardShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipboardShareController.h; sourceTree = "<group>"; };
 		44BEDEC316B5729900FBE30C /* ClipboardShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardShareController.m; sourceTree = "<group>"; };
-		44BEDEC416B5729900FBE30C /* ClipboardShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClipboardShareController.xib; sourceTree = "<group>"; };
 		44BEDEC516B5729900FBE30C /* PicturesShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesShareController.h; sourceTree = "<group>"; };
 		44BEDEC616B5729900FBE30C /* PicturesShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesShareController.m; sourceTree = "<group>"; };
-		44BEDEC716B5729900FBE30C /* PicturesShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturesShareController.xib; sourceTree = "<group>"; };
 		44BEDEC816B5729900FBE30C /* ShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareController.h; sourceTree = "<group>"; };
 		44BEDEC916B5729900FBE30C /* ShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareController.m; sourceTree = "<group>"; };
-		44BEDECA16B5729900FBE30C /* ShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareController.xib; sourceTree = "<group>"; };
 		44BEDECB16B5729900FBE30C /* TextShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextShareController.h; sourceTree = "<group>"; };
 		44BEDECC16B5729900FBE30C /* TextShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextShareController.m; sourceTree = "<group>"; };
-		44BEDECD16B5729900FBE30C /* TextShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextShareController.xib; sourceTree = "<group>"; };
 		44BEDED716B5732000FBE30C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		44BEDED816B5732000FBE30C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		44BEDED916B5732000FBE30C /* BonjourIface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonjourIface.h; sourceTree = "<group>"; };
@@ -136,13 +140,11 @@
 		44BEDEE716B5732000FBE30C /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		44BEDEE816B5732000FBE30C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		44BEDEE916B5732000FBE30C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		44BEDEF616B573BC00FBE30C /* BaseCellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCellModelAdapter.h; sourceTree = "<group>"; };
-		44BEDEF716B573BC00FBE30C /* BaseCellModelAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCellModelAdapter.m; sourceTree = "<group>"; };
-		44BEDEF816B573BC00FBE30C /* CellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellModelAdapter.h; sourceTree = "<group>"; };
-		44BEDEF916B573BC00FBE30C /* IfaceCellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IfaceCellModelAdapter.h; sourceTree = "<group>"; };
-		44BEDEFA16B573BC00FBE30C /* IfaceCellModelAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IfaceCellModelAdapter.m; sourceTree = "<group>"; };
-		44BEDEFB16B573BC00FBE30C /* ShareCellModelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCellModelAdapter.h; sourceTree = "<group>"; };
-		44BEDEFC16B573BC00FBE30C /* ShareCellModelAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareCellModelAdapter.m; sourceTree = "<group>"; };
+		44BEDEF616B573BC00FBE30C /* BaseCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCellAdapter.h; sourceTree = "<group>"; };
+		44BEDEF716B573BC00FBE30C /* BaseCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCellAdapter.m; sourceTree = "<group>"; };
+		44BEDEF916B573BC00FBE30C /* IfaceBaseCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IfaceBaseCellAdapter.h; sourceTree = "<group>"; };
+		44BEDEFA16B573BC00FBE30C /* IfaceBaseCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IfaceBaseCellAdapter.m; sourceTree = "<group>"; };
+		44BEDEFC16B573BC00FBE30C /* ShareCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareCellAdapter.m; sourceTree = "<group>"; };
 		44BEDEFE16B573BC00FBE30C /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		44BEDEFF16B573BC00FBE30C /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 		44BEDF0016B573BC00FBE30C /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCell.h; sourceTree = "<group>"; };
@@ -350,16 +352,12 @@
 			children = (
 				44BEDEC216B5729900FBE30C /* ClipboardShareController.h */,
 				44BEDEC316B5729900FBE30C /* ClipboardShareController.m */,
-				44BEDEC416B5729900FBE30C /* ClipboardShareController.xib */,
 				44BEDEC516B5729900FBE30C /* PicturesShareController.h */,
 				44BEDEC616B5729900FBE30C /* PicturesShareController.m */,
-				44BEDEC716B5729900FBE30C /* PicturesShareController.xib */,
 				44BEDEC816B5729900FBE30C /* ShareController.h */,
 				44BEDEC916B5729900FBE30C /* ShareController.m */,
-				44BEDECA16B5729900FBE30C /* ShareController.xib */,
 				44BEDECB16B5729900FBE30C /* TextShareController.h */,
 				44BEDECC16B5729900FBE30C /* TextShareController.m */,
-				44BEDECD16B5729900FBE30C /* TextShareController.xib */,
 			);
 			path = ShareControllers;
 			sourceTree = "<group>";
@@ -399,13 +397,16 @@
 		44BEDEF516B573BC00FBE30C /* CellModelAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				44BEDEF616B573BC00FBE30C /* BaseCellModelAdapter.h */,
-				44BEDEF716B573BC00FBE30C /* BaseCellModelAdapter.m */,
-				44BEDEF816B573BC00FBE30C /* CellModelAdapter.h */,
-				44BEDEF916B573BC00FBE30C /* IfaceCellModelAdapter.h */,
-				44BEDEFA16B573BC00FBE30C /* IfaceCellModelAdapter.m */,
-				44BEDEFB16B573BC00FBE30C /* ShareCellModelAdapter.h */,
-				44BEDEFC16B573BC00FBE30C /* ShareCellModelAdapter.m */,
+				44BEDEF616B573BC00FBE30C /* BaseCellAdapter.h */,
+				44BEDEF716B573BC00FBE30C /* BaseCellAdapter.m */,
+				44BEDEF916B573BC00FBE30C /* IfaceBaseCellAdapter.h */,
+				44BEDEFA16B573BC00FBE30C /* IfaceBaseCellAdapter.m */,
+				44941EAF16B719A000DC85D7 /* ShareCellAdapter.h */,
+				44BEDEFC16B573BC00FBE30C /* ShareCellAdapter.m */,
+				44941EB116B71C7200DC85D7 /* SwitchCellAdapter.h */,
+				44941EB216B71C7200DC85D7 /* SwitchCellAdapter.m */,
+				44941EB016B71A4A00DC85D7 /* ShareSwitchCellAdapter.h */,
+				4480283116B58EDD0049FB95 /* ShareSwitchCellAdapter.m */,
 			);
 			path = CellModelAdapter;
 			sourceTree = "<group>";
@@ -418,6 +419,9 @@
 				44BEDF0016B573BC00FBE30C /* ShareCell.h */,
 				44BEDF0116B573BC00FBE30C /* ShareCell.m */,
 				44BEDF0216B573BC00FBE30C /* ShareCell.xib */,
+				4480282A16B58CE00049FB95 /* SwitchCell.h */,
+				4480282B16B58CE00049FB95 /* SwitchCell.m */,
+				4480282D16B58D970049FB95 /* SwitchCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -560,13 +564,10 @@
 				442EADA51567C1DE0032E1B2 /* docroot in Resources */,
 				44C05E3F166A3B6100EAF733 /* Icon.png in Resources */,
 				44C05E40166A3B6100EAF733 /* Icon@2x.png in Resources */,
-				44BEDECF16B5729900FBE30C /* ClipboardShareController.xib in Resources */,
-				44BEDED116B5729900FBE30C /* PicturesShareController.xib in Resources */,
-				44BEDED316B5729900FBE30C /* ShareController.xib in Resources */,
-				44BEDED516B5729900FBE30C /* TextShareController.xib in Resources */,
 				44BEDEF216B5732000FBE30C /* MainViewController.xib in Resources */,
 				44BEDF1116B573BC00FBE30C /* ShareCell.xib in Resources */,
 				44BEDF4B16B57BD500FBE30C /* Default-568h@2x.png in Resources */,
+				4480282E16B58D970049FB95 /* SwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,9 +634,9 @@
 				44BEDEEF16B5732000FBE30C /* Iface.m in Sources */,
 				44BEDEF116B5732000FBE30C /* MainViewController.m in Sources */,
 				44BEDEF316B5732000FBE30C /* Reachability.m in Sources */,
-				44BEDF0C16B573BC00FBE30C /* BaseCellModelAdapter.m in Sources */,
-				44BEDF0D16B573BC00FBE30C /* IfaceCellModelAdapter.m in Sources */,
-				44BEDF0E16B573BC00FBE30C /* ShareCellModelAdapter.m in Sources */,
+				44BEDF0C16B573BC00FBE30C /* BaseCellAdapter.m in Sources */,
+				44BEDF0D16B573BC00FBE30C /* IfaceBaseCellAdapter.m in Sources */,
+				44BEDF0E16B573BC00FBE30C /* ShareCellAdapter.m in Sources */,
 				44BEDF0F16B573BC00FBE30C /* BaseCell.m in Sources */,
 				44BEDF1016B573BC00FBE30C /* ShareCell.m in Sources */,
 				44BEDF1216B573BC00FBE30C /* CellModel.m in Sources */,
@@ -654,6 +655,9 @@
 				44BEDF3816B5745300FBE30C /* SharesProvider.m in Sources */,
 				44BEDF3916B5745300FBE30C /* TextShare.m in Sources */,
 				44BEDF3C16B574D900FBE30C /* UIImage+Additions.m in Sources */,
+				4480282C16B58CE00049FB95 /* SwitchCell.m in Sources */,
+				4480283216B58EDE0049FB95 /* ShareSwitchCellAdapter.m in Sources */,
+				44941EB316B71C7300DC85D7 /* SwitchCellAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

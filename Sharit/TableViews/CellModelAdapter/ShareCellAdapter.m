@@ -6,10 +6,10 @@
 //
 //
 
-#import "ShareCellModelAdapter.h"
+#import "ShareCellAdapter.h"
 #import "Share.h"
 
-@implementation ShareCellModelAdapter
+@implementation ShareCellAdapter
 
 - (Share*) shareModel {
     return (Share*)self.model;
