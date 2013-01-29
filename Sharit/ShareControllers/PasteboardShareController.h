@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ShareController.h"
 
-@interface ClipboardShareController : ShareController
+@interface PasteboardShareController : ShareController
 
 @end

@@ -26,9 +26,12 @@ NSString* const textFilePath = @"TextShare.txt";
 
 - (void) loadText {
     NSError* error = nil;
-    _text = [NSString stringWithContentsOfFile:[self path] encoding:NSUTF8StringEncoding error:&error];
-    if (error) {
-        VLog(error);
+    NSString* path = [self path];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        _text = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        if (error) {
+            VLog(error);
+        }
     }
 }
 

@@ -31,7 +31,7 @@
     ALAssetRepresentation* defaultRep = [_asset defaultRepresentation];
     CGImageRef fullResImg = [defaultRep fullResolutionImage];
     CGFloat scale = [self scaleForImageSizeType:sizeType];
-    UIImage* img = [UIImage imageWithCGImage:fullResImg scale:1.0 orientation:defaultRep.orientation];
+    UIImage* img = [UIImage imageWithCGImage:fullResImg scale:1.0 orientation:(UIImageOrientation)defaultRep.orientation];
     img = [img fixOrientationAndScale:scale];
     return img;
 }

@@ -11,7 +11,7 @@
 #import "HTTPRedirectResponse.h"
 
 #import "SharesProvider.h"
-#import "ClipboardShare.h"
+#import "PasteboardShare.h"
 #import "Global.h"
 #import "HTTPMessage.h"
 #import "AppDelegate.h"

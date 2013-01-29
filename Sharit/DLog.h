@@ -28,6 +28,7 @@
 #define VLog(v) DLog(@#v @"=%@",v)
 #define fLog(v) DLog(@#v @"=%f",v)
 #define dLog(v) DLog(@#v @"=%d",v)
+#define IndexPathLog(v) DLog(@#v @"=(%d,%d)",v.section,v.row)
 
 //Convenience macro to output CGRect value in a human readable format:
 #define CGRectLog(v) DLog(@#v @"=(%f,%f,%f,%f)",v.origin.x,v.origin.y,v.size.width,v.size.height)

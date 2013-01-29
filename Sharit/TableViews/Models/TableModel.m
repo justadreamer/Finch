@@ -10,6 +10,7 @@
 #import "SectionModel.h"
 #import "CellModel.h"
 #import "BaseCell.h"
+#import "TextCell.h"
 
 @implementation TableModel
 
@@ -65,6 +66,7 @@
     if (nil==cell) {
         cell = [cellModel createCell];
     }
+    cell.tableView = tableView;
     [cell updateWithAdapter:[cellModel adapter]];
     return cell;
 }
@@ -72,6 +74,29 @@
 - (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section {
     SectionModel* sectionModel = [self sectionModelForSection:section];
     return sectionModel.titleForHeader;
+}
+
+- (NSString*)tableView:(UITableView*)tableView titleForFooterInSection:(NSInteger)section {
+    SectionModel* sectionModel = [self sectionModelForSection:section];
+    return sectionModel.titleForFooter;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    BaseCell* cell = (BaseCell*) [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    CGFloat cellHeight = [cell cellHeight];
+    if (cellHeight>tableView.rowHeight)
+        return cellHeight;
+    return tableView.rowHeight;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[TextCell class]]) {
+        [self performSelector:@selector(updateTextView:) withObject:cell afterDelay:0.1];
+    }
+}
+
+- (void) updateTextView:(TextCell*)cell {
+    [(TextCell*)cell updateTextView];
 }
 
 @end

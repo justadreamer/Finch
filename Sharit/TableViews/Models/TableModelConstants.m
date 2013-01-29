@@ -15,3 +15,4 @@ NSString* const kCellStyle = @"cellStyle";
 NSString* const kNibNameToLoad = @"nibNameToLoad";
 NSString* const kCellClassName = @"cellClassName";
 NSString* const kAdapter = @"adapter";
+NSString* const kSectionTitleForFooter = @"titleForFooter";

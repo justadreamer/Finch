@@ -10,6 +10,7 @@
 #import "Share.h"
 
 @implementation ShareSwitchCellAdapter
+
 - (NSString*) mainText {
     return @"Is shared?";
 }
@@ -25,4 +26,5 @@
 - (Share*)share {
     return (Share*) self.model;
 }
+
 @end

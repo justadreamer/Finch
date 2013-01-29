@@ -8,10 +8,10 @@
 
 #import "ShareController.h"
 #import "Share.h"
-#import "ClipboardShare.h"
+#import "PasteboardShare.h"
 #import "TextShare.h"
 #import "PicturesShare.h"
-#import "ClipboardShareController.h"
+#import "PasteboardShareController.h"
 #import "TextShareController.h"
 #import "PicturesShareController.h"
 #import "ShareSwitchCellAdapter.h"
@@ -34,7 +34,7 @@
 
 + (ShareController*) controllerWithShare:(Share*)share {
     NSDictionary* controllerToShare = @{
-        (id<NSCopying>)[ClipboardShare class] : [ClipboardShareController class],
+        (id<NSCopying>)[PasteboardShare class] : [PasteboardShareController class],
         (id<NSCopying>)[TextShare class] : [TextShareController class],
         (id<NSCopying>)[PicturesShare class] : [PicturesShareController class]
     };
@@ -92,6 +92,25 @@
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.tableModel tableView:tableView titleForHeaderInSection:section];
+}
+
+- (NSString*) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return [self.tableModel tableView:tableView titleForFooterInSection:section];
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = [self.tableModel tableView:tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath];
+    return height;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableModel tableView:tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 @end

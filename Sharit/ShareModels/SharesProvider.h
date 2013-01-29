@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class ClipboardShare;
+@class PasteboardShare;
 @class Share;
 @class TextShare;
 @class PicturesShare;
@@ -15,7 +15,7 @@
 @interface SharesProvider : NSObject
 @property (nonatomic,strong) NSMutableArray* shares;
 + (SharesProvider*) instance;
-- (ClipboardShare*) clipboardShare;
+- (PasteboardShare*) clipboardShare;
 - (TextShare*) textShare;
 - (PicturesShare*) picturesShare;
 - (Share*) shareForPath:(NSString*)path andParams:(NSDictionary*)params;

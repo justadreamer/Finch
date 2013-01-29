@@ -8,6 +8,7 @@
 
 #import "ShareCell.h"
 #import "ShareCellAdapter.h"
+
 @interface ShareCell()
 @property (nonatomic,strong) IBOutlet UIImageView* check;
 @property (nonatomic,strong) IBOutlet UILabel* titleLabel;

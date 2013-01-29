@@ -8,7 +8,7 @@
 
 #import "SharesProvider.h"
 #import "Share.h"
-#import "ClipboardShare.h"
+#import "PasteboardShare.h"
 #import "TextShare.h"
 #import "PicturesShare.h"
 #import "GlobalDefaults.h"
@@ -47,7 +47,7 @@ SharesProvider* globalSharesProvider;
     BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
     MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"index"];
 
-    Share* clipboard = [[ClipboardShare alloc] initWithMacroPreprocessor:macroPreprocessor];
+    Share* clipboard = [[PasteboardShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     [_shares addObject:clipboard];
 
     Share* text = [[TextShare alloc] init];
@@ -68,8 +68,8 @@ SharesProvider* globalSharesProvider;
     return nil;
 }
 
-- (ClipboardShare*) clipboardShare {
-    return (ClipboardShare*)[self shareForClass:[ClipboardShare class]];
+- (PasteboardShare*) clipboardShare {
+    return (PasteboardShare*)[self shareForClass:[PasteboardShare class]];
 }
 
 - (TextShare*) textShare {

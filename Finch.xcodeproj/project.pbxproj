@@ -12,6 +12,13 @@
 		442EACD31561A33D0032E1B2 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
 		442EAD7815658B470032E1B2 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		442EADA51567C1DE0032E1B2 /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 442EADA41567C1DE0032E1B2 /* docroot */; };
+		442F70AB16B8615700964F58 /* TextCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442F70AA16B8615700964F58 /* TextCellAdapter.m */; };
+		442F70AE16B8618A00964F58 /* PasteboardShareTextCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442F70AD16B8618A00964F58 /* PasteboardShareTextCellAdapter.m */; };
+		442F70B116B8713E00964F58 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 442F70B016B8713E00964F58 /* ImageCell.m */; };
+		442F70B416B8715800964F58 /* ImageCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442F70B316B8715700964F58 /* ImageCellAdapter.m */; };
+		442F70B716B8717700964F58 /* PasteboardShareImageCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442F70B616B8717700964F58 /* PasteboardShareImageCellAdapter.m */; };
+		442F70B916B871D000964F58 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 442F70B816B871D000964F58 /* ImageCell.xib */; };
+		442F70BC16B8760B00964F58 /* TextShareTextCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 442F70BB16B8760A00964F58 /* TextShareTextCellAdapter.m */; };
 		44395B6916600E9600507643 /* IMG_0010.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 44395B6716600E9600507643 /* IMG_0010.PNG */; };
 		444B42D2155C2FD200319EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		444B42D4155C2FD200319EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
@@ -28,6 +35,8 @@
 		4480282E16B58D970049FB95 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4480282D16B58D970049FB95 /* SwitchCell.xib */; };
 		4480283216B58EDE0049FB95 /* ShareSwitchCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4480283116B58EDD0049FB95 /* ShareSwitchCellAdapter.m */; };
 		44941EB316B71C7300DC85D7 /* SwitchCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44941EB216B71C7200DC85D7 /* SwitchCellAdapter.m */; };
+		44956B9116B74C0800BD7BC4 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44956B9016B74C0800BD7BC4 /* TextCell.m */; };
+		44956B9316B74C4A00BD7BC4 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44956B9216B74C4A00BD7BC4 /* TextCell.xib */; };
 		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
 		44B92FA215DD7B33008DBC29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
@@ -36,7 +45,7 @@
 		44BEA31B1576AFF600A1A7A7 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA31A1576AFF600A1A7A7 /* Sharit_Tests.m */; };
 		44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */; };
 		44BEA333157BEAD100A1A7A7 /* MacroPreprocessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */; };
-		44BEDECE16B5729900FBE30C /* ClipboardShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC316B5729900FBE30C /* ClipboardShareController.m */; };
+		44BEDECE16B5729900FBE30C /* PasteboardShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC316B5729900FBE30C /* PasteboardShareController.m */; };
 		44BEDED016B5729900FBE30C /* PicturesShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC616B5729900FBE30C /* PicturesShareController.m */; };
 		44BEDED216B5729900FBE30C /* ShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDEC916B5729900FBE30C /* ShareController.m */; };
 		44BEDED416B5729900FBE30C /* TextShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDECC16B5729900FBE30C /* TextShareController.m */; };
@@ -63,7 +72,7 @@
 		44BEDF2216B5741700FBE30C /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF1C16B5741700FBE30C /* MacroPreprocessor.m */; };
 		44BEDF2316B5741700FBE30C /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF1E16B5741700FBE30C /* MainHTTPConnection.m */; };
 		44BEDF3316B5745300FBE30C /* ALAssetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF2616B5745300FBE30C /* ALAssetShare.m */; };
-		44BEDF3416B5745300FBE30C /* ClipboardShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF2816B5745300FBE30C /* ClipboardShare.m */; };
+		44BEDF3416B5745300FBE30C /* PasteboardShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF2816B5745300FBE30C /* PasteboardShare.m */; };
 		44BEDF3516B5745300FBE30C /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF2A16B5745300FBE30C /* ImageShare.m */; };
 		44BEDF3616B5745300FBE30C /* PicturesShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF2C16B5745300FBE30C /* PicturesShare.m */; };
 		44BEDF3716B5745300FBE30C /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEDF2E16B5745300FBE30C /* Share.m */; };
@@ -86,6 +95,19 @@
 		442EACD21561A33D0032E1B2 /* icon_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_check.png; sourceTree = "<group>"; };
 		442EAD7715658B470032E1B2 /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		442EADA41567C1DE0032E1B2 /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
+		442F70A916B8615700964F58 /* TextCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCellAdapter.h; sourceTree = "<group>"; };
+		442F70AA16B8615700964F58 /* TextCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCellAdapter.m; sourceTree = "<group>"; };
+		442F70AC16B8618A00964F58 /* PasteboardShareTextCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteboardShareTextCellAdapter.h; sourceTree = "<group>"; };
+		442F70AD16B8618A00964F58 /* PasteboardShareTextCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasteboardShareTextCellAdapter.m; sourceTree = "<group>"; };
+		442F70AF16B8713E00964F58 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		442F70B016B8713E00964F58 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		442F70B216B8715700964F58 /* ImageCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCellAdapter.h; sourceTree = "<group>"; };
+		442F70B316B8715700964F58 /* ImageCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCellAdapter.m; sourceTree = "<group>"; };
+		442F70B516B8717700964F58 /* PasteboardShareImageCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteboardShareImageCellAdapter.h; sourceTree = "<group>"; };
+		442F70B616B8717700964F58 /* PasteboardShareImageCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasteboardShareImageCellAdapter.m; sourceTree = "<group>"; };
+		442F70B816B871D000964F58 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		442F70BA16B8760A00964F58 /* TextShareTextCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextShareTextCellAdapter.h; sourceTree = "<group>"; };
+		442F70BB16B8760A00964F58 /* TextShareTextCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextShareTextCellAdapter.m; sourceTree = "<group>"; };
 		44395B6816600E9600507643 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/IMG_0010.PNG; sourceTree = "<group>"; };
 		444B42CD155C2FD200319EC7 /* Finch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444B42D1155C2FD200319EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -107,6 +129,9 @@
 		44941EB016B71A4A00DC85D7 /* ShareSwitchCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSwitchCellAdapter.h; sourceTree = "<group>"; };
 		44941EB116B71C7200DC85D7 /* SwitchCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCellAdapter.h; sourceTree = "<group>"; };
 		44941EB216B71C7200DC85D7 /* SwitchCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCellAdapter.m; sourceTree = "<group>"; };
+		44956B8F16B74C0800BD7BC4 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		44956B9016B74C0800BD7BC4 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		44956B9216B74C4A00BD7BC4 /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3151576AFF600A1A7A7 /* Sharit_Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sharit_Tests-Info.plist"; sourceTree = "<group>"; };
@@ -117,8 +142,8 @@
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		44BEA331157BEAD000A1A7A7 /* MacroPreprocessorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessorTest.h; sourceTree = "<group>"; };
 		44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessorTest.m; sourceTree = "<group>"; };
-		44BEDEC216B5729900FBE30C /* ClipboardShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipboardShareController.h; sourceTree = "<group>"; };
-		44BEDEC316B5729900FBE30C /* ClipboardShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardShareController.m; sourceTree = "<group>"; };
+		44BEDEC216B5729900FBE30C /* PasteboardShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteboardShareController.h; sourceTree = "<group>"; };
+		44BEDEC316B5729900FBE30C /* PasteboardShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasteboardShareController.m; sourceTree = "<group>"; };
 		44BEDEC516B5729900FBE30C /* PicturesShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesShareController.h; sourceTree = "<group>"; };
 		44BEDEC616B5729900FBE30C /* PicturesShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesShareController.m; sourceTree = "<group>"; };
 		44BEDEC816B5729900FBE30C /* ShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareController.h; sourceTree = "<group>"; };
@@ -169,8 +194,8 @@
 		44BEDF1F16B5741700FBE30C /* TemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateLoader.h; sourceTree = "<group>"; };
 		44BEDF2516B5745300FBE30C /* ALAssetShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetShare.h; sourceTree = "<group>"; };
 		44BEDF2616B5745300FBE30C /* ALAssetShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetShare.m; sourceTree = "<group>"; };
-		44BEDF2716B5745300FBE30C /* ClipboardShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipboardShare.h; sourceTree = "<group>"; };
-		44BEDF2816B5745300FBE30C /* ClipboardShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardShare.m; sourceTree = "<group>"; };
+		44BEDF2716B5745300FBE30C /* PasteboardShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteboardShare.h; sourceTree = "<group>"; };
+		44BEDF2816B5745300FBE30C /* PasteboardShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasteboardShare.m; sourceTree = "<group>"; };
 		44BEDF2916B5745300FBE30C /* ImageShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageShare.h; sourceTree = "<group>"; };
 		44BEDF2A16B5745300FBE30C /* ImageShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageShare.m; sourceTree = "<group>"; };
 		44BEDF2B16B5745300FBE30C /* PicturesShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesShare.h; sourceTree = "<group>"; };
@@ -350,8 +375,8 @@
 		44BEDEC116B5729900FBE30C /* ShareControllers */ = {
 			isa = PBXGroup;
 			children = (
-				44BEDEC216B5729900FBE30C /* ClipboardShareController.h */,
-				44BEDEC316B5729900FBE30C /* ClipboardShareController.m */,
+				44BEDEC216B5729900FBE30C /* PasteboardShareController.h */,
+				44BEDEC316B5729900FBE30C /* PasteboardShareController.m */,
 				44BEDEC516B5729900FBE30C /* PicturesShareController.h */,
 				44BEDEC616B5729900FBE30C /* PicturesShareController.m */,
 				44BEDEC816B5729900FBE30C /* ShareController.h */,
@@ -407,6 +432,16 @@
 				44941EB216B71C7200DC85D7 /* SwitchCellAdapter.m */,
 				44941EB016B71A4A00DC85D7 /* ShareSwitchCellAdapter.h */,
 				4480283116B58EDD0049FB95 /* ShareSwitchCellAdapter.m */,
+				442F70A916B8615700964F58 /* TextCellAdapter.h */,
+				442F70AA16B8615700964F58 /* TextCellAdapter.m */,
+				442F70AC16B8618A00964F58 /* PasteboardShareTextCellAdapter.h */,
+				442F70AD16B8618A00964F58 /* PasteboardShareTextCellAdapter.m */,
+				442F70B216B8715700964F58 /* ImageCellAdapter.h */,
+				442F70B316B8715700964F58 /* ImageCellAdapter.m */,
+				442F70B516B8717700964F58 /* PasteboardShareImageCellAdapter.h */,
+				442F70B616B8717700964F58 /* PasteboardShareImageCellAdapter.m */,
+				442F70BA16B8760A00964F58 /* TextShareTextCellAdapter.h */,
+				442F70BB16B8760A00964F58 /* TextShareTextCellAdapter.m */,
 			);
 			path = CellModelAdapter;
 			sourceTree = "<group>";
@@ -422,6 +457,12 @@
 				4480282A16B58CE00049FB95 /* SwitchCell.h */,
 				4480282B16B58CE00049FB95 /* SwitchCell.m */,
 				4480282D16B58D970049FB95 /* SwitchCell.xib */,
+				44956B8F16B74C0800BD7BC4 /* TextCell.h */,
+				44956B9016B74C0800BD7BC4 /* TextCell.m */,
+				44956B9216B74C4A00BD7BC4 /* TextCell.xib */,
+				442F70AF16B8713E00964F58 /* ImageCell.h */,
+				442F70B016B8713E00964F58 /* ImageCell.m */,
+				442F70B816B871D000964F58 /* ImageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -462,8 +503,8 @@
 			children = (
 				44BEDF2516B5745300FBE30C /* ALAssetShare.h */,
 				44BEDF2616B5745300FBE30C /* ALAssetShare.m */,
-				44BEDF2716B5745300FBE30C /* ClipboardShare.h */,
-				44BEDF2816B5745300FBE30C /* ClipboardShare.m */,
+				44BEDF2716B5745300FBE30C /* PasteboardShare.h */,
+				44BEDF2816B5745300FBE30C /* PasteboardShare.m */,
 				44BEDF2916B5745300FBE30C /* ImageShare.h */,
 				44BEDF2A16B5745300FBE30C /* ImageShare.m */,
 				44BEDF2B16B5745300FBE30C /* PicturesShare.h */,
@@ -532,7 +573,7 @@
 		444B42C4155C2FD200319EC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 444B42C7155C2FD200319EC7 /* Build configuration list for PBXProject "Finch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -568,6 +609,8 @@
 				44BEDF1116B573BC00FBE30C /* ShareCell.xib in Resources */,
 				44BEDF4B16B57BD500FBE30C /* Default-568h@2x.png in Resources */,
 				4480282E16B58D970049FB95 /* SwitchCell.xib in Resources */,
+				44956B9316B74C4A00BD7BC4 /* TextCell.xib in Resources */,
+				442F70B916B871D000964F58 /* ImageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +666,7 @@
 				444B42DE155C2FD200319EC7 /* main.m in Sources */,
 				442EACB61560623F0032E1B2 /* NSStringAdditions.m in Sources */,
 				44C05E5C166AA6D100EAF733 /* KVCBaseObject.m in Sources */,
-				44BEDECE16B5729900FBE30C /* ClipboardShareController.m in Sources */,
+				44BEDECE16B5729900FBE30C /* PasteboardShareController.m in Sources */,
 				44BEDED016B5729900FBE30C /* PicturesShareController.m in Sources */,
 				44BEDED216B5729900FBE30C /* ShareController.m in Sources */,
 				44BEDED416B5729900FBE30C /* TextShareController.m in Sources */,
@@ -648,7 +691,7 @@
 				44BEDF2216B5741700FBE30C /* MacroPreprocessor.m in Sources */,
 				44BEDF2316B5741700FBE30C /* MainHTTPConnection.m in Sources */,
 				44BEDF3316B5745300FBE30C /* ALAssetShare.m in Sources */,
-				44BEDF3416B5745300FBE30C /* ClipboardShare.m in Sources */,
+				44BEDF3416B5745300FBE30C /* PasteboardShare.m in Sources */,
 				44BEDF3516B5745300FBE30C /* ImageShare.m in Sources */,
 				44BEDF3616B5745300FBE30C /* PicturesShare.m in Sources */,
 				44BEDF3716B5745300FBE30C /* Share.m in Sources */,
@@ -658,6 +701,13 @@
 				4480282C16B58CE00049FB95 /* SwitchCell.m in Sources */,
 				4480283216B58EDE0049FB95 /* ShareSwitchCellAdapter.m in Sources */,
 				44941EB316B71C7300DC85D7 /* SwitchCellAdapter.m in Sources */,
+				44956B9116B74C0800BD7BC4 /* TextCell.m in Sources */,
+				442F70AB16B8615700964F58 /* TextCellAdapter.m in Sources */,
+				442F70AE16B8618A00964F58 /* PasteboardShareTextCellAdapter.m in Sources */,
+				442F70B116B8713E00964F58 /* ImageCell.m in Sources */,
+				442F70B416B8715800964F58 /* ImageCellAdapter.m in Sources */,
+				442F70B716B8717700964F58 /* PasteboardShareImageCellAdapter.m in Sources */,
+				442F70BC16B8760B00964F58 /* TextShareTextCellAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +756,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -732,6 +786,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

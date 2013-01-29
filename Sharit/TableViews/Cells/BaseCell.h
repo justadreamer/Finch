@@ -10,5 +10,8 @@
 @class BaseCellAdapter;
 
 @interface BaseCell : UITableViewCell
+@property (nonatomic,weak) UITableView* tableView;
+
 - (void) updateWithAdapter:(BaseCellAdapter*)adapter;
+- (CGFloat) cellHeight;
 @end

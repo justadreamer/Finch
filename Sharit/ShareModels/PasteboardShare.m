@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ClipboardShare.h"
+#import "PasteboardShare.h"
 #import "UIImage+Additions.h"
 #import "ImageShare.h"
 #import "GlobalDefaults.h"
@@ -14,10 +14,10 @@
 
 NSString* const kClipboardFieldName = @"clipboard";
 
-@interface ClipboardShare ()
+@interface PasteboardShare ()
 @end
 
-@implementation ClipboardShare
+@implementation PasteboardShare
 @synthesize imageShare;
 
 - (id) init {

@@ -9,7 +9,7 @@
 #import "Share.h"
 @class ImageShare;
 
-@interface ClipboardShare : Share
+@interface PasteboardShare : Share
 @property (nonatomic,readonly) NSString* string;
 @property (nonatomic,readonly) UIImage* image;
 @property (nonatomic,readonly) NSArray* images;
