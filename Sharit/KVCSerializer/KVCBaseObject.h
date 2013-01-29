@@ -30,7 +30,6 @@
  */
 + (KVCBaseObject *)objectForJSON:(NSString *) inputJSON;
 + (KVCBaseObject *)objectForDictionary:(NSDictionary *) inputDict;
-- (NSString *) getJsonKeyForPropertyName:(NSString *)propertyName;
 /*
  * Use the below two methods for serializing To JSON or NSDictionary
  */

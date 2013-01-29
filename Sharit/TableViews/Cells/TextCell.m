@@ -9,12 +9,22 @@
 #import "TextCell.h"
 #import "TextCellAdapter.h"
 
+NSString* const kTextCellBeginEditingNotification = @"kTextCellBeginEditingNotification";
+NSString* const kTextCellDidEndEditingNotification = @"kTextCellDidEndEditingNotification";
+NSString* const kTextCellResignFirstResponderNotification = @"kTextCellResignFirstResponderNotification";
+
 @interface TextCell ()<UITextViewDelegate>
 @property (nonatomic,weak) TextCellAdapter* textCellAdapter;
 @property (nonatomic,strong) IBOutlet UITextView* textView;
 @end
 
 @implementation TextCell
+
+- (void) dealloc {
+    if (self.textView.editable) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self.textView];
+    }
+}
 
 - (CGFloat) cellHeight {
     NSString* text = _textView.text;
@@ -34,7 +44,8 @@
     [self.textView setEditable:[adapter isEditable]];
     [self.textView setText:[adapter text]];
     self.textView.scrollEnabled = NO;
-    if (self.textView.isEditable) {
+    if (self.textView.editable) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleResignFirstResponderNotification:) name:kTextCellResignFirstResponderNotification object:nil];
         self.textView.delegate = self;
     }
 }
@@ -45,13 +56,25 @@
     self.textView.frame = frame;
 }
 
+- (void)handleResignFirstResponderNotification:(NSNotification*)notification {
+    [self.textView resignFirstResponder];
+}
+
 #pragma mark - UITextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTextCellBeginEditingNotification object:self];
+}
 
 - (void)textViewDidChange:(UITextView *)textView {
     self.textCellAdapter.text = textView.text;
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [self updateTextView];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTextCellDidEndEditingNotification object:self];
 }
 
 @end
