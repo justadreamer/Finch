@@ -8,6 +8,8 @@
 
 #import "PicturesShareController.h"
 #import "Share.h"
+#import "BaseCellAdapter.h"
+
 @interface PicturesShareController ()
 @property (nonatomic,strong) UILabel* warningLabel;
 @end
@@ -42,4 +44,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void) initTableModel {
+    [super initTableModel];
+    BaseCellAdapter* adapter = [BaseCellAdapter new];
+    adapter.mainText = @"Select private pics";
+    adapter.detailText = [NSString stringWithFormat:@"Private pics: %d",0];
+
+    [self.tableModel addSection:@{kSectionCellModels: @[@{
+                   kCellAdapter: adapter,
+                     kCellStyle: @(UITableViewCellStyleSubtitle),
+             kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator)
+        }
+     ]}];
+}
 @end

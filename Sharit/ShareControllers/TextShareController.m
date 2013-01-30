@@ -62,7 +62,7 @@
     
     [self.tableModel addSection:@{
                          kSectionTitleForHeader: @"Text:",
-                         kCellModels: @[textCell]
+                         kSectionCellModels: @[textCell]
      }];
 }
 

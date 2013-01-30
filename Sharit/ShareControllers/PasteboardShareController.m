@@ -61,7 +61,7 @@
         [self.tableModel addSection:@{
                              kSectionTitleForHeader: @"Pasteboard text:",
              kSectionTitleForFooter: @"Notice: You do NOT need to copy the text. The text IS already in the pasteboard",
-                             kCellModels: @[textCell]
+                             kSectionCellModels: @[textCell]
          }];
     }
     
@@ -73,7 +73,7 @@
         
         [self.tableModel addSection:@{
                              kSectionTitleForHeader:@"Pasteboard image:",
-                             kCellModels:@[imageCell]
+                             kSectionCellModels:@[imageCell]
          }];
     }
 }

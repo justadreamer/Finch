@@ -29,6 +29,8 @@
 
 @property (nonatomic,strong) NSObject* adapter;
 
+@property (nonatomic,assign) UITableViewCellAccessoryType accessoryType;
+
 - (BaseCellAdapter*)cellAdapter;
 
 - (BaseCell*) createCell;

@@ -65,7 +65,7 @@
 
 - (void) initTableModel {
     [self.tableModel addSection:@{
-                         kCellModels: @[
+                         kSectionCellModels: @[
      @{
                 kCellClassName : @"SwitchCell",
                 kCellNibName : @"SwitchCell",

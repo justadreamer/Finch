@@ -38,4 +38,18 @@
     return adapter;
 }
 
+- (NSString*) identifier {
+    NSString* identifier = _identifier;
+    if (nil==identifier) {
+        identifier = _className;
+    }
+    if (nil==identifier) {
+        identifier = _nibName;
+    }
+    if (nil==identifier) {
+        identifier = @"BaseCell";
+    }
+    return identifier;
+}
+
 @end

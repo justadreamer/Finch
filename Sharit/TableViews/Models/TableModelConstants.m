@@ -8,13 +8,14 @@
 
 
 NSString* const kTag = @"tag";
-NSString* const kCellModels = @"cellModels";
+NSString* const kSectionCellModels = @"cellModels";
 NSString* const kCellModel = @"model";
 NSString* const kCellIdentifier = @"identifier";
 NSString* const kCellStyle = @"style";
 NSString* const kCellNibName = @"nibName";
 NSString* const kCellClassName = @"className";
 NSString* const kCellAdapter = @"adapter";
+NSString* const kCellAccessoryType = @"accessoryType";
 
 NSString* const kSectionTitleForHeader = @"titleForHeader";
 NSString* const kSectionTitleForFooter = @"titleForFooter";

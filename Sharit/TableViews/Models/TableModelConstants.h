@@ -21,9 +21,9 @@ extern NSString* const kCellStyle;
 extern NSString* const kCellNibName;
 extern NSString* const kCellClassName;
 extern NSString* const kCellAdapter;
-
+extern NSString* const kCellAccessoryType;
 //sections:
 extern NSString* const kSectionTitleForHeader;
 extern NSString* const kSectionTitleForFooter;
-extern NSString* const kCellModels;
+extern NSString* const kSectionCellModels;
 #endif
