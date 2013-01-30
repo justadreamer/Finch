@@ -83,6 +83,9 @@
 		44C05E3F166A3B6100EAF733 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 44C05E3D166A3B6100EAF733 /* Icon.png */; };
 		44C05E40166A3B6100EAF733 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44C05E3E166A3B6100EAF733 /* Icon@2x.png */; };
 		44C05E5C166AA6D100EAF733 /* KVCBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C05E5B166AA6D100EAF733 /* KVCBaseObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		44E07BFB16B9D7D100EFAE2B /* PicturesPrivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E07BFA16B9D7D100EFAE2B /* PicturesPrivateViewController.m */; };
+		44E07C0116B9D84000EFAE2B /* PictureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E07C0016B9D84000EFAE2B /* PictureViewCell.m */; };
+		44E07C0316B9D86E00EFAE2B /* PictureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E07C0216B9D86E00EFAE2B /* PictureViewCell.xib */; };
 		44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE822415FFD4EB008C12D6 /* CoreLocation.framework */; };
 		92BE8ED048B34C0EBE976834 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0B01861C6F42BE9FBC79BB /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -213,6 +216,11 @@
 		44C05E3E166A3B6100EAF733 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		44C05E5A166AA6D100EAF733 /* KVCBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCBaseObject.h; sourceTree = "<group>"; };
 		44C05E5B166AA6D100EAF733 /* KVCBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCBaseObject.m; sourceTree = "<group>"; };
+		44E07BF916B9D7D100EFAE2B /* PicturesPrivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesPrivateViewController.h; sourceTree = "<group>"; };
+		44E07BFA16B9D7D100EFAE2B /* PicturesPrivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesPrivateViewController.m; sourceTree = "<group>"; };
+		44E07BFF16B9D84000EFAE2B /* PictureViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewCell.h; sourceTree = "<group>"; };
+		44E07C0016B9D84000EFAE2B /* PictureViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewCell.m; sourceTree = "<group>"; };
+		44E07C0216B9D86E00EFAE2B /* PictureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureViewCell.xib; sourceTree = "<group>"; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9E0B01861C6F42BE9FBC79BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86AAB829A154B7C8FA88101 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -383,6 +391,7 @@
 				44BEDEC916B5729900FBE30C /* ShareController.m */,
 				44BEDECB16B5729900FBE30C /* TextShareController.h */,
 				44BEDECC16B5729900FBE30C /* TextShareController.m */,
+				44E07C0416B9E02400EFAE2B /* PrivatePictureSelection */,
 			);
 			path = ShareControllers;
 			sourceTree = "<group>";
@@ -528,6 +537,18 @@
 			path = KVCSerializer;
 			sourceTree = "<group>";
 		};
+		44E07C0416B9E02400EFAE2B /* PrivatePictureSelection */ = {
+			isa = PBXGroup;
+			children = (
+				44E07BF916B9D7D100EFAE2B /* PicturesPrivateViewController.h */,
+				44E07BFA16B9D7D100EFAE2B /* PicturesPrivateViewController.m */,
+				44E07BFF16B9D84000EFAE2B /* PictureViewCell.h */,
+				44E07C0016B9D84000EFAE2B /* PictureViewCell.m */,
+				44E07C0216B9D86E00EFAE2B /* PictureViewCell.xib */,
+			);
+			name = PrivatePictureSelection;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,6 +632,7 @@
 				4480282E16B58D970049FB95 /* SwitchCell.xib in Resources */,
 				44956B9316B74C4A00BD7BC4 /* TextCell.xib in Resources */,
 				442F70B916B871D000964F58 /* ImageCell.xib in Resources */,
+				44E07C0316B9D86E00EFAE2B /* PictureViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +730,8 @@
 				442F70B416B8715800964F58 /* ImageCellAdapter.m in Sources */,
 				442F70B716B8717700964F58 /* PasteboardShareImageCellAdapter.m in Sources */,
 				442F70BC16B8760B00964F58 /* TextShareTextCellAdapter.m in Sources */,
+				44E07BFB16B9D7D100EFAE2B /* PicturesPrivateViewController.m in Sources */,
+				44E07C0116B9D84000EFAE2B /* PictureViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

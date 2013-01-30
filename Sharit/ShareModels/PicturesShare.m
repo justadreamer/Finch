@@ -17,7 +17,6 @@
 #import "MacroPreprocessor.h"
 
 @interface PicturesShare()
-@property(nonatomic,strong) NSMutableArray* assetShares;
 @property(nonatomic,strong) ALAssetsLibrary* library;
 @property(nonatomic,strong) NSMutableDictionary* assetSharesMap;
 @end

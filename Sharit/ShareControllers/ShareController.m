@@ -109,8 +109,8 @@
     [self.tableModel tableView:tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelected:NO];
 }
-
 @end
