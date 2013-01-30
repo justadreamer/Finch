@@ -9,14 +9,5 @@
 #import "BaseCellAdapter.h"
 
 @implementation BaseCellAdapter
-@synthesize model;
-
-- (NSString*) mainText {
-    return @"";
-}
-
-- (NSString*) detailText {
-    return @"";
-}
 
 @end

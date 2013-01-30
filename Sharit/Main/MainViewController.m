@@ -61,10 +61,10 @@ const NSInteger SEC_BONJOUR = 3;
     IfaceBaseCellAdapter* ifaceCellModelAdapter = [IfaceBaseCellAdapter new];
     for (Iface* iface in self.ifaces) {
         [cellsIfaces addObject:@{
-                      kCellId : @"Interfaces",
+                      kCellIdentifier : @"Interfaces",
                    kCellStyle : @(UITableViewCellStyleSubtitle),
-                       kModel : iface,
-                     kAdapter : ifaceCellModelAdapter
+                       kCellModel : iface,
+                     kCellAdapter : ifaceCellModelAdapter
          }];
     }
 
@@ -72,16 +72,16 @@ const NSInteger SEC_BONJOUR = 3;
     NSMutableArray* cellsShares = [NSMutableArray array];
     for (Share* share in [SharesProvider instance].shares) {
         [cellsShares addObject:@{
-                      kCellId : @"ShareCell",
-               kNibNameToLoad : @"ShareCell",
+                      kCellIdentifier : @"ShareCell",
+               kCellNibName : @"ShareCell",
                kCellClassName : @"ShareCell",
-                       kModel : share,
-                     kAdapter : shareCellModelAdapter}];
+                       kCellModel : share,
+                     kCellAdapter : shareCellModelAdapter}];
     }
 
     NSArray* sections = @[
-        @{kTitle : @"Enter an URL (WiFi preferable) in the browser address bar:", kCells:cellsIfaces},
-        @{kTitle : @"You are sharing:", kCells:cellsShares}
+        @{kSectionTitleForHeader : @"Enter an URL (WiFi preferable) in the browser address bar:", kCellModels:cellsIfaces},
+        @{kSectionTitleForHeader : @"You are sharing:", kCellModels:cellsShares}
     ];
 
     self.tableModel = [TableModel new];

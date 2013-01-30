@@ -65,12 +65,12 @@
 
 - (void) initTableModel {
     [self.tableModel addSection:@{
-                         kCells: @[
+                         kCellModels: @[
      @{
                 kCellClassName : @"SwitchCell",
-                kNibNameToLoad : @"SwitchCell",
-                      kAdapter : [ShareSwitchCellAdapter new],
-                        kModel : self.share
+                kCellNibName : @"SwitchCell",
+                      kCellAdapter : [ShareSwitchCellAdapter new],
+                        kCellModel : self.share
      }
      ]
      }];

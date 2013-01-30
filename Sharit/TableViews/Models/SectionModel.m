@@ -24,31 +24,13 @@
     [self.cellModels addObject:cellModel];
 }
 
-
-- (NSString *)
-getPropertyNameForJsonKey:(NSString *)jsonKey
-{
-    static NSDictionary* vars = nil;
-    if (nil==vars) {
-        vars = @{
-            kTitle: @"titleForHeader",
-            kTag: @"tag",
-            kCells: @"cellModels"
-        };
-    }
-
-	NSString* key = vars[jsonKey];
-	
-	return key;
-}
-
 - (NSString*)
 getComponentTypeForCollection:(NSString *)propertyName
 {
 	if ([propertyName isEqualToString:@"cellModels"]) {
 		return @"CellModel";
 	}
-	
+
 	return nil;
 }
 

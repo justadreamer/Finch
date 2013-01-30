@@ -53,27 +53,27 @@
     [super initTableModel];
     if ([[self pasteboardShare].string length]) {
         NSDictionary* textCell = @{kCellClassName : @"TextCell",
-                                   kNibNameToLoad : @"TextCell",
-                                   kAdapter: [PasteboardShareTextCellAdapter new],
-                                   kModel: self.share
+                                   kCellNibName : @"TextCell",
+                                   kCellAdapter: [PasteboardShareTextCellAdapter new],
+                                   kCellModel: self.share
                                    };
         
         [self.tableModel addSection:@{
-                             kTitle: @"Pasteboard text:",
+                             kSectionTitleForHeader: @"Pasteboard text:",
              kSectionTitleForFooter: @"Notice: You do NOT need to copy the text. The text IS already in the pasteboard",
-                             kCells: @[textCell]
+                             kCellModels: @[textCell]
          }];
     }
     
     if ([self pasteboardShare].image) {
         NSDictionary* imageCell = @{kCellClassName: @"ImageCell",
-                                    kNibNameToLoad: @"ImageCell",
-                                    kAdapter: [PasteboardShareImageCellAdapter new],
-                                    kModel: self.share};
+                                    kCellNibName: @"ImageCell",
+                                    kCellAdapter: [PasteboardShareImageCellAdapter new],
+                                    kCellModel: self.share};
         
         [self.tableModel addSection:@{
-                             kTitle:@"Pasteboard image:",
-                             kCells:@[imageCell]
+                             kSectionTitleForHeader:@"Pasteboard image:",
+                             kCellModels:@[imageCell]
          }];
     }
 }

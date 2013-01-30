@@ -9,16 +9,21 @@
 #ifndef Finch_TableModelConstants_h
 #define Finch_TableModelConstants_h
 
-extern NSString* const kTitle;
+//the constant values are corresponding to the class properties - to enable serialization/deserialization
+
+//both sections and cells:
 extern NSString* const kTag;
-extern NSString* const kCells;
-extern NSString* const kModel;
-extern NSString* const kCellId;
+
+//cells:
+extern NSString* const kCellModel;
+extern NSString* const kCellIdentifier;
 extern NSString* const kCellStyle;
-extern NSString* const kNibNameToLoad;
+extern NSString* const kCellNibName;
 extern NSString* const kCellClassName;
-extern NSString* const kAdapter;
+extern NSString* const kCellAdapter;
 
 //sections:
+extern NSString* const kSectionTitleForHeader;
 extern NSString* const kSectionTitleForFooter;
+extern NSString* const kCellModels;
 #endif

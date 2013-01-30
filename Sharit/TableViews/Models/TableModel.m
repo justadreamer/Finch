@@ -62,12 +62,12 @@
 - (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CellModel* cellModel = [self cellModelForIndexPath:indexPath];
 
-    BaseCell* cell = (BaseCell*) [tableView dequeueReusableCellWithIdentifier:[cellModel cellIdentifier]];
+    BaseCell* cell = (BaseCell*) [tableView dequeueReusableCellWithIdentifier:[cellModel identifier]];
     if (nil==cell) {
         cell = [cellModel createCell];
     }
     cell.tableView = tableView;
-    [cell updateWithAdapter:[cellModel adapter]];
+    [cell updateWithAdapter:[cellModel cellAdapter]];
     return cell;
 }
 

@@ -13,25 +13,23 @@
 @class BaseCell;
 
 @interface CellModel : KVCBaseObject
-@property (nonatomic,strong) NSString* cellClassName;
+@property (nonatomic,strong) NSString* className;
 @property (nonatomic,strong) NSObject* model;
 
 //should be set from the outside
-@property (nonatomic,strong) NSString* cellIdentifier;
+@property (nonatomic,strong) NSString* identifier;
 
 //the cell style if we are not loading cell from nib
-@property (nonatomic,assign) UITableViewCellStyle cellStyle;
+@property (nonatomic,assign) UITableViewCellStyle style;
 
 //if empty - no nib will be loaded (we'll assume the class is just alloc init)
-@property (nonatomic,strong) NSString* nibNameToLoad;
+@property (nonatomic,strong) NSString* nibName;
 
 @property (nonatomic,assign) NSInteger tag;
 
-@property (nonatomic,strong) NSObject* cellModelAdapter;
+@property (nonatomic,strong) NSObject* adapter;
 
-- (BaseCellAdapter*)adapter;
-
-- (id) initWithCellClassName:(NSString*)cellClass model:(NSObject*)model adapter:(BaseCellAdapter*)adapter identifier:(NSString *)cellIdentifier;
+- (BaseCellAdapter*)cellAdapter;
 
 - (BaseCell*) createCell;
 

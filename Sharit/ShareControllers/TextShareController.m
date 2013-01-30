@@ -55,14 +55,14 @@
 - (void) initTableModel {
     [super initTableModel];
     NSDictionary* textCell = @{kCellClassName : @"TextCell",
-                               kNibNameToLoad : @"TextCell",
-                               kAdapter: [TextShareTextCellAdapter new],
-                               kModel: self.share
+                               kCellNibName : @"TextCell",
+                               kCellAdapter: [TextShareTextCellAdapter new],
+                               kCellModel: self.share
                                };
     
     [self.tableModel addSection:@{
-                         kTitle: @"Text:",
-                         kCells: @[textCell]
+                         kSectionTitleForHeader: @"Text:",
+                         kCellModels: @[textCell]
      }];
 }
 

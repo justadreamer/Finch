@@ -10,8 +10,6 @@
 
 @interface BaseCellAdapter : NSObject
 @property (nonatomic,weak) NSObject* model;
-
-- (NSString*) mainText;
-- (NSString*) detailText;
-
+@property (nonatomic,strong) NSString* mainText;
+@property (nonatomic,strong) NSString* detailText;
 @end
