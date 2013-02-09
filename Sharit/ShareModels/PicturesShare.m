@@ -117,4 +117,13 @@
     return [self.assetSharesMap objectForKey:path];
 }
 
+- (NSInteger) numberOfPrivate {
+    NSInteger number = 0;
+    for (ALAssetShare* asset in self.assetShares) {
+        if (asset.isPrivate) {
+            number++;
+        }
+    }
+    return number;
+}
 @end

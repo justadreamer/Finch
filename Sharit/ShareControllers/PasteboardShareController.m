@@ -45,10 +45,6 @@
     [self refresh];
 }
 
-- (void) sharesRefreshed {
-    [self refresh];
-}
-
 - (void) initTableModel {
     [super initTableModel];
     if ([[self pasteboardShare].string length]) {

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ALAssetShare;
 
 @interface PictureViewCell : UICollectionViewCell
-- (void)setImage:(UIImage*) image;
+@property (nonatomic,weak) ALAssetShare* assetShare;
+- (void) refresh;
 @end

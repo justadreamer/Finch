@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440365C016C2EF0C001B9D31 /* TransparentTouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 440365BF16C2EF0C001B9D31 /* TransparentTouchView.mm */; };
+		440365C916C6948E001B9D31 /* CustomGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365C816C6948E001B9D31 /* CustomGestureRecognizer.m */; };
+		440365CD16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365CC16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.m */; };
+		440365D016C6AA4C001B9D31 /* icon-privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 440365CE16C6AA4C001B9D31 /* icon-privacy.png */; };
+		440365D116C6AA4C001B9D31 /* icon-privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 440365CF16C6AA4C001B9D31 /* icon-privacy@2x.png */; };
+		440365D816C6AD8C001B9D31 /* PictureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365D416C6AD8C001B9D31 /* PictureViewCell.m */; };
+		440365D916C6AD8C001B9D31 /* PictureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440365D516C6AD8C001B9D31 /* PictureViewCell.xib */; };
+		440365DA16C6AD8C001B9D31 /* PicturesPrivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365D716C6AD8C001B9D31 /* PicturesPrivateViewController.m */; };
 		442EACAB155D9D780032E1B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */; };
 		442EACB61560623F0032E1B2 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EACB51560623F0032E1B2 /* NSStringAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		442EACD31561A33D0032E1B2 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
@@ -83,14 +91,25 @@
 		44C05E3F166A3B6100EAF733 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 44C05E3D166A3B6100EAF733 /* Icon.png */; };
 		44C05E40166A3B6100EAF733 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44C05E3E166A3B6100EAF733 /* Icon@2x.png */; };
 		44C05E5C166AA6D100EAF733 /* KVCBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C05E5B166AA6D100EAF733 /* KVCBaseObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		44E07BFB16B9D7D100EFAE2B /* PicturesPrivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E07BFA16B9D7D100EFAE2B /* PicturesPrivateViewController.m */; };
-		44E07C0116B9D84000EFAE2B /* PictureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E07C0016B9D84000EFAE2B /* PictureViewCell.m */; };
-		44E07C0316B9D86E00EFAE2B /* PictureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E07C0216B9D86E00EFAE2B /* PictureViewCell.xib */; };
 		44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE822415FFD4EB008C12D6 /* CoreLocation.framework */; };
 		92BE8ED048B34C0EBE976834 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0B01861C6F42BE9FBC79BB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		440365BE16C2EF0C001B9D31 /* TransparentTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentTouchView.h; sourceTree = "<group>"; };
+		440365BF16C2EF0C001B9D31 /* TransparentTouchView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransparentTouchView.mm; sourceTree = "<group>"; };
+		440365C716C6948E001B9D31 /* CustomGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGestureRecognizer.h; sourceTree = "<group>"; };
+		440365C816C6948E001B9D31 /* CustomGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGestureRecognizer.m; sourceTree = "<group>"; };
+		440365CA16C69CA0001B9D31 /* TransparentTouchViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransparentTouchViewDelegate.h; sourceTree = "<group>"; };
+		440365CB16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesSharePrivateCellAdapter.h; sourceTree = "<group>"; };
+		440365CC16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesSharePrivateCellAdapter.m; sourceTree = "<group>"; };
+		440365CE16C6AA4C001B9D31 /* icon-privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-privacy.png"; sourceTree = "<group>"; };
+		440365CF16C6AA4C001B9D31 /* icon-privacy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-privacy@2x.png"; sourceTree = "<group>"; };
+		440365D316C6AD8C001B9D31 /* PictureViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewCell.h; sourceTree = "<group>"; };
+		440365D416C6AD8C001B9D31 /* PictureViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewCell.m; sourceTree = "<group>"; };
+		440365D516C6AD8C001B9D31 /* PictureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureViewCell.xib; sourceTree = "<group>"; };
+		440365D616C6AD8C001B9D31 /* PicturesPrivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesPrivateViewController.h; sourceTree = "<group>"; };
+		440365D716C6AD8C001B9D31 /* PicturesPrivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesPrivateViewController.m; sourceTree = "<group>"; };
 		442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		442EACB41560623F0032E1B2 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		442EACB51560623F0032E1B2 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
@@ -216,11 +235,6 @@
 		44C05E3E166A3B6100EAF733 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		44C05E5A166AA6D100EAF733 /* KVCBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCBaseObject.h; sourceTree = "<group>"; };
 		44C05E5B166AA6D100EAF733 /* KVCBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCBaseObject.m; sourceTree = "<group>"; };
-		44E07BF916B9D7D100EFAE2B /* PicturesPrivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesPrivateViewController.h; sourceTree = "<group>"; };
-		44E07BFA16B9D7D100EFAE2B /* PicturesPrivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesPrivateViewController.m; sourceTree = "<group>"; };
-		44E07BFF16B9D84000EFAE2B /* PictureViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewCell.h; sourceTree = "<group>"; };
-		44E07C0016B9D84000EFAE2B /* PictureViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewCell.m; sourceTree = "<group>"; };
-		44E07C0216B9D86E00EFAE2B /* PictureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureViewCell.xib; sourceTree = "<group>"; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9E0B01861C6F42BE9FBC79BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86AAB829A154B7C8FA88101 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -258,6 +272,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		440365BC16C2EF0C001B9D31 /* GestureTouchView */ = {
+			isa = PBXGroup;
+			children = (
+				440365BE16C2EF0C001B9D31 /* TransparentTouchView.h */,
+				440365BF16C2EF0C001B9D31 /* TransparentTouchView.mm */,
+				440365C716C6948E001B9D31 /* CustomGestureRecognizer.h */,
+				440365C816C6948E001B9D31 /* CustomGestureRecognizer.m */,
+				440365CA16C69CA0001B9D31 /* TransparentTouchViewDelegate.h */,
+			);
+			path = GestureTouchView;
+			sourceTree = "<group>";
+		};
+		440365D216C6AD8B001B9D31 /* PrivatePictureSelection */ = {
+			isa = PBXGroup;
+			children = (
+				440365D316C6AD8C001B9D31 /* PictureViewCell.h */,
+				440365D416C6AD8C001B9D31 /* PictureViewCell.m */,
+				440365D516C6AD8C001B9D31 /* PictureViewCell.xib */,
+				440365D616C6AD8C001B9D31 /* PicturesPrivateViewController.h */,
+				440365D716C6AD8C001B9D31 /* PicturesPrivateViewController.m */,
+			);
+			path = PrivatePictureSelection;
+			sourceTree = "<group>";
+		};
 		442EAC9F155D96E00032E1B2 /* res */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +320,8 @@
 		442EACD11561A33D0032E1B2 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				440365CE16C6AA4C001B9D31 /* icon-privacy.png */,
+				440365CF16C6AA4C001B9D31 /* icon-privacy@2x.png */,
 				44BEDF4A16B57BD500FBE30C /* Default-568h@2x.png */,
 				44C05E3D166A3B6100EAF733 /* Icon.png */,
 				44C05E3E166A3B6100EAF733 /* Icon@2x.png */,
@@ -330,6 +370,7 @@
 		444B42D7155C2FD200319EC7 /* Sharit */ = {
 			isa = PBXGroup;
 			children = (
+				440365BC16C2EF0C001B9D31 /* GestureTouchView */,
 				44BEDED616B5732000FBE30C /* Main */,
 				44BEDEC116B5729900FBE30C /* ShareControllers */,
 				44BEDF2416B5745300FBE30C /* ShareModels */,
@@ -383,6 +424,7 @@
 		44BEDEC116B5729900FBE30C /* ShareControllers */ = {
 			isa = PBXGroup;
 			children = (
+				440365D216C6AD8B001B9D31 /* PrivatePictureSelection */,
 				44BEDEC216B5729900FBE30C /* PasteboardShareController.h */,
 				44BEDEC316B5729900FBE30C /* PasteboardShareController.m */,
 				44BEDEC516B5729900FBE30C /* PicturesShareController.h */,
@@ -391,7 +433,6 @@
 				44BEDEC916B5729900FBE30C /* ShareController.m */,
 				44BEDECB16B5729900FBE30C /* TextShareController.h */,
 				44BEDECC16B5729900FBE30C /* TextShareController.m */,
-				44E07C0416B9E02400EFAE2B /* PrivatePictureSelection */,
 			);
 			path = ShareControllers;
 			sourceTree = "<group>";
@@ -451,6 +492,8 @@
 				442F70B616B8717700964F58 /* PasteboardShareImageCellAdapter.m */,
 				442F70BA16B8760A00964F58 /* TextShareTextCellAdapter.h */,
 				442F70BB16B8760A00964F58 /* TextShareTextCellAdapter.m */,
+				440365CB16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.h */,
+				440365CC16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.m */,
 			);
 			path = CellModelAdapter;
 			sourceTree = "<group>";
@@ -537,18 +580,6 @@
 			path = KVCSerializer;
 			sourceTree = "<group>";
 		};
-		44E07C0416B9E02400EFAE2B /* PrivatePictureSelection */ = {
-			isa = PBXGroup;
-			children = (
-				44E07BF916B9D7D100EFAE2B /* PicturesPrivateViewController.h */,
-				44E07BFA16B9D7D100EFAE2B /* PicturesPrivateViewController.m */,
-				44E07BFF16B9D84000EFAE2B /* PictureViewCell.h */,
-				44E07C0016B9D84000EFAE2B /* PictureViewCell.m */,
-				44E07C0216B9D86E00EFAE2B /* PictureViewCell.xib */,
-			);
-			name = PrivatePictureSelection;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -632,7 +663,9 @@
 				4480282E16B58D970049FB95 /* SwitchCell.xib in Resources */,
 				44956B9316B74C4A00BD7BC4 /* TextCell.xib in Resources */,
 				442F70B916B871D000964F58 /* ImageCell.xib in Resources */,
-				44E07C0316B9D86E00EFAE2B /* PictureViewCell.xib in Resources */,
+				440365D016C6AA4C001B9D31 /* icon-privacy.png in Resources */,
+				440365D116C6AA4C001B9D31 /* icon-privacy@2x.png in Resources */,
+				440365D916C6AD8C001B9D31 /* PictureViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,8 +763,11 @@
 				442F70B416B8715800964F58 /* ImageCellAdapter.m in Sources */,
 				442F70B716B8717700964F58 /* PasteboardShareImageCellAdapter.m in Sources */,
 				442F70BC16B8760B00964F58 /* TextShareTextCellAdapter.m in Sources */,
-				44E07BFB16B9D7D100EFAE2B /* PicturesPrivateViewController.m in Sources */,
-				44E07C0116B9D84000EFAE2B /* PictureViewCell.m in Sources */,
+				440365C016C2EF0C001B9D31 /* TransparentTouchView.mm in Sources */,
+				440365C916C6948E001B9D31 /* CustomGestureRecognizer.m in Sources */,
+				440365CD16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.m in Sources */,
+				440365D816C6AD8C001B9D31 /* PictureViewCell.m in Sources */,
+				440365DA16C6AD8C001B9D31 /* PicturesPrivateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

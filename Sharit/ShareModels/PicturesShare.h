@@ -13,4 +13,5 @@
 @property(nonatomic,strong) NSMutableArray* assetShares;
 - (ALAssetShare*) shareForPath:(NSString*)path;
 - (void) refresh;
+- (NSInteger)numberOfPrivate;
 @end

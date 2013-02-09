@@ -13,6 +13,7 @@
 @property (nonatomic,strong) ALAsset* asset;
 @property (nonatomic,assign) BOOL isVideo;
 @property (nonatomic,readonly) ALAssetRepresentation* defaultRepresentation;
+@property (nonatomic,assign) BOOL isPrivate;
 
 + (BOOL) isAssetVideo:(ALAsset*)asset;
 #ifdef UNIT_TESTS

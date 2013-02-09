@@ -27,6 +27,10 @@
     self.navigationItem.title = self.share.name;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self refresh];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -49,8 +53,9 @@
     return shareController;
 }
 
-- (void) sharesRefreshed {
-    
+- (void) refresh {
+    [self initTableModel];
+    [self.tableView reloadData];
 }
 
 - (void)switchValueChanged:(UISwitch*)sender {
@@ -59,11 +64,11 @@
 
 - (void)setShare:(Share *)share {
     _share = share;
-    self.tableModel = [TableModel new];
     [self initTableModel];
 }
 
 - (void) initTableModel {
+    self.tableModel = [TableModel new];
     [self.tableModel addSection:@{
                          kSectionCellModels: @[
      @{

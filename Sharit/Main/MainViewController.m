@@ -86,14 +86,11 @@ const NSInteger SEC_BONJOUR = 3;
     [self.tableModel setSectionsFromArray:sections];
 
     [self.mainTableView reloadData];
-}
 
-- (void) sharesRefreshed {
-    if (self.navigationController.topViewController == self) {
-        [self.mainTableView reloadData];
-    } else {
-        if ([self.navigationController.topViewController respondsToSelector:@selector(sharesRefreshed)]) {
-            [(id)self.navigationController.topViewController sharesRefreshed];
+    //walk navigation stack to refresh the shares:
+    for (UIViewController* controller in self.navigationController.viewControllers) {
+        if (controller!=self && [controller respondsToSelector:@selector(refresh)]) {
+            [controller performSelector:@selector(refresh)];
         }
     }
 }

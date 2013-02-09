@@ -8,7 +8,7 @@
 
 #import "PicturesShareController.h"
 #import "Share.h"
-#import "BaseCellAdapter.h"
+#import "PicturesSharePrivateCellAdapter.h"
 #import "CellModel.h"
 #import "PicturesPrivateViewController.h"
 
@@ -35,12 +35,12 @@ const NSInteger kTagPrivatePics = 1;
 
 - (void) initTableModel {
     [super initTableModel];
-    BaseCellAdapter* adapter = [BaseCellAdapter new];
+    PicturesSharePrivateCellAdapter* adapter = [PicturesSharePrivateCellAdapter new];
     adapter.mainText = @"Select private pics";
-    adapter.detailText = [NSString stringWithFormat:@"Private pics: %d",0];
 
     [self.tableModel addSection:@{kSectionCellModels: @[@{
                            kTag: @(kTagPrivatePics),
+                     kCellModel: self.share,
                    kCellAdapter: adapter,
                      kCellStyle: @(UITableViewCellStyleSubtitle),
              kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator)
@@ -51,10 +51,12 @@ const NSInteger kTagPrivatePics = 1;
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CellModel* cellModel = [self.tableModel cellModelForIndexPath:indexPath];
     if (cellModel.tag==kTagPrivatePics) {
-        PicturesPrivateViewController* controller = [[PicturesPrivateViewController alloc] initWithNibName:nil bundle:nil];
+        UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
+        PicturesPrivateViewController* controller = [[PicturesPrivateViewController alloc] initWithCollectionViewLayout:layout];
         controller.picturesShare = (PicturesShare*)self.share;
         [self.navigationController pushViewController:controller animated:YES];
     }
     
 }
+
 @end

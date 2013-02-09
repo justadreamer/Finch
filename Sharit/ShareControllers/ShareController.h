@@ -15,7 +15,7 @@
 @property (nonatomic,strong) Share* share;
 @property (nonatomic,strong) TableModel* tableModel;
 + (ShareController*) controllerWithShare:(Share*)share;
-- (void) sharesRefreshed;
+-(void) refresh;
 - (void)switchValueChanged:(id)sender;
 
 //this method needs to be overriden in sub-classes:

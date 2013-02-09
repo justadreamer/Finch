@@ -199,7 +199,7 @@ void uncaughtExceptionHandler(NSException *exception);
 }
 
 - (void) sharesRefreshed {
-    [self.viewController sharesRefreshed];
+    [self.viewController refresh];
 }
 
 - (void) setupIdleTimer {
