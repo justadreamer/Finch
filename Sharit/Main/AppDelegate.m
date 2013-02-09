@@ -15,6 +15,7 @@
 #import "MainHTTPConnection.h"
 #import "GlobalDefaults.h"
 #import "SharesProvider.h"
+#import "MBProgressHUD.h"
 
 @interface AppDelegate()<NSNetServiceDelegate>
 @property (nonatomic,strong) HTTPServer* httpServer;
@@ -119,8 +120,13 @@ void uncaughtExceptionHandler(NSException *exception);
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [self startServices];
+    [MBProgressHUD showHUDAddedTo:self.viewController.view animated:YES];
+    __weak AppDelegate* safeSelf = self;
+    [SharesProvider instance].onRefreshFinished = ^ {
+        [MBProgressHUD hideHUDForView:safeSelf.viewController.view animated:YES];
+        [safeSelf.viewController refresh];
+    };
     [[SharesProvider instance] refreshShares];
-    [self.viewController refresh];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

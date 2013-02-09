@@ -14,10 +14,13 @@
 @property (nonatomic,assign) BOOL isVideo;
 @property (nonatomic,readonly) ALAssetRepresentation* defaultRepresentation;
 @property (nonatomic,assign) BOOL isPrivate;
+@property (nonatomic,strong) NSString* fileName;
 
 + (BOOL) isAssetVideo:(ALAsset*)asset;
 #ifdef UNIT_TESTS
 + (NSString*) durationStringFromDouble:(double)d;
 #endif
 - (NSDate*) createdDate;
+
+- (void) readPrivacyPreference;
 @end

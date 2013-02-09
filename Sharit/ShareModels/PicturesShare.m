@@ -19,6 +19,7 @@
 @interface PicturesShare()
 @property(nonatomic,strong) ALAssetsLibrary* library;
 @property(nonatomic,strong) NSMutableDictionary* assetSharesMap;
+@property(nonatomic,strong) NSMutableDictionary* assetSharesPrivacyMap;
 @end
 
 @implementation PicturesShare
@@ -41,7 +42,10 @@
     BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
     MacroPreprocessor* picturePreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"asset"];
     MacroPreprocessor* videoPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"video"];
-
+    
+    __block BOOL groupsDone = NO;
+    __weak PicturesShare* safeSelf = self;
+    __block BOOL assetsDone = NO;
     [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:
      ^(ALAssetsGroup* group, BOOL* stop) {
          [group enumerateAssetsUsingBlock:
@@ -55,20 +59,39 @@
                   assetShare.path = [NSString stringWithFormat:@"%@%@",PATH_PREFIX_ASSET,filename];
                   assetShare.isVideo = isVideo;
                   assetShare.macroPreprocessor = isVideo ? videoPreprocessor : picturePreprocessor;
+                  assetShare.fileName = filename;
+                  [assetShare readPrivacyPreference];
                   [self.assetShares addObject:assetShare];
+              }
+              
+              if (!asset) {//we have finished enumerating assets
+                  assetsDone = YES;
+                  if (groupsDone) {
+                      [safeSelf refreshFinished];
+                  }
               }
           }];
 
          //we have enumerated all groups
          if (!group) {
-             NSSortDescriptor* desc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
-             [self.assetShares sortUsingDescriptors:[NSArray arrayWithObject:desc]];
+             groupsDone = YES;
+             if (assetsDone) {
+                 [safeSelf refreshFinished];
+             }
          }
      }
                               failureBlock:
      ^(NSError* err) {
          VLog(err);
     }];
+}
+
+- (void) refreshFinished {
+    NSSortDescriptor* desc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
+    [self.assetShares sortUsingDescriptors:[NSArray arrayWithObject:desc]];
+    if (self.onRefreshFinished) {
+        self.onRefreshFinished();
+    }
 }
 
 - (BOOL) isLocationServicesEnabled {
@@ -80,8 +103,8 @@
     if ([self isLocationServicesEnabled]) {
         NSInteger count = [self.assetShares count];
         if (count) {
-            NSString* format = (count > 1) ? @"%d images" : @"%d image";
-            desc = [NSString stringWithFormat:format,count];
+            NSString* format = (count > 1) ? @"%d images, %d private" : @"%d image, %d private";
+            desc = [NSString stringWithFormat:format,count,[self numberOfPrivate]];
         }
     } else {
         desc = @"Location Services should be ON to share pictures";

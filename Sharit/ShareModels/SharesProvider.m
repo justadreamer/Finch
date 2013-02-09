@@ -97,6 +97,12 @@ SharesProvider* globalSharesProvider;
 }
 
 - (void) refreshShares {
+    __weak SharesProvider* safeSelf = (SharesProvider*) self;
+    [self picturesShare].onRefreshFinished = ^ {
+        if (safeSelf.onRefreshFinished) {
+            safeSelf.onRefreshFinished();
+        }
+    };
     [[self picturesShare] refresh];
 }
 @end

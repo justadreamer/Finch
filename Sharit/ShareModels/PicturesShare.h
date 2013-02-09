@@ -11,6 +11,8 @@
 
 @interface PicturesShare : Share
 @property(nonatomic,strong) NSMutableArray* assetShares;
+@property(nonatomic,copy) VoidBlock onRefreshFinished;
+
 - (ALAssetShare*) shareForPath:(NSString*)path;
 - (void) refresh;
 - (NSInteger)numberOfPrivate;

@@ -9,8 +9,10 @@
 #import "GlobalDefaults.h"
 #import "ALAssetShare.h"
 #import "MacroPreprocessor.h"
+
 @interface ALAssetShare()
 @property (nonatomic,strong) UIImage* thumbnail;
+@property (nonatomic,strong) NSString* key;
 @end
 
 @implementation ALAssetShare
@@ -119,4 +121,27 @@
 - (NSDate*) createdDate {
     return [_asset valueForProperty:ALAssetPropertyDate];
 }
+
+- (void) setIsPrivate:(BOOL)isPrivate {
+    _isPrivate = isPrivate;
+    [self savePrivacyPreference];
+}
+
+- (NSString*) key {
+    static NSString* const assetPrivacyPrefix = @"asset_privacy_";
+    if (nil==_key) {
+        _key = [NSString stringWithFormat:@"%@%@",assetPrivacyPrefix,self.fileName];
+    }
+    return _key;
+}
+
+- (void) readPrivacyPreference {
+    _isPrivate = [[NSUserDefaults standardUserDefaults] boolForKey:self.key];
+}
+
+- (void) savePrivacyPreference {
+    [[NSUserDefaults standardUserDefaults] setBool:_isPrivate forKey:self.key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end
