@@ -27,8 +27,6 @@
 - (UIImage*)imageForSizeType:(ImageSizeType)sizeType {
     if (ImageSize_Thumb==sizeType) {
         return _thumbnail;
-    } else if (ImageSize_Small==sizeType) {
-        return [UIImage imageWithCGImage:[_asset aspectRatioThumbnail]];
     }
     ALAssetRepresentation* defaultRep = [_asset defaultRepresentation];
     CGImageRef fullResImg = [defaultRep fullResolutionImage];
