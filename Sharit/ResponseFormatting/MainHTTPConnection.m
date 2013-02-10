@@ -23,6 +23,7 @@
 #import "MacroPreprocessor.h"
 #import "ALAssetShare.h"
 #import "HTTPAsyncAssetResponse.h"
+#import "HTTPForbiddenResponse.h"
 
 @interface MainHTTPConnection ()
 @property (nonatomic,strong) NSArray* indexPaths;
@@ -129,8 +130,12 @@
     NSString* noParamsPath = [self removeParams:path];
     Share* share = [provider shareForPath:noParamsPath andParams:params];
     NSObject<HTTPResponse> * response = nil;
-    if ([share isKindOfClass:[ImageShare class]]) {
-        response = [self imageResponseForShare:(ImageShare*)share atPath:path];
+    if ([share isShared]) {
+        if ([share isKindOfClass:[ImageShare class]]) {
+            response = [self imageResponseForShare:(ImageShare*)share atPath:path];
+        }
+    } else {
+        response = [HTTPForbiddenResponse new];
     }
     return response;
 }

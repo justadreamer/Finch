@@ -8,13 +8,14 @@
 
 #import "ImageShare.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-
+@class PicturesShare;
 @interface ALAssetShare : ImageShare
 @property (nonatomic,strong) ALAsset* asset;
 @property (nonatomic,assign) BOOL isVideo;
 @property (nonatomic,readonly) ALAssetRepresentation* defaultRepresentation;
-@property (nonatomic,assign) BOOL isPrivate;
 @property (nonatomic,strong) NSString* fileName;
+@property (nonatomic,weak) PicturesShare* parentShare;
+@property (nonatomic,assign) BOOL isPrivate;
 
 + (BOOL) isAssetVideo:(ALAsset*)asset;
 #ifdef UNIT_TESTS

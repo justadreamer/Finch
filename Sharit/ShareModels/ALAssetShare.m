@@ -9,6 +9,7 @@
 #import "GlobalDefaults.h"
 #import "ALAssetShare.h"
 #import "MacroPreprocessor.h"
+#import "PicturesShare.h"
 
 @interface ALAssetShare()
 @property (nonatomic,strong) UIImage* thumbnail;
@@ -140,6 +141,10 @@
 - (void) savePrivacyPreference {
     [[NSUserDefaults standardUserDefaults] setBool:_isPrivate forKey:self.key];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL) isShared {
+    return !self.isPrivate && self.parentShare.isShared;
 }
 
 @end

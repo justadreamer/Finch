@@ -53,6 +53,7 @@
               if (asset && [asset thumbnail]) {
                   BOOL isVideo = [ALAssetShare isAssetVideo:asset];
                   ALAssetShare* assetShare = [[ALAssetShare alloc] init];
+                  assetShare.parentShare = safeSelf;
                   assetShare.asset = asset;
                   NSString* filename = [[asset defaultRepresentation] filename];
                   [self.assetSharesMap setObject:assetShare forKey:filename];
@@ -130,14 +131,17 @@
 - (NSString*) htmlBlock {
     NSMutableString* html = [NSMutableString stringWithString:@""];
     for (ALAssetShare* assetShare in assetShares) {
-        [html appendString:[assetShare htmlBlock]];
+        if ([assetShare isShared]) {
+            [html appendString:[assetShare htmlBlock]];
+        }
     }
     return html;
 }
 
 - (ALAssetShare*) shareForPath:(NSString*)path {
     path = [path substringAfter:PATH_PREFIX_ASSET];
-    return [self.assetSharesMap objectForKey:path];
+    ALAssetShare* share = [self.assetSharesMap objectForKey:path];
+    return share;
 }
 
 - (NSInteger) numberOfPrivate {

@@ -15,6 +15,7 @@
 		440365D816C6AD8C001B9D31 /* PictureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365D416C6AD8C001B9D31 /* PictureViewCell.m */; };
 		440365D916C6AD8C001B9D31 /* PictureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440365D516C6AD8C001B9D31 /* PictureViewCell.xib */; };
 		440365DA16C6AD8C001B9D31 /* PicturesPrivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365D716C6AD8C001B9D31 /* PicturesPrivateViewController.m */; };
+		440365DD16C80A02001B9D31 /* HTTPForbiddenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 440365DC16C80A02001B9D31 /* HTTPForbiddenResponse.m */; };
 		442EACAB155D9D780032E1B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */; };
 		442EACB61560623F0032E1B2 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 442EACB51560623F0032E1B2 /* NSStringAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		442EACD31561A33D0032E1B2 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
@@ -110,6 +111,8 @@
 		440365D516C6AD8C001B9D31 /* PictureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureViewCell.xib; sourceTree = "<group>"; };
 		440365D616C6AD8C001B9D31 /* PicturesPrivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesPrivateViewController.h; sourceTree = "<group>"; };
 		440365D716C6AD8C001B9D31 /* PicturesPrivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesPrivateViewController.m; sourceTree = "<group>"; };
+		440365DB16C80A02001B9D31 /* HTTPForbiddenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPForbiddenResponse.h; sourceTree = "<group>"; };
+		440365DC16C80A02001B9D31 /* HTTPForbiddenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPForbiddenResponse.m; sourceTree = "<group>"; };
 		442EACAA155D9D780032E1B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		442EACB41560623F0032E1B2 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		442EACB51560623F0032E1B2 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
@@ -546,6 +549,8 @@
 				44BEDF1D16B5741700FBE30C /* MainHTTPConnection.h */,
 				44BEDF1E16B5741700FBE30C /* MainHTTPConnection.m */,
 				44BEDF1F16B5741700FBE30C /* TemplateLoader.h */,
+				440365DB16C80A02001B9D31 /* HTTPForbiddenResponse.h */,
+				440365DC16C80A02001B9D31 /* HTTPForbiddenResponse.m */,
 			);
 			path = ResponseFormatting;
 			sourceTree = "<group>";
@@ -768,6 +773,7 @@
 				440365CD16C6A573001B9D31 /* PicturesSharePrivateCellAdapter.m in Sources */,
 				440365D816C6AD8C001B9D31 /* PictureViewCell.m in Sources */,
 				440365DA16C6AD8C001B9D31 /* PicturesPrivateViewController.m in Sources */,
+				440365DD16C80A02001B9D31 /* HTTPForbiddenResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
