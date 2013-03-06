@@ -11,5 +11,4 @@
 @interface ShareCellAdapter : BaseCellAdapter
 - (UITableViewCellAccessoryType) accessoryType;
 - (BOOL) showCheckMark;
-- (UIColor*) detailTextColor;
 @end

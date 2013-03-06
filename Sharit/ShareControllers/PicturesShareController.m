@@ -35,17 +35,33 @@ const NSInteger kTagPrivatePics = 1;
 
 - (void) initTableModel {
     [super initTableModel];
-    PicturesSharePrivateCellAdapter* adapter = [PicturesSharePrivateCellAdapter new];
-    adapter.mainText = @"Select private pics";
 
-    [self.tableModel addSection:@{kSectionCellModels: @[@{
-                           kTag: @(kTagPrivatePics),
-                     kCellModel: self.share,
-                   kCellAdapter: adapter,
-                     kCellStyle: @(UITableViewCellStyleSubtitle),
-             kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator)
-        }
-     ]}];
+    if ([self.share isDetailsDescriptionAWarning]) {
+        self.tableModel = [TableModel new];
+
+        BaseCellAdapter* adapter = [BaseCellAdapter new];
+        adapter.mainText = @"Fix Settings";
+        adapter.detailText = self.share.detailsDescription;
+        adapter.detailTextColor = [UIColor redColor];
+
+        [self.tableModel addSection:@{kSectionCellModels : @[@{
+                        kCellStyle :@(UITableViewCellStyleSubtitle),
+                       kCellAdapter:adapter,
+         }
+         ]}];
+    } else {
+        PicturesSharePrivateCellAdapter* adapter = [PicturesSharePrivateCellAdapter new];
+        adapter.mainText = @"Select private pics";
+        
+        [self.tableModel addSection:@{kSectionCellModels: @[@{
+                               kTag: @(kTagPrivatePics),
+                         kCellModel: self.share,
+                       kCellAdapter: adapter,
+                         kCellStyle: @(UITableViewCellStyleSubtitle),
+                 kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator)
+         }
+         ]}];
+    }
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,7 +72,6 @@ const NSInteger kTagPrivatePics = 1;
         controller.picturesShare = (PicturesShare*)self.share;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    
 }
 
 @end

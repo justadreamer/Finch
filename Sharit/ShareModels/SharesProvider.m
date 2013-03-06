@@ -98,9 +98,9 @@ SharesProvider* globalSharesProvider;
 
 - (void) refreshShares {
     __weak SharesProvider* safeSelf = (SharesProvider*) self;
-    [self picturesShare].onRefreshFinished = ^ {
+    [self picturesShare].onRefreshFinished = ^(NSError* error) {
         if (safeSelf.onRefreshFinished) {
-            safeSelf.onRefreshFinished();
+            safeSelf.onRefreshFinished(error);
         }
     };
     [[self picturesShare] refresh];

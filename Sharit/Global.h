@@ -23,3 +23,4 @@
 #endif
 
 typedef void (^VoidBlock)(void);
+typedef void (^ErrorBlock)(NSError* error);

@@ -19,7 +19,7 @@
 @interface PicturesShare()
 @property(nonatomic,strong) ALAssetsLibrary* library;
 @property(nonatomic,strong) NSMutableDictionary* assetSharesMap;
-@property(nonatomic,strong) NSMutableDictionary* assetSharesPrivacyMap;
+@property(nonatomic,strong) NSString* localizedFailureReason;
 @end
 
 @implementation PicturesShare
@@ -71,7 +71,7 @@
                       [safeSelf refreshFinished];
                   }
               }
-          }];
+          } ];
 
          //we have enumerated all groups
          if (!group) {
@@ -82,39 +82,40 @@
          }
      }
                               failureBlock:
-     ^(NSError* err) {
-         VLog(err);
+     ^(NSError* error) {
+         [safeSelf refreshFinishedWithError:error];
     }];
 }
 
 - (void) refreshFinished {
+    [self refreshFinishedWithError:nil];
+}
+
+- (void) refreshFinishedWithError:(NSError*)error {
     NSSortDescriptor* desc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
     [self.assetShares sortUsingDescriptors:[NSArray arrayWithObject:desc]];
     if (self.onRefreshFinished) {
-        self.onRefreshFinished();
+        self.onRefreshFinished(error);
     }
-}
-
-- (BOOL) isLocationServicesEnabled {
-    return [CLLocationManager locationServicesEnabled];
+    self.localizedFailureReason = [error.userInfo objectForKey:@"NSLocalizedFailureReason"];
 }
 
 - (NSString*) detailsDescription {
     NSString* desc = @"No images";
-    if ([self isLocationServicesEnabled]) {
+    if (!self.localizedFailureReason) {
         NSInteger count = [self.assetShares count];
         if (count) {
             NSString* format = (count > 1) ? @"%d images, %d private" : @"%d image, %d private";
             desc = [NSString stringWithFormat:format,count,[self numberOfPrivate]];
         }
     } else {
-        desc = @"Location Services should be ON to share pictures";
+        desc = self.localizedFailureReason;
     }
     return desc;
 }
 
 - (BOOL)isDetailsDescriptionAWarning {
-    return ![self isLocationServicesEnabled];
+    return nil!=self.localizedFailureReason;
 }
 
 - (NSDictionary*)specificMacrosDict {
@@ -124,7 +125,7 @@
      NB(YES),@"show_link_pasteboard",
      NB(YES),@"show_link_text",
      self.isShared ? [self htmlBlock] : @"",@"pictures_html_block",
-     NB(self.isShared && ![self isLocationServicesEnabled]),@"is_warning_shown",
+     NB(self.isShared && ![self isDetailsDescriptionAWarning]),@"is_warning_shown",
      nil];
 }
 

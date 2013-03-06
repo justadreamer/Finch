@@ -12,4 +12,5 @@
 @property (nonatomic,weak) NSObject* model;
 @property (nonatomic,strong) NSString* mainText;
 @property (nonatomic,strong) NSString* detailText;
+@property (nonatomic,strong) UIColor* detailTextColor;
 @end

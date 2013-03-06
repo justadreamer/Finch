@@ -29,4 +29,7 @@
     self.detailLabel.textColor = [adapter detailTextColor];
 }
 
+- (CGFloat) cellHeight {
+    return 0;
+}
 @end

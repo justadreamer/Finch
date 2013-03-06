@@ -14,7 +14,7 @@
 
 @interface SharesProvider : NSObject
 @property (nonatomic,strong) NSMutableArray* shares;
-@property(nonatomic,copy) VoidBlock onRefreshFinished;
+@property(nonatomic,copy) ErrorBlock onRefreshFinished;
 
 + (SharesProvider*) instance;
 - (PasteboardShare*) clipboardShare;

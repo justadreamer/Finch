@@ -336,8 +336,8 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
-				444B42D7155C2FD200319EC7 /* Sharit */,
-				44BEA3131576AFF600A1A7A7 /* Sharit_Tests */,
+				444B42D7155C2FD200319EC7 /* Finch */,
+				44BEA3131576AFF600A1A7A7 /* Tests */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,
 				444B42CE155C2FD200319EC7 /* Products */,
 				F86AAB829A154B7C8FA88101 /* Pods.xcconfig */,
@@ -370,7 +370,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		444B42D7155C2FD200319EC7 /* Sharit */ = {
+		444B42D7155C2FD200319EC7 /* Finch */ = {
 			isa = PBXGroup;
 			children = (
 				440365BC16C2EF0C001B9D31 /* GestureTouchView */,
@@ -384,6 +384,7 @@
 				442EAC9F155D96E00032E1B2 /* res */,
 				444B42D8155C2FD200319EC7 /* Supporting Files */,
 			);
+			name = Finch;
 			path = Sharit;
 			sourceTree = "<group>";
 		};
@@ -400,7 +401,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		44BEA3131576AFF600A1A7A7 /* Sharit_Tests */ = {
+		44BEA3131576AFF600A1A7A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				44395B6716600E9600507643 /* IMG_0010.PNG */,
@@ -411,6 +412,7 @@
 				44BEA332157BEAD000A1A7A7 /* MacroPreprocessorTest.m */,
 				44BEA3141576AFF600A1A7A7 /* Supporting Files */,
 			);
+			name = Tests;
 			path = Sharit_Tests;
 			sourceTree = "<group>";
 		};
