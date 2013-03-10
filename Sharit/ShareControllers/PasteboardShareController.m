@@ -41,10 +41,6 @@
     self.imageView.image = [imageShare imageForSizeType:ImageSize_Medium];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    [self refresh];
-}
-
 - (void) initTableModel {
     [super initTableModel];
     if ([[self pasteboardShare].string length]) {

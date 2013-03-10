@@ -30,19 +30,37 @@ const NSInteger SEC_BONJOUR = 3;
 @end
 
 @implementation MainViewController
-@synthesize mainTableView;
-@synthesize ifaces;
-@synthesize sharesProvider;
-@synthesize tableModel;
+
+- (UIView*)titleView {
+    UIImageView* left = nil;//[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-text"]];
+    UIImageView* right = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-icon"]];
+    CGFloat height = MAX(left.bounds.size.height, right.bounds.size.height);
+    UIView* titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, left.bounds.size.width+right.bounds.size.width, height)];
+    [titleView addSubview:left];
+    [titleView addSubview:right];
+    left.center = CGPointMake(left.bounds.size.width/2,height/2);
+    right.center = CGPointMake(left.bounds.size.width+right.bounds.size.width/2, height/2);
+    return titleView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Finch";
-}
+    
+    
+    self.navigationItem.titleView = [self titleView];
+    self.navigationController.navigationBar.tintColor = COLOR_NAV_BACKGROUND;
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES forState:UIControlStateHighlighted];
+    [[UINavigationBar appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES];
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    UIImageView* finchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-icon"]];
+    [finchIcon setContentMode:UIViewContentModeCenter];
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:finchIcon];
+    self.mainTableView.backgroundView = nil;
+    self.mainTableView.backgroundColor = COLOR_TABLE_BACKGROUND;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -132,4 +150,11 @@ const NSInteger SEC_BONJOUR = 3;
     return [self.tableModel tableView:tableView titleForHeaderInSection:section];
 }
 
+- (void) leftItemTapped:(UIBarButtonItem*)barButtonItem {
+    
+}
+
+- (void) rightItemTapped:(UIBarButtonItem*)barButtonItem {
+    
+}
 @end

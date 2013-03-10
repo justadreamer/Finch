@@ -13,6 +13,7 @@
 #import "NSStringAdditions.h"
 #import "UIImage+Additions.h"
 #import "GlobalDefaults.h"
+#import "ColorDefs.h"
 
 #define kRedirectPath @"redirectPath"
 #define kText @"text"

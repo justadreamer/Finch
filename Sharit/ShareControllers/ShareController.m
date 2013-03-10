@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.share.name;
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = COLOR_TABLE_BACKGROUND;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
