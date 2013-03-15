@@ -10,6 +10,7 @@
 #import "Share.h"
 
 @implementation ShareCellAdapter
+@synthesize detailTextColor = _detailTextColor;
 
 - (Share*) shareModel {
     return (Share*)self.model;
@@ -32,7 +33,7 @@
 }
 
 - (UIColor*) detailTextColor {
-    return [[self shareModel] isDetailsDescriptionAWarning] ? [UIColor redColor] : [UIColor blueColor];
+    return [[self shareModel] isDetailsDescriptionAWarning] ? [UIColor redColor] : _detailTextColor;
 }
 
 @end

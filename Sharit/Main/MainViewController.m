@@ -32,15 +32,19 @@ const NSInteger SEC_BONJOUR = 3;
 @implementation MainViewController
 
 - (UIView*)titleView {
-    UIImageView* left = nil;//[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-text"]];
-    UIImageView* right = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-icon"]];
-    CGFloat height = MAX(left.bounds.size.height, right.bounds.size.height);
-    UIView* titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, left.bounds.size.width+right.bounds.size.width, height)];
-    [titleView addSubview:left];
-    [titleView addSubview:right];
-    left.center = CGPointMake(left.bounds.size.width/2,height/2);
-    right.center = CGPointMake(left.bounds.size.width+right.bounds.size.width/2, height/2);
-    return titleView;
+    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-text"]];
+}
+
+- (UIBarButtonItem*) leftItem {
+    UIImageView* finchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-icon"]];
+    CGFloat dx = 5;
+    UIView* container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, finchIcon.frame.size.width+dx, finchIcon.frame.size.height)];
+    [finchIcon setContentMode:UIViewContentModeRight];
+    
+    [container addSubview:finchIcon];
+    finchIcon.center = CGPointMake(finchIcon.frame.size.width/2+5, finchIcon.frame.size.height/2);
+
+    return [[UIBarButtonItem alloc] initWithCustomView:container];
 }
 
 - (void)viewDidLoad {
@@ -55,10 +59,9 @@ const NSInteger SEC_BONJOUR = 3;
     [[UIBarButtonItem appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES forState:UIControlStateHighlighted];
     [[UINavigationBar appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES];
 
-    UIImageView* finchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-icon"]];
-    [finchIcon setContentMode:UIViewContentModeCenter];
-    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:finchIcon];
+
+    self.navigationItem.leftBarButtonItem = [self leftItem];
+
     self.mainTableView.backgroundView = nil;
     self.mainTableView.backgroundColor = COLOR_TABLE_BACKGROUND;
 }
@@ -86,6 +89,7 @@ const NSInteger SEC_BONJOUR = 3;
     }
 
     ShareCellAdapter* shareCellModelAdapter = [ShareCellAdapter new];
+    shareCellModelAdapter.detailTextColor = COLOR_FINCH_TITLE;
     NSMutableArray* cellsShares = [NSMutableArray array];
     for (Share* share in [SharesProvider instance].shares) {
         [cellsShares addObject:@{
