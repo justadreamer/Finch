@@ -13,5 +13,6 @@
 @property (nonatomic,weak) UITableView* tableView;
 
 - (void) updateWithAdapter:(BaseCellAdapter*)adapter;
+- (void) updateWithModel:(id)model;
 - (CGFloat) cellHeight;
 @end

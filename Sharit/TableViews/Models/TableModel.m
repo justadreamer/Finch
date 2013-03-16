@@ -68,6 +68,7 @@
     }
     cell.tableView = tableView;
     [cell updateWithAdapter:[cellModel cellAdapter]];
+    [cell updateWithModel:[cellModel model]];
     cell.accessoryType = [cellModel accessoryType];
     return cell;
 }

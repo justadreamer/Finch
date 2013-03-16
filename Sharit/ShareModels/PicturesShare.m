@@ -15,6 +15,7 @@
 #import "BasicTemplateLoader.h"
 #import "Helper.h"
 #import "MacroPreprocessor.h"
+#import "AlbumShare.h"
 
 @interface PicturesShare()
 @property(nonatomic,strong) ALAssetsLibrary* library;
@@ -23,9 +24,6 @@
 @end
 
 @implementation PicturesShare
-@synthesize assetShares;
-@synthesize library;
-@synthesize assetSharesMap;
 
 - (id) init {
     if ((self = [super init])) {
@@ -37,48 +35,69 @@
 
 - (void) refresh {
     srand(time(NULL));
-    self.assetShares = [NSMutableArray array];
+    _assetShares = [NSMutableArray array];
+    _albumShares = [NSMutableArray array];
+
     self.assetSharesMap = [NSMutableDictionary dictionary];
     BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
     MacroPreprocessor* picturePreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"asset"];
     MacroPreprocessor* videoPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"video"];
     
     __block BOOL groupsDone = NO;
-    __weak PicturesShare* safeSelf = self;
     __block BOOL assetsDone = NO;
-    [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:
-     ^(ALAssetsGroup* group, BOOL* stop) {
-         [group enumerateAssetsUsingBlock:
-          ^(ALAsset* asset,NSUInteger index, BOOL* stop) {
-              if (asset && [asset thumbnail]) {
-                  BOOL isVideo = [ALAssetShare isAssetVideo:asset];
-                  ALAssetShare* assetShare = [[ALAssetShare alloc] init];
-                  assetShare.parentShare = safeSelf;
-                  assetShare.asset = asset;
-                  NSString* filename = [[asset defaultRepresentation] filename];
-                  [self.assetSharesMap setObject:assetShare forKey:filename];
-                  assetShare.path = [NSString stringWithFormat:@"%@%@",PATH_PREFIX_ASSET,filename];
-                  assetShare.isVideo = isVideo;
-                  assetShare.macroPreprocessor = isVideo ? videoPreprocessor : picturePreprocessor;
-                  assetShare.fileName = filename;
-                  [assetShare readPrivacyPreference];
-                  [self.assetShares addObject:assetShare];
-              }
-              
-              if (!asset) {//we have finished enumerating assets
-                  assetsDone = YES;
-                  if (groupsDone) {
-                      [safeSelf refreshFinished];
-                  }
-              }
-          } ];
+    __block NSInteger groupIndex = 0;
 
+    __weak PicturesShare* safeSelf = self;
+    
+
+    [_library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:
+     ^(ALAssetsGroup* group, BOOL* stop) {
          //we have enumerated all groups
          if (!group) {
              groupsDone = YES;
              if (assetsDone) {
                  [safeSelf refreshFinished];
              }
+         } else {
+             AlbumShare* albumShare = [[AlbumShare alloc] initWithAssetsGroup:group];
+             albumShare.path = [NSString stringWithFormat:@"albumShare%d",groupIndex++];
+             NSInteger numberOfAssets = group.numberOfAssets;
+             [_albumShares addObject:albumShare];
+             
+             [group enumerateAssetsUsingBlock:
+              ^(ALAsset* asset,NSUInteger index, BOOL* stop) {
+                  if (asset && [asset thumbnail]) {
+                      BOOL isVideo = [ALAssetShare isAssetVideo:asset];
+                      
+                      NSString* filename = [[asset defaultRepresentation] filename];
+                      
+                      ALAssetShare* assetShare = [self.assetSharesMap objectForKey:filename];
+                      
+                      //in order to not create duplicates:
+                      if (!assetShare) {
+                          assetShare = [[ALAssetShare alloc] init];
+                          assetShare.parentShare = safeSelf;
+                          assetShare.asset = asset;
+                          assetShare.path = [NSString stringWithFormat:@"%@%@",PATH_PREFIX_ASSET,filename];
+                          assetShare.isVideo = isVideo;
+                          assetShare.macroPreprocessor = isVideo ? videoPreprocessor : picturePreprocessor;
+                          assetShare.fileName = filename;
+                          [assetShare readPrivacyPreference];
+                          [self.assetShares addObject:assetShare];
+                          [self.assetSharesMap setObject:assetShare forKey:filename];
+                      }
+                      
+                      [albumShare addAssetShare:assetShare];
+                      if (index==numberOfAssets-1) {
+                          [albumShare sortAssets];
+                      }
+                  } else if (!asset) {//we have finished enumerating assets
+                      assetsDone = YES;
+                      if (groupsDone) {
+                          [safeSelf refreshFinished];
+                      }
+                  }
+              } ];
          }
      }
                               failureBlock:
@@ -92,8 +111,7 @@
 }
 
 - (void) refreshFinishedWithError:(NSError*)error {
-    NSSortDescriptor* desc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
-    [self.assetShares sortUsingDescriptors:[NSArray arrayWithObject:desc]];
+    [[self class] sortAssetSharesArray:_assetShares];
     if (self.onRefreshFinished) {
         self.onRefreshFinished(error);
     }
@@ -106,7 +124,7 @@
         NSInteger count = [self.assetShares count];
         if (count) {
             NSString* format = (count > 1) ? @"%d images, %d private" : @"%d image, %d private";
-            desc = [NSString stringWithFormat:format,count,[self numberOfPrivate]];
+            desc = [NSString stringWithFormat:format,count,[self numberOfPrivatePictures]];
         }
     } else {
         desc = self.localizedFailureReason;
@@ -131,7 +149,7 @@
 
 - (NSString*) htmlBlock {
     NSMutableString* html = [NSMutableString stringWithString:@""];
-    for (ALAssetShare* assetShare in assetShares) {
+    for (ALAssetShare* assetShare in _assetShares) {
         if ([assetShare isShared]) {
             [html appendString:[assetShare htmlBlock]];
         }
@@ -145,13 +163,23 @@
     return share;
 }
 
-- (NSInteger) numberOfPrivate {
+- (NSInteger) numberOfPrivatePictures {
+    return [[self class] numberOfPrivatePicturesInAssetSharesArray:_assetShares];
+}
+
++ (NSInteger) numberOfPrivatePicturesInAssetSharesArray:(NSArray*)assetShares {
     NSInteger number = 0;
-    for (ALAssetShare* asset in self.assetShares) {
+    for (ALAssetShare* asset in assetShares) {
         if (asset.isPrivate) {
             number++;
         }
     }
     return number;
 }
+
++ (void) sortAssetSharesArray:(NSMutableArray*)assetShares {
+    NSSortDescriptor* desc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
+    [assetShares sortUsingDescriptors:@[desc]];
+}
+
 @end

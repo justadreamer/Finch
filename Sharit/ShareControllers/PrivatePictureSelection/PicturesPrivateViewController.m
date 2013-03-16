@@ -11,6 +11,7 @@
 #import "ALAssetShare.h"
 #import "PictureViewCell.h"
 #import "TransparentTouchView.h"
+#import "AlbumShare.h"
 
 NSString* const kPictureViewCell = @"PictureViewCell";
 const CGFloat spacing = 4.0;
@@ -38,12 +39,12 @@ const CGFloat spacing = 4.0;
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.picturesShare.assetShares count];
+    return [self.albumShare numberOfPictures];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PictureViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPictureViewCell forIndexPath:indexPath];
-    ALAssetShare* assetShare = [self.picturesShare.assetShares objectAtIndex:indexPath.row];
+    ALAssetShare* assetShare = [self.albumShare.assetShares objectAtIndex:indexPath.row];
     cell.assetShare = assetShare;
     return cell;
 }

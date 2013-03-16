@@ -41,4 +41,7 @@
     return height;
 }
 
+- (void) updateWithModel:(id)model {
+    
+}
 @end

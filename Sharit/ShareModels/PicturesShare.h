@@ -11,9 +11,12 @@
 
 @interface PicturesShare : Share
 @property(nonatomic,strong) NSMutableArray* assetShares;
+@property(nonatomic,strong) NSMutableArray* albumShares;
 @property(nonatomic,copy) ErrorBlock onRefreshFinished;
 
 - (ALAssetShare*) shareForPath:(NSString*)path;
 - (void) refresh;
-- (NSInteger)numberOfPrivate;
+- (NSInteger)numberOfPrivatePictures;
++ (void) sortAssetSharesArray:(NSMutableArray*)assetShares;
++ (NSInteger) numberOfPrivatePicturesInAssetSharesArray:(NSArray*)assetShares;
 @end

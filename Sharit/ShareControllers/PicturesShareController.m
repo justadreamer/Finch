@@ -8,9 +8,10 @@
 
 #import "PicturesShareController.h"
 #import "Share.h"
-#import "PicturesSharePrivateCellAdapter.h"
 #import "CellModel.h"
 #import "PicturesPrivateViewController.h"
+#import "AlbumShare.h"
+#import "PicturesShare.h"
 
 @interface PicturesShareController ()
 @property (nonatomic,strong) UILabel* warningLabel;
@@ -50,28 +51,39 @@ const NSInteger kTagPrivatePics = 1;
          }
          ]}];
     } else {
-        PicturesSharePrivateCellAdapter* adapter = [PicturesSharePrivateCellAdapter new];
-        adapter.mainText = @"Select private pics";
-        
-        [self.tableModel addSection:@{kSectionCellModels: @[@{
-                               kTag: @(kTagPrivatePics),
-                         kCellModel: self.share,
-                       kCellAdapter: adapter,
-                         kCellStyle: @(UITableViewCellStyleSubtitle),
-                 kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator)
-         }
-         ]}];
+        NSMutableArray* albumCells = [NSMutableArray new];
+
+        for (AlbumShare* albumShare in [self picturesShare].albumShares) {
+            [albumCells addObject:@{
+                   kCellClassName:@"AlbumShareCell",
+                     kCellNibName:@"AlbumShareCell",
+                       kCellModel:albumShare,
+               kCellAccessoryType:@(UITableViewCellAccessoryDisclosureIndicator)
+             }];
+        }
+
+        [self.tableModel addSection:@{
+             kSectionTitleForHeader: @"Albums:",
+                 kSectionCellModels: albumCells
+         }];
     }
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CellModel* cellModel = [self.tableModel cellModelForIndexPath:indexPath];
-    if (cellModel.tag==kTagPrivatePics) {
+    if ([cellModel.model isKindOfClass:[AlbumShare class]]) {
         UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
         PicturesPrivateViewController* controller = [[PicturesPrivateViewController alloc] initWithCollectionViewLayout:layout];
-        controller.picturesShare = (PicturesShare*)self.share;
+        AlbumShare* albumShare = (AlbumShare*)cellModel.model;
+        controller.title = albumShare.name;
+        controller.albumShare = albumShare;
+        
         [self.navigationController pushViewController:controller animated:YES];
     }
+}
+
+- (PicturesShare*) picturesShare {
+    return (PicturesShare*) self.share;
 }
 
 @end
