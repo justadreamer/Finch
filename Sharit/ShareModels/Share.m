@@ -7,6 +7,7 @@
 //
 
 #import "Share.h"
+#import "MacroPreprocessor.h"
 
 @implementation Share
 

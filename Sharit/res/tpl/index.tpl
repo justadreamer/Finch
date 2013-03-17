@@ -10,9 +10,9 @@
         <h1>Finch</h1>
         <p>Shares:</p>
         <ul>
-            <li>%if show_link_pasteboard%<a href="index.html">%endif%Pasteboard%if show_link_pasteboard%</a>%endif%</li>
-            <li>%if show_link_text%<a href="text.html">%endif%Text%if show_link_text%</a>%endif%</li>
-            <li>%if show_link_pictures%<a href="pictures.html">%endif%Pictures%if show_link_pictures%</a>%endif%</li>
+            <li>%if show_link_pasteboard%<a href="/index.html">%endif%Pasteboard%if show_link_pasteboard%</a>%endif%</li>
+            <li>%if show_link_text%<a href="/text.html">%endif%Text%if show_link_text%</a>%endif%</li>
+            <li>%if show_link_pictures%<a href="/pictures.html">%endif%Pictures%if show_link_pictures%</a>%endif%</li>
         </ul>
         %if PasteboardShare%
             %if is_shared%

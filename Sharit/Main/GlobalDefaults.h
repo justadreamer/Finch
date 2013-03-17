@@ -13,7 +13,18 @@ static NSString* const URLimageBase = @"img";
 static NSString* const templateExt = @"tpl";
 static NSString* const templatesFolderName = @"tpl";
 static NSString* const docrootFolderName = @"docroot";
-static NSString* const PATH_PREFIX_ASSET = @"asset/";
+static NSString* const PATH_INDEX = @"/index.html";
+static NSString* const PATH_TEXT = @"/text.html";
+static NSString* const PATH_PICTURES = @"/pictures.html";
+static NSString* const PATH_PREFIX_ASSET = @"/asset/";
+static NSString* const PATH_PREFIX_ALBUM = @"/album/";
+static NSString* const PATH_SUFFIX_POSTER = @"/poster.jpeg";
+
+static NSString* const TEMPLATE_INDEX = @"index";
+static NSString* const TEMPLATE_VIDEO = @"video";
+static NSString* const TEMPLATE_IMAGE = @"image";
+static NSString* const TEMPLATE_ASSET = @"asset";
+static NSString* const TEMPLATE_ALBUM_LIST_ITEM = @"album_list_item";
 
 @interface GlobalDefaults : NSObject
 + (UInt16) port;

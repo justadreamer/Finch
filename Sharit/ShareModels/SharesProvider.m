@@ -45,15 +45,15 @@ SharesProvider* globalSharesProvider;
 - (NSMutableArray*) setupShares {
     NSMutableArray* _shares = [NSMutableArray array];
     BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
-    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"index"];
+    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:TEMPLATE_INDEX];
 
     Share* clipboard = [[PasteboardShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     [_shares addObject:clipboard];
 
-    Share* text = [[TextShare alloc] init];
+    Share* text = [[TextShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     [_shares addObject:text];
 
-    Share* picture = [[PicturesShare alloc] init];
+    Share* picture = [[PicturesShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     [_shares addObject:picture];
 
     return _shares;
@@ -84,13 +84,15 @@ SharesProvider* globalSharesProvider;
     Share* share = nil;
     if ([path isEqualToString:URLClipboardImage]) {
         share = [[self clipboardShare] imageShare];
-    } else if ([path contains:@"text"]) {
+    } else if ([path contains:PATH_TEXT]) {
         share = [self textShare];
-    } else if ([path contains:@"pictures"]) {
+    } else if ([path contains:PATH_PICTURES]) {
         share = [self picturesShare];
     } else if ([path contains:PATH_PREFIX_ASSET]){
         share = [[self picturesShare] shareForPath:path];
-    } else {
+    } else if ([path contains:PATH_PREFIX_ALBUM]) {
+        share = [[self picturesShare] shareForPath:path];
+    } else if ([path contains:PATH_INDEX]){
         share = [self clipboardShare];
     }
     return share;

@@ -24,5 +24,4 @@
 - (NSMutableDictionary*)macrosDict;
 - (void)processRequestData:(NSDictionary*)requestDict;
 - (NSDictionary*)specificMacrosDict;
-
 @end

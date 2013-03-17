@@ -26,28 +26,15 @@
 #import "HTTPForbiddenResponse.h"
 
 @interface MainHTTPConnection ()
-@property (nonatomic,strong) NSArray* indexPaths;
 @property (nonatomic,strong) NSString* redirectPath;
-@property (nonatomic,strong) MacroPreprocessor* indexPreprocessor;
 @end
 
 @implementation MainHTTPConnection
-@synthesize indexPaths;
-@synthesize redirectPath;
-@synthesize indexPreprocessor;
 
 - (id) initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig {
-    if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])) {
-        NSArray* paths = [NSArray arrayWithObjects:@"/",@"/index.html",@"/text.html",@"/pictures.html", nil];
-        self.indexPaths =  paths;
-        [self initIndexPreprocessor];
+    if ((self = [super initWithAsyncSocket:newSocket configuration:aConfig])){
     }
     return self;
-}
-
-- (void) initIndexPreprocessor {
-    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
-    self.indexPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:@"index"];
 }
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path {
@@ -63,14 +50,12 @@
 	[request appendData:postDataChunk];
 }
 
-- (HTTPDataResponse*) indexResponse:(NSString*)path {
-    Share* share = [[SharesProvider instance] shareForPath:path andParams:nil];
-
+- (HTTPDataResponse*) dataResponseForShare:(Share*)share atPath:(NSString*)path{
     NSMutableDictionary* macroDict = [share macrosDict];
     [macroDict setObject:path forKey:kRedirectPath];
+    [share.macroPreprocessor setMacroDict:macroDict];
 
-    [self.indexPreprocessor setMacroDict:macroDict];
-    NSString* responseString = [self.indexPreprocessor process];
+    NSString* responseString = [share.macroPreprocessor process];
 
     NSData* response = [responseString dataUsingEncoding:NSUTF8StringEncoding];
     return [[HTTPDataResponse alloc] initWithData:response];
@@ -95,11 +80,6 @@
 - (HTTPRedirectResponse*) redirectResponse:(NSString*)redirectURI {
     HTTPRedirectResponse* response = [[HTTPRedirectResponse alloc] initWithPath:redirectURI];
     return response;
-}
-
-- (BOOL) isIndexPath:(NSString*)path {
-    BOOL res = [self.indexPaths containsObject:path];
-    return res;
 }
 
 - (NSObject<HTTPResponse>*) imageResponseForShare:(ImageShare*)share atPath:(NSString*)path {
@@ -130,12 +110,16 @@
     NSString* noParamsPath = [self removeParams:path];
     Share* share = [provider shareForPath:noParamsPath andParams:params];
     NSObject<HTTPResponse> * response = nil;
-    if ([share isShared]) {
-        if ([share isKindOfClass:[ImageShare class]]) {
-            response = [self imageResponseForShare:(ImageShare*)share atPath:path];
+    if (share) {
+        if ([share isShared]) {
+            if ([share isKindOfClass:[ImageShare class]]) {
+                response = [self imageResponseForShare:(ImageShare*)share atPath:path];
+            } else {
+                response = [self dataResponseForShare:share atPath:path];
+            }
+        } else {
+            response = [HTTPForbiddenResponse new];
         }
-    } else {
-        response = [HTTPForbiddenResponse new];
     }
     return response;
 }
@@ -143,21 +127,22 @@
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     if ([method isEqualToString:@"POST"]) {
         [self processRequestData:path];
-        NSString* redirect = [self.redirectPath length]? self.redirectPath : @"/index.html";
+        NSString* redirect = [self.redirectPath length]? self.redirectPath : PATH_INDEX;
         self.redirectPath = nil;
         return [self redirectResponse:redirect];
     } else if ([method isEqualToString:@"GET"]) {
-        if ([self isIndexPath:path]) {
-            return [self indexResponse:path];
-        } else {
-            NSObject<HTTPResponse>* response = [self responseForShareAtPath:path];
-            if (nil!=response) {
-                return response;
-            }
+        NSObject<HTTPResponse>* response = [self responseForShareAtPath:path];
+        if (nil!=response) {
+            return response;
         }
     }
 
-    return [super httpResponseForMethod:method URI:path];
+    NSObject<HTTPResponse>* response = [super httpResponseForMethod:method URI:path];
+
+    if (nil==response) {
+        response = [self responseForShareAtPath:PATH_INDEX];
+    }
+    return response;
 }
 
 @end

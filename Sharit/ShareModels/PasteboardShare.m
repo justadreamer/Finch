@@ -41,7 +41,7 @@ NSString* const kClipboardFieldName = @"clipboard";
 
 - (ImageShare*) imageShare {
     if (nil==imageShare) {
-        MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:self.macroPreprocessor.loader templateName:@"image"];
+        MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:self.macroPreprocessor.loader templateName:TEMPLATE_IMAGE];
         imageShare = [[ImageShare alloc] initWithMacroPreprocessor:macroPreprocessor];
         imageShare.path = URLClipboardImage;
     }

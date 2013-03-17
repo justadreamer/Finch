@@ -14,7 +14,7 @@
 @property(nonatomic,strong) NSMutableArray* albumShares;
 @property(nonatomic,copy) ErrorBlock onRefreshFinished;
 
-- (ALAssetShare*) shareForPath:(NSString*)path;
+- (Share*) shareForPath:(NSString*)path;
 - (void) refresh;
 - (NSInteger)numberOfPrivatePictures;
 + (void) sortAssetSharesArray:(NSMutableArray*)assetShares;

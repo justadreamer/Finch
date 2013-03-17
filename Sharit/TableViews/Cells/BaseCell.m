@@ -34,7 +34,7 @@
     frameSize.height = INFINITY;
     UIFont* font = self.detailTextLabel.font;
     NSString* text = self.detailTextLabel.text;
-    CGSize size = [text sizeWithFont:font constrainedToSize:frameSize lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [text sizeWithFont:font constrainedToSize:frameSize lineBreakMode:NSLineBreakByWordWrapping];
     
     static const CGFloat margins = 15;
     CGFloat height = size.height+2*margins;

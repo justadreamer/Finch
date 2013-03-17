@@ -30,7 +30,7 @@ NSString* const kTextCellResignFirstResponderNotification = @"kTextCellResignFir
     NSString* text = _textView.text;
     CGSize frameSize = _textView.frame.size;
     frameSize.height = INFINITY;
-    CGSize size = [text sizeWithFont:_textView.font constrainedToSize:frameSize lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [text sizeWithFont:_textView.font constrainedToSize:frameSize lineBreakMode:NSLineBreakByWordWrapping];
     static const CGFloat margins = 15;
     BOOL hasLineFeedAtEnd = NO;
     if ([text length]) {

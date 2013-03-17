@@ -40,8 +40,11 @@
 
     self.assetSharesMap = [NSMutableDictionary dictionary];
     BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
-    MacroPreprocessor* picturePreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"asset"];
-    MacroPreprocessor* videoPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"video"];
+
+    MacroPreprocessor* indexPrerprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_INDEX];
+    MacroPreprocessor* picturePreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_ASSET];
+    MacroPreprocessor* videoPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_VIDEO];
+    MacroPreprocessor* albumListPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_ALBUM_LIST_ITEM];
     
     __block BOOL groupsDone = NO;
     __block BOOL assetsDone = NO;
@@ -60,7 +63,9 @@
              }
          } else {
              AlbumShare* albumShare = [[AlbumShare alloc] initWithAssetsGroup:group];
-             albumShare.path = [NSString stringWithFormat:@"albumShare%d",groupIndex++];
+             albumShare.macroPreprocessor = indexPrerprocessor;
+             albumShare.macroPreprocessorForList = albumListPreprocessor;
+             albumShare.path = [NSString stringWithFormat:@"%@%d",PATH_PREFIX_ALBUM,groupIndex++];
              NSInteger numberOfAssets = group.numberOfAssets;
              [_albumShares addObject:albumShare];
              
@@ -150,17 +155,31 @@
 
 - (NSString*) htmlBlock {
     NSMutableString* html = [NSMutableString stringWithString:@""];
-    for (ALAssetShare* assetShare in _assetShares) {
-        if ([assetShare isShared]) {
-            [html appendString:[assetShare htmlBlock]];
+    for (AlbumShare* albumShare in _albumShares) {
+        if ([albumShare isShared]) {
+            [html appendString:[albumShare htmlBlockForList]];
         }
     }
     return html;
 }
 
-- (ALAssetShare*) shareForPath:(NSString*)path {
-    path = [path substringAfter:PATH_PREFIX_ASSET];
-    ALAssetShare* share = [self.assetSharesMap objectForKey:path];
+- (Share*) shareForPath:(NSString*)path {
+    Share* share = nil;
+    if ([path contains:PATH_PREFIX_ALBUM]) {
+        path = [path substringAfter:PATH_PREFIX_ALBUM];
+        BOOL isPoster = [path contains:PATH_SUFFIX_POSTER];
+        if (isPoster) {
+            path = [path substringBefore:PATH_SUFFIX_POSTER];
+        }
+        NSInteger index = [path integerValue];
+        share = [self.albumShares objectAtIndex:index];
+        if (isPoster) {
+            share = [(AlbumShare*)share posterImageShare];
+        }
+    } else if ([path contains:PATH_PREFIX_ASSET]) {
+        path = [path substringAfter:PATH_PREFIX_ASSET];
+        share = [self.assetSharesMap objectForKey:path];
+    }
     return share;
 }
 

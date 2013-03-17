@@ -28,7 +28,7 @@
     NSBundle* bundle = [NSBundle bundleForClass:[self class]];
     NSString* tplFolder = [[bundle resourcePath] stringByAppendingPathComponent:@"tpl"];
     BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:tplFolder templateExt:@"tpl"];
-    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"image"];
+    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_IMAGE];
     ImageShare* imageShare = [[ImageShare alloc] initWithMacroPreprocessor:macroPreprocessor];
     imageShare.path = @"imgPath";
     NSString* imgPath = [bundle pathForResource:@"IMG_0010" ofType:@"PNG"];
