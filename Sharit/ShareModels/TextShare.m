@@ -65,11 +65,11 @@ NSString* const textFilePath = @"TextShare.txt";
 }
 
 - (NSDictionary*)specificMacrosDict {
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-     self.isShared ? SAFE_STRING([self text]) : @"",kText,
-     NB(YES),@"show_link_pasteboard",
-     NB(YES),@"show_link_pictures",
-     nil];
+    return @{
+             kText: self.isShared ? SAFE_STRING([self text]) : @"",
+             @"show_link_pasteboard":@(YES),
+             @"show_link_pictures":@(YES)
+                        };
 }
 
 - (void) processRequestData:(NSDictionary *)dict {

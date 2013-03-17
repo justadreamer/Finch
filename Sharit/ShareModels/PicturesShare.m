@@ -138,13 +138,14 @@
 
 - (NSDictionary*)specificMacrosDict {
     return
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     NB(self.isShared),@"pictures_is_shared",
-     NB(YES),@"show_link_pasteboard",
-     NB(YES),@"show_link_text",
-     self.isShared ? [self htmlBlock] : @"",@"pictures_html_block",
-     NB(self.isShared && ![self isDetailsDescriptionAWarning]),@"is_warning_shown",
-     nil];
+    @{
+        @"pictures_is_shared":@(self.isShared),
+        @"show_link_pasteboard":@(YES),
+        @"show_link_text":@(YES),
+        @"pictures_html_block":self.isShared ? [self htmlBlock] : @"",
+        @"warning":     SAFE_STRING(self.localizedFailureReason),
+        @"is_warning_shown":@(self.isShared && [self isDetailsDescriptionAWarning])
+      };
 }
 
 - (NSString*) htmlBlock {

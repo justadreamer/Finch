@@ -30,13 +30,13 @@ const CGFloat scales[] = {
     self = [super init];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sizeTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                NI(ImageSize_Actual),   @"a",
-                NI(ImageSize_Small),    @"s",
-                NI(ImageSize_Medium),   @"m",
-                NI(ImageSize_Large),    @"l",
-                NI(ImageSize_Thumb),    @"t",
-                nil];
+        sizeTypeDict = @{
+            @"a":@(ImageSize_Actual),
+            @"s":@(ImageSize_Small),
+            @"m":@(ImageSize_Medium),
+            @"l":@(ImageSize_Large),
+            @"t":@(ImageSize_Thumb),
+            };
     });
     return self;
 }

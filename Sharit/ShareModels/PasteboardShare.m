@@ -83,16 +83,14 @@ NSString* const kClipboardFieldName = @"clipboard";
 
 - (NSDictionary*)specificMacrosDict {
     ImageShare* imgShare = [self imageShare];
-    NSDictionary* clipboardMacroDict =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     SAFE_STRING([self string]), @"clipboard_text",
-     [NSNumber numberWithBool:nil!=[self image]],@"clipboard_image",
-     [imgShare htmlBlock],@"clipboard_image_share",
-     NB(YES),@"show_link_text",
-     NB(YES),@"show_link_pictures",
-     kClipboardFieldName, @"clipboard_field_name",
-     nil];
-    
+    NSDictionary* clipboardMacroDict = @{
+                                         @"clipboard_text": SAFE_STRING([self string]),
+                                         @"clipboard_image":@(nil!=[self image]),
+                                         @"clipboard_image_share":[imgShare htmlBlock],
+                                         @"show_link_text":@(YES),
+                                         @"show_link_pictures":@(YES),
+                                         @"clipboard_field_name":kClipboardFieldName
+                                         };
     return clipboardMacroDict;
 }
 

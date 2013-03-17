@@ -34,10 +34,10 @@
 }
 
 - (NSMutableDictionary*)macrosDict {
-    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            NB(self.isShared),@"is_shared",
-            NB(YES),NSStringFromClass([self class]),
-            nil];
+    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:@{
+                                  @"is_shared":@(self.isShared),
+                                  NSStringFromClass([self class]):@(YES)
+                                }];
     [dict addEntriesFromDictionary:[self specificMacrosDict]];
     return dict;
 }
