@@ -38,6 +38,7 @@
 		444B44A0155C378D00319EC7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B449F155C378D00319EC7 /* CFNetwork.framework */; };
 		4464B02E16600B4300166441 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
 		4472BD3A16F5201F0035A132 /* AlbumShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4472BD3916F5201F0035A132 /* AlbumShareCell.xib */; };
+		4472BD3D16F5D5C90035A132 /* AlbumShareSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4472BD3C16F5D5C90035A132 /* AlbumShareSectionHeader.m */; };
 		4477A40E15910E3700EC3280 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 442EACD21561A33D0032E1B2 /* icon_check.png */; };
 		4477A40F1591123600EC3280 /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 442EAD7715658B470032E1B2 /* tpl */; };
 		4477A42215911AC000EC3280 /* img.html in Resources */ = {isa = PBXBuildFile; fileRef = 4477A42115911AC000EC3280 /* img.html */; };
@@ -152,6 +153,8 @@
 		444B449D155C378700319EC7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		444B449F155C378D00319EC7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4472BD3916F5201F0035A132 /* AlbumShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumShareCell.xib; sourceTree = "<group>"; };
+		4472BD3B16F5D5C90035A132 /* AlbumShareSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumShareSectionHeader.h; sourceTree = "<group>"; };
+		4472BD3C16F5D5C90035A132 /* AlbumShareSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumShareSectionHeader.m; sourceTree = "<group>"; };
 		4477A42115911AC000EC3280 /* img.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = img.html; path = ../../../img.html; sourceTree = "<group>"; };
 		4480282A16B58CE00049FB95 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
 		4480282B16B58CE00049FB95 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 				440365D516C6AD8C001B9D31 /* PictureViewCell.xib */,
 				440365D616C6AD8C001B9D31 /* PicturesPrivateViewController.h */,
 				440365D716C6AD8C001B9D31 /* PicturesPrivateViewController.m */,
+				4472BD3B16F5D5C90035A132 /* AlbumShareSectionHeader.h */,
+				4472BD3C16F5D5C90035A132 /* AlbumShareSectionHeader.m */,
 			);
 			path = PrivatePictureSelection;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				440365DD16C80A02001B9D31 /* HTTPForbiddenResponse.m in Sources */,
 				44B3364916F4D7DE0023F3FB /* AlbumShare.m in Sources */,
 				443BF6CB16F50C33001BA8A1 /* AlbumShareCell.m in Sources */,
+				4472BD3D16F5D5C90035A132 /* AlbumShareSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

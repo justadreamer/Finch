@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 @class PicturesShare, AlbumShare;
 @interface PicturesPrivateViewController : UICollectionViewController
-//@property (nonatomic,strong) PicturesShare* picturesShare;
 @property (nonatomic,strong) AlbumShare* albumShare;
 @end

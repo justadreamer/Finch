@@ -139,11 +139,11 @@ const NSInteger SEC_BONJOUR = 3;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.tableModel numberOfSections];
+    return [self.tableModel numberOfSectionsInTableView:tableView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableModel numberOfRowsInSection:section];
+    return [self.tableModel tableView:tableView numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

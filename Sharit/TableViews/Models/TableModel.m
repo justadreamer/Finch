@@ -16,8 +16,12 @@
 
 - (id) init {
     self = [super init];
-    _sections = [[NSMutableArray alloc] init];
+    [self reset];
     return self;
+}
+
+- (void)reset {
+    _sections = [[NSMutableArray alloc] init];
 }
 
 - (CellModel*) cellModelForIndexPath:(NSIndexPath*)indexPath {
@@ -30,11 +34,11 @@
     return [self.sections objectAtIndex:section];
 }
 
-- (NSInteger) numberOfSections {
+- (NSInteger) numberOfSectionsInTableView:(UITableView*)tableView {
     return [self.sections count];
 }
 
-- (NSInteger) numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
     SectionModel* sectionModel = [self sectionModelForSection:section];
     return [sectionModel.cellModels count];
 }

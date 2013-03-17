@@ -11,7 +11,9 @@
 
 @class CellModel;
 @class SectionModel;
-@interface TableModel : NSObject
+
+@interface TableModel : NSObject<UITableViewDelegate,UITableViewDataSource>
+
 @property (nonatomic,strong) NSMutableArray* sections;
 
 - (CellModel*) cellModelForIndexPath:(NSIndexPath*)indexPath;
@@ -21,9 +23,11 @@
 - (void)addSections:(NSArray*)sections;
 - (void)addSection:(id)section;
 
+- (void)reset;
+
 #pragma mark - UITableViewDataSource
-- (NSInteger) numberOfSections;
-- (NSInteger) numberOfRowsInSection:(NSInteger)section;
+- (NSInteger) numberOfSectionsInTableView:(UITableView*)tableView;
+- (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section;
 - (NSString*)tableView:(UITableView*)tableView titleForFooterInSection:(NSInteger)section; 
