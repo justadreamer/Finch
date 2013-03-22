@@ -75,4 +75,15 @@
     return [NSString stringWithFormat:@"%@_isShared",NSStringFromClass([self class])];
 }
 
+- (UIImage*)thumbnail {
+    return self.isShared ? [self thumbnailShared] : [self thumbnailNotShared];
+}
+
+- (UIImage*)thumbnailShared {
+    return nil;
+}
+
+- (UIImage*)thumbnailNotShared {
+    return nil;
+}
 @end

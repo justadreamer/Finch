@@ -202,4 +202,12 @@
     [assetShares sortUsingDescriptors:@[desc]];
 }
 
+- (UIImage*)thumbnailShared {
+    return [UIImage imageNamed:@"icon-pictures"];
+}
+
+- (UIImage*)thumbnailNotShared {
+    return [UIImage imageNamed:@"icon-pictures-inactive"];
+}
+
 @end

@@ -20,7 +20,6 @@
 #import "TableModelConstants.h"
 #import "IfaceBaseCellAdapter.h"
 #import "BaseCell.h"
-#import "ShareCellAdapter.h"
 
 const NSInteger SEC_BONJOUR = 3;
 
@@ -88,15 +87,13 @@ const NSInteger SEC_BONJOUR = 3;
          }];
     }
 
-    ShareCellAdapter* shareCellModelAdapter = [ShareCellAdapter new];
-    shareCellModelAdapter.detailTextColor = COLOR_FINCH_TITLE;
     NSMutableArray* cellsShares = [NSMutableArray array];
     for (Share* share in [SharesProvider instance].shares) {
         [cellsShares addObject:@{
                  kCellNibName : @"ShareCell",
             kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
                    kCellModel : share,
-                 kCellAdapter : shareCellModelAdapter}];
+         kCellDetailTextColor:COLOR_FINCH_TITLE}];
     }
 
     NSArray* sections = @[

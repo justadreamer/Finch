@@ -101,4 +101,13 @@ NSString* const kClipboardFieldName = @"clipboard";
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
     }
 }
+
+- (UIImage*)thumbnailShared {
+    return [UIImage imageNamed:@"icon-pasteboard"];
+}
+
+- (UIImage*)thumbnailNotShared {
+    return [UIImage imageNamed:@"icon-pasteboard-inactive"];
+}
+
 @end

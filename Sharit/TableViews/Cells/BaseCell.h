@@ -11,7 +11,7 @@
 
 @interface BaseCell : UITableViewCell
 @property (nonatomic,weak) UITableView* tableView;
-
+@property (nonatomic,strong) UIColor* detailTextColor;
 - (void) updateWithAdapter:(BaseCellAdapter*)adapter;
 - (void) updateWithModel:(id)model;
 - (CGFloat) cellHeight;

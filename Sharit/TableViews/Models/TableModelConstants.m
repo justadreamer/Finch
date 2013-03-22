@@ -16,6 +16,6 @@ NSString* const kCellNibName = @"nibName";
 NSString* const kCellClassName = @"className";
 NSString* const kCellAdapter = @"adapter";
 NSString* const kCellAccessoryType = @"accessoryType";
-
+NSString* const kCellDetailTextColor = @"detailTextColor";
 NSString* const kSectionTitleForHeader = @"titleForHeader";
 NSString* const kSectionTitleForFooter = @"titleForFooter";

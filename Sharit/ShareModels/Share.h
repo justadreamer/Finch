@@ -24,4 +24,7 @@
 - (NSMutableDictionary*)macrosDict;
 - (void)processRequestData:(NSDictionary*)requestDict;
 - (NSDictionary*)specificMacrosDict;
+- (UIImage*)thumbnail;
+- (UIImage*)thumbnailShared;
+- (UIImage*)thumbnailNotShared;
 @end

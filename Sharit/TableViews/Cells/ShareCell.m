@@ -7,10 +7,10 @@
 //
 
 #import "ShareCell.h"
-#import "ShareCellAdapter.h"
+#import "Share.h"
 
 @interface ShareCell()
-@property (nonatomic,strong) IBOutlet UIImageView* check;
+@property (nonatomic,strong) IBOutlet UIImageView* thumbnail;
 @property (nonatomic,strong) IBOutlet UILabel* titleLabel;
 @property (nonatomic,strong) IBOutlet UILabel* detailLabel;
 
@@ -22,11 +22,15 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void) updateWithAdapter:(ShareCellAdapter *)adapter {
-    self.check.hidden = ![adapter showCheckMark];
-    self.titleLabel.text = [adapter mainText];
-    self.detailLabel.text = [adapter detailText];
-    self.detailLabel.textColor = [adapter detailTextColor];
+- (void) updateWithModel:(id)model {
+    Share* share = (Share*) model;
+    self.thumbnail.image = [share thumbnail];
+    self.titleLabel.text = [share name];
+    self.detailLabel.text = [share detailsDescription];
+    self.detailLabel.textColor = [share isDetailsDescriptionAWarning] ? [UIColor redColor] : self.detailTextColor;
+    CGFloat alpha = [share isShared] ? 1.0 : 0.3;
+    self.titleLabel.alpha = alpha;
+    self.detailLabel.alpha = alpha;
 }
 
 - (CGFloat) cellHeight {
