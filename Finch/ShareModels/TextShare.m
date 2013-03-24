@@ -80,7 +80,7 @@ NSString* const textFilePath = @"TextShare.txt";
 }
 
 - (UIImage*)thumbnailShared {
-    return [UIImage imageNamed:@"icon-text"];
+    return [UIImage imageNamed:@"icon-text-active"];
 }
 
 - (UIImage*)thumbnailNotShared {

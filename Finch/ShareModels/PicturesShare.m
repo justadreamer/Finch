@@ -203,11 +203,11 @@
 }
 
 - (UIImage*)thumbnailShared {
-    return [UIImage imageNamed:@"icon-pictures"];
+    return [UIImage imageNamed:@"icon-photo-active"];
 }
 
 - (UIImage*)thumbnailNotShared {
-    return [UIImage imageNamed:@"icon-pictures-inactive"];
+    return [UIImage imageNamed:@"icon-photo-inactive"];
 }
 
 @end

@@ -103,7 +103,7 @@ NSString* const kClipboardFieldName = @"clipboard";
 }
 
 - (UIImage*)thumbnailShared {
-    return [UIImage imageNamed:@"icon-pasteboard"];
+    return [UIImage imageNamed:@"icon-pasteboard-active"];
 }
 
 - (UIImage*)thumbnailNotShared {
