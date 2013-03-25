@@ -96,7 +96,6 @@
 		44562BA816FE611600428908 /* video.tpl in Resources */ = {isa = PBXBuildFile; fileRef = 44562B4E16FE611600428908 /* video.tpl */; };
 		44562BB816FE615800428908 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44562BB216FE615800428908 /* InfoPlist.strings */; };
 		44562BB916FE617000428908 /* MacroPreprocessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAB16FE615800428908 /* MacroPreprocessorTest.m */; };
-		44562BBA16FE617800428908 /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44562BAC16FE615800428908 /* UnitTests-Info.plist */; };
 		44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAF16FE615800428908 /* Sharit_Tests.m */; };
 		44562BBC16FE618200428908 /* IMG_0010.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 44562BB016FE615800428908 /* IMG_0010.PNG */; };
 		44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEB16FE611600428908 /* ALAssetShare.m */; };
@@ -287,7 +286,7 @@
 		44562BD116FFB13300428908 /* icon-text-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-text-active.png"; sourceTree = "<group>"; };
 		44562BD216FFB13300428908 /* icon-text-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-text-active@2x.png"; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sharit_Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Sharit_Tests.octest; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9E0B01861C6F42BE9FBC79BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -784,7 +783,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44562BBA16FE617800428908 /* UnitTests-Info.plist in Resources */,
 				44562BBC16FE618200428908 /* IMG_0010.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

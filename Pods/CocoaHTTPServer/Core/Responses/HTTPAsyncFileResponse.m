@@ -197,7 +197,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		
 		// Perform the read
 		
-		HTTPLogVerbose(@"%@[%p]: Attempting to read %lu bytes from file", THIS_FILE, self, bytesToRead);
+		HTTPLogVerbose(@"%@[%p]: Attempting to read %lu bytes from file", THIS_FILE, self, (unsigned long)bytesToRead);
 		
 		ssize_t result = read(fileFD, readBuffer + readBufferOffset, (size_t)bytesToRead);
 		
@@ -218,7 +218,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		}
 		else // (result > 0)
 		{
-			HTTPLogVerbose(@"%@[%p]: Read %d bytes from file", THIS_FILE, self, result);
+			HTTPLogVerbose(@"%@[%p]: Read %ld bytes from file", THIS_FILE, self, result);
 			
 			readOffset += result;
 			readBufferOffset += result;
@@ -313,7 +313,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	{
 		NSUInteger dataLength = [data length];
 		
-		HTTPLogVerbose(@"%@[%p]: Returning data of length %lu", THIS_FILE, self, dataLength);
+		HTTPLogVerbose(@"%@[%p]: Returning data of length %lu", THIS_FILE, self, (unsigned long) dataLength);
 		
 		fileOffset += dataLength;
 		
