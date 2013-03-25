@@ -75,6 +75,9 @@
     [cell updateWithModel:[cellModel model]];
     cell.accessoryType = [cellModel accessoryType];
     cell.detailTextColor = [cellModel detailTextColor];
+    if (cellModel.cellBackgroundColor) {
+        cell.backgroundColor = cellModel.cellBackgroundColor;
+    }
     return cell;
 }
 

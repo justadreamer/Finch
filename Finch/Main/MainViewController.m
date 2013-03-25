@@ -83,7 +83,8 @@ const NSInteger SEC_BONJOUR = 3;
         [cellsIfaces addObject:@{
                    kCellStyle : @(UITableViewCellStyleSubtitle),
                    kCellModel : iface,
-                 kCellAdapter : ifaceCellModelAdapter
+                 kCellAdapter : ifaceCellModelAdapter,
+          kCellBackgroundColor:COLOR_CELL_BACKGROUND,
          }];
     }
 
@@ -93,7 +94,8 @@ const NSInteger SEC_BONJOUR = 3;
                  kCellNibName : @"ShareCell",
             kCellAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
                    kCellModel : share,
-         kCellDetailTextColor:COLOR_FINCH_TITLE}];
+          kCellDetailTextColor:COLOR_FINCH_TITLE,
+          kCellBackgroundColor:COLOR_CELL_BACKGROUND,}];
     }
 
     NSArray* sections = @[

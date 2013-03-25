@@ -23,6 +23,7 @@ extern NSString* const kCellClassName;
 extern NSString* const kCellAdapter;
 extern NSString* const kCellAccessoryType;
 extern NSString* const kCellDetailTextColor;
+extern NSString* const kCellBackgroundColor;
 //sections:
 extern NSString* const kSectionTitleForHeader;
 extern NSString* const kSectionTitleForFooter;

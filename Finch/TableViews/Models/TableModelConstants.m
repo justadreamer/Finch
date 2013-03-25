@@ -19,3 +19,4 @@ NSString* const kCellAccessoryType = @"accessoryType";
 NSString* const kCellDetailTextColor = @"detailTextColor";
 NSString* const kSectionTitleForHeader = @"titleForHeader";
 NSString* const kSectionTitleForFooter = @"titleForFooter";
+NSString* const kCellBackgroundColor = @"cellBackgroundColor";

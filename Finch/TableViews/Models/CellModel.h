@@ -33,6 +33,8 @@
 
 @property (nonatomic,assign) UITableViewCellAccessoryType accessoryType;
 
+@property (nonatomic,strong) UIColor* cellBackgroundColor;
+
 - (BaseCellAdapter*)cellAdapter;
 
 - (BaseCell*) createCell;
