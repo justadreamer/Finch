@@ -26,6 +26,8 @@ static NSString* const TEMPLATE_IMAGE = @"image";
 static NSString* const TEMPLATE_ASSET = @"asset";
 static NSString* const TEMPLATE_ALBUM_LIST_ITEM = @"album_list_item";
 
+static NSString* const SUPPORT_EMAIL = @"eugene.dorfman@gmail.com";
+
 @interface GlobalDefaults : NSObject
 + (UInt16) port;
 @end

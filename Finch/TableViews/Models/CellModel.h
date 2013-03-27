@@ -43,4 +43,5 @@
 
 - (BaseCell*) createCell;
 
++ (void) setDefaultBackgroundColor:(UIColor*)color;
 @end

@@ -108,6 +108,14 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CellModel* cellmodel = [self cellModelForIndexPath:indexPath];
+    if (cellmodel.onClick) {
+        cellmodel.onClick();
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (void) updateTextView:(TextCell*)cell {
     [(TextCell*)cell updateTextView];
 }

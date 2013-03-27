@@ -11,6 +11,8 @@
 #import "BaseCellAdapter.h"
 #import "BaseCell.h"
 
+static UIColor* _defaultBackgroundColor = nil;
+
 @implementation CellModel
 
 - (BaseCell*) createCell {
@@ -52,4 +54,18 @@
     return identifier;
 }
 
+- (UIColor*) cellBackgroundColor {
+    if (_cellBackgroundColor==nil) {
+        return [[self class] defaultBackgroundColor];
+    }
+    return _cellBackgroundColor;
+}
+
++ (void) setDefaultBackgroundColor:(UIColor*)color {
+    _defaultBackgroundColor = color;
+}
+
++ (UIColor*) defaultBackgroundColor {
+    return _defaultBackgroundColor;
+}
 @end

@@ -117,6 +117,7 @@
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
 		44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */; };
+		44E958CE170396BD00D1BD03 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E958CD170396BD00D1BD03 /* MessageUI.framework */; };
 		44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE822415FFD4EB008C12D6 /* CoreLocation.framework */; };
 		92BE8ED048B34C0EBE976834 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0B01861C6F42BE9FBC79BB /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -287,6 +288,7 @@
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Sharit_Tests.octest; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		44E958CD170396BD00D1BD03 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9E0B01861C6F42BE9FBC79BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86AAB829A154B7C8FA88101 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -297,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E958CE170396BD00D1BD03 /* MessageUI.framework in Frameworks */,
 				44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */,
 				44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */,
 				442EACAB155D9D780032E1B2 /* SystemConfiguration.framework in Frameworks */,
@@ -347,6 +350,7 @@
 		444B42D0155C2FD200319EC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44E958CD170396BD00D1BD03 /* MessageUI.framework */,
 				44EE822415FFD4EB008C12D6 /* CoreLocation.framework */,
 				44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */,
 				44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */,

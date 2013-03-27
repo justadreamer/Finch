@@ -8,8 +8,10 @@
 
 #import "MiscViewController.h"
 #import "TableModel.h"
+#import <MessageUI/MessageUI.h>
 
-@interface MiscViewController ()
+@interface MiscViewController ()<MFMailComposeViewControllerDelegate>
+
 @property (nonatomic,strong) TableModel* tableModel;
 @end
 
@@ -31,22 +33,63 @@
     self.tableModel = [TableModel new];
     self.tableView.delegate = self.tableModel;
     self.tableView.dataSource = self.tableModel;
-
+    NSString* verString = [NSString stringWithFormat:@"Finch v.%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    __weak MiscViewController* safeSelf = self;
     [self.tableModel addSection:@{kSectionCellModels: @[
         @{
                      kCellStyle:@(UITableViewCellStyleDefault),
                      kCellTitle:@"Help",
              kCellAccessoryType:@(UITableViewCellAccessoryDisclosureIndicator),
+                   kCellOnClick:
+     
+            ^{
+        
+        
+        
+        
+            }
         },
         @{
                      kCellStyle:@(UITableViewCellStyleDefault),
                      kCellTitle:@"Contact Support",
+                   kCellOnClick:
+
+            ^{
+                [safeSelf presentMailComposer];
+            }
         },
         @{
                      kCellStyle:@(UITableViewCellStyleDefault),
                      kCellTitle:@"Rate This App",
+                   kCellOnClick:
+     
+            ^{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
+            }
+
         }
-     ]}];
+     ],
+         kSectionTitleForFooter:verString}];
 }
 
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) presentMailComposer {
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController* composer = [[MFMailComposeViewController alloc] init];
+        [composer setToRecipients:@[SUPPORT_EMAIL]];
+        [composer setSubject:@"[Finch] "];
+        [composer setMessageBody:@"--Please, keep [Finch] in the subject line--" isHTML:NO];
+        [composer setMailComposeDelegate:self];
+        [composer.navigationBar setTintColor:COLOR_NAV_BACKGROUND];
+        [self presentViewController:composer animated:YES completion:nil];
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"For contacting support you need to setup Mail." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
 @end
