@@ -123,7 +123,9 @@ void uncaughtExceptionHandler(NSException *exception);
     [MBProgressHUD showHUDAddedTo:self.viewController.view animated:YES];
     __weak AppDelegate* safeSelf = self;
     [SharesProvider instance].onRefreshFinished = ^(NSError* error) {
-        VLog(error);
+        if (error) {
+            VLog(error);
+        }
         [MBProgressHUD hideHUDForView:safeSelf.viewController.view animated:YES];
         [safeSelf.viewController refresh];
     };

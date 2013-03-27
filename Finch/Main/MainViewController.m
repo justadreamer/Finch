@@ -20,6 +20,7 @@
 #import "TableModelConstants.h"
 #import "IfaceBaseCellAdapter.h"
 #import "BaseCell.h"
+#import "MiscViewController.h"
 
 const NSInteger SEC_BONJOUR = 3;
 
@@ -34,30 +35,28 @@ const NSInteger SEC_BONJOUR = 3;
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-text"]];
 }
 
-- (UIBarButtonItem*) leftItem {
-    UIImageView* finchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"finch-icon"]];
+- (UIBarButtonItem*) leftItem {    
     CGFloat dx = 5;
-    UIView* container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, finchIcon.frame.size.width+dx, finchIcon.frame.size.height)];
-    [finchIcon setContentMode:UIViewContentModeRight];
+    UIImage* finchImage = [UIImage imageNamed:@"finch-icon"];
+    CGRect frame = CGRectMake(0, 0, finchImage.size.width+dx, finchImage.size.height);
+    UIButton* button = [[UIButton alloc] initWithFrame:frame];
+    [button setImage:finchImage forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(leftItemTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    [container addSubview:finchIcon];
-    finchIcon.center = CGPointMake(finchIcon.frame.size.width/2+5, finchIcon.frame.size.height/2);
-
-    return [[UIBarButtonItem alloc] initWithCustomView:container];
+    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    return buttonItem;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Finch";
-    
-    
+
     self.navigationItem.titleView = [self titleView];
     self.navigationController.navigationBar.tintColor = COLOR_NAV_BACKGROUND;
-    
+
     [[UIBarButtonItem appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES forState:UIControlStateHighlighted];
     [[UINavigationBar appearance] setTitleTextAttributes:NAV_TEXT_ATTRIBUTES];
-
 
     self.navigationItem.leftBarButtonItem = [self leftItem];
 
@@ -116,8 +115,7 @@ const NSInteger SEC_BONJOUR = 3;
     }
 }
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 
 }
@@ -153,11 +151,20 @@ const NSInteger SEC_BONJOUR = 3;
     return [self.tableModel tableView:tableView titleForHeaderInSection:section];
 }
 
+#pragma mark -
+
 - (void) leftItemTapped:(UIBarButtonItem*)barButtonItem {
-    
+    MiscViewController* miscController = [[MiscViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:miscController];
+    navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    navController.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
+    miscController.navigationItem.titleView = [self titleView];
+    miscController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(cancelMisc:)];
+
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void) rightItemTapped:(UIBarButtonItem*)barButtonItem {
-    
+- (void) cancelMisc:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

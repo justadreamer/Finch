@@ -35,6 +35,10 @@
 
 @property (nonatomic,strong) UIColor* cellBackgroundColor;
 
+@property (nonatomic,strong) NSString* title;
+
+@property (nonatomic,copy) VoidBlock onClick;
+
 - (BaseCellAdapter*)cellAdapter;
 
 - (BaseCell*) createCell;

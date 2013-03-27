@@ -78,6 +78,9 @@
     if (cellModel.cellBackgroundColor) {
         cell.backgroundColor = cellModel.cellBackgroundColor;
     }
+    if (cellModel.title) {
+        cell.textLabel.text = cellModel.title;
+    }
     return cell;
 }
 
