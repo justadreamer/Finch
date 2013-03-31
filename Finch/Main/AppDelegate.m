@@ -41,6 +41,19 @@ void uncaughtExceptionHandler(NSException *exception);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
+    //setup dirs needs to be before setupHTTPServer
+    [self setupDirs];
+    [self setupHTTPServer];
+    [self setupBonjourNetService];
+    [self setupReachability];
+    [self setupIdleTimer];
+    
+    //last thing to do:
+    [self setupUI];
+    return YES;
+}
+
+- (void) setupUI {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[MainViewController alloc] initWithNibName:nil bundle:nil];
@@ -48,13 +61,6 @@ void uncaughtExceptionHandler(NSException *exception);
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
-    //setup dirs needs to be before setupHTTPServer
-    [self setupDirs];
-    [self setupHTTPServer];
-    [self setupBonjourNetService];
-    [self setupReachability];
-    [self setupIdleTimer];
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -138,7 +144,7 @@ void uncaughtExceptionHandler(NSException *exception);
 }
 
 #pragma mark -
-#pragma mark Setup HTTP Server]
+#pragma mark Setup HTTP Server
 - (void) copyResDir:(NSString*)resDirName toDir:(NSString*)toPath {
     NSString* fromPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:resDirName];
     NSError* error = nil;
@@ -161,25 +167,22 @@ void uncaughtExceptionHandler(NSException *exception);
 
 - (void) removePrevItemsForBase:(NSString*)base {
     NSArray* versions = [[Helper instance] versions];
-#ifndef DEBUG
-    NSString* lastVersion = [versions lastObject];
-#endif
     for (NSString* version in versions) {
-#ifndef DEBUG
-        if (version != lastVersion)
-#endif
-            [self removeDir:[base stringByAppendingString:version]];
+        [self removeDir:[base stringByAppendingString:version]];
     }
 }
 
+- (void) removeAndCopyBase:(NSString*)base src:(NSString*)src dest:(NSString*)dest {
+    [self removePrevItemsForBase:base];
+    [self copyResDir:src toDir:dest];
+}
+
 - (void) copyTemplateDir {
-    [self removePrevItemsForBase:[[Helper instance] baseTemplatesFolder]];
-    [self copyResDir:templatesFolderName toDir:[[Helper instance] templatesFolder]];
+    [self removeAndCopyBase:[[Helper instance] baseTemplatesFolder] src:templatesFolderName dest:[[Helper instance] templatesFolder]];
 }
 
 - (void) copyDocroot {
-    [self removePrevItemsForBase:[[Helper instance] baseDocrootFolder]];
-    [self copyResDir:docrootFolderName toDir:[[Helper instance] docrootFolder]];
+    [self removeAndCopyBase:[[Helper instance] baseDocrootFolder] src:docrootFolderName dest:[[Helper instance] docrootFolder]];
 }
 
 - (void) setupDirs {

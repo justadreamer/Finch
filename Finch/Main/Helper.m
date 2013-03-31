@@ -122,7 +122,7 @@ Helper* sharedHelper;
 
 - (NSArray*) versions {
     if (nil==versions) {
-        versions = [NSArray arrayWithObjects:@"0", nil];
+        versions = @[@"0"];
     }
     return versions;
 }

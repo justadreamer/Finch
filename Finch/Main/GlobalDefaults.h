@@ -10,7 +10,7 @@
 
 static NSString* const URLClipboardImage = @"/clipboard-img.png";
 static NSString* const URLimageBase = @"img";
-static NSString* const templateExt = @"tpl";
+static NSString* const templateExt = @"html";
 static NSString* const templatesFolderName = @"tpl";
 static NSString* const docrootFolderName = @"docroot";
 static NSString* const PATH_INDEX = @"/index.html";
