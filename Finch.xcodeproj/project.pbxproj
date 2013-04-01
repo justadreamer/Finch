@@ -84,9 +84,8 @@
 		44562B9F16FE611600428908 /* icon-privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44562B4416FE611600428908 /* icon-privacy@2x.png */; };
 		44562BA016FE611600428908 /* icon-text-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 44562B4516FE611600428908 /* icon-text-inactive.png */; };
 		44562BA116FE611600428908 /* icon-text-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44562B4616FE611600428908 /* icon-text-inactive@2x.png */; };
-		44562BB916FE617000428908 /* MacroPreprocessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAB16FE615800428908 /* MacroPreprocessorTest.m */; };
+		44562BB916FE617000428908 /* MacroProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAB16FE615800428908 /* MacroProcessorTest.m */; };
 		44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAF16FE615800428908 /* Sharit_Tests.m */; };
-		44562BBC16FE618200428908 /* IMG_0010.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 44562BB016FE615800428908 /* IMG_0010.PNG */; };
 		44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEB16FE611600428908 /* ALAssetShare.m */; };
 		44562BBE16FE679800428908 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ACE16FE611600428908 /* BasicTemplateLoader.m */; };
 		44562BBF16FE67A300428908 /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEF16FE611600428908 /* ImageShare.m */; };
@@ -104,6 +103,9 @@
 		44562BF81700EF3A00428908 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BF61700EF3A00428908 /* main.m */; };
 		44562BFB1700EFC100428908 /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BFA1700EFC100428908 /* MiscViewController.m */; };
 		4464B02E16600B4300166441 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
+		44656101170A099D0074AAC3 /* test_templates in Resources */ = {isa = PBXBuildFile; fileRef = 44656100170A099D0074AAC3 /* test_templates */; };
+		44656102170A242B0074AAC3 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AAC16FE611600428908 /* NSStringAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		44656104170A25020074AAC3 /* IMG_0010.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 44656103170A25020074AAC3 /* IMG_0010.PNG */; };
 		449F850817087DB00065DE9D /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 449F850717087DB00065DE9D /* docroot */; };
 		449F850A17087DC70065DE9D /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 449F850917087DC70065DE9D /* tpl */; };
 		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
@@ -248,13 +250,12 @@
 		44562B4416FE611600428908 /* icon-privacy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-privacy@2x.png"; sourceTree = "<group>"; };
 		44562B4516FE611600428908 /* icon-text-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-text-inactive.png"; sourceTree = "<group>"; };
 		44562B4616FE611600428908 /* icon-text-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-text-inactive@2x.png"; sourceTree = "<group>"; };
-		44562BAA16FE615800428908 /* MacroPreprocessorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessorTest.h; sourceTree = "<group>"; };
-		44562BAB16FE615800428908 /* MacroPreprocessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessorTest.m; sourceTree = "<group>"; };
+		44562BAA16FE615800428908 /* MacroProcessorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroProcessorTest.h; sourceTree = "<group>"; };
+		44562BAB16FE615800428908 /* MacroProcessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroProcessorTest.m; sourceTree = "<group>"; };
 		44562BAC16FE615800428908 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		44562BAD16FE615800428908 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		44562BAE16FE615800428908 /* Sharit_Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sharit_Tests.h; sourceTree = "<group>"; };
 		44562BAF16FE615800428908 /* Sharit_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sharit_Tests.m; sourceTree = "<group>"; };
-		44562BB116FE615800428908 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/IMG_0010.PNG; sourceTree = "<group>"; };
 		44562BCB16FFB13300428908 /* icon-pasteboard-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pasteboard-active.png"; sourceTree = "<group>"; };
 		44562BCC16FFB13300428908 /* icon-pasteboard-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pasteboard-active@2x.png"; sourceTree = "<group>"; };
 		44562BCD16FFB13300428908 /* icon-photo-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-photo-active.png"; sourceTree = "<group>"; };
@@ -271,10 +272,12 @@
 		44562BF61700EF3A00428908 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44562BF91700EFC000428908 /* MiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
 		44562BFA1700EFC100428908 /* MiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
+		44656100170A099D0074AAC3 /* test_templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test_templates; sourceTree = "<group>"; };
+		44656103170A25020074AAC3 /* IMG_0010.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0010.PNG; sourceTree = "<group>"; };
 		449F850717087DB00065DE9D /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
 		449F850917087DC70065DE9D /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Sharit_Tests.octest; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		44E958CD170396BD00D1BD03 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -330,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				444B42CD155C2FD200319EC7 /* Finch.app */,
-				44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */,
+				44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -620,13 +623,14 @@
 		44562BA916FE615800428908 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				44562BAA16FE615800428908 /* MacroPreprocessorTest.h */,
-				44562BAB16FE615800428908 /* MacroPreprocessorTest.m */,
+				44656100170A099D0074AAC3 /* test_templates */,
+				44562BAA16FE615800428908 /* MacroProcessorTest.h */,
+				44562BAB16FE615800428908 /* MacroProcessorTest.m */,
 				44562BAC16FE615800428908 /* UnitTests-Info.plist */,
 				44562BAD16FE615800428908 /* UnitTests-Prefix.pch */,
 				44562BAE16FE615800428908 /* Sharit_Tests.h */,
 				44562BAF16FE615800428908 /* Sharit_Tests.m */,
-				44562BB016FE615800428908 /* IMG_0010.PNG */,
+				44656103170A25020074AAC3 /* IMG_0010.PNG */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -680,7 +684,7 @@
 			);
 			name = UnitTests;
 			productName = Sharit_Tests;
-			productReference = 44BEA30E1576AFF600A1A7A7 /* Sharit_Tests.octest */;
+			productReference = 44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -752,7 +756,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44562BBC16FE618200428908 /* IMG_0010.PNG in Resources */,
+				44656101170A099D0074AAC3 /* test_templates in Resources */,
+				44656104170A25020074AAC3 /* IMG_0010.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,7 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44562BB916FE617000428908 /* MacroPreprocessorTest.m in Sources */,
+				44562BB916FE617000428908 /* MacroProcessorTest.m in Sources */,
 				44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */,
 				44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */,
 				44562BBE16FE679800428908 /* BasicTemplateLoader.m in Sources */,
@@ -861,21 +866,11 @@
 				44562BC016FE67B400428908 /* MacroPreprocessor.m in Sources */,
 				44562BC116FE67CB00428908 /* Share.m in Sources */,
 				44562BC416FE67D300428908 /* PasteboardShare.m in Sources */,
+				44656102170A242B0074AAC3 /* NSStringAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		44562BB016FE615800428908 /* IMG_0010.PNG */ = {
-			isa = PBXVariantGroup;
-			children = (
-				44562BB116FE615800428908 /* en */,
-			);
-			name = IMG_0010.PNG;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		444B42E9155C2FD200319EC7 /* Debug */ = {

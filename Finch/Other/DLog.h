@@ -40,4 +40,6 @@
 #define CGSizeALog(v) ALog(@#v @"=(%f,%f)",v.width,v.height)
 #define CGPointALog(v) ALog(@#v @"=(%f,%f)",v.x,v.y)
 
+#define NSRangeLog(r) DLog(@#r @"=%d,%d",r.location,r.length)
+
 #define INVOKED DLog (@"")

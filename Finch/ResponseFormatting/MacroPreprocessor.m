@@ -95,7 +95,6 @@
 - (void) replaceCurrentRangeWith:(NSObject*)replacement {
     NSString* s = [replacement description];
     [result replaceCharactersInRange:range withString:s];
-    range.location += [s length];
     [self adjustRangeLength];
 }
 
@@ -128,6 +127,7 @@
                 MacroTypeIf,
                 MacroTypeElse,
                 MacroTypeEndif,
+                MacroTypeInclude,
                 MacroTypeOther
             } macroType = MacroTypeOther;
             if ([macroName isEqualToString:@"if"]) {
@@ -136,6 +136,8 @@
                 macroType = MacroTypeEndif;
             } else if ([macroName isEqualToString:@"else"]) {
                 macroType = MacroTypeElse;
+            } else if ([macroName isEqualToString:@"include"]) {
+                macroType = MacroTypeInclude;
             }
 
             if (self.falseConditionalStart!=NSNotFound) {
@@ -172,6 +174,10 @@
                     [self replaceCurrentRangeWith:@""];
                 } else if (macroType==MacroTypeElse) {
                     [self startFalseCondition];
+                } else if (macroType == MacroTypeInclude) {
+                    NSString* tpl = [self macroValue:macro];
+                    NSString* text = [self.loader templateTextForTemplateName:tpl];
+                    [self replaceCurrentRangeWith:text];
                 } else {
                     NSString* replacement = [self macroReplacement:macro];
                     [self replaceCurrentRangeWith:replacement];

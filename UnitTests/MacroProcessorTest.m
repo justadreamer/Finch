@@ -6,14 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 #import "Global.h"
-#import "MacroPreprocessorTest.h"
+#import "MacroProcessorTest.h"
 #import "MacroPreprocessor.h"
-@interface MacroPreprocessorTest() {
+#import "BasicTemplateLoader.h"
+
+@interface MacroProcessorTest() {
     NSDictionary* macroDict;
 }
 @end
 
-@implementation MacroPreprocessorTest
+@implementation MacroProcessorTest
 
 - (void) doTestTemplate:(NSString*)template expected:(NSString*)expected {
     MacroPreprocessor* preproc = [[MacroPreprocessor alloc] initWithTemplateText:template macroDictionary:macroDict];
@@ -50,4 +52,19 @@
     macroDict = [NSDictionary dictionaryWithObjectsAndKeys:@(75),@"number_key", nil];
     [self doTestTemplate:@"%number_key%" expected:@"75"];
 }
+
+- (void) testInclude {
+#define IMG @"IMG_0010"
+#define PNG @"PNG"
+    NSString* folder = [[NSBundle bundleForClass:[self class]] pathForResource:IMG ofType:PNG];
+    folder = [folder substringBefore:IMG @"." PNG];
+    folder = [folder stringByAppendingString:@"test_templates"];
+    VLog(folder);
+    BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:folder templateExt:templateExt];
+    MacroPreprocessor* processor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"test_include"];
+    [processor setMacroDict:@{@"a":@(YES),@"aa":@"a"}];
+    NSString* result = [processor process];
+    STAssertTrue([result isEqualToString:@"<html><body> a </body></html>"]  , @"wrong result = %@",result);
+}
+
 @end

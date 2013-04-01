@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface MacroPreprocessorTest : SenTestCase
+@interface MacroProcessorTest : SenTestCase
 
 @end
