@@ -60,7 +60,7 @@
     folder = [folder substringBefore:IMG @"." PNG];
     folder = [folder stringByAppendingString:@"test_templates"];
     VLog(folder);
-    BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:folder templateExt:templateExt];
+    BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:folder defaultExtension:templateExt];
     MacroPreprocessor* processor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:@"test_include"];
     [processor setMacroDict:@{@"a":@(YES),@"aa":@"a"}];
     NSString* result = [processor process];

@@ -44,7 +44,7 @@ SharesProvider* globalSharesProvider;
 
 - (NSMutableArray*) setupShares {
     NSMutableArray* _shares = [NSMutableArray array];
-    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
+    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] defaultExtension:templateExt];
     MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:TEMPLATE_INDEX];
 
     Share* clipboard = [[PasteboardShare alloc] initWithMacroPreprocessor:macroPreprocessor];

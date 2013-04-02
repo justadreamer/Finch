@@ -13,5 +13,5 @@
 @property (nonatomic,strong) NSString* templateFolder;
 @property (nonatomic,strong) NSString* templateExt;
 
-- (id) initWithFolder:(NSString*)folder templateExt:(NSString*)ext;
+- (id) initWithFolder:(NSString*)folder defaultExtension:(NSString*)ext;
 @end

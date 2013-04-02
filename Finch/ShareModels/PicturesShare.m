@@ -39,7 +39,7 @@
     _albumShares = [NSMutableArray array];
 
     self.assetSharesMap = [NSMutableDictionary dictionary];
-    BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] templateExt:templateExt];
+    BasicTemplateLoader* loader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] defaultExtension:templateExt];
 
     MacroPreprocessor* indexPrerprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_INDEX];
     MacroPreprocessor* picturePreprocessor = [[MacroPreprocessor alloc] initWithLoader:loader templateName:TEMPLATE_ASSET];
