@@ -26,11 +26,6 @@
 		44562B5916FE611600428908 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AC816FE611600428908 /* MainViewController.m */; };
 		44562B5A16FE611600428908 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44562AC916FE611600428908 /* MainViewController.xib */; };
 		44562B5B16FE611600428908 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ACB16FE611600428908 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		44562B5C16FE611600428908 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ACE16FE611600428908 /* BasicTemplateLoader.m */; };
-		44562B5D16FE611600428908 /* HTTPAsyncAssetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AD016FE611600428908 /* HTTPAsyncAssetResponse.m */; };
-		44562B5E16FE611600428908 /* HTTPForbiddenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AD216FE611600428908 /* HTTPForbiddenResponse.m */; };
-		44562B5F16FE611600428908 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AD416FE611600428908 /* MacroPreprocessor.m */; };
-		44562B6016FE611600428908 /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AD616FE611600428908 /* MainHTTPConnection.m */; };
 		44562B6116FE611600428908 /* PasteboardShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ADA16FE611600428908 /* PasteboardShareController.m */; };
 		44562B6216FE611600428908 /* PicturesShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ADC16FE611600428908 /* PicturesShareController.m */; };
 		44562B6316FE611600428908 /* AlbumShareSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ADF16FE611600428908 /* AlbumShareSectionHeader.m */; };
@@ -87,9 +82,7 @@
 		44562BB916FE617000428908 /* MacroProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAB16FE615800428908 /* MacroProcessorTest.m */; };
 		44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAF16FE615800428908 /* Sharit_Tests.m */; };
 		44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEB16FE611600428908 /* ALAssetShare.m */; };
-		44562BBE16FE679800428908 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562ACE16FE611600428908 /* BasicTemplateLoader.m */; };
 		44562BBF16FE67A300428908 /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEF16FE611600428908 /* ImageShare.m */; };
-		44562BC016FE67B400428908 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AD416FE611600428908 /* MacroPreprocessor.m */; };
 		44562BC116FE67CB00428908 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AF516FE611600428908 /* Share.m */; };
 		44562BC416FE67D300428908 /* PasteboardShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AF116FE611600428908 /* PasteboardShare.m */; };
 		44562BD316FFB13300428908 /* icon-pasteboard-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 44562BCB16FFB13300428908 /* icon-pasteboard-active.png */; };
@@ -106,6 +99,13 @@
 		44656101170A099D0074AAC3 /* test_templates in Resources */ = {isa = PBXBuildFile; fileRef = 44656100170A099D0074AAC3 /* test_templates */; };
 		44656102170A242B0074AAC3 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AAC16FE611600428908 /* NSStringAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		44656104170A25020074AAC3 /* IMG_0010.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 44656103170A25020074AAC3 /* IMG_0010.PNG */; };
+		44656112170A9FC30074AAC3 /* HTTPAsyncAssetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44656107170A9FC30074AAC3 /* HTTPAsyncAssetResponse.m */; };
+		44656113170A9FC30074AAC3 /* HTTPForbiddenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44656109170A9FC30074AAC3 /* HTTPForbiddenResponse.m */; };
+		44656114170A9FC30074AAC3 /* MainHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4465610B170A9FC30074AAC3 /* MainHTTPConnection.m */; };
+		44656115170A9FC30074AAC3 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4465610E170A9FC30074AAC3 /* BasicTemplateLoader.m */; };
+		44656116170A9FC30074AAC3 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44656110170A9FC30074AAC3 /* MacroPreprocessor.m */; };
+		44656117170A9FCB0074AAC3 /* BasicTemplateLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4465610E170A9FC30074AAC3 /* BasicTemplateLoader.m */; };
+		44656118170A9FCB0074AAC3 /* MacroPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44656110170A9FC30074AAC3 /* MacroPreprocessor.m */; };
 		449F850817087DB00065DE9D /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 449F850717087DB00065DE9D /* docroot */; };
 		449F850A17087DC70065DE9D /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 449F850917087DC70065DE9D /* tpl */; };
 		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
@@ -152,17 +152,6 @@
 		44562AC916FE611600428908 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		44562ACA16FE611600428908 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		44562ACB16FE611600428908 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		44562ACD16FE611600428908 /* BasicTemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTemplateLoader.h; sourceTree = "<group>"; };
-		44562ACE16FE611600428908 /* BasicTemplateLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTemplateLoader.m; sourceTree = "<group>"; };
-		44562ACF16FE611600428908 /* HTTPAsyncAssetResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAsyncAssetResponse.h; sourceTree = "<group>"; };
-		44562AD016FE611600428908 /* HTTPAsyncAssetResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAsyncAssetResponse.m; sourceTree = "<group>"; };
-		44562AD116FE611600428908 /* HTTPForbiddenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPForbiddenResponse.h; sourceTree = "<group>"; };
-		44562AD216FE611600428908 /* HTTPForbiddenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPForbiddenResponse.m; sourceTree = "<group>"; };
-		44562AD316FE611600428908 /* MacroPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessor.h; sourceTree = "<group>"; };
-		44562AD416FE611600428908 /* MacroPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessor.m; sourceTree = "<group>"; };
-		44562AD516FE611600428908 /* MainHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHTTPConnection.h; sourceTree = "<group>"; };
-		44562AD616FE611600428908 /* MainHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHTTPConnection.m; sourceTree = "<group>"; };
-		44562AD716FE611600428908 /* TemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateLoader.h; sourceTree = "<group>"; };
 		44562AD916FE611600428908 /* PasteboardShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteboardShareController.h; sourceTree = "<group>"; };
 		44562ADA16FE611600428908 /* PasteboardShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasteboardShareController.m; sourceTree = "<group>"; };
 		44562ADB16FE611600428908 /* PicturesShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesShareController.h; sourceTree = "<group>"; };
@@ -274,6 +263,17 @@
 		44562BFA1700EFC100428908 /* MiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
 		44656100170A099D0074AAC3 /* test_templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test_templates; sourceTree = "<group>"; };
 		44656103170A25020074AAC3 /* IMG_0010.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0010.PNG; sourceTree = "<group>"; };
+		44656106170A9FC30074AAC3 /* HTTPAsyncAssetResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAsyncAssetResponse.h; sourceTree = "<group>"; };
+		44656107170A9FC30074AAC3 /* HTTPAsyncAssetResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAsyncAssetResponse.m; sourceTree = "<group>"; };
+		44656108170A9FC30074AAC3 /* HTTPForbiddenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPForbiddenResponse.h; sourceTree = "<group>"; };
+		44656109170A9FC30074AAC3 /* HTTPForbiddenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPForbiddenResponse.m; sourceTree = "<group>"; };
+		4465610A170A9FC30074AAC3 /* MainHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHTTPConnection.h; sourceTree = "<group>"; };
+		4465610B170A9FC30074AAC3 /* MainHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHTTPConnection.m; sourceTree = "<group>"; };
+		4465610D170A9FC30074AAC3 /* BasicTemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTemplateLoader.h; sourceTree = "<group>"; };
+		4465610E170A9FC30074AAC3 /* BasicTemplateLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTemplateLoader.m; sourceTree = "<group>"; };
+		4465610F170A9FC30074AAC3 /* MacroPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroPreprocessor.h; sourceTree = "<group>"; };
+		44656110170A9FC30074AAC3 /* MacroPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroPreprocessor.m; sourceTree = "<group>"; };
+		44656111170A9FC30074AAC3 /* TemplateLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateLoader.h; sourceTree = "<group>"; };
 		449F850717087DB00065DE9D /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
 		449F850917087DC70065DE9D /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -359,13 +359,14 @@
 		44562AA916FE611600428908 /* Finch */ = {
 			isa = PBXGroup;
 			children = (
+				44656105170A9FC30074AAC3 /* HTTP */,
+				4465610C170A9FC30074AAC3 /* TemplateEngine */,
 				44562BF01700EF3A00428908 /* Other */,
 				44562AAA16FE611600428908 /* Additions */,
 				44562AB116FE611600428908 /* GestureTouchView */,
 				44562AB816FE611600428908 /* JSON */,
 				44562AB916FE611600428908 /* KVCSerializer */,
 				44562ABC16FE611600428908 /* Main */,
-				44562ACC16FE611600428908 /* ResponseFormatting */,
 				44562AD816FE611600428908 /* ShareControllers */,
 				44562AE916FE611600428908 /* ShareModels */,
 				44562AFC16FE611600428908 /* TableViews */,
@@ -435,24 +436,6 @@
 				44562BFA1700EFC100428908 /* MiscViewController.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		44562ACC16FE611600428908 /* ResponseFormatting */ = {
-			isa = PBXGroup;
-			children = (
-				44562ACD16FE611600428908 /* BasicTemplateLoader.h */,
-				44562ACE16FE611600428908 /* BasicTemplateLoader.m */,
-				44562ACF16FE611600428908 /* HTTPAsyncAssetResponse.h */,
-				44562AD016FE611600428908 /* HTTPAsyncAssetResponse.m */,
-				44562AD116FE611600428908 /* HTTPForbiddenResponse.h */,
-				44562AD216FE611600428908 /* HTTPForbiddenResponse.m */,
-				44562AD316FE611600428908 /* MacroPreprocessor.h */,
-				44562AD416FE611600428908 /* MacroPreprocessor.m */,
-				44562AD516FE611600428908 /* MainHTTPConnection.h */,
-				44562AD616FE611600428908 /* MainHTTPConnection.m */,
-				44562AD716FE611600428908 /* TemplateLoader.h */,
-			);
-			path = ResponseFormatting;
 			sourceTree = "<group>";
 		};
 		44562AD816FE611600428908 /* ShareControllers */ = {
@@ -648,6 +631,31 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		44656105170A9FC30074AAC3 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				44656106170A9FC30074AAC3 /* HTTPAsyncAssetResponse.h */,
+				44656107170A9FC30074AAC3 /* HTTPAsyncAssetResponse.m */,
+				44656108170A9FC30074AAC3 /* HTTPForbiddenResponse.h */,
+				44656109170A9FC30074AAC3 /* HTTPForbiddenResponse.m */,
+				4465610A170A9FC30074AAC3 /* MainHTTPConnection.h */,
+				4465610B170A9FC30074AAC3 /* MainHTTPConnection.m */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		4465610C170A9FC30074AAC3 /* TemplateEngine */ = {
+			isa = PBXGroup;
+			children = (
+				4465610D170A9FC30074AAC3 /* BasicTemplateLoader.h */,
+				4465610E170A9FC30074AAC3 /* BasicTemplateLoader.m */,
+				4465610F170A9FC30074AAC3 /* MacroPreprocessor.h */,
+				44656110170A9FC30074AAC3 /* MacroPreprocessor.m */,
+				44656111170A9FC30074AAC3 /* TemplateLoader.h */,
+			);
+			path = TemplateEngine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -810,11 +818,6 @@
 				44562B5816FE611600428908 /* Iface.m in Sources */,
 				44562B5916FE611600428908 /* MainViewController.m in Sources */,
 				44562B5B16FE611600428908 /* Reachability.m in Sources */,
-				44562B5C16FE611600428908 /* BasicTemplateLoader.m in Sources */,
-				44562B5D16FE611600428908 /* HTTPAsyncAssetResponse.m in Sources */,
-				44562B5E16FE611600428908 /* HTTPForbiddenResponse.m in Sources */,
-				44562B5F16FE611600428908 /* MacroPreprocessor.m in Sources */,
-				44562B6016FE611600428908 /* MainHTTPConnection.m in Sources */,
 				44562B6116FE611600428908 /* PasteboardShareController.m in Sources */,
 				44562B6216FE611600428908 /* PicturesShareController.m in Sources */,
 				44562B6316FE611600428908 /* AlbumShareSectionHeader.m in Sources */,
@@ -851,6 +854,11 @@
 				44562B8916FE611600428908 /* TableModelConstants.m in Sources */,
 				44562BF81700EF3A00428908 /* main.m in Sources */,
 				44562BFB1700EFC100428908 /* MiscViewController.m in Sources */,
+				44656112170A9FC30074AAC3 /* HTTPAsyncAssetResponse.m in Sources */,
+				44656113170A9FC30074AAC3 /* HTTPForbiddenResponse.m in Sources */,
+				44656114170A9FC30074AAC3 /* MainHTTPConnection.m in Sources */,
+				44656115170A9FC30074AAC3 /* BasicTemplateLoader.m in Sources */,
+				44656116170A9FC30074AAC3 /* MacroPreprocessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,12 +869,12 @@
 				44562BB916FE617000428908 /* MacroProcessorTest.m in Sources */,
 				44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */,
 				44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */,
-				44562BBE16FE679800428908 /* BasicTemplateLoader.m in Sources */,
 				44562BBF16FE67A300428908 /* ImageShare.m in Sources */,
-				44562BC016FE67B400428908 /* MacroPreprocessor.m in Sources */,
 				44562BC116FE67CB00428908 /* Share.m in Sources */,
 				44562BC416FE67D300428908 /* PasteboardShare.m in Sources */,
 				44656102170A242B0074AAC3 /* NSStringAdditions.m in Sources */,
+				44656117170A9FCB0074AAC3 /* BasicTemplateLoader.m in Sources */,
+				44656118170A9FCB0074AAC3 /* MacroPreprocessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

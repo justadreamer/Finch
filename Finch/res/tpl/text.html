@@ -1,0 +1,14 @@
+%if TextShare%
+%if is_shared%
+<h2>Text</h2>
+<h3>Text:</h3>
+<form action="%redirectPath%" method="post">
+    <textarea cols="40" rows="5" name="text">%text%</textarea>
+    <br/>
+    <input type="hidden" name="redirectPath" value="%redirectPath%" />
+    <input type="submit" value="Update" />
+</form>
+%else%
+Text sharing is disabled
+%endif%
+%endif%
