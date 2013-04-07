@@ -1,7 +1,35 @@
-<h1>Finch</h1>
-<p>Shares:</p>
-<ul>
-    <li>%if show_link_pasteboard%<a href="/index.html">%endif%Pasteboard%if show_link_pasteboard%</a>%endif%</li>
-    <li>%if show_link_text%<a href="/text.html">%endif%Text%if show_link_text%</a>%endif%</li>
-    <li>%if show_link_pictures%<a href="/pictures.html">%endif%Pictures%if show_link_pictures%</a>%endif%</li>
-</ul>
+<header>
+    <div class="main">
+        <div class="block logo">
+            <a href="/index.html" title="Home"></a>
+        </div>
+        <nav role="select">
+            
+            <ul>
+                <!--li class="active">
+                    <a href="/index.html"> <span class="arr">Home</span> <span class="menu-desc">Description</span> </a>
+                </li-->
+                <li %if show_link_pasteboard%%else% class="active" %endif%>
+                    %if show_link_pasteboard% <span class="li-shadow"></span> %endif%
+                    <a href="/pasteboard.html"> <span class="arr">Pasteboard</span> <span class="menu-desc">%PasteboardShare_details%&nbsp;</span> </a>
+                </li>
+                <li %if show_link_text%%else% class="active"%endif%>
+                    %if show_link_text%<span class="li-shadow"></span>%endif%
+                    <a href="/text.html"> <span class="arr">Text</span> <span class="menu-desc">%TextShare_details%&nbsp;</span> </a>
+                </li>
+                <li %if show_link_pictures%%else% class="active" %endif%>
+                    %if show_link_pictures%<span class="li-shadow"></span>%endif%
+                    <a href="/pictures.html"> <span class="arr">Pictures</span> <span class="menu-desc">%PicturesShare_details%&nbsp;</span> </a>
+                </li>
+            </ul>
+            
+            <select id="button" onchange="if (this.value) window.location.href = this.value;">
+                <option value="/index.html">Home</option>
+                <option value="/pasteboard.html">Pasteboard</option>
+                <option value="/text.html">Text</option>
+                <option value="/pictures.html">Pictures</option>
+            </select>
+        </nav>
+        <div class="hidden-logo"></div>
+    </div>
+</header>

@@ -9,15 +9,19 @@
 #import <Foundation/Foundation.h>
 @class MacroPreprocessor;
 @protocol TemplateLoader;
+#import "SiblingSharesProvider.h"
 
-@interface Share : NSObject
+@interface Share : NSObject<SiblingSharesProvider>
 @property (nonatomic,assign) BOOL isShared;
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,assign) BOOL isUpdated;
 @property (nonatomic,strong) NSString* path;
 @property (nonatomic,strong) MacroPreprocessor* macroPreprocessor;
+@property (nonatomic,weak) Share* parent;
+@property (nonatomic,strong) NSArray* children;
 
 - (NSString*) detailsDescription;
+- (NSString*) detailsForHTML;
 - (BOOL)isDetailsDescriptionAWarning;
 
 - (id) initWithMacroPreprocessor:(MacroPreprocessor*)macroPreprocessor;
@@ -27,4 +31,7 @@
 - (UIImage*)thumbnail;
 - (UIImage*)thumbnailShared;
 - (UIImage*)thumbnailNotShared;
+
+- (BOOL)needsSiblingDetails;
+- (NSDictionary*)siblingDetailMacroDict;
 @end

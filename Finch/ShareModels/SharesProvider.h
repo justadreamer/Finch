@@ -7,19 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class PasteboardShare;
 @class Share;
 @class TextShare;
 @class PicturesShare;
 
 @interface SharesProvider : NSObject
-@property (nonatomic,strong) NSMutableArray* shares;
 @property(nonatomic,copy) ErrorBlock onRefreshFinished;
+@property(nonatomic,strong,readonly) NSArray* shares;
 
 + (SharesProvider*) instance;
 - (PasteboardShare*) clipboardShare;
 - (TextShare*) textShare;
 - (PicturesShare*) picturesShare;
+
 - (Share*) shareForPath:(NSString*)path andParams:(NSDictionary*)params;
 - (void) refreshShares;
 @end

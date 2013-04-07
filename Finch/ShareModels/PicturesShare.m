@@ -66,6 +66,7 @@
              albumShare.macroPreprocessor = indexPrerprocessor;
              albumShare.macroPreprocessorForList = albumListPreprocessor;
              albumShare.path = [NSString stringWithFormat:@"%@%d",PATH_PREFIX_ALBUM,groupIndex++];
+             albumShare.parent = safeSelf;
              NSInteger numberOfAssets = group.numberOfAssets;
              [_albumShares addObject:albumShare];
              
@@ -147,13 +148,13 @@
         @"pictures_is_shared":@(self.isShared),
         @"show_link_pasteboard":@(YES),
         @"show_link_text":@(YES),
-        @"pictures_html_block":self.isShared ? [self htmlBlock] : @"",
+        @"album_list_html_block":self.isShared ? [self albumListHtmlBlock] : @"",
         @"warning":     SAFE_STRING(self.localizedFailureReason),
         @"is_warning_shown":@(self.isShared && [self isDetailsDescriptionAWarning])
       };
 }
 
-- (NSString*) htmlBlock {
+- (NSString*) albumListHtmlBlock {
     NSMutableString* html = [NSMutableString stringWithString:@""];
     for (AlbumShare* albumShare in _albumShares) {
         if ([albumShare isShared]) {
@@ -208,6 +209,18 @@
 
 - (UIImage*)thumbnailNotShared {
     return [UIImage imageNamed:@"icon-photo-inactive"];
+}
+
+- (BOOL) needsSiblingDetails {
+    return YES;
+}
+
+- (NSString*)detailsForHTML {
+    NSInteger nAlbums = [_albumShares count];
+    NSMutableString* s = [NSMutableString stringWithFormat:@"%d photo album",nAlbums];
+    if (nAlbums>1)
+        [s appendString:@"s"];
+    return s;
 }
 
 @end

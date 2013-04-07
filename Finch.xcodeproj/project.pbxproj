@@ -115,6 +115,7 @@
 		44BEA3211576B15300A1A7A7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */; };
 		44E958CE170396BD00D1BD03 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E958CD170396BD00D1BD03 /* MessageUI.framework */; };
 		44EE822515FFD4EB008C12D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE822415FFD4EB008C12D6 /* CoreLocation.framework */; };
+		44FA0A67171039CE00BB5BBE /* RootShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FA0A66171039CE00BB5BBE /* RootShare.m */; };
 		92BE8ED048B34C0EBE976834 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0B01861C6F42BE9FBC79BB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -279,8 +280,12 @@
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		44DF3928170BE7BC001EDC7C /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; path = html; sourceTree = "<group>"; };
 		44E958CD170396BD00D1BD03 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		44FA0A641710084800BB5BBE /* SiblingSharesProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SiblingSharesProvider.h; sourceTree = "<group>"; };
+		44FA0A65171039CE00BB5BBE /* RootShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootShare.h; sourceTree = "<group>"; };
+		44FA0A66171039CE00BB5BBE /* RootShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootShare.m; sourceTree = "<group>"; };
 		9E0B01861C6F42BE9FBC79BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86AAB829A154B7C8FA88101 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -321,6 +326,7 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
+				44DF3928170BE7BC001EDC7C /* html */,
 				44562BA916FE615800428908 /* UnitTests */,
 				44562AA916FE611600428908 /* Finch */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,
@@ -487,6 +493,9 @@
 				44562AF716FE611600428908 /* SharesProvider.m */,
 				44562AF816FE611600428908 /* TextShare.h */,
 				44562AF916FE611600428908 /* TextShare.m */,
+				44FA0A641710084800BB5BBE /* SiblingSharesProvider.h */,
+				44FA0A65171039CE00BB5BBE /* RootShare.h */,
+				44FA0A66171039CE00BB5BBE /* RootShare.m */,
 			);
 			path = ShareModels;
 			sourceTree = "<group>";
@@ -859,6 +868,7 @@
 				44656114170A9FC30074AAC3 /* MainHTTPConnection.m in Sources */,
 				44656115170A9FC30074AAC3 /* BasicTemplateLoader.m in Sources */,
 				44656116170A9FC30074AAC3 /* MacroPreprocessor.m in Sources */,
+				44FA0A67171039CE00BB5BBE /* RootShare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

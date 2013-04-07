@@ -40,6 +40,9 @@
                                   NSStringFromClass([self class]):@(YES)
                                 }];
     [dict addEntriesFromDictionary:[self specificMacrosDict]];
+    if ([self needsSiblingDetails]) {
+        [dict addEntriesFromDictionary:[self siblingDetailMacroDict]];
+    }
     return dict;
 }
 
@@ -86,4 +89,35 @@
 - (UIImage*)thumbnailNotShared {
     return nil;
 }
+
+- (BOOL)needsSiblingDetails {
+    return NO;
+}
+
+- (NSDictionary*)siblingDetailMacroDict {
+    NSArray* siblings = [self.parent siblingSharesForShare:self excludeSelf:NO];
+    NSMutableDictionary* macroDict = [NSMutableDictionary dictionaryWithCapacity:[siblings count]];
+    for (Share* sibling in siblings) {
+        NSString* key = [NSString stringWithFormat:@"%@_details",NSStringFromClass([sibling class])];
+        [macroDict addEntriesFromDictionary:@{key : [sibling detailsForHTML]}];
+    }
+    return macroDict;
+}
+
+- (NSString*) detailsForHTML {
+    return @"";
+}
+
+#pragma mark - SiblingSharesProvider
+
+- (NSArray*)siblingSharesForShare:(Share *)share excludeSelf:(BOOL)exclude {
+    NSMutableArray* shares = [NSMutableArray arrayWithCapacity:_children.count];
+    for (Share* child in _children) {
+        if (!exclude || (exclude && child != share)) {
+            [shares addObject:child];
+        }
+    }
+    return shares;
+}
+
 @end

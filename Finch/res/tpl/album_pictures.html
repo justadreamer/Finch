@@ -1,0 +1,15 @@
+%if AlbumShare%
+    <div class="main col">
+        <h3 class="padding10">%album_name% (pics: %number_of_pictures%)</h3>
+        %if is_shared%
+            %pictures_html_block%
+        %else%
+            Pictures sharing is disabled
+        %endif%
+        %if is_warning_shown%
+            <em style="color:red;">
+                %warning%
+            </em>
+        %endif%
+    </div>
+%endif%

@@ -86,4 +86,12 @@ NSString* const textFilePath = @"TextShare.txt";
 - (UIImage*)thumbnailNotShared {
     return [UIImage imageNamed:@"icon-text-inactive"];
 }
+
+- (BOOL) needsSiblingDetails {
+    return YES;
+}
+
+- (NSString*) detailsForHTML {
+    return SAFE_STRING([self detailsDescription]);
+}
 @end

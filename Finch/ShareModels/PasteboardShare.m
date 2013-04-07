@@ -110,4 +110,16 @@ NSString* const kClipboardFieldName = @"clipboard";
     return [UIImage imageNamed:@"icon-pasteboard-inactive"];
 }
 
+- (BOOL) needsSiblingDetails {
+    return YES;
+}
+
+- (NSString*) detailsForHTML {
+    NSInteger MAX_LENGTH = 17;
+    NSMutableString* desc = [NSMutableString stringWithString:SAFE_STRING([self detailsDescription])];
+    if ([desc length]>MAX_LENGTH) {
+        [desc replaceCharactersInRange:NSMakeRange(MAX_LENGTH,[desc length]-MAX_LENGTH) withString:@""];
+    }
+    return desc;
+}
 @end

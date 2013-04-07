@@ -13,19 +13,19 @@
 #import "PicturesShare.h"
 #import "GlobalDefaults.h"
 #import "ImageShare.h"
-#import "BasicTemplateLoader.h"
-#import "Helper.h"
+
+
 #import "ALAssetShare.h"
-#import "MacroPreprocessor.h"
+
+#import "RootShare.h"
 
 @interface SharesProvider() {
     
 }
-- (NSMutableArray*) setupShares;
+@property (nonatomic,strong) RootShare* rootShare;
 @end
 
 @implementation SharesProvider
-@synthesize shares;
 
 SharesProvider* globalSharesProvider;
 + (SharesProvider*) instance {
@@ -37,26 +37,13 @@ SharesProvider* globalSharesProvider;
 
 - (id) init {
     if ((self = [super init])) {
-        self.shares = [self setupShares];
+        _rootShare = [RootShare new];
     }
     return self;
 }
 
-- (NSMutableArray*) setupShares {
-    NSMutableArray* _shares = [NSMutableArray array];
-    BasicTemplateLoader* basicLoader = [[BasicTemplateLoader alloc] initWithFolder:[[Helper instance] templatesFolder] defaultExtension:templateExt];
-    MacroPreprocessor* macroPreprocessor = [[MacroPreprocessor alloc] initWithLoader:basicLoader templateName:TEMPLATE_INDEX];
-
-    Share* clipboard = [[PasteboardShare alloc] initWithMacroPreprocessor:macroPreprocessor];
-    [_shares addObject:clipboard];
-
-    Share* text = [[TextShare alloc] initWithMacroPreprocessor:macroPreprocessor];
-    [_shares addObject:text];
-
-    Share* picture = [[PicturesShare alloc] initWithMacroPreprocessor:macroPreprocessor];
-    [_shares addObject:picture];
-
-    return _shares;
+- (NSArray*)shares {
+    return _rootShare.children;
 }
 
 - (Share*) shareForClass:(Class)shareClass {
@@ -107,4 +94,5 @@ SharesProvider* globalSharesProvider;
     };
     [[self picturesShare] refresh];
 }
+
 @end
