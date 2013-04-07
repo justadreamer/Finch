@@ -3,7 +3,7 @@
         <div class="text">
             <h3 class="padding10">Text</h3>
             %if is_shared%
-                <form action="%redirectPath%" method="post">
+                <form action="%redirectPath%" method="post" enctype="application/x-www-form-urlencoded">
                     <textarea cols="40" rows="5" name="text">%text%</textarea>
                     <input type="hidden" name="redirectPath" value="%redirectPath%" />
                     <div class="clear"></div>

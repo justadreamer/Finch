@@ -73,7 +73,7 @@ NSString* const textFilePath = @"TextShare.txt";
 }
 
 - (void) processRequestData:(NSDictionary *)dict {
-    NSString* newText = [dict objectForKey:kText];
+    NSString* newText = dict[kText];
     if (newText) {
         [self setText:newText];
     }

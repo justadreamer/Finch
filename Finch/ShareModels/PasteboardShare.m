@@ -95,7 +95,7 @@ NSString* const kClipboardFieldName = @"clipboard";
 }
 
 - (void) processRequestData:(NSDictionary *)params {
-    NSString* string = [params objectForKey:kClipboardFieldName];
+    NSString* string = params[kClipboardFieldName];
     [self updateString:string];
     if ([params objectForKey:@"submit_open"]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];

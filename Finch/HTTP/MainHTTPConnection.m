@@ -63,7 +63,9 @@
 
 - (void) processRequestData:(NSString*)path {
     NSData* postData = [request body];
-    NSDictionary* dict = [self parseParams:[[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding]];
+    NSString* requestBody = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+    requestBody = [requestBody stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+    NSDictionary* dict = [self parseParams:requestBody];
 
     Share* share = [[SharesProvider instance] shareForPath:path andParams:dict];
     if (share.isShared) {
@@ -127,7 +129,7 @@
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     if ([method isEqualToString:@"POST"]) {
         [self processRequestData:path];
-        NSString* redirect = [self.redirectPath length]? self.redirectPath : PATH_INDEX;
+        NSString* redirect = [self.redirectPath length] ? self.redirectPath : PATH_INDEX;
         self.redirectPath = nil;
         return [self redirectResponse:redirect];
     } else if ([method isEqualToString:@"GET"]) {
