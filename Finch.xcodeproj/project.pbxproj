@@ -80,7 +80,7 @@
 		44562BA016FE611600428908 /* icon-text-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 44562B4516FE611600428908 /* icon-text-inactive.png */; };
 		44562BA116FE611600428908 /* icon-text-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44562B4616FE611600428908 /* icon-text-inactive@2x.png */; };
 		44562BB916FE617000428908 /* MacroProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAB16FE615800428908 /* MacroProcessorTest.m */; };
-		44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAF16FE615800428908 /* Sharit_Tests.m */; };
+		44562BBB16FE617B00428908 /* Finch_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562BAF16FE615800428908 /* Finch_Tests.m */; };
 		44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEB16FE611600428908 /* ALAssetShare.m */; };
 		44562BBF16FE67A300428908 /* ImageShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AEF16FE611600428908 /* ImageShare.m */; };
 		44562BC116FE67CB00428908 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 44562AF516FE611600428908 /* Share.m */; };
@@ -244,8 +244,8 @@
 		44562BAB16FE615800428908 /* MacroProcessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroProcessorTest.m; sourceTree = "<group>"; };
 		44562BAC16FE615800428908 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		44562BAD16FE615800428908 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
-		44562BAE16FE615800428908 /* Sharit_Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sharit_Tests.h; sourceTree = "<group>"; };
-		44562BAF16FE615800428908 /* Sharit_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sharit_Tests.m; sourceTree = "<group>"; };
+		44562BAE16FE615800428908 /* Finch_Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finch_Tests.h; sourceTree = "<group>"; };
+		44562BAF16FE615800428908 /* Finch_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finch_Tests.m; sourceTree = "<group>"; };
 		44562BCB16FFB13300428908 /* icon-pasteboard-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pasteboard-active.png"; sourceTree = "<group>"; };
 		44562BCC16FFB13300428908 /* icon-pasteboard-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pasteboard-active@2x.png"; sourceTree = "<group>"; };
 		44562BCD16FFB13300428908 /* icon-photo-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-photo-active.png"; sourceTree = "<group>"; };
@@ -620,8 +620,8 @@
 				44562BAB16FE615800428908 /* MacroProcessorTest.m */,
 				44562BAC16FE615800428908 /* UnitTests-Info.plist */,
 				44562BAD16FE615800428908 /* UnitTests-Prefix.pch */,
-				44562BAE16FE615800428908 /* Sharit_Tests.h */,
-				44562BAF16FE615800428908 /* Sharit_Tests.m */,
+				44562BAE16FE615800428908 /* Finch_Tests.h */,
+				44562BAF16FE615800428908 /* Finch_Tests.m */,
 				44656103170A25020074AAC3 /* IMG_0010.PNG */,
 			);
 			path = UnitTests;
@@ -877,7 +877,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44562BB916FE617000428908 /* MacroProcessorTest.m in Sources */,
-				44562BBB16FE617B00428908 /* Sharit_Tests.m in Sources */,
+				44562BBB16FE617B00428908 /* Finch_Tests.m in Sources */,
 				44562BBD16FE678A00428908 /* ALAssetShare.m in Sources */,
 				44562BBF16FE67A300428908 /* ImageShare.m in Sources */,
 				44562BC116FE67CB00428908 /* Share.m in Sources */,
