@@ -7,14 +7,14 @@
 //
 #define UNIT_TESTS
 
-#import "Sharit_Tests.h"
+#import "Finch_Tests.h"
 #import "ImageShare.h"
 #import "Global.h"
 #import "BasicTemplateLoader.h"
 #import "MacroPreprocessor.h"
 #import "ALAssetShare.h"
 
-@implementation Sharit_Tests
+@implementation Finch_Tests
 
 - (void)setUp {
     [super setUp];

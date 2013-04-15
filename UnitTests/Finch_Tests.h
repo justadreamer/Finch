@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface Sharit_Tests : SenTestCase
+@interface Finch_Tests : SenTestCase
 
 @end
