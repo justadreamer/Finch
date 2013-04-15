@@ -64,7 +64,7 @@
                    kCellOnClick:
      
             ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=636279394&mt=8"]];
             }
 
         }
