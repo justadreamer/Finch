@@ -109,6 +109,7 @@
 		449F850817087DB00065DE9D /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 449F850717087DB00065DE9D /* docroot */; };
 		449F850A17087DC70065DE9D /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 449F850917087DC70065DE9D /* tpl */; };
 		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
+		44AF9C58171F4A10004A17CB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AF9C57171F4A10004A17CB /* HelpViewController.m */; };
 		44B92FA215DD7B33008DBC29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
@@ -278,6 +279,8 @@
 		449F850717087DB00065DE9D /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
 		449F850917087DC70065DE9D /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		44AF9C56171F4A10004A17CB /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		44AF9C57171F4A10004A17CB /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		44E958CD170396BD00D1BD03 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -438,6 +441,8 @@
 				44562ACB16FE611600428908 /* Reachability.m */,
 				44562BF91700EFC000428908 /* MiscViewController.h */,
 				44562BFA1700EFC100428908 /* MiscViewController.m */,
+				44AF9C56171F4A10004A17CB /* HelpViewController.h */,
+				44AF9C57171F4A10004A17CB /* HelpViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				44656115170A9FC30074AAC3 /* BasicTemplateLoader.m in Sources */,
 				44656116170A9FC30074AAC3 /* MacroPreprocessor.m in Sources */,
 				44FA0A67171039CE00BB5BBE /* RootShare.m in Sources */,
+				44AF9C58171F4A10004A17CB /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

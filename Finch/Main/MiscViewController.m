@@ -8,6 +8,8 @@
 
 #import "MiscViewController.h"
 #import "TableModel.h"
+#import "HelpViewController.h"
+
 #import <MessageUI/MessageUI.h>
 
 @interface MiscViewController ()<MFMailComposeViewControllerDelegate>
@@ -44,7 +46,8 @@
      
             ^{
         
-        
+        HelpViewController* helpViewController = [HelpViewController new];
+        [safeSelf.navigationController pushViewController:helpViewController animated:YES];
         
         
             }
