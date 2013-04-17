@@ -85,8 +85,11 @@
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController* composer = [[MFMailComposeViewController alloc] init];
         [composer setToRecipients:@[SUPPORT_EMAIL]];
-        [composer setSubject:@"[Finch] "];
-        [composer setMessageBody:@"--Please, keep [Finch] in the subject line--" isHTML:NO];
+        NSString* finchSupport = @"[Finch Support]";
+        NSString* body = [NSString stringWithFormat:@"--Please, keep %@ in the subject line--",finchSupport];
+        NSString* subject = [NSString stringWithFormat:@"%@ ",finchSupport];
+        [composer setSubject:subject];
+        [composer setMessageBody:body isHTML:NO];
         [composer setMailComposeDelegate:self];
         [composer.navigationBar setTintColor:COLOR_NAV_BACKGROUND];
         [self presentViewController:composer animated:YES completion:nil];
