@@ -280,7 +280,6 @@
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		44DF3928170BE7BC001EDC7C /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; path = html; sourceTree = "<group>"; };
 		44E958CD170396BD00D1BD03 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		44EE822415FFD4EB008C12D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		44FA0A641710084800BB5BBE /* SiblingSharesProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SiblingSharesProvider.h; sourceTree = "<group>"; };
@@ -326,7 +325,6 @@
 		444B42C2155C2FD200319EC7 = {
 			isa = PBXGroup;
 			children = (
-				44DF3928170BE7BC001EDC7C /* html */,
 				44562BA916FE615800428908 /* UnitTests */,
 				44562AA916FE611600428908 /* Finch */,
 				444B42D0155C2FD200319EC7 /* Frameworks */,

@@ -101,4 +101,8 @@ const CGFloat scales[] = {
 - (BOOL) isPNG {
     return [[self.path uppercaseString] contains:@".PNG"];
 }
+
+- (BOOL) isTopLevelShare {
+    return NO;
+}
 @end

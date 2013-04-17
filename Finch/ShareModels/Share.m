@@ -10,6 +10,7 @@
 #import "MacroPreprocessor.h"
 
 @implementation Share
+@synthesize isShared = _isShared;
 
 - (NSString*) detailsDescription {
     return nil;
@@ -52,6 +53,11 @@
 
 - (NSDictionary*)specificMacrosDict {
     return nil;
+}
+
+- (BOOL) isShared {
+    BOOL isParentShared = _parent ? [_parent isShared] : YES;
+    return isParentShared && _isShared;
 }
 
 - (void) setIsShared:(BOOL)isShared {
@@ -121,4 +127,8 @@
 }
 
 #pragma mark -
+
+- (BOOL)isTopLevelShare {
+    return YES;
+}
 @end

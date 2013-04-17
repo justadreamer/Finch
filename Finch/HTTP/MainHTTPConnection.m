@@ -113,7 +113,7 @@
     Share* share = [provider shareForPath:noParamsPath andParams:params];
     NSObject<HTTPResponse> * response = nil;
     if (share) {
-        if ([share isShared]) {
+        if ([share isShared] || [share isTopLevelShare]) {
             if ([share isKindOfClass:[ImageShare class]]) {
                 response = [self imageResponseForShare:(ImageShare*)share atPath:path];
             } else {

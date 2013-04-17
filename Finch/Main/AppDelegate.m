@@ -16,6 +16,7 @@
 #import "GlobalDefaults.h"
 #import "SharesProvider.h"
 #import "MBProgressHUD.h"
+#import "Flurry.h"
 
 @interface AppDelegate()<NSNetServiceDelegate>
 @property (nonatomic,strong) HTTPServer* httpServer;
@@ -40,7 +41,11 @@ void uncaughtExceptionHandler(NSException *exception);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifdef DEBUG
     NSSetUncaughtExceptionHandler(uncaughtExceptionHandler);
+#endif
+    [Flurry startSession:FLURRY_KEY];
+
     //setup dirs needs to be before setupHTTPServer
     [self setupDirs];
     [self setupHTTPServer];

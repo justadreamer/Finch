@@ -34,4 +34,5 @@
 
 - (BOOL)needsSiblingDetails;
 - (NSDictionary*)siblingDetailMacroDict;
+- (BOOL)isTopLevelShare;
 @end

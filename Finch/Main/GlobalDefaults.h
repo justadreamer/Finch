@@ -27,6 +27,7 @@ static NSString* const TEMPLATE_ASSET = @"asset";
 static NSString* const TEMPLATE_ALBUM_LIST_ITEM = @"album_list_item";
 
 static NSString* const SUPPORT_EMAIL = @"eugene.dorfman@gmail.com";
+static NSString* const FLURRY_KEY = @"XRD6QCHGYH4PRCVYHDC5";
 
 @interface GlobalDefaults : NSObject
 + (UInt16) port;
