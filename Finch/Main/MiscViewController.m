@@ -8,7 +8,7 @@
 
 #import "MiscViewController.h"
 #import "TableModel.h"
-#import "HelpViewController.h"
+#import "WebViewController.h"
 
 #import <MessageUI/MessageUI.h>
 
@@ -33,6 +33,8 @@
     [super viewDidLoad];
 
     self.tableModel = [TableModel new];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = COLOR_TABLE_BACKGROUND;
     self.tableView.delegate = self.tableModel;
     self.tableView.dataSource = self.tableModel;
     NSString* verString = [NSString stringWithFormat:@"Finch v.%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
@@ -42,15 +44,13 @@
                      kCellStyle:@(UITableViewCellStyleDefault),
                      kCellTitle:@"Help",
              kCellAccessoryType:@(UITableViewCellAccessoryDisclosureIndicator),
-                   kCellOnClick:
-     
-            ^{
-        
-        HelpViewController* helpViewController = [HelpViewController new];
+                   kCellOnClick:^{
+        NSURL* url = [[NSBundle mainBundle] resourceURL];
+        url = [url URLByAppendingPathComponent:docrootFolderName];
+        url = [url URLByAppendingPathComponent:HELP_FILE];
+        WebViewController* helpViewController = [[WebViewController alloc] initWithTitle:@"Help" URL:url];
         [safeSelf.navigationController pushViewController:helpViewController animated:YES];
-        
-        
-            }
+    }
         },
         @{
                      kCellStyle:@(UITableViewCellStyleDefault),

@@ -109,7 +109,7 @@
 		449F850817087DB00065DE9D /* docroot in Resources */ = {isa = PBXBuildFile; fileRef = 449F850717087DB00065DE9D /* docroot */; };
 		449F850A17087DC70065DE9D /* tpl in Resources */ = {isa = PBXBuildFile; fileRef = 449F850917087DC70065DE9D /* tpl */; };
 		44A79AAF15E0F98000498FBD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */; };
-		44AF9C58171F4A10004A17CB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AF9C57171F4A10004A17CB /* HelpViewController.m */; };
+		44AF9C58171F4A10004A17CB /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AF9C57171F4A10004A17CB /* WebViewController.m */; };
 		44B92FA215DD7B33008DBC29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D5155C2FD200319EC7 /* CoreGraphics.framework */; };
 		44BEA3111576AFF600A1A7A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D1155C2FD200319EC7 /* UIKit.framework */; };
 		44BEA3121576AFF600A1A7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444B42D3155C2FD200319EC7 /* Foundation.framework */; };
@@ -279,8 +279,8 @@
 		449F850717087DB00065DE9D /* docroot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docroot; sourceTree = "<group>"; };
 		449F850917087DC70065DE9D /* tpl */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tpl; sourceTree = "<group>"; };
 		44A79AAE15E0F98000498FBD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		44AF9C56171F4A10004A17CB /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
-		44AF9C57171F4A10004A17CB /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		44AF9C56171F4A10004A17CB /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		44AF9C57171F4A10004A17CB /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		44BEA30E1576AFF600A1A7A7 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BEA3201576B15300A1A7A7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		44E958CD170396BD00D1BD03 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -371,7 +371,6 @@
 				44562BF01700EF3A00428908 /* Other */,
 				44562AAA16FE611600428908 /* Additions */,
 				44562AB116FE611600428908 /* GestureTouchView */,
-				44562AB816FE611600428908 /* JSON */,
 				44562AB916FE611600428908 /* KVCSerializer */,
 				44562ABC16FE611600428908 /* Main */,
 				44562AD816FE611600428908 /* ShareControllers */,
@@ -405,13 +404,6 @@
 			path = GestureTouchView;
 			sourceTree = "<group>";
 		};
-		44562AB816FE611600428908 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 		44562AB916FE611600428908 /* KVCSerializer */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,8 +433,8 @@
 				44562ACB16FE611600428908 /* Reachability.m */,
 				44562BF91700EFC000428908 /* MiscViewController.h */,
 				44562BFA1700EFC100428908 /* MiscViewController.m */,
-				44AF9C56171F4A10004A17CB /* HelpViewController.h */,
-				44AF9C57171F4A10004A17CB /* HelpViewController.m */,
+				44AF9C56171F4A10004A17CB /* WebViewController.h */,
+				44AF9C57171F4A10004A17CB /* WebViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -492,8 +484,8 @@
 				44562AF316FE611600428908 /* PicturesShare.m */,
 				44562AF416FE611600428908 /* Share.h */,
 				44562AF516FE611600428908 /* Share.m */,
-				44562AF616FE611600428908 /* SharesProvider.h */,
 				44562AF716FE611600428908 /* SharesProvider.m */,
+				44562AF616FE611600428908 /* SharesProvider.h */,
 				44562AF816FE611600428908 /* TextShare.h */,
 				44562AF916FE611600428908 /* TextShare.m */,
 				44FA0A641710084800BB5BBE /* SiblingSharesProvider.h */,
@@ -872,7 +864,7 @@
 				44656115170A9FC30074AAC3 /* BasicTemplateLoader.m in Sources */,
 				44656116170A9FC30074AAC3 /* MacroPreprocessor.m in Sources */,
 				44FA0A67171039CE00BB5BBE /* RootShare.m in Sources */,
-				44AF9C58171F4A10004A17CB /* HelpViewController.m in Sources */,
+				44AF9C58171F4A10004A17CB /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,7 +917,7 @@
 			};
 			name = Debug;
 		};
-		444B42EA155C2FD200319EC7 /* Release */ = {
+		444B42EA155C2FD200319EC7 /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -935,7 +927,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugene Dorfman";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -945,10 +937,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = Finch;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9E77C49C-E7C0-4EAB-B6C6-689E13A740ED";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = AppStore;
 		};
 		444B42EC155C2FD200319EC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -962,7 +955,7 @@
 			};
 			name = Debug;
 		};
-		444B42ED155C2FD200319EC7 /* Release */ = {
+		444B42ED155C2FD200319EC7 /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F86AAB829A154B7C8FA88101 /* Pods.xcconfig */;
 			buildSettings = {
@@ -972,7 +965,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Release;
+			name = AppStore;
 		};
 		44BEA31E1576AFF600A1A7A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -989,7 +982,7 @@
 			};
 			name = Debug;
 		};
-		44BEA31F1576AFF600A1A7A7 /* Release */ = {
+		44BEA31F1576AFF600A1A7A7 /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1002,7 +995,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
-			name = Release;
+			name = AppStore;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1011,28 +1004,28 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				444B42E9155C2FD200319EC7 /* Debug */,
-				444B42EA155C2FD200319EC7 /* Release */,
+				444B42EA155C2FD200319EC7 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = AppStore;
 		};
 		444B42EB155C2FD200319EC7 /* Build configuration list for PBXNativeTarget "Finch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				444B42EC155C2FD200319EC7 /* Debug */,
-				444B42ED155C2FD200319EC7 /* Release */,
+				444B42ED155C2FD200319EC7 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = AppStore;
 		};
 		44BEA31D1576AFF600A1A7A7 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44BEA31E1576AFF600A1A7A7 /* Debug */,
-				44BEA31F1576AFF600A1A7A7 /* Release */,
+				44BEA31F1576AFF600A1A7A7 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = AppStore;
 		};
 /* End XCConfigurationList section */
 	};
