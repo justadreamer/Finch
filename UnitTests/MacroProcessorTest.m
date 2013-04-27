@@ -51,6 +51,8 @@
 - (void) testReplacing {
     macroDict = [NSDictionary dictionaryWithObjectsAndKeys:@(75),@"number_key", nil];
     [self doTestTemplate:@"%number_key%" expected:@"75"];
+    
+    [self doTestTemplate:@"%%" expected:@"%"];
 }
 
 - (void) testInclude {

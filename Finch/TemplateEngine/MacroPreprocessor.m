@@ -128,6 +128,7 @@
                 MacroTypeElse,
                 MacroTypeEndif,
                 MacroTypeInclude,
+                MacroTypePercent,
                 MacroTypeOther
             } macroType = MacroTypeOther;
             if ([macroName isEqualToString:@"if"]) {
@@ -138,6 +139,8 @@
                 macroType = MacroTypeElse;
             } else if ([macroName isEqualToString:@"include"]) {
                 macroType = MacroTypeInclude;
+            } else if ([macroName isEqualToString:@""]) {
+                macroType = MacroTypePercent;
             }
 
             if (self.falseConditionalStart!=NSNotFound) {
@@ -178,6 +181,9 @@
                     NSString* tpl = [self macroValue:macro];
                     NSString* text = [self.loader templateTextForTemplateName:tpl];
                     [self replaceCurrentRangeWith:text];
+                } else if (macroType == MacroTypePercent) {
+                    NSString* replacement = @"%";
+                    [self replaceCurrentRangeWith:replacement];
                 } else {
                     NSString* replacement = [self macroReplacement:macro];
                     [self replaceCurrentRangeWith:replacement];
