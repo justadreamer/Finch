@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import <AssetsLibrary/AssetsLibrary.h>
     #import "Global.h"
+	#import "NSObject+JSON.h"
 #endif

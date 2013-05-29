@@ -5,6 +5,36 @@
 #import <unistd.h>
 #import <fcntl.h>
 
+#if ! __has_feature(objc_arc)
+#warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
+#endif
+
+/**
+ * Does ARC support support GCD objects?
+ * It does if the minimum deployment target is iOS 6+ or Mac OS X 8+
+**/
+#if TARGET_OS_IPHONE
+
+  // Compiling for iOS
+
+  #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000 // iOS 6.0 or later
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 0
+  #else                                         // iOS 5.X or earlier
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 1
+  #endif
+
+#else
+
+  // Compiling for Mac OS X
+
+  #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1080     // Mac OS X 10.8 or later
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 0
+  #else
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 1     // Mac OS X 10.7 or earlier
+  #endif
+
+#endif
+
 // Log levels : off, error, warn, info, verbose
 // Other flags: trace
 static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
@@ -44,7 +74,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		{
 			HTTPLogWarn(@"%@: Init failed - Nil filePath", THIS_FILE);
 			
-			[self release];
 			return nil;
 		}
 		
@@ -53,7 +82,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		{
 			HTTPLogWarn(@"%@: Init failed - Unable to get file attributes. filePath: %@", THIS_FILE, filePath);
 			
-			[self release];
 			return nil;
 		}
 		
@@ -218,7 +246,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		}
 		else // (result > 0)
 		{
-			HTTPLogVerbose(@"%@[%p]: Read %ld bytes from file", THIS_FILE, self, result);
+			HTTPLogVerbose(@"%@[%p]: Read %lu bytes from file", THIS_FILE, self, (unsigned long)result);
 			
 			readOffset += result;
 			readBufferOffset += result;
@@ -230,7 +258,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	});
 	
 	int theFileFD = fileFD;
+	#if NEEDS_DISPATCH_RETAIN_RELEASE
 	dispatch_source_t theReadSource = readSource;
+	#endif
 	
 	dispatch_source_set_cancel_handler(readSource, ^{
 		
@@ -240,7 +270,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		
 		HTTPLogTrace2(@"%@: cancelBlock - Close fd[%i]", THIS_FILE, theFileFD);
 		
+		#if NEEDS_DISPATCH_RETAIN_RELEASE
 		dispatch_release(theReadSource);
+		#endif
 		close(theFileFD);
 	});
 	
@@ -313,14 +345,14 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	{
 		NSUInteger dataLength = [data length];
 		
-		HTTPLogVerbose(@"%@[%p]: Returning data of length %lu", THIS_FILE, self, (unsigned long) dataLength);
+		HTTPLogVerbose(@"%@[%p]: Returning data of length %lu", THIS_FILE, self, (unsigned long)dataLength);
 		
 		fileOffset += dataLength;
 		
 		NSData *result = data;
 		data = nil;
 		
-		return [result autorelease];
+		return result;
 	}
 	else
 	{
@@ -388,16 +420,12 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 {
 	HTTPLogTrace();
 	
-	if (readQueue)
-		dispatch_release(readQueue);
+	#if NEEDS_DISPATCH_RETAIN_RELEASE
+	if (readQueue) dispatch_release(readQueue);
+	#endif
 	
 	if (readBuffer)
 		free(readBuffer);
-	
-	[filePath release];
-	[data release];
-	
-	[super dealloc];
 }
 
 @end

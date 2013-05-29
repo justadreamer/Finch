@@ -1,5 +1,5 @@
-platform :ios
-pod 'CocoaHTTPServer', '~> 2.2.1'
-pod 'SBJson', '~> 3.1.1'
+platform :ios, '5.0'
+
+pod 'CocoaHTTPServer', '~> 2'
 pod 'MBProgressHUD', '~> 0.5'
-pod 'FlurrySDK', '~> 4.1.0'
+pod 'FlurrySDK', '~> 4'

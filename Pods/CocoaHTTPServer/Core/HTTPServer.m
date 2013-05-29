@@ -4,6 +4,35 @@
 #import "WebSocket.h"
 #import "HTTPLogging.h"
 
+#if ! __has_feature(objc_arc)
+#warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
+#endif
+
+// Does ARC support support GCD objects?
+// It does if the minimum deployment target is iOS 6+ or Mac OS X 8+
+
+#if TARGET_OS_IPHONE
+
+  // Compiling for iOS
+
+  #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000 // iOS 6.0 or later
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 0
+  #else                                         // iOS 5.X or earlier
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 1
+  #endif
+
+#else
+
+  // Compiling for Mac OS X
+
+  #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1080     // Mac OS X 10.8 or later
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 0
+  #else
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 1     // Mac OS X 10.7 or earlier
+  #endif
+
+#endif
+
 // Log levels: off, error, warn, info, verbose
 // Other flags: trace
 static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
@@ -100,27 +129,12 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	
 	// Release all instance variables
 	
+	#if NEEDS_DISPATCH_RETAIN_RELEASE
 	dispatch_release(serverQueue);
 	dispatch_release(connectionQueue);
+	#endif
 	
 	[asyncSocket setDelegate:nil delegateQueue:NULL];
-	[asyncSocket release];
-	
-	[documentRoot release];
-	[interface release];
-	
-	[netService release];
-	[domain release];
-	[name release];
-	[type release];
-	[txtRecordDictionary release];
-	
-	[connections release];
-	[webSockets release];
-	[connectionsLock release];
-	[webSocketsLock release];
-	
-	[super dealloc];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,10 +151,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSString *result;
 	
 	dispatch_sync(serverQueue, ^{
-		result = [documentRoot retain];
+		result = documentRoot;
 	});
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)setDocumentRoot:(NSString *)value
@@ -160,11 +174,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	NSString *valueCopy = [value copy];
 	
 	dispatch_async(serverQueue, ^{
-		[documentRoot release];
-		documentRoot = [valueCopy retain];
+		documentRoot = valueCopy;
 	});
 	
-	[valueCopy release];
 }
 
 /**
@@ -201,10 +213,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSString *result;
 	
 	dispatch_sync(serverQueue, ^{
-		result = [interface retain];
+		result = interface;
 	});
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)setInterface:(NSString *)value
@@ -212,11 +224,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	NSString *valueCopy = [value copy];
 	
 	dispatch_async(serverQueue, ^{
-		[interface release];
-		interface = [valueCopy retain];
+		interface = valueCopy;
 	});
 	
-	[valueCopy release];
 }
 
 /**
@@ -267,10 +277,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSString *result;
 	
 	dispatch_sync(serverQueue, ^{
-		result = [domain retain];
+		result = domain;
 	});
 	
-    return [domain autorelease];
+    return result;
 }
 
 - (void)setDomain:(NSString *)value
@@ -280,11 +290,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	NSString *valueCopy = [value copy];
 	
 	dispatch_async(serverQueue, ^{
-		[domain release];
-		domain = [valueCopy retain];
+		domain = valueCopy;
 	});
 	
-	[valueCopy release];
 }
 
 /**
@@ -297,10 +305,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSString *result;
 	
 	dispatch_sync(serverQueue, ^{
-		result = [name retain];
+		result = name;
 	});
 	
-	return [name autorelease];
+	return result;
 }
 
 - (NSString *)publishedName
@@ -324,7 +332,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 		}
 	});
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)setName:(NSString *)value
@@ -332,11 +340,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	NSString *valueCopy = [value copy];
 	
 	dispatch_async(serverQueue, ^{
-		[name release];
-		name = [valueCopy retain];
+		name = valueCopy;
 	});
 	
-	[valueCopy release];
 }
 
 /**
@@ -348,10 +354,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSString *result;
 	
 	dispatch_sync(serverQueue, ^{
-		result = [type retain];
+		result = type;
 	});
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)setType:(NSString *)value
@@ -359,11 +365,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	NSString *valueCopy = [value copy];
 	
 	dispatch_async(serverQueue, ^{
-		[type release];
-		type = [valueCopy retain];
+		type = valueCopy;
 	});
 	
-	[valueCopy release];
 }
 
 /**
@@ -374,10 +378,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSDictionary *result;
 	
 	dispatch_sync(serverQueue, ^{
-		result = [txtRecordDictionary retain];
+		result = txtRecordDictionary;
 	});
 	
-	return [result autorelease];
+	return result;
 }
 - (void)setTXTRecordDictionary:(NSDictionary *)value
 {
@@ -387,8 +391,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	
 	dispatch_async(serverQueue, ^{
 	
-		[txtRecordDictionary release];
-		txtRecordDictionary = [valueCopy retain];
+		txtRecordDictionary = valueCopy;
 		
 		// Update the txtRecord of the netService if it has already been published
 		if (netService)
@@ -406,7 +409,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 		}
 	});
 	
-	[valueCopy release];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -420,8 +422,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block BOOL success = YES;
 	__block NSError *err = nil;
 	
-	dispatch_sync(serverQueue, ^{
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	dispatch_sync(serverQueue, ^{ @autoreleasepool {
 		
 		success = [asyncSocket acceptOnInterface:interface port:port error:&err];
 		if (success)
@@ -434,16 +435,11 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 		else
 		{
 			HTTPLogError(@"%@: Failed to start HTTP Server: %@", THIS_FILE, err);
-			[err retain];
 		}
-		
-		[pool drain];
-	});
+	}});
 	
 	if (errPtr)
-		*errPtr = [err autorelease];
-	else
-		[err release];
+		*errPtr = err;
 	
 	return success;
 }
@@ -457,8 +453,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 {
 	HTTPLogTrace();
 	
-	dispatch_sync(serverQueue, ^{
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	dispatch_sync(serverQueue, ^{ @autoreleasepool {
 		
 		// First stop publishing the service via bonjour
 		[self unpublishBonjour];
@@ -487,9 +482,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 			[webSockets removeAllObjects];
 			[webSocketsLock unlock];
 		}
-		
-		[pool drain];
-	});
+	}});
 }
 
 - (BOOL)isRunning
@@ -562,7 +555,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	// Try the apache benchmark tool (already installed on your Mac):
 	// $  ab -n 1000 -c 1 http://localhost:<port>/some_path.html
 	
-	return [[[HTTPConfig alloc] initWithServer:self documentRoot:documentRoot queue:connectionQueue] autorelease];
+	return [[HTTPConfig alloc] initWithServer:self documentRoot:documentRoot queue:connectionQueue];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
@@ -574,7 +567,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	[connectionsLock unlock];
 	
 	[newConnection start];
-	[newConnection release];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -629,7 +621,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 		dispatch_block_t bonjourBlock = ^{
 			
 			[theNetService stop];
-			[theNetService release];
 		};
 		
 		[[self class] performBonjourBlock:bonjourBlock];
@@ -751,20 +742,24 @@ static NSThread *bonjourThread;
 
 + (void)bonjourThread
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
-	HTTPLogVerbose(@"%@: BonjourThread: Started", THIS_FILE);
+		HTTPLogVerbose(@"%@: BonjourThread: Started", THIS_FILE);
+		
+		// We can't run the run loop unless it has an associated input source or a timer.
+		// So we'll just create a timer that will never fire - unless the server runs for 10,000 years.
+		
+		[NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow]
+		                                 target:self
+		                               selector:@selector(donothingatall:)
+		                               userInfo:nil
+		                                repeats:YES];
+		
+		[[NSRunLoop currentRunLoop] run];
+		
+		HTTPLogVerbose(@"%@: BonjourThread: Aborted", THIS_FILE);
 	
-	// We can't run the run loop unless it has an associated input source or a timer.
-	// So we'll just create a timer that will never fire - unless the server runs for 10,000 years.
-	
-	[NSTimer scheduledTimerWithTimeInterval:DBL_MAX target:self selector:@selector(ignore:) userInfo:nil repeats:YES];
-	
-	[[NSRunLoop currentRunLoop] run];
-	
-	HTTPLogVerbose(@"%@: BonjourThread: Aborted", THIS_FILE);
-	
-	[pool drain];
+	}
 }
 
 + (void)executeBonjourBlock:(dispatch_block_t)block
