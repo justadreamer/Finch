@@ -19,6 +19,10 @@
 #define kText @"text"
 #define SAFE_STRING(s) s ? [s description]: @""
 #define OBJ_OR_NSNULL(obj) obj ? obj : [NSNull null]
+
+#define FONT_HELVETICA		@"Helvetica"
+#define FONT_HELVETICA_BOLD	@"Helvetica-Bold"
+
 #endif
 
 typedef void (^VoidBlock)(void);

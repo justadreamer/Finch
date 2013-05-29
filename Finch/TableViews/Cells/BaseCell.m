@@ -21,8 +21,9 @@
 
 - (void) updateWithAdapter:(BaseCellAdapter*)adapter {
     self.textLabel.text = [(BaseCellAdapter*)adapter mainText];
+	self.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_BOLD size:16.0];
     self.detailTextLabel.text = [(BaseCellAdapter*)adapter detailText];
-    self.detailTextLabel.font = [UIFont systemFontOfSize:17];
+    self.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA size:10.0];
     UIColor* detailTextColor = [adapter detailTextColor];
     if (nil!=detailTextColor) {
         self.detailTextLabel.textColor = detailTextColor;

@@ -35,7 +35,7 @@
 
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, self.bounds.size.width, 20)];
         self.label.backgroundColor = [UIColor clearColor];
-        self.label.font = [UIFont boldSystemFontOfSize:17.0];
+        self.label.font = [UIFont fontWithName:FONT_HELVETICA_BOLD size:17.0];
         self.label.shadowColor = [UIColor whiteColor];
         self.label.shadowOffset = CGSizeMake(0, 1.0);
         self.label.textColor = COLOR_SECTION_HEADER_TITLE;
