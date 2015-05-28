@@ -65,6 +65,7 @@ const NSInteger SEC_BONJOUR = 3;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.mainTableView reloadData];
 }
 
