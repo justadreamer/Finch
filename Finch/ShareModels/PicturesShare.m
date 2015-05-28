@@ -90,7 +90,9 @@
                           assetShare.fileName = filename;
                           [assetShare readPrivacyPreference];
                           [self.assetShares addObject:assetShare];
-                          [self.assetSharesMap setObject:assetShare forKey:filename];
+                          if (filename) {
+                              [self.assetSharesMap setObject:assetShare forKey:filename];
+                          }
                       }
                       
                       [albumShare addAssetShare:assetShare];
