@@ -24,6 +24,8 @@
 @property (nonatomic,strong) Reachability* reachabilityForInternet;
 @property (nonatomic,strong) NSNetService* netService;
 @property (nonatomic,assign) BOOL servicesStarted;
+@property (nonatomic,assign) BOOL isRefreshInProgress;
+
 - (void) setupHTTPServer;
 - (void) setupReachability;
 - (void) setupIdleTimer;
@@ -131,16 +133,20 @@ void uncaughtExceptionHandler(NSException *exception);
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [self startServices];
-    [MBProgressHUD showHUDAddedTo:self.viewController.view animated:YES];
-    __weak AppDelegate* safeSelf = self;
-    [SharesProvider instance].onRefreshFinished = ^(NSError* error) {
-        if (error) {
-            VLog(error);
-        }
-        [MBProgressHUD hideHUDForView:safeSelf.viewController.view animated:YES];
-        [safeSelf.viewController refresh];
-    };
-    [[SharesProvider instance] refreshShares];
+    if (!self.isRefreshInProgress) {
+        self.isRefreshInProgress = YES;
+        [MBProgressHUD showHUDAddedTo:self.viewController.view animated:YES];
+        __weak AppDelegate* safeSelf = self;
+        [SharesProvider instance].onRefreshFinished = ^(NSError* error) {
+            if (error) {
+                VLog(error);
+            }
+            [MBProgressHUD hideHUDForView:safeSelf.viewController.view animated:YES];
+            [safeSelf.viewController refresh];
+            self.isRefreshInProgress = NO;
+        };
+        [[SharesProvider instance] refreshShares];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
